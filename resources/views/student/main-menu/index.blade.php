@@ -8,9 +8,6 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <style>
         body {
@@ -183,92 +180,104 @@
             }
         }
 
-        .input-rounded-right {
-            border-top-right-radius: 50px;
-            border-bottom-right-radius: 50px;
-            border-left: none;
+        .card-border {
+            border-radius: 25px;
+            width: 90%;
+            height: 180px;
         }
 
-        .border-left-none {
-            border-left: none;
+        .content-center {
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
-        .border-right-none {
-            border-right: none;
-        }
-
-        .addon-rounded-right {
-            border-top-left-radius: 50px;
-            border-bottom-left-radius: 50px;
-            background-color: white !important;
-            border-right: none;
-        }
-
-        .addon-rounded-left {
-            border-top-right-radius: 50px;
-            border-bottom-right-radius: 50px;
-            background-color: white !important;
-            border-left: none;
+        .navs {
+            display: flex;
+            justify-content: center;
+            /* Meng-centerkan teks secara horizontal */
+            align-items: center;
+            /* Meng-centerkan teks secara vertikal */
+            height: 70px;
+            /* Sesuaikan tinggi navbar sesuai kebutuhan */
+            background-color: white;
         }
     </style>
 </head>
 
 <body>
-    <div class="container">
-        <div class="row justify-content-center text-center margin-top">
-            <div class="col-sm-12 col-md-12 col-lg-7">
-                <h1><b>Selamat Datang</b></h1>
-                <div class="people-angklung">
-                    <img src="{{ asset('./guest-assets/angklung-man.svg') }}" class="angklung-man">
-                    <img src="{{ asset('./guest-assets/angklung-girl.svg') }}" class="angklung-girl">
-                </div>
-            </div>
-        </div>
-    </div>
+    <!-- As a link -->
+    <nav class="navs">
+        <h2><b>Halo Siswa 1</b></h2>
+    </nav>
 
-    {{-- wave --}}
-    <div class="login row g-0 justify-content-center">
-        <div class="col-sm-12 col-md-9 col-lg-7">
-            <img src="{{ asset('./guest-assets/wave.svg') }}">
-            <div class="background-white text-center p-5" style="margin-top: -10px;">
-                <div class="row justify-content-center">
-                    <div class="col-sm-12 col-md-12 col-lg-8">
-                        <h1 class="login-text"><b>Login</b></h1>
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-sm-12 col-md-12 col-lg-7">
+                <div class="row text-center">
+                    <div class="col-12 my-3 text-center">
+                        <h2><b>Menu Utama</b></h2>
                     </div>
-                    <div class="col-sm-12 col-md-12 col-lg-8 mx-5 mb-3">
-                        <div class="input-group">
-                            <span class="input-group-text addon-rounded-right" for="nis">
-                                <i class="fa-regular fa-circle-user fa-xl" style="color: #985b00;"></i>
-                            </span>
-                            <input type="text" name="nis"
-                                class="form-control form-control-lg input-rounded-right" id="nis"
-                                placeholder="NIS">
+                    <a href="" class="text-decoration-none col-6 content-center gx-3 gy-3">
+                        <div class="card card-border" style="">
+                            <div class="card-body text-center">
+                                <img src="{{ asset('./guest-assets/capaian-pembelajaran.svg') }}" alt="">
+                                <div class="mt-3">
+                                    <p><b>Capaian Pembelajaran</b></p>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-sm-12 col-md-12 col-lg-8 mx-5">
-                        <div class="input-group">
-                            <span class="input-group-text addon-rounded-right" for="password">
-                                <i class="fa-solid fa-circle-user fa-xl" style="color: #985b00;"></i>
-                            </span>
-                            <input type="text" name="password"
-                                class="form-control form-control-lg border-left-none border-right-none" id="password"
-                                placeholder="Password">
-                            <span class="input-group-text addon-rounded-left">
-                                <i class="fa-regular fa-eye-slash fa-xl" style="color: #985b00;"></i>
-                            </span>
+                    </a>
+                    <a href="" class="text-decoration-none col-6 content-center gx-3 gy-3">
+                        <div class="card card-border">
+                            <div class="card-body text-center">
+                                <img src="{{ asset('./guest-assets/aktivitas-belajar.svg') }}" alt="">
+                                <div class="mt-3">
+                                    <p><b>Aktivitas Belajar</b></p>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-sm-12 col-md-12 col-lg-8 mx-5 mt-5">
-                        <button type="submit" class="btn button-masuk btn-lg rounded-pill text-white">Masuk</button>
-                    </div>
-                </div>
-                <div class="row mt-5">
-                    <div class="col-6">
-                        <a href="" class="text-decoration-none text-brown">Lupa Password</a>
-                    </div>
-                    <div class="col-6">
-                        <a href="" class="text-decoration-none text-brown">Reset</a>
-                    </div>
+                    </a>
+                    <a href="" class="text-decoration-none col-6 content-center gx-3 gy-3">
+                        <div class="card card-border">
+                            <div class="card-body text-center">
+                                <img src="{{ asset('./guest-assets/project.svg') }}" alt="">
+                                <div class="mt-3">
+                                    <p><b>Project</b></p>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="" class="text-decoration-none col-6 content-center gx-3 gy-3">
+                        <div class="card card-border">
+                            <div class="card-body text-center">
+                                <img src="{{ asset('./guest-assets/progress.svg') }}" alt="">
+                                <div class="mt-3">
+                                    <p><b>Progress</b></p>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="" class="text-decoration-none col-6 content-center gx-3 gy-3">
+                        <div class="card card-border">
+                            <div class="card-body text-center">
+                                <img src="{{ asset('./guest-assets/penilaian.svg') }}" alt="">
+                                <div class="mt-3">
+                                    <p><b>Penilaian</b></p>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="" class="text-decoration-none col-6 content-center gx-3 gy-3">
+                        <div class="card card-border">
+                            <div class="card-body">
+                                <img src="{{ asset('./guest-assets/informasi-pengembang.svg') }}" alt="">
+                                <div class="mt-3">
+                                    <p><b>Informasi Pengembang</b></p>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
                 </div>
             </div>
         </div>
