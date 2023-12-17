@@ -1,6 +1,9 @@
 <?php
 
+use App\Http\Controllers\Student\LoginStudentController;
+use App\Http\Controllers\Student\MainMenuStudentController;
 use Illuminate\Support\Facades\Route;
+use Bugsnag\BugsnagLaravel\Facades\Bugsnag;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +16,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/', [LoginStudentController::class, 'index'])->name('login.student');
+
+Route::prefix('siswa')->group(function () {
+    Route::get('/', [MainMenuStudentController::class, 'index']);
 });
