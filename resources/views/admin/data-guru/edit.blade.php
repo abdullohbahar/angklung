@@ -32,15 +32,18 @@
             <div class="container-fluid">
                 <div class="card">
                     <div class="card-body">
-                        <form action="{{ route('admin.store.data.guru') }}" method="post" enctype="multipart/form-data">
+                        <form action="{{ route('admin.update.data.guru', $teacher->id) }}" method="post"
+                            enctype="multipart/form-data">
                             @csrf
+                            @method('PUT')
                             <div class="row">
                                 <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 mt-3">
-                                    <label for="">Preview Foto</label>
-                                    <img class="w-100" alt="" id="imagePreview">
+                                    <label for="">Preview Foto</label> <br>
+                                    <img src="{{ asset($teacher->foto) }}" class="w-25" alt="" id="imagePreview">
                                 </div>
                                 <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 mt-3">
-                                    <label for="">Foto <small>Kosongkan Jika Tidak Memiliki Foto</small></label>
+                                    <label for="">Foto <small>Kosongkan Jika Tidak Ingin Mengubah
+                                            Foto</small></label>
                                     <input type="file" name="foto"
                                         class="form-control @error('foto') is-invalid @enderror" id="imageUpload">
                                     @error('foto')
@@ -51,7 +54,7 @@
                                 </div>
                                 <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 mt-3">
                                     <label for="">Nama Lengkap</label>
-                                    <input type="text" name="fullname" value="{{ old('fullname') }}"
+                                    <input type="text" name="fullname" value="{{ old('fullname', $teacher->fullname) }}"
                                         class="form-control @error('fullname') is-invalid @enderror" id="fullname">
                                     @error('fullname')
                                         <div class="invalid-feedback">
@@ -61,7 +64,7 @@
                                 </div>
                                 <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 mt-3">
                                     <label for="">Username</label>
-                                    <input type="text" name="username" value="{{ old('username') }}"
+                                    <input type="text" name="username" value="{{ old('username', $teacher->username) }}"
                                         class="form-control @error('username') is-invalid @enderror" id="username">
                                     @error('username')
                                         <div class="invalid-feedback">
@@ -70,7 +73,8 @@
                                     @enderror
                                 </div>
                                 <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 mt-3">
-                                    <label for="">Password</label>
+                                    <label for="">Password <small>Kosongkan jika tidak ingin mengubah
+                                            password</small></label>
                                     <div class="input-group">
                                         <input type="password" class="form-control @error('password') is-invalid @enderror"
                                             name="password" placeholder="Password" id="password"
@@ -86,7 +90,7 @@
                                     </div>
                                 </div>
                                 <div class="col-12 mt-3">
-                                    <button type="submit" class="btn btn-brown" style="width: 100%">Tambah</button>
+                                    <button type="submit" class="btn btn-brown" style="width: 100%">Ubah</button>
                                 </div>
                             </div>
                         </form>

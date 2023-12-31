@@ -5,6 +5,7 @@
 @endsection
 
 @push('addons-css')
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 @endpush
 
 @section('content')
@@ -51,13 +52,26 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>1</td>
-                                            <td>1</td>
-                                            <td>1</td>
-                                            <td>1</td>
-                                        </tr>
+                                        @php
+                                            $no = 1;
+                                        @endphp
+                                        @foreach ($teachers as $teacher)
+                                            <tr>
+                                                <td>{{ $no++ }}</td>
+                                                <td><img src="{{ asset($teacher->foto) }}"
+                                                        class="w-50 img-fluid img-thumbnail" srcset=""></td>
+                                                <td>{{ $teacher->username }}</td>
+                                                <td>{{ $teacher->fullname }}</td>
+                                                <td>
+                                                    <div class="btn-group" role="group" aria-label="Basic example">
+                                                        <a href="{{ route('admin.edit.data.guru', $teacher->id) }}"
+                                                            class="btn btn-warning">Ubah</a>
+                                                        <button type="button" class="btn btn-danger" id="removeBtn"
+                                                            data-id="{{ $teacher->id }}">Hapus</button>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        @endforeach
                                     </tbody>
                                 </table>
                             </div>
@@ -71,4 +85,54 @@
 @endsection
 
 @push('addons-js')
+    <script>
+        var token = $('meta[name="csrf-token"]').attr('content');
+
+
+        // destroy anak asuh
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': token
+            }
+        });
+        $("body").on("click", "#removeBtn", function() {
+            var id = $(this).data("id");
+
+            Swal.fire({
+                title: 'Apakah anda yakin?',
+                text: "Data akan dihapus permanen!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Ya, Hapus!',
+                cancelButtonText: 'Batal',
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $.ajax({
+                        url: '/admin/data-guru/destroy/' + id,
+                        type: 'DELETE',
+                        success: function(response) {
+                            if (response.code == 200) {
+                                Swal.fire(
+                                    'Berhasil!',
+                                    response.message,
+                                    'success'
+                                ).then(() => {
+                                    location
+                                        .reload(); // Refresh halaman setelah mengklik OK
+                                });
+                            } else if (response.code == 500) {
+                                Swal.fire({
+                                    icon: 'error',
+                                    title: 'Gagal!',
+                                    text: response.message,
+                                })
+                            }
+                        }
+                    })
+                }
+            })
+        })
+    </script>
 @endpush

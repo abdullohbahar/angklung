@@ -35,6 +35,10 @@ Route::prefix('admin')->group(function () {
 
     Route::prefix('data-guru')->group(function () {
         Route::get('/', [DataGuruController::class, 'index'])->name('admin.data.guru');
-        Route::get('/tambah-data-guru', [DataGuruController::class, 'create'])->name('admin.create.data.guru');
+        Route::get('/tambah', [DataGuruController::class, 'create'])->name('admin.create.data.guru');
+        Route::post('/simpan', [DataGuruController::class, 'store'])->name('admin.store.data.guru');
+        Route::get('/edit/{id}', [DataGuruController::class, 'edit'])->name('admin.edit.data.guru');
+        Route::put('/update/{id}', [DataGuruController::class, 'update'])->name('admin.update.data.guru');
+        Route::delete('/destroy/{id}', [DataGuruController::class, 'destroy'])->name('admin.destroy.data.guru');
     });
 });
