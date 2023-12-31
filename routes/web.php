@@ -1,12 +1,15 @@
 <?php
 
 use App\Http\Controllers\Admin\DashboardAdminController;
+use App\Http\Controllers\Admin\DataGuruController;
 use App\Http\Controllers\Student\AktivitasBelajarController;
 use App\Http\Controllers\Student\CapaianPembelajaranController;
 use App\Http\Controllers\Student\LoginStudentController;
 use App\Http\Controllers\Student\MainMenuStudentController;
 use Illuminate\Support\Facades\Route;
 use Bugsnag\BugsnagLaravel\Facades\Bugsnag;
+
+use function Termwind\ask;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,4 +32,9 @@ Route::prefix('siswa')->group(function () {
 
 Route::prefix('admin')->group(function () {
     Route::get('dashboard', [DashboardAdminController::class, 'index'])->name('admin.dashboard');
+
+    Route::prefix('data-guru')->group(function () {
+        Route::get('/', [DataGuruController::class, 'index'])->name('admin.data.guru');
+        Route::get('/tambah-data-guru', [DataGuruController::class, 'create'])->name('admin.create.data.guru');
+    });
 });

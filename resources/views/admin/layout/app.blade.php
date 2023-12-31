@@ -21,12 +21,29 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <link rel="shortcut icon"
         href="https://apsindo.org/wp-content/uploads/2023/12/Screenshot_48_waifu2x_photo_noise3_scale_waifu2x_photo_noise3_scale-1.png"
         type="image/x-icon">
+    <!-- DataTables -->
+    <link rel="stylesheet"
+        href="{{ asset('dashboard-assets/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
+    <link rel="stylesheet"
+        href="{{ asset('dashboard-assets/plugins/datatables-responsive/css/responsive.bootstrap4.min.css') }}">
+    <link rel="stylesheet"
+        href="{{ asset('dashboard-assets/plugins/datatables-buttons/css/buttons.bootstrap4.min.css') }}">
 
     @stack('addons-css')
 
     <style>
         .nav-link.active {
             background-color: #F18016 !important;
+        }
+
+        .white-nav {
+            color: white !important;
+        }
+
+        .btn-brown {
+            background-color: #F18016;
+            color: white;
+            font-weight: bolder;
         }
     </style>
 
@@ -58,9 +75,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             <i class="fas fa-user mr-2"></i> Profile
                         </a>
                         <div class="dropdown-divider"></div>
-                        {{-- <a href="{{ route('logout') }}" class="dropdown-item">
+                        <a href="#" class="dropdown-item">
                             <i class="fas fa-sign-out-alt mr-2"></i> Logout
-                        </a> --}}
+                        </a>
                     </div>
                 </li>
             </ul>
@@ -83,10 +100,28 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         data-accordion="false">
                         <li class="nav-item">
                             <a href="{{ route('admin.dashboard') }}"
-                                class="nav-link {{ $active == 'dashboard' ? 'active' : '' }}">
+                                class="nav-link white-nav {{ $active == 'dashboard' ? 'active' : '' }}">
                                 <i class="nav-icon fas fa-home"></i>
                                 <p>
                                     <b>Dashboard</b>
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('admin.data.guru') }}"
+                                class="nav-link white-nav {{ $active == 'data-guru' ? 'active' : '' }}">
+                                <i class="nav-icon fas fa-users"></i>
+                                <p>
+                                    <b>Data Guru</b>
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('admin.dashboard') }}"
+                                class="nav-link white-nav {{ $active == 'data-siswa' ? 'active' : '' }}">
+                                <i class="nav-icon fas fa-users"></i>
+                                <p>
+                                    <b>Data Siswa</b>
                                 </p>
                             </a>
                         </li>
@@ -136,16 +171,24 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                     </a>
                                 </li>
                             </ul>
-                        </li>
+                        </li> --}}
                         <hr>
                         <li class="nav-item">
-                            <a href="{{ route('logout') }}" class="nav-link">
-                                <i class="nav-icon fas fa-sign-out-alt"></i>
+                            <a href="#" class="nav-link white-nav">
+                                <i class="nav-icon fas fa-user"></i>
                                 <p>
-                                    Logout
+                                    <b>Profile</b>
                                 </p>
                             </a>
-                        </li> --}}
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link white-nav">
+                                <i class="nav-icon fas fa-sign-out-alt"></i>
+                                <p>
+                                    <b>Logout</b>
+                                </p>
+                            </a>
+                        </li>
                     </ul>
                 </nav>
                 <!-- /.sidebar-menu -->
@@ -222,6 +265,64 @@ scratch. This page gets rid of all links and provides the needed markup only.
             })
         </script>
     @endif
+
+    <!-- DataTables  & Plugins -->
+    <script src="{{ asset('dashboard-assets/plugins/datatables/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('dashboard-assets/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
+    <script src="{{ asset('dashboard-assets/plugins/datatables-responsive/js/dataTables.responsive.min.js') }}"></script>
+    <script src="{{ asset('dashboard-assets/plugins/datatables-responsive/js/responsive.bootstrap4.min.js') }}"></script>
+    <script src="{{ asset('dashboard-assets/plugins/datatables-buttons/js/dataTables.buttons.min.js') }}"></script>
+    <script src="{{ asset('dashboard-assets/plugins/datatables-buttons/js/buttons.bootstrap4.min.js') }}"></script>
+    <script src="{{ asset('dashboard-assets/plugins/jszip/jszip.min.js') }}"></script>
+    <script src="{{ asset('dashboard-assets/plugins/pdfmake/pdfmake.min.js') }}"></script>
+    <script src="{{ asset('dashboard-assets/plugins/pdfmake/vfs_fonts.js') }}"></script>
+    <script src="{{ asset('dashboard-assets/plugins/datatables-buttons/js/buttons.html5.min.js') }}"></script>
+    <script src="{{ asset('dashboard-assets/plugins/datatables-buttons/js/buttons.print.min.js') }}"></script>
+    <script src="{{ asset('dashboard-assets/plugins/datatables-buttons/js/buttons.colVis.min.js') }}"></script>
+
+    <script>
+        $("#table1").DataTable({
+            paging: true,
+            lengthChange: true,
+            searching: true,
+            ordering: true,
+            info: true,
+            autoWidth: true,
+            responsive: true,
+        });
+    </script>
+
+    <script>
+        imageUpload.onchange = (evt) => {
+            const [file] = imageUpload.files;
+            if (file) {
+                // Batasan ukuran file (2MB)
+                const maxSizeInBytes = 2 * 1024 * 1024; // 2MB
+                if (file.size <= maxSizeInBytes) {
+                    // Batasan jenis file (PNG, JPG, JPEG)
+                    const allowedExtensions = ["png", "jpg", "jpeg", "webp"];
+                    const fileExtension = file.name.split(".").pop().toLowerCase();
+                    if (allowedExtensions.includes(fileExtension)) {
+                        imagePreview.src = URL.createObjectURL(file);
+                    } else {
+                        alert(
+                            "Jenis file yang diunggah tidak diizinkan. Harap pilih file dengan format PNG, JPG, atau JPEG."
+                        );
+                        imageUpload.value = null; // Menghapus file yang dipilih
+                    }
+                } else {
+                    alert("Ukuran file terlalu besar. Harap pilih file dengan ukuran maksimal 2MB.");
+                    imageUpload.value = null; // Menghapus file yang dipilih
+                }
+            }
+        };
+
+        $('#view-password').on('click', function() {
+            let input = $(this).parent().find("#password");
+            input.attr('type', input.attr('type') === 'password' ? 'text' : 'password');
+            $("#icon-password").attr('class', input.attr('type') === 'password' ? 'fas fa-eye' : "fas fa-eye-slash")
+        });
+    </script>
 
     @stack('addons-js')
 </body>
