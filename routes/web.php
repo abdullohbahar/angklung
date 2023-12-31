@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\DashboardAdminController;
 use App\Http\Controllers\Student\AktivitasBelajarController;
 use App\Http\Controllers\Student\CapaianPembelajaranController;
 use App\Http\Controllers\Student\LoginStudentController;
@@ -24,4 +25,8 @@ Route::prefix('siswa')->group(function () {
     Route::get('/', [MainMenuStudentController::class, 'index']);
     Route::get('/capaian-pembelajaran', [CapaianPembelajaranController::class, 'index']);
     Route::get('/aktivitas-belajar', [AktivitasBelajarController::class, 'index']);
+});
+
+Route::prefix('admin')->group(function () {
+    Route::get('dashboard', [DashboardAdminController::class, 'index'])->name('admin.dashboard');
 });
