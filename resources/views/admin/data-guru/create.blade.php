@@ -75,8 +75,10 @@
                                         <input type="password" class="form-control @error('password') is-invalid @enderror"
                                             name="password" placeholder="Password" id="password"
                                             value="{{ old('password') }}" autocomplete="new-password">
-                                        <div class="input-group-text" id="view-password">
-                                            <i class="fas fa-eye" id="icon-password"></i>
+                                        <div class="input-group-append" id="view-password">
+                                            <div class="input-group-text">
+                                                <i class="fas fa-eye" id="icon-password"></i>
+                                            </div>
                                         </div>
                                         @error('password')
                                             <div class="invalid-feedback">

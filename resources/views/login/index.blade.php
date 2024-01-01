@@ -15,6 +15,14 @@
     <link rel="shortcut icon" href="{{ asset('./guest-assets/angklung.svg') }}" type="image/x-icon">
 
     <style>
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background-repeat: no-repeat;
+            background-image: url('../guest-assets/frame-3.svg');
+            background-size: cover;
+            width: 100%;
+        }
+
         .input-group-text {
             cursor: pointer;
         }

@@ -70,7 +70,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         <i class="fas fa-user"></i>
                     </a>
                     <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                        <a href="#" class="dropdown-item">
+                        <a href="{{ route('profile') }}" class="dropdown-item">
                             <i class="fas fa-user mr-2"></i> Profile
                         </a>
                         <div class="dropdown-divider"></div>
@@ -173,7 +173,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         </li> --}}
                         <hr>
                         <li class="nav-item">
-                            <a href="#" class="nav-link white-nav">
+                            <a href="{{ route('profile') }}" class="nav-link white-nav">
                                 <i class="nav-icon fas fa-user"></i>
                                 <p>
                                     <b>Profile</b>
@@ -181,7 +181,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link white-nav">
+                            <a href="{{ route('logout') }}" class="nav-link white-nav">
                                 <i class="nav-icon fas fa-sign-out-alt"></i>
                                 <p>
                                     <b>Logout</b>

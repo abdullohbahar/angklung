@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\AuthAdminController;
 use App\Http\Controllers\Admin\DashboardAdminController;
 use App\Http\Controllers\Admin\DataGuruController;
 use App\Http\Controllers\Admin\DataSiswaController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Student\AktivitasBelajarController;
 use App\Http\Controllers\Student\CapaianPembelajaranController;
 use App\Http\Controllers\Student\LoginStudentController;
@@ -54,3 +55,6 @@ Route::prefix('admin')->group(function () {
         Route::get('/', [DataSiswaController::class, 'index'])->name('admin.data.siswa');
     });
 });
+
+Route::get('profile', [ProfileController::class, 'index'])->name('profile');
+Route::put('profile/{id}', [ProfileController::class, 'update'])->name('update.profile');
