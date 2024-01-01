@@ -18,9 +18,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <link rel="stylesheet" href="{{ asset('./dashboard-assets/plugins/fontawesome-free/css/all.min.css') }}">
     <!-- Theme style -->
     <link rel="stylesheet" href="{{ asset('./dashboard-assets/dist/css/adminlte.min.css') }}">
-    <link rel="shortcut icon"
-        href="https://apsindo.org/wp-content/uploads/2023/12/Screenshot_48_waifu2x_photo_noise3_scale_waifu2x_photo_noise3_scale-1.png"
-        type="image/x-icon">
+    <link rel="shortcut icon" href="{{ asset('./guest-assets/angklung.svg') }}" type="image/x-icon">
+
     <!-- DataTables -->
     <link rel="stylesheet"
         href="{{ asset('dashboard-assets/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
