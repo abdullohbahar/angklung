@@ -9,7 +9,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>@yield('title') - Admin</title>
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    {{-- @vite(['resources/css/app.css', 'resources/js/app.js']) --}}
 
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet"
@@ -117,7 +117,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('admin.dashboard') }}"
+                            <a href="{{ route('admin.data.siswa') }}"
                                 class="nav-link white-nav {{ $active == 'data-siswa' ? 'active' : '' }}">
                                 <i class="nav-icon fas fa-users"></i>
                                 <p>

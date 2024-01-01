@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\DashboardAdminController;
 use App\Http\Controllers\Admin\DataGuruController;
+use App\Http\Controllers\Admin\DataSiswaController;
 use App\Http\Controllers\Student\AktivitasBelajarController;
 use App\Http\Controllers\Student\CapaianPembelajaranController;
 use App\Http\Controllers\Student\LoginStudentController;
@@ -40,5 +41,9 @@ Route::prefix('admin')->group(function () {
         Route::get('/edit/{id}', [DataGuruController::class, 'edit'])->name('admin.edit.data.guru');
         Route::put('/update/{id}', [DataGuruController::class, 'update'])->name('admin.update.data.guru');
         Route::delete('/destroy/{id}', [DataGuruController::class, 'destroy'])->name('admin.destroy.data.guru');
+    });
+
+    Route::prefix('data-siswa')->group(function () {
+        Route::get('/', [DataSiswaController::class, 'index'])->name('admin.data.siswa');
     });
 });
