@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AuthAdminController;
 use App\Http\Controllers\Admin\DashboardAdminController;
 use App\Http\Controllers\Admin\DataGuruController;
 use App\Http\Controllers\Admin\DataSiswaController;
@@ -30,6 +31,12 @@ Route::prefix('siswa')->group(function () {
     Route::get('/capaian-pembelajaran', [CapaianPembelajaranController::class, 'index']);
     Route::get('/aktivitas-belajar', [AktivitasBelajarController::class, 'index']);
 });
+
+Route::get('admin/login', [AuthAdminController::class, 'index'])->name('admin.login');
+Route::post('/auth', [AuthAdminController::class, 'authenticate'])->name('auth');
+
+
+Route::get('/logout', [AuthAdminController::class, 'logout'])->name('logout');
 
 Route::prefix('admin')->group(function () {
     Route::get('dashboard', [DashboardAdminController::class, 'index'])->name('admin.dashboard');
