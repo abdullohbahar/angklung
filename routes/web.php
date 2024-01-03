@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\AuthAdminController;
 use App\Http\Controllers\Admin\DashboardAdminController;
 use App\Http\Controllers\Admin\DataGuruController;
 use App\Http\Controllers\Admin\DataSiswaController;
+use App\Http\Controllers\Guru\AuthGuruController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Student\AktivitasBelajarController;
 use App\Http\Controllers\Student\CapaianPembelajaranController;
@@ -34,10 +35,12 @@ Route::prefix('siswa')->group(function () {
 });
 
 Route::get('admin/login', [AuthAdminController::class, 'index'])->name('admin.login');
-Route::post('/auth', [AuthAdminController::class, 'authenticate'])->name('auth');
+Route::post('admin/auth', [AuthAdminController::class, 'authenticate'])->name('admin.auth');
+Route::get('admin/logout', [AuthAdminController::class, 'logout'])->name('admin.logout');
 
-
-Route::get('/logout', [AuthAdminController::class, 'logout'])->name('logout');
+Route::get('guru/login', [AuthGuruController::class, 'index'])->name('guru.login');
+Route::post('guru/auth', [AuthGuruController::class, 'authenticate'])->name('guru.auth');
+Route::get('guru/logout', [AuthGuruController::class, 'logout'])->name('guru.logout');
 
 Route::prefix('admin')->group(function () {
     Route::get('dashboard', [DashboardAdminController::class, 'index'])->name('admin.dashboard');
@@ -54,6 +57,12 @@ Route::prefix('admin')->group(function () {
     Route::prefix('data-siswa')->group(function () {
         Route::get('/', [DataSiswaController::class, 'index'])->name('admin.data.siswa');
     });
+});
+
+Route::prefix('guru')->group(function () {
+    Route::get('dashboard', function () {
+        echo "Halo Guru";
+    })->name('guru.dashboard');
 });
 
 Route::get('profile', [ProfileController::class, 'index'])->name('profile');
