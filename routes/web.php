@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\DashboardAdminController;
 use App\Http\Controllers\Admin\DataGuruController;
 use App\Http\Controllers\Admin\DataSiswaController;
 use App\Http\Controllers\Guru\AuthGuruController;
+use App\Http\Controllers\Guru\CapaianPembelajaranController as GuruCapaianPembelajaranController;
 use App\Http\Controllers\Guru\DashboardGuruController;
 use App\Http\Controllers\Guru\DataSiswaController as GuruDataSiswaController;
 use App\Http\Controllers\ProfileController;
@@ -12,6 +13,7 @@ use App\Http\Controllers\Student\AktivitasBelajarController;
 use App\Http\Controllers\Student\CapaianPembelajaranController;
 use App\Http\Controllers\Student\LoginStudentController;
 use App\Http\Controllers\Student\MainMenuStudentController;
+use App\Models\CapaianPembelajaran;
 use Illuminate\Support\Facades\Route;
 use Bugsnag\BugsnagLaravel\Facades\Bugsnag;
 
@@ -71,6 +73,11 @@ Route::prefix('guru')->group(function () {
         Route::get('/edit/{id}', [GuruDataSiswaController::class, 'edit'])->name('guru.edit.data.siswa');
         Route::put('/update/{id}', [GuruDataSiswaController::class, 'update'])->name('guru.update.data.siswa');
         Route::delete('/destroy/{id}', [GuruDataSiswaController::class, 'destroy'])->name('guru.destroy.data.siswa');
+    });
+
+    Route::prefix('capaian-pembelajaran')->group(function () {
+        Route::get('/', [GuruCapaianPembelajaranController::class, 'index'])->name('guru.capaian.pembelajaran');
+        Route::get('/tambah', [GuruCapaianPembelajaranController::class, 'create'])->name('guru.create.capaian.pembelajaran');
     });
 });
 

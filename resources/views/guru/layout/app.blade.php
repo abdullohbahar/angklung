@@ -115,6 +115,15 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                 </p>
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a href="{{ route('guru.capaian.pembelajaran') }}"
+                                class="nav-link white-nav {{ $active == 'capaian-pembelajaran' ? 'active' : '' }}">
+                                <i class="nav-icon fas fa-file-alt"></i>
+                                <p>
+                                    <b>Capaian Pembelajaran</b>
+                                </p>
+                            </a>
+                        </li>
                         {{-- <li class="nav-item">
                             <a href="{{ route('admin.member') }}"
                                 class="nav-link {{ $active == 'member' ? 'active' : '' }}">
