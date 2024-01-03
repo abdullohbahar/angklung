@@ -8,6 +8,7 @@ use App\Http\Controllers\Guru\AuthGuruController;
 use App\Http\Controllers\Guru\CapaianPembelajaranController as GuruCapaianPembelajaranController;
 use App\Http\Controllers\Guru\DashboardGuruController;
 use App\Http\Controllers\Guru\DataSiswaController as GuruDataSiswaController;
+use App\Http\Controllers\Guru\FileCapaianPembelajaranController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Student\AktivitasBelajarController;
 use App\Http\Controllers\Student\CapaianPembelajaranController;
@@ -82,6 +83,12 @@ Route::prefix('guru')->group(function () {
         Route::get('/edit/{id}', [GuruCapaianPembelajaranController::class, 'edit'])->name('guru.edit.capaian.pembelajaran');
         Route::put('/update/{id}', [GuruCapaianPembelajaranController::class, 'update'])->name('guru.update.capaian.pembelajaran');
         Route::delete('/destroy/{id}', [GuruCapaianPembelajaranController::class, 'destroy'])->name('guru.destroy.data.capaian.pembelajaran');
+
+        Route::prefix('file')->group(function () {
+            Route::get('/{id}', [FileCapaianPembelajaranController::class, 'index'])->name('guru.file.capaian.pembelajaran');
+            Route::post('/simpan', [FileCapaianPembelajaranController::class, 'store'])->name('guru.store.file.capaian.pembelajaran');
+            Route::delete('/destroy/{id}', [FileCapaianPembelajaranController::class, 'destroy'])->name('guru.destroy.file.capaian.pembelajaran');
+        });
     });
 });
 

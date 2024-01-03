@@ -91,7 +91,15 @@ class CapaianPembelajaranController extends Controller
     public function destroy(string $id)
     {
         try {
-            $capaianPembelajaran = CapaianPembelajaran::findOrFail($id); // Temukan Capaian Pembelajaran yang akan dihapus
+            $capaianPembelajaran = CapaianPembelajaran::with('files')->findOrFail($id); // Temukan Capaian Pembelajaran yang akan dihapus
+
+            foreach ($capaianPembelajaran->files as $file) {
+                if (file_exists(public_path($file->files)) && !is_dir($file->files)) {
+                    unlink(public_path($file->files));
+                }
+
+                $file->delete();
+            }
 
             // Hapus Capaian Pembelajaran dari tabel Capaian Pembelajaran
             $capaianPembelajaran->delete();

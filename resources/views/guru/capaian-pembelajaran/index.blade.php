@@ -62,6 +62,8 @@
                                                 <td>{!! $cp->body !!}</td>
                                                 <td>
                                                     <div class="btn-group" role="group" aria-label="Basic example">
+                                                        <a href="{{ route('guru.file.capaian.pembelajaran', $cp->id) }}"
+                                                            class="btn btn-info">Unggah File</a>
                                                         <a href="{{ route('guru.edit.capaian.pembelajaran', $cp->id) }}"
                                                             class="btn btn-warning">Ubah</a>
                                                         <button type="button" class="btn btn-danger" id="removeBtn"
