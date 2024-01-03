@@ -88,9 +88,9 @@ class DataSiswaController extends Controller
             'username.required' => 'NIS Harus Diisi',
         ]);
 
-        $teacher = User::findOrFail($id);
+        $student = User::findOrFail($id);
 
-        if ($teacher->username != $request->username) {
+        if ($student->username != $request->username) {
             $request->validate([
                 'username' => 'unique:users,username',
             ], [
@@ -106,11 +106,11 @@ class DataSiswaController extends Controller
             $file->move($location, $filename);
             $foto = $filepath;
 
-            if (file_exists(public_path($teacher->foto)) && !is_dir($teacher->foto)) {
-                unlink(public_path($teacher->foto));
+            if (file_exists(public_path($student->foto)) && !is_dir($student->foto)) {
+                unlink(public_path($student->foto));
             }
         } else {
-            $foto = $teacher->foto;
+            $foto = $student->foto;
         }
 
         $data = [

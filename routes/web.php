@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\AuthAdminController;
 use App\Http\Controllers\Admin\DashboardAdminController;
 use App\Http\Controllers\Admin\DataGuruController;
 use App\Http\Controllers\Admin\DataSiswaController;
+use App\Http\Controllers\Guru\AktivitasBelajarController as GuruAktivitasBelajarController;
 use App\Http\Controllers\Guru\AuthGuruController;
 use App\Http\Controllers\Guru\CapaianPembelajaranController as GuruCapaianPembelajaranController;
 use App\Http\Controllers\Guru\DashboardGuruController;
@@ -89,6 +90,15 @@ Route::prefix('guru')->group(function () {
             Route::post('/simpan', [FileCapaianPembelajaranController::class, 'store'])->name('guru.store.file.capaian.pembelajaran');
             Route::delete('/destroy/{id}', [FileCapaianPembelajaranController::class, 'destroy'])->name('guru.destroy.file.capaian.pembelajaran');
         });
+    });
+
+    Route::prefix('aktivitas-belajar')->group(function () {
+        Route::get('/', [GuruAktivitasBelajarController::class, 'index'])->name('guru.aktivitas.belajar.siswa');
+        Route::get('/tambah', [GuruAktivitasBelajarController::class, 'create'])->name('guru.create.aktivitas.belajar.siswa');
+        Route::post('/simpan', [GuruAktivitasBelajarController::class, 'store'])->name('guru.store.aktivitas.belajar.siswa');
+        Route::get('/edit/{id}', [GuruAktivitasBelajarController::class, 'edit'])->name('guru.edit.aktivitas.belajar.siswa');
+        Route::put('/update/{id}', [GuruAktivitasBelajarController::class, 'update'])->name('guru.update.aktivitas.belajar.siswa');
+        Route::delete('/destroy/{id}', [GuruAktivitasBelajarController::class, 'destroy'])->name('guru.destroy.aktivitas.belajar.siswa');
     });
 });
 
