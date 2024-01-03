@@ -1,7 +1,7 @@
-@extends('admin.layout.app')
+@extends('guru.layout.app')
 
 @section('title')
-    Data Guru
+    Data Siswa
 @endsection
 
 @push('addons-css')
@@ -15,12 +15,12 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0">Data Guru</h1>
+                        <h1 class="m-0">Data Siswa</h1>
                     </div><!-- /.col -->
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item active">Data Guru</li>
+                            <li class="breadcrumb-item active">Data Siswa</li>
                         </ol>
                     </div><!-- /.col -->
                 </div><!-- /.row -->
@@ -34,8 +34,8 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="card-tools">
-                            <a href="{{ route('admin.create.data.guru') }}" class="btn btn-brown rounded-pill">Tambah
-                                Guru</a>
+                            <a href="{{ route('guru.create.data.siswa') }}" class="btn btn-brown rounded-pill">Tambah
+                                Siswa</a>
                         </div>
                     </div>
                     <div class="card-body">
@@ -46,7 +46,7 @@
                                         <tr>
                                             <th>No</th>
                                             <th style="width: 10%">Foto</th>
-                                            <th>Username</th>
+                                            <th>Nomor Induk Siswa</th>
                                             <th>Nama Lengkap</th>
                                             <th>Aksi</th>
                                         </tr>
@@ -55,19 +55,19 @@
                                         @php
                                             $no = 1;
                                         @endphp
-                                        @foreach ($teachers as $teacher)
+                                        @foreach ($students as $student)
                                             <tr>
                                                 <td>{{ $no++ }}</td>
-                                                <td><img src="{{ asset($teacher->foto) }}"
+                                                <td><img src="{{ asset($student->foto) }}"
                                                         class="w-100 img-fluid img-thumbnail" srcset=""></td>
-                                                <td>{{ $teacher->username }}</td>
-                                                <td>{{ $teacher->fullname }}</td>
+                                                <td>{{ $student->username }}</td>
+                                                <td>{{ $student->fullname }}</td>
                                                 <td>
                                                     <div class="btn-group" role="group" aria-label="Basic example">
-                                                        <a href="{{ route('admin.edit.data.guru', $teacher->id) }}"
+                                                        <a href="{{ route('guru.edit.data.siswa', $student->id) }}"
                                                             class="btn btn-warning">Ubah</a>
                                                         <button type="button" class="btn btn-danger" id="removeBtn"
-                                                            data-id="{{ $teacher->id }}">Hapus</button>
+                                                            data-id="{{ $student->id }}">Hapus</button>
                                                     </div>
                                                 </td>
                                             </tr>
@@ -110,7 +110,7 @@
             }).then((result) => {
                 if (result.isConfirmed) {
                     $.ajax({
-                        url: '/admin/data-guru/destroy/' + id,
+                        url: '/guru/data-siswa/destroy/' + id,
                         type: 'DELETE',
                         success: function(response) {
                             if (response.code == 200) {

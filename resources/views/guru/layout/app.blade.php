@@ -8,7 +8,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>@yield('title') - Admin</title>
+    <title>@yield('title') - Guru</title>
     {{-- @vite(['resources/css/app.css', 'resources/js/app.js']) --}}
 
     <!-- Google Font: Source Sans Pro -->
@@ -88,7 +88,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <!-- Brand Logo -->
             <a href="index3.html" class="brand-link text-center">
                 <img src="{{ asset('./guest-assets/angklung.svg') }}" style="width: 15%">
-                <span class="brand-text font-weight-bold font-white" style="color: white">ADMIN</span>
+                <span class="brand-text font-weight-bold font-white" style="color: white">Guru</span>
             </a>
 
             <!-- Sidebar -->
@@ -107,16 +107,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('admin.data.guru') }}"
-                                class="nav-link white-nav {{ $active == 'data-guru' ? 'active' : '' }}">
-                                <i class="nav-icon fas fa-users"></i>
-                                <p>
-                                    <b>Data Guru</b>
-                                </p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ route('admin.data.siswa') }}"
+                            <a href="{{ route('guru.data.siswa') }}"
                                 class="nav-link white-nav {{ $active == 'data-siswa' ? 'active' : '' }}">
                                 <i class="nav-icon fas fa-users"></i>
                                 <p>

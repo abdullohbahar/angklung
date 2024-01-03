@@ -5,6 +5,8 @@ use App\Http\Controllers\Admin\DashboardAdminController;
 use App\Http\Controllers\Admin\DataGuruController;
 use App\Http\Controllers\Admin\DataSiswaController;
 use App\Http\Controllers\Guru\AuthGuruController;
+use App\Http\Controllers\Guru\DashboardGuruController;
+use App\Http\Controllers\Guru\DataSiswaController as GuruDataSiswaController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Student\AktivitasBelajarController;
 use App\Http\Controllers\Student\CapaianPembelajaranController;
@@ -60,9 +62,16 @@ Route::prefix('admin')->group(function () {
 });
 
 Route::prefix('guru')->group(function () {
-    Route::get('dashboard', function () {
-        echo "Halo Guru";
-    })->name('guru.dashboard');
+    Route::get('dashboard', [DashboardGuruController::class, 'index'])->name('guru.dashboard');
+
+    Route::prefix('data-siswa')->group(function () {
+        Route::get('/', [GuruDataSiswaController::class, 'index'])->name('guru.data.siswa');
+        Route::get('/tambah', [GuruDataSiswaController::class, 'create'])->name('guru.create.data.siswa');
+        Route::post('/simpan', [GuruDataSiswaController::class, 'store'])->name('guru.store.data.siswa');
+        Route::get('/edit/{id}', [GuruDataSiswaController::class, 'edit'])->name('guru.edit.data.siswa');
+        Route::put('/update/{id}', [GuruDataSiswaController::class, 'update'])->name('guru.update.data.siswa');
+        Route::delete('/destroy/{id}', [GuruDataSiswaController::class, 'destroy'])->name('guru.destroy.data.siswa');
+    });
 });
 
 Route::get('profile', [ProfileController::class, 'index'])->name('profile');

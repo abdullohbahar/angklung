@@ -39,7 +39,7 @@
                                     <thead>
                                         <tr>
                                             <th>No</th>
-                                            <th>Foto</th>
+                                            <th style="width: 10%">Foto</th>
                                             <th>Nomor Induk Siswa</th>
                                             <th>Nama Lengkap</th>
                                         </tr>
@@ -52,7 +52,7 @@
                                             <tr>
                                                 <td>{{ $no++ }}</td>
                                                 <td><img src="{{ asset($student->foto) }}"
-                                                        class="w-50 img-fluid img-thumbnail" srcset=""></td>
+                                                        class="w-100 img-fluid img-thumbnail" srcset=""></td>
                                                 <td>{{ $student->username }}</td>
                                                 <td>{{ $student->fullname }}</td>
                                             </tr>
