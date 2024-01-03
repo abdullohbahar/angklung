@@ -41,9 +41,9 @@
                                         alt="User profile picture" id="imagePreview">
                                 </div>
 
-                                <h3 class="profile-username text-center">{{ auth()->user()->fullname }}</h3>
+                                <h3 class="profile-username text-center">{{ auth()->user()->fullname ?? '' }}</h3>
 
-                                <p class="text-muted text-center">{{ auth()->user()->username }}</p>
+                                <p class="text-muted text-center">{{ auth()->user()->username ?? '' }}</p>
                             </div>
                             <!-- /.card-body -->
                         </div>
@@ -52,7 +52,7 @@
                     <div class="col-sm-12 col-md-8">
                         <div class="card">
                             <div class="card-body">
-                                <form action="{{ route('update.profile', auth()->user()->id) }}" method="POST"
+                                <form action="{{ route('update.profile', auth()->user()->id ?? '') }}" method="POST"
                                     enctype="multipart/form-data">
                                     @csrf
                                     @method('PUT')
@@ -71,7 +71,7 @@
                                         <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 mt-3">
                                             <label for="">Username</label>
                                             <input type="text" name="username"
-                                                value="{{ old('username', auth()->user()->username) }}"
+                                                value="{{ old('username', auth()->user()->username ?? '') }}"
                                                 class="form-control @error('username') is-invalid @enderror" id=""
                                                 required>
                                             @error('username')
@@ -83,7 +83,7 @@
                                         <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 mt-3">
                                             <label for="">Nama Lengkap</label>
                                             <input type="text" name="fullname"
-                                                value="{{ old('fullname', auth()->user()->fullname) }}"
+                                                value="{{ old('fullname', auth()->user()->fullname ?? '') }}"
                                                 class="form-control @error('fullname') is-invalid @enderror" id=""
                                                 required>
                                             @error('fullname')
