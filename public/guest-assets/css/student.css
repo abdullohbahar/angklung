@@ -1,0 +1,35 @@
+@media screen and (min-width: 0px) {
+    .font-aktivitas{
+        font-size: 10pt;
+    }
+}
+
+@media screen and (min-width: 576px) {
+     .font-aktivitas{
+        font-size: 10pt;
+    }
+}
+
+@media screen and (min-width: 768px) {
+     .font-aktivitas{
+        font-size: 10pt;
+    }
+}
+
+@media screen and (min-width: 992px) {
+     .font-aktivitas{
+        font-size: 10pt;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    body{
+        background-size: cover;
+    }
+}
+
+@media screen and (min-width: 1400px) {
+    body{
+        background-size: cover;
+    }
+}
