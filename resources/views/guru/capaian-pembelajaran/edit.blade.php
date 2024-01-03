@@ -1,10 +1,15 @@
 @extends('guru.layout.app')
 
 @section('title')
-    Data Siswa
+    Capaian Pembelajaran
 @endsection
 
 @push('addons-css')
+    <style>
+        .ck-restricted-editing_mode_standard {
+            height: 300px !important;
+        }
+    </style>
 @endpush
 
 @section('content')
@@ -14,12 +19,12 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0">Data Siswa</h1>
+                        <h1 class="m-0">Capaian Pembelajaran</h1>
                     </div><!-- /.col -->
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item active">Data Siswa</li>
+                            <li class="breadcrumb-item active">Capaian Pembelajaran</li>
                         </ol>
                     </div><!-- /.col -->
                 </div><!-- /.row -->
@@ -32,62 +37,30 @@
             <div class="container-fluid">
                 <div class="card">
                     <div class="card-body">
-                        <form action="{{ route('guru.update.data.siswa', $student->id) }}" method="post"
-                            enctype="multipart/form-data">
+                        <form action="{{ route('guru.update.capaian.pembelajaran', $capaianPembelajaran->id) }}"
+                            method="post" enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
                             <div class="row">
-                                <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 mt-3">
-                                    <label for="">Preview Foto</label> <br>
-                                    <img src="{{ asset($student->foto) }}" class="w-25" alt="" id="imagePreview">
-                                </div>
-                                <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 mt-3">
-                                    <label for="">Foto <small>Kosongkan Jika Tidak Ingin Mengubah
-                                            Foto</small></label>
-                                    <input type="file" name="foto"
-                                        class="form-control @error('foto') is-invalid @enderror" id="imageUpload">
-                                    @error('foto')
+                                <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 mt-3">
+                                    <label for="">Judul</label>
+                                    <input type="text" name="title"
+                                        value="{{ old('title', $capaianPembelajaran->title) }}"
+                                        class="form-control @error('title') is-invalid @enderror" id="title">
+                                    @error('title')
                                         <div class="invalid-feedback">
                                             {{ $message }}
                                         </div>
                                     @enderror
                                 </div>
-                                <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 mt-3">
-                                    <label for="">Nama Lengkap</label>
-                                    <input type="text" name="fullname" value="{{ old('fullname', $student->fullname) }}"
-                                        class="form-control @error('fullname') is-invalid @enderror" id="fullname">
-                                    @error('fullname')
-                                        <div class="invalid-feedback">
+                                <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 mt-3">
+                                    <label for="">Isi</label>
+                                    <textarea name="body" class="editor" style="width: 100%;">{!! old('body', $capaianPembelajaran->body) !!}</textarea>
+                                    @error('body')
+                                        <small style="color: red;">
                                             {{ $message }}
-                                        </div>
+                                        </small>
                                     @enderror
-                                </div>
-                                <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 mt-3">
-                                    <label for="">NIS</label>
-                                    <input type="text" name="username" value="{{ old('username', $student->username) }}"
-                                        class="form-control @error('username') is-invalid @enderror" id="username">
-                                    @error('username')
-                                        <div class="invalid-feedback">
-                                            {{ $message }}
-                                        </div>
-                                    @enderror
-                                </div>
-                                <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 mt-3">
-                                    <label for="">Password <small>Kosongkan jika tidak ingin mengubah
-                                            password</small></label>
-                                    <div class="input-group">
-                                        <input type="password" class="form-control @error('password') is-invalid @enderror"
-                                            name="password" placeholder="Password" id="password"
-                                            value="{{ old('password') }}" autocomplete="new-password">
-                                        <div class="input-group-text" id="view-password">
-                                            <i class="fas fa-eye" id="icon-password"></i>
-                                        </div>
-                                        @error('password')
-                                            <div class="invalid-feedback">
-                                                {{ $message }}
-                                            </div>
-                                        @enderror
-                                    </div>
                                 </div>
                                 <div class="col-12 mt-3">
                                     <button type="submit" class="btn btn-brown" style="width: 100%">Ubah</button>
@@ -103,4 +76,44 @@
 @endsection
 
 @push('addons-js')
+    <script src="{{ asset('ckeditor5/build/ckeditor.js') }}"></script>
+
+    <script>
+        const watchdog = new CKSource.EditorWatchdog();
+
+        window.watchdog = watchdog;
+
+        watchdog.setCreator((element, config) => {
+            return CKSource.Editor
+                .create(element, config)
+                .then(editor => {
+                    return editor;
+                });
+        });
+
+        watchdog.setDestructor(editor => {
+            return editor.destroy();
+        });
+
+        watchdog.on('error', handleSampleError);
+
+        watchdog
+            .create(document.querySelector('.editor'), {
+                // Editor configuration.
+                height: '1000px'
+            })
+            .catch(handleSampleError);
+
+        function handleSampleError(error) {
+            const issueUrl = 'https://github.com/ckeditor/ckeditor5/issues';
+
+            const message = [
+                'Oops, something went wrong!',
+                `Please, report the following error on ${ issueUrl } with the build id "r26qun9n2brm-3je2fuyiqsvl" and the error stack trace:`
+            ].join('\n');
+
+            console.error(message);
+            console.error(error);
+        }
+    </script>
 @endpush

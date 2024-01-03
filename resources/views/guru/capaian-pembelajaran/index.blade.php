@@ -59,10 +59,10 @@
                                             <tr>
                                                 <td>{{ $no++ }}</td>
                                                 <td>{{ $cp->title }}</td>
-                                                <td>{{ $cp->body }}</td>
+                                                <td>{!! $cp->body !!}</td>
                                                 <td>
                                                     <div class="btn-group" role="group" aria-label="Basic example">
-                                                        <a href="{{ route('guru.edit.data.siswa', $cp->id) }}"
+                                                        <a href="{{ route('guru.edit.capaian.pembelajaran', $cp->id) }}"
                                                             class="btn btn-warning">Ubah</a>
                                                         <button type="button" class="btn btn-danger" id="removeBtn"
                                                             data-id="{{ $cp->id }}">Hapus</button>
@@ -108,7 +108,7 @@
             }).then((result) => {
                 if (result.isConfirmed) {
                     $.ajax({
-                        url: '/guru/data-siswa/destroy/' + id,
+                        url: '/guru/capaian-pembelajaran/destroy/' + id,
                         type: 'DELETE',
                         success: function(response) {
                             if (response.code == 200) {

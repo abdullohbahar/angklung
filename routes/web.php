@@ -78,6 +78,10 @@ Route::prefix('guru')->group(function () {
     Route::prefix('capaian-pembelajaran')->group(function () {
         Route::get('/', [GuruCapaianPembelajaranController::class, 'index'])->name('guru.capaian.pembelajaran');
         Route::get('/tambah', [GuruCapaianPembelajaranController::class, 'create'])->name('guru.create.capaian.pembelajaran');
+        Route::post('/simpan', [GuruCapaianPembelajaranController::class, 'store'])->name('guru.store.capaian.pembelajaran');
+        Route::get('/edit/{id}', [GuruCapaianPembelajaranController::class, 'edit'])->name('guru.edit.capaian.pembelajaran');
+        Route::put('/update/{id}', [GuruCapaianPembelajaranController::class, 'update'])->name('guru.update.capaian.pembelajaran');
+        Route::delete('/destroy/{id}', [GuruCapaianPembelajaranController::class, 'destroy'])->name('guru.destroy.data.capaian.pembelajaran');
     });
 });
 
