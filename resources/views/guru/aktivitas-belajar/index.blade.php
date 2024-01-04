@@ -65,7 +65,8 @@
                                                 </td>
                                                 <td>{!! $aktivitas->title !!}</td>
                                                 <td>
-                                                    <a class="btn btn-info rounded-pill">Tambah Materi</a>
+                                                    <a href="{{ route('guru.materi', $aktivitas->id) }}"
+                                                        class="btn btn-info rounded-pill">Tambah Materi</a>
                                                     <a class="btn btn-warning rounded-pill">Tambah Aktivitas</a>
                                                 </td>
                                                 <td>

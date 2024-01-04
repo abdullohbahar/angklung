@@ -10,6 +10,7 @@ use App\Http\Controllers\Guru\CapaianPembelajaranController as GuruCapaianPembel
 use App\Http\Controllers\Guru\DashboardGuruController;
 use App\Http\Controllers\Guru\DataSiswaController as GuruDataSiswaController;
 use App\Http\Controllers\Guru\FileCapaianPembelajaranController;
+use App\Http\Controllers\Guru\MateriController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Student\AktivitasBelajarController;
 use App\Http\Controllers\Student\CapaianPembelajaranController;
@@ -99,6 +100,14 @@ Route::prefix('guru')->group(function () {
         Route::get('/edit/{id}', [GuruAktivitasBelajarController::class, 'edit'])->name('guru.edit.aktivitas.belajar.siswa');
         Route::put('/update/{id}', [GuruAktivitasBelajarController::class, 'update'])->name('guru.update.aktivitas.belajar.siswa');
         Route::delete('/destroy/{id}', [GuruAktivitasBelajarController::class, 'destroy'])->name('guru.destroy.aktivitas.belajar.siswa');
+
+        Route::prefix('materi')->group(function () {
+            Route::get('/{id}', [MateriController::class, 'index'])->name('guru.materi');
+            Route::post('/simpan', [MateriController::class, 'store'])->name('guru.store.materi');
+            Route::get('/edit/{id}', [MateriController::class, 'edit'])->name('guru.edit.materi');
+            Route::put('/update/{id}', [MateriController::class, 'update'])->name('guru.update.materi');
+            Route::delete('/destroy/{id}', [MateriController::class, 'destroy'])->name('guru.destroy.materi');
+        });
     });
 });
 

@@ -44,6 +44,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
             color: white;
             font-weight: bolder;
         }
+
+        .ck-restricted-editing_mode_standard {
+            height: 300px !important;
+        }
     </style>
 
 </head>
