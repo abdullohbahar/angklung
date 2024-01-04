@@ -12,6 +12,7 @@ use App\Http\Controllers\Guru\DataSiswaController as GuruDataSiswaController;
 use App\Http\Controllers\Guru\FileCapaianPembelajaranController;
 use App\Http\Controllers\Guru\MateriController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ProfilPengembangController;
 use App\Http\Controllers\Student\AktivitasBelajarController;
 use App\Http\Controllers\Student\CapaianPembelajaranController;
 use App\Http\Controllers\Student\LoginStudentController;
@@ -113,3 +114,6 @@ Route::prefix('guru')->group(function () {
 
 Route::get('profile', [ProfileController::class, 'index'])->name('profile');
 Route::put('profile/{id}', [ProfileController::class, 'update'])->name('update.profile');
+
+Route::get('profil-pengembang', [ProfilPengembangController::class, 'index'])->name('profil.pengembang');
+Route::post('simpan-profil-pengembang', [ProfilPengembangController::class, 'store'])->name('store.profil.pengembang');
