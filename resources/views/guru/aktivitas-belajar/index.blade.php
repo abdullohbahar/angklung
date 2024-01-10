@@ -66,8 +66,9 @@
                                                 <td>{!! $aktivitas->title !!}</td>
                                                 <td>
                                                     <a href="{{ route('guru.materi', $aktivitas->id) }}"
-                                                        class="btn btn-info rounded-pill">Tambah Materi</a>
-                                                    <a class="btn btn-warning rounded-pill">Tambah Aktivitas</a>
+                                                        class="btn btn-info rounded-pill">Materi</a>
+                                                    <a href="{{ route('guru.aktivitas', $aktivitas->id) }}"
+                                                        class="btn btn-warning rounded-pill">Aktivitas</a>
                                                 </td>
                                                 <td>
                                                     <div class="btn-group" role="group" aria-label="Basic example">

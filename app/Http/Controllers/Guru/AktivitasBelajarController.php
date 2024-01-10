@@ -115,7 +115,7 @@ class AktivitasBelajarController extends Controller
     public function destroy(string $id)
     {
         try {
-            $aktivitasBelajar = AktivitasBelajar::with('materi')->findOrFail($id); // Temukan siswa yang akan dihapus
+            $aktivitasBelajar = AktivitasBelajar::with('materi', 'aktivitas')->findOrFail($id); // Temukan siswa yang akan dihapus
 
             // Hapus foto gambar jika ada
             if (file_exists(public_path($aktivitasBelajar->thumbnail)) && !is_dir($aktivitasBelajar->thumbnail)) {
@@ -126,6 +126,7 @@ class AktivitasBelajarController extends Controller
                 $materi->delete();
             }
 
+            $aktivitasBelajar->aktivitas->delete();
 
             // Hapus Siswa dari tabel Siswa
             $aktivitasBelajar->delete();

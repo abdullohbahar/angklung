@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\DashboardAdminController;
 use App\Http\Controllers\Admin\DataGuruController;
 use App\Http\Controllers\Admin\DataSiswaController;
 use App\Http\Controllers\Guru\AktivitasBelajarController as GuruAktivitasBelajarController;
+use App\Http\Controllers\Guru\AktivitasController;
 use App\Http\Controllers\Guru\AuthGuruController;
 use App\Http\Controllers\Guru\CapaianPembelajaranController as GuruCapaianPembelajaranController;
 use App\Http\Controllers\Guru\DashboardGuruController;
@@ -108,6 +109,11 @@ Route::prefix('guru')->group(function () {
             Route::get('/edit/{id}', [MateriController::class, 'edit'])->name('guru.edit.materi');
             Route::put('/update/{id}', [MateriController::class, 'update'])->name('guru.update.materi');
             Route::delete('/destroy/{id}', [MateriController::class, 'destroy'])->name('guru.destroy.materi');
+        });
+
+        Route::prefix('aktivitas')->group(function () {
+            Route::get('/{id}', [AktivitasController::class, 'index'])->name('guru.aktivitas');
+            Route::post('/update', [AktivitasController::class, 'update'])->name('guru.update.aktivitas');
         });
     });
 });

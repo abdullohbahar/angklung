@@ -1,7 +1,7 @@
 @extends('guru.layout.app')
 
 @section('title')
-    Materi {{ $aktivitasBelajar->title }}
+    Aktivitas | {{ $aktivitasBelajar->title }}
 @endsection
 
 @push('addons-css')
@@ -15,12 +15,12 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0">Materi {{ $aktivitasBelajar->title }}</h1>
+                        <h1 class="m-0">Aktivitas | {{ $aktivitasBelajar->title }}</h1>
                     </div><!-- /.col -->
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item active">Materi {{ $aktivitasBelajar->title }}</li>
+                            <li class="breadcrumb-item active">Aktivitas | {{ $aktivitasBelajar->title }}</li>
                         </ol>
                     </div><!-- /.col -->
                 </div><!-- /.row -->
@@ -33,25 +33,18 @@
             <div class="container-fluid">
                 <div class="card">
                     <div class="card-header">
-                        <h4><b>Tambah Materi</b></h4>
+                        <h4><b>Aktivitas</b></h4>
                     </div>
                     <div class="card-body">
-                        <form action="{{ route('guru.store.materi') }}" method="POST" enctype="multipart/form-data">
+                        <form action="{{ route('guru.update.aktivitas') }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="row">
+                                <input type="hidden" name="id" value="{{ $aktivitasBelajar->aktivitas?->id ?? '' }}"
+                                    id="">
                                 <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 mt-3">
-                                    <label for="">Embed Youtube</label>
-                                    <textarea name="video" class="form-control @error('video') is-invalid @enderror" id="" rows="10"></textarea>
-                                    @error('video')
-                                        <div class="invalid-feedback">
-                                            {{ $message }}
-                                        </div>
-                                    @enderror
-                                </div>
-                                <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 mt-3">
-                                    <label for="">Deskripsi</label>
-                                    <textarea name="deskripsi" class="editor" style="width: 100%;">{{ old('deskripsi') }}</textarea>
-                                    @error('deskripsi')
+                                    <label for="">Isi</label>
+                                    <textarea name="body" class="editor" style="width: 100%;">{{ old('body', $aktivitasBelajar->aktivitas?->body) }}</textarea>
+                                    @error('body')
                                         <small style="color: red;">
                                             {{ $message }}
                                         </small>
@@ -69,42 +62,10 @@
                 <div class="card">
                     <div class="card-header">
                         <h4><b>
-                                List Materi</b></h4>
+                                Preview</b></h4>
                     </div>
                     <div class="card-body">
-                        <table class="table table-bordered table-striped" id="table1">
-                            <thead>
-                                <tr>
-                                    <th>No</th>
-                                    <th>Video</th>
-                                    <th>Deskripsi</th>
-                                    <th>Aksi</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @php
-                                    $no = 1;
-                                @endphp
-                                @forelse ($aktivitasBelajar->materi as $materi)
-                                    <tr>
-                                        <td>{{ $no++ }}</td>
-                                        <td>
-                                            {!! $materi->video !!}
-                                        </td>
-                                        <td>{!! $materi->deskripsi !!}</td>
-                                        <td>
-                                            <div class="btn-group" role="group" aria-label="Basic example">
-                                                <a href="{{ route('guru.edit.materi', $materi->id) }}" type="button"
-                                                    class="btn btn-warning">Ubah</a>
-                                                <button type="button" class="btn btn-danger" id="removeBtn"
-                                                    data-id="{{ $materi->id }}">Hapus</button>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                @empty
-                                @endforelse
-                            </tbody>
-                        </table>
+                        {!! $aktivitasBelajar->aktivitas?->body !!}
                     </div>
                 </div>
             </div>
