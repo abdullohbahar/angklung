@@ -48,6 +48,7 @@
                                             <th style="width: 5%">No</th>
                                             <th style="width: 10%">Thumbnail</th>
                                             <th>Judul</th>
+                                            <th>Kode Masuk</th>
                                             <th>Materi & Aktivitas</th>
                                             <th>Aksi</th>
                                         </tr>
@@ -64,6 +65,7 @@
                                                         alt="" srcset="">
                                                 </td>
                                                 <td>{!! $aktivitas->title !!}</td>
+                                                <td>{{ $aktivitas->join_code }}</td>
                                                 <td>
                                                     <a href="{{ route('guru.materi', $aktivitas->id) }}"
                                                         class="btn btn-info rounded-pill">Materi</a>

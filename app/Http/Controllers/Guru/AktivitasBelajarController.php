@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers\Guru;
 
-use App\Http\Controllers\Controller;
-use App\Models\AktivitasBelajar;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use App\Models\AktivitasBelajar;
+use App\Http\Controllers\Controller;
 
 class AktivitasBelajarController extends Controller
 {
@@ -50,9 +51,12 @@ class AktivitasBelajarController extends Controller
             $thumbnail = './guest-assets/informasi-pengembang.svg';
         }
 
+        $joinCode = Str::upper(Str::random(6));
+
         AktivitasBelajar::create([
             'title' => $request->title,
-            'thumbnail' => $thumbnail
+            'thumbnail' => $thumbnail,
+            'join_code' => $joinCode
         ]);
 
         return to_route('guru.aktivitas.belajar.siswa')->with('success', 'Berhasil menambah aktivitas belajar');
@@ -126,7 +130,9 @@ class AktivitasBelajarController extends Controller
                 $materi->delete();
             }
 
-            $aktivitasBelajar->aktivitas->delete();
+            if ($aktivitasBelajar->aktivitas) {
+                $aktivitasBelajar->aktivitas->delete();
+            }
 
             // Hapus Siswa dari tabel Siswa
             $aktivitasBelajar->delete();
