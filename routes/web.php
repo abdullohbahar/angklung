@@ -12,6 +12,7 @@ use App\Http\Controllers\Guru\DashboardGuruController;
 use App\Http\Controllers\Guru\DataSiswaController as GuruDataSiswaController;
 use App\Http\Controllers\Guru\FileCapaianPembelajaranController;
 use App\Http\Controllers\Guru\MateriController;
+use App\Http\Controllers\Guru\ProjectController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProfilPengembangController;
 use App\Http\Controllers\Student\AktivitasBelajarController;
@@ -115,6 +116,11 @@ Route::prefix('guru')->group(function () {
             Route::get('/{id}', [AktivitasController::class, 'index'])->name('guru.aktivitas');
             Route::post('/update', [AktivitasController::class, 'update'])->name('guru.update.aktivitas');
         });
+    });
+
+    Route::prefix('project')->group(function () {
+        Route::get('/', [ProjectController::class, 'index'])->name('guru.project');
+        Route::post('/update', [ProjectController::class, 'update'])->name('guru.update.project');
     });
 });
 
