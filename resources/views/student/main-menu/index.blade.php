@@ -44,7 +44,7 @@
                             <div class="card-body text-center">
                                 <img src="{{ asset('./guest-assets/project.svg') }}" alt="">
                                 <div class="mt-3">
-                                    <p><b>Project</b></p>
+                                    <p><b>Eksplorasi</b></p>
                                 </div>
                             </div>
                         </div>

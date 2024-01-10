@@ -44,6 +44,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
             color: white;
             font-weight: bolder;
         }
+
+        .ck-restricted-editing_mode_standard {
+            height: 300px !important;
+        }
     </style>
 
 </head>
@@ -121,6 +125,15 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                 <i class="nav-icon fas fa-file-alt"></i>
                                 <p>
                                     <b>Capaian Pembelajaran</b>
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('guru.aktivitas.belajar.siswa') }}"
+                                class="nav-link white-nav {{ $active == 'aktivitas-belajar' ? 'active' : '' }}">
+                                <i class="nav-icon fas fa-file-alt"></i>
+                                <p>
+                                    <b>Aktivitas Belajar</b>
                                 </p>
                             </a>
                         </li>
@@ -299,13 +312,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 const maxSizeInBytes = 2 * 1024 * 1024; // 2MB
                 if (file.size <= maxSizeInBytes) {
                     // Batasan jenis file (PNG, JPG, JPEG)
-                    const allowedExtensions = ["png", "jpg", "jpeg", "webp"];
+                    const allowedExtensions = ["png", "jpg", "jpeg", "webp", "svg"];
                     const fileExtension = file.name.split(".").pop().toLowerCase();
                     if (allowedExtensions.includes(fileExtension)) {
                         imagePreview.src = URL.createObjectURL(file);
                     } else {
                         alert(
-                            "Jenis file yang diunggah tidak diizinkan. Harap pilih file dengan format PNG, JPG, atau JPEG."
+                            "Jenis file yang diunggah tidak diizinkan. Harap pilih file dengan format SVG, PNG, JPG, atau JPEG."
                         );
                         imageUpload.value = null; // Menghapus file yang dipilih
                     }

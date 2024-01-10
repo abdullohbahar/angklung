@@ -1,10 +1,15 @@
-@extends('admin.layout.app')
+@extends('guru.layout.app')
 
 @section('title')
-    Data Siswa
+    Capaian Pembelajaran
 @endsection
 
 @push('addons-css')
+    <style>
+        .ck-restricted-editing_mode_standard {
+            height: 300px !important;
+        }
+    </style>
 @endpush
 
 @section('content')
@@ -14,12 +19,12 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0">Data Siswa</h1>
+                        <h1 class="m-0">Capaian Pembelajaran</h1>
                     </div><!-- /.col -->
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item active">Data Siswa</li>
+                            <li class="breadcrumb-item active">Capaian Pembelajaran</li>
                         </ol>
                     </div><!-- /.col -->
                 </div><!-- /.row -->
@@ -32,7 +37,8 @@
             <div class="container-fluid">
                 <div class="card">
                     <div class="card-body">
-                        <form action="{{ route('guru.store.data.siswa') }}" method="post" enctype="multipart/form-data">
+                        <form action="{{ route('guru.store.capaian.pembelajaran') }}" method="post"
+                            enctype="multipart/form-data">
                             @csrf
                             <div class="row">
                                 <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 mt-3">
@@ -45,14 +51,13 @@
                                         </div>
                                     @enderror
                                 </div>
-                                <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 mt-3">
+                                <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 mt-3">
                                     <label for="">Isi</label>
-                                    <input type="text" name="username" value="{{ old('username') }}"
-                                        class="form-control @error('username') is-invalid @enderror" id="username">
-                                    @error('username')
-                                        <div class="invalid-feedback">
+                                    <textarea name="body" class="editor" style="width: 100%;">{{ old('body') }}</textarea>
+                                    @error('body')
+                                        <small style="color: red;">
                                             {{ $message }}
-                                        </div>
+                                        </small>
                                     @enderror
                                 </div>
                                 <div class="col-12 mt-3">
@@ -69,4 +74,44 @@
 @endsection
 
 @push('addons-js')
+    <script src="{{ asset('ckeditor5/build/ckeditor.js') }}"></script>
+
+    <script>
+        const watchdog = new CKSource.EditorWatchdog();
+
+        window.watchdog = watchdog;
+
+        watchdog.setCreator((element, config) => {
+            return CKSource.Editor
+                .create(element, config)
+                .then(editor => {
+                    return editor;
+                });
+        });
+
+        watchdog.setDestructor(editor => {
+            return editor.destroy();
+        });
+
+        watchdog.on('error', handleSampleError);
+
+        watchdog
+            .create(document.querySelector('.editor'), {
+                // Editor configuration.
+                height: '1000px'
+            })
+            .catch(handleSampleError);
+
+        function handleSampleError(error) {
+            const issueUrl = 'https://github.com/ckeditor/ckeditor5/issues';
+
+            const message = [
+                'Oops, something went wrong!',
+                `Please, report the following error on ${ issueUrl } with the build id "r26qun9n2brm-3je2fuyiqsvl" and the error stack trace:`
+            ].join('\n');
+
+            console.error(message);
+            console.error(error);
+        }
+    </script>
 @endpush

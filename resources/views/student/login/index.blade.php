@@ -228,7 +228,7 @@
 
     {{-- wave --}}
     <div class="login row g-0 justify-content-center">
-        <div class="col-sm-12 col-md-9 col-lg-7">
+        <div class="col-sm-12 col-md-12 col-lg-12">
             <img src="{{ asset('./guest-assets/wave.svg') }}">
             <div class="background-white text-center p-5" style="margin-top: -10px;">
                 <div class="row justify-content-center">
