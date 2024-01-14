@@ -1,4 +1,4 @@
-@extends('admin.layout.app')
+@extends('guru.layout.app')
 
 @section('title')
     Profil

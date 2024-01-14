@@ -12,6 +12,7 @@ use App\Http\Controllers\Guru\DashboardGuruController;
 use App\Http\Controllers\Guru\DataSiswaController as GuruDataSiswaController;
 use App\Http\Controllers\Guru\FileCapaianPembelajaranController;
 use App\Http\Controllers\Guru\MateriController;
+use App\Http\Controllers\Guru\PenilaianController;
 use App\Http\Controllers\Guru\ProjectController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProfilPengembangController;
@@ -121,6 +122,15 @@ Route::prefix('guru')->group(function () {
     Route::prefix('project')->group(function () {
         Route::get('/', [ProjectController::class, 'index'])->name('guru.project');
         Route::post('/update', [ProjectController::class, 'update'])->name('guru.update.project');
+    });
+
+    Route::prefix('penilaian')->group(function () {
+        Route::get('/', [PenilaianController::class, 'index'])->name('guru.penilaian');
+        Route::get('/tambah', [PenilaianController::class, 'create'])->name('guru.create.penilaian');
+        Route::post('/simpan', [PenilaianController::class, 'store'])->name('guru.store.penilaian');
+        Route::get('/ubah/{id}', [PenilaianController::class, 'edit'])->name('guru.edit.penilaian');
+        Route::put('/update/{id}', [PenilaianController::class, 'update'])->name('guru.update.penilaian');
+        Route::delete('/destroy/{id}', [PenilaianController::class, 'destroy'])->name('guru.destroy.penilaian');
     });
 });
 
