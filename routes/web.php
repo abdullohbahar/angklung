@@ -41,7 +41,7 @@ Route::get('/', [LoginStudentController::class, 'index'])->name('login.student')
 
 Route::prefix('siswa')->group(function () {
     Route::get('/', [MainMenuStudentController::class, 'index']);
-    Route::get('/capaian-pembelajaran', [CapaianPembelajaranController::class, 'index']);
+    Route::get('/capaian-pembelajaran', [CapaianPembelajaranController::class, 'index'])->name('capaian.pembelajaran');
     Route::get('/aktivitas-belajar', [AktivitasBelajarController::class, 'index']);
 });
 

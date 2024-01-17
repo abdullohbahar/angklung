@@ -8,6 +8,10 @@
         .font-weight-600 {
             font-weight: 600;
         }
+
+        .outline-font {
+            text-shadow: -1px -1px 0 white, 1px -1px 0 white, -1px 1px 0 white, 1px 1px 0 white;
+        }
     </style>
 @endpush
 
@@ -33,64 +37,30 @@
             <div class="col-sm-12 col-md-12 col-lg-7">
                 <div class="row">
                     <div class="col-12 my-3 text-center">
-                        <h1><b>Capaian Pembelajaran</b></h1>
+                        <h1><b class="outline-font">Capaian Pembelajaran</b></h1>
                     </div>
                     <div class="row ms-0">
-                        <div class="col-12">
-                            <div class="accordion accordion-flush" id="capaian-pembelajaran">
-                                <div class="accordion-item">
-                                    <h2 class="accordion-header">
-                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                            data-bs-target="#flush-capaian-pembelajaran" aria-expanded="false"
-                                            aria-controls="flush-capaian-pembelajaran">
-                                            Capaian Pembelajaran
-                                        </button>
-                                    </h2>
-                                    <div id="flush-capaian-pembelajaran" class="accordion-collapse collapse"
-                                        data-bs-parent="#capaian-pembelajaran">
-                                        <div class="accordion-body">Placeholder content for this accordion, which is
-                                            intended to demonstrate the <code>.accordion-flush</code> class. This is the
-                                            first item's accordion body.</div>
+                        @foreach ($capaians as $key => $capaian)
+                            <div class="col-12">
+                                <div class="accordion accordion-flush" id="{{ $key }}">
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header">
+                                            <button class="accordion-button collapsed text-capitalize" type="button"
+                                                data-bs-toggle="collapse" data-bs-target="#flush-{{ $key }}"
+                                                aria-expanded="false" aria-controls="flush-{{ $key }}">
+                                                <h3><b>{{ $capaian->title }}</b></h3>
+                                            </button>
+                                        </h2>
+                                        <div id="flush-{{ $key }}" class="accordion-collapse collapse"
+                                            data-bs-parent="#{{ $key }}">
+                                            <div class="accordion-body">
+                                                {!! $capaian->body !!}
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-12 mt-5">
-                            <div class="accordion accordion-flush" id="alur-tujuan-pembelajaran">
-                                <div class="accordion-item">
-                                    <h2 class="accordion-header">
-                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                            data-bs-target="#flush-alur-tujuan-pembelajaran" aria-expanded="false"
-                                            aria-controls="flush-alur-tujuan-pembelajaran">
-                                            Alur Tujuan Pembelajaran
-                                        </button>
-                                    </h2>
-                                    <div id="flush-alur-tujuan-pembelajaran" class="accordion-collapse collapse"
-                                        data-bs-parent="#alur-tujuan-pembelajaran">
-                                        <div class="accordion-body">Placeholder content for this accordion, which is
-                                            intended to demonstrate the <code>.accordion-flush</code> class. This is the
-                                            first item's accordion body.</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-12 mt-5">
-                            <div class="accordion accordion-flush" id="modul">
-                                <div class="accordion-item">
-                                    <h2 class="accordion-header">
-                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                            data-bs-target="#flush-modul" aria-expanded="false" aria-controls="flush-modul">
-                                            Modul
-                                        </button>
-                                    </h2>
-                                    <div id="flush-modul" class="accordion-collapse collapse" data-bs-parent="#modul">
-                                        <div class="accordion-body">Placeholder content for this accordion, which is
-                                            intended to demonstrate the <code>.accordion-flush</code> class. This is the
-                                            first item's accordion body.</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
             </div>

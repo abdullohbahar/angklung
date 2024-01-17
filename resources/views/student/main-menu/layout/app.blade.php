@@ -213,6 +213,10 @@
             /* Sesuaikan tinggi navbar sesuai kebutuhan */
             background-color: white;
         }
+
+        .outline-font {
+            text-shadow: -1px -1px 0 white, 1px -1px 0 white, -1px 1px 0 white, 1px 1px 0 white;
+        }
     </style>
 
     @stack('addons-css')

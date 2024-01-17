@@ -19,7 +19,7 @@
                     <div class="col-12 my-3 text-center">
                         <h2><b>Menu Utama</b></h2>
                     </div>
-                    <a href="" class="text-decoration-none col-6 content-center gx-3 gy-3">
+                    <a href="{{ route('capaian.pembelajaran') }}" class="text-decoration-none col-6 content-center gx-3 gy-3">
                         <div class="card card-border" style="">
                             <div class="card-body text-center">
                                 <img src="{{ asset('./guest-assets/capaian-pembelajaran.svg') }}" alt="">
