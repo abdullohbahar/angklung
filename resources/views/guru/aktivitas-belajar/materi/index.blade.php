@@ -39,6 +39,16 @@
                         <form action="{{ route('guru.store.materi') }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="row">
+                                <div class="col-12">
+                                    <label for="">Nomor</label>
+                                    <input type="text" name="no"
+                                        class="form-control @error('no') is-invalid @enderror" id="" required>
+                                    @error('no')
+                                        <div class="invalid-feedback">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
+                                </div>
                                 <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 mt-3">
                                     <label for="">Embed Youtube</label>
                                     <textarea name="video" class="form-control @error('video') is-invalid @enderror" id="" rows="10"></textarea>
@@ -82,12 +92,9 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @php
-                                    $no = 1;
-                                @endphp
                                 @forelse ($aktivitasBelajar->materi as $materi)
                                     <tr>
-                                        <td>{{ $no++ }}</td>
+                                        <td>{{ $materi->no }}</td>
                                         <td>
                                             {!! $materi->video !!}
                                         </td>

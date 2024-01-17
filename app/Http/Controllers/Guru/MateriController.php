@@ -11,7 +11,11 @@ class MateriController extends Controller
 {
     public function index($id)
     {
-        $aktivitasBelajar = AktivitasBelajar::with('materi')->findorfail($id);
+        $aktivitasBelajar = AktivitasBelajar::with([
+            'materi' => function ($query) {
+                $query->orderBy('no', 'asc');
+            }
+        ])->findorfail($id);
 
         $data = [
             'active' => 'aktivitas-belajar',
@@ -25,13 +29,16 @@ class MateriController extends Controller
     {
         $request->validate([
             'video' => 'required',
-            'deskripsi' => 'required'
+            'deskripsi' => 'required',
+            'no' => 'required'
         ], [
-            'video' =>  'ID Youtube Harus Diisi',
-            'deskripsi' => 'Deskripsi Harus Diisi'
+            'video.required' =>  'Embed Youtube Harus Diisi',
+            'deskripsi.required' => 'Deskripsi Harus Diisi',
+            'no.required' => 'Nomor Harus Diisi'
         ]);
 
         Materi::create([
+            'no' => $request->no,
             'video' => $request->video,
             'deskripsi' => $request->deskripsi,
             'aktivitas_belajar_id' => $request->idAktivitasBelajar
@@ -56,10 +63,12 @@ class MateriController extends Controller
     {
         $request->validate([
             'video' => 'required',
-            'deskripsi' => 'required'
+            'deskripsi' => 'required',
+            'no' => 'required'
         ], [
-            'video' =>  'ID Youtube Harus Diisi',
-            'deskripsi' => 'Deskripsi Harus Diisi'
+            'video.required' =>  'Embed Youtube Harus Diisi',
+            'deskripsi.required' => 'Deskripsi Harus Diisi',
+            'no.required' => 'Nomor Harus Diisi'
         ]);
 
         $materi = Materi::with('aktivitasBelajar')->findorfail($id);
@@ -67,6 +76,7 @@ class MateriController extends Controller
         Materi::where('id', $id)->update([
             'video' => $request->video,
             'deskripsi' => $request->deskripsi,
+            'no' => $request->no,
         ]);
 
         return to_route('guru.materi', $materi->aktivitasBelajar->id)->with('success', 'Berhasil Mengubah Materi');
