@@ -19,8 +19,16 @@
             background-color: #F8B7A3;
         }
 
+        .btn-custom-red:hover {
+            background-color: #f79578;
+        }
+
         .btn-custom-yellow {
             background-color: #F9F597;
+        }
+
+        .btn-custom-yellow:hover {
+            background-color: #e9e446;
         }
     </style>
 @endpush
@@ -44,7 +52,7 @@
 
     <div class="container-fluid">
         <div class="row justify-content-center">
-            <div class="col-sm-12 col-md-12 col-lg-4">
+            <div class="col-sm-12 col-md-12 col-lg-8">
                 <div class="row">
                     <div class="col-12 my-3 text-center">
                         <h1><b>Aktivitas Belajar</b></h1>
@@ -53,35 +61,45 @@
                         <div class="col-12">
                             <div class="card card-border" style="width: 100%">
                                 <div class="card-body">
-                                    <div class="row g-1">
-                                        <div class="col-3">
-                                            <img src="{{ asset('./guest-assets/getaran.svg') }}"
-                                                class="img-fluid w-100 mt-2" alt="">
-                                        </div>
-                                        <div class="col-9">
-                                            <div class="row">
-                                                <div class="col-12">
-                                                    <h3><b>Getaran</b></h3>
-                                                </div>
-                                                <div class="col-12">
-                                                    <div class="row g-2">
-                                                        <div class="col-6">
-                                                            <button class="btn btn-custom-yellow font-aktivitas"
-                                                                style="width: 100%;">
-                                                                <b>Materi</b>
-                                                            </button>
-                                                        </div>
-                                                        <div class="col-6">
-                                                            <button class="btn btn-custom-red font-aktivitas"
-                                                                style="width: 100%;">
-                                                                <b>Aktivitas 1</b>
-                                                            </button>
+                                    @foreach ($activities as $key => $activity)
+                                        <div class="row">
+                                            <div class="col-3 text-center">
+                                                <img src="{{ asset($activity->thumbnail) }}" class="w-75 mt-2 img-circle"
+                                                    alt="">
+                                            </div>
+                                            <div class="col-9">
+                                                <div class="row">
+                                                    <div class="col-12">
+                                                        <h2><b>{{ $activity->title }}</b></h2>
+                                                    </div>
+                                                    <div class="col-12">
+                                                        <div class="row mt-4">
+                                                            <div class="col-6">
+                                                                <button class="btn btn-lg btn-custom-yellow font-aktivitas"
+                                                                    style="width: 100%;">
+                                                                    <b>
+                                                                        <h5 class="mt-2">
+                                                                            <b>Materi</b>
+                                                                        </h5>
+                                                                    </b>
+                                                                </button>
+                                                            </div>
+                                                            <div class="col-6">
+                                                                <button class="btn btn-lg btn-custom-red font-aktivitas"
+                                                                    style="width: 100%;">
+                                                                    <h5 class="mt-2">
+                                                                        <b>
+                                                                            <b>Aktivitas {{ $key += 1 }}</b>
+                                                                        </b>
+                                                                    </h5>
+                                                                </button>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    @endforeach
                                 </div>
                             </div>
                         </div>

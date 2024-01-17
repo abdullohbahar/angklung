@@ -42,7 +42,9 @@ Route::get('/', [LoginStudentController::class, 'index'])->name('login.student')
 Route::prefix('siswa')->group(function () {
     Route::get('/', [MainMenuStudentController::class, 'index']);
     Route::get('/capaian-pembelajaran', [CapaianPembelajaranController::class, 'index'])->name('capaian.pembelajaran');
-    Route::get('/aktivitas-belajar', [AktivitasBelajarController::class, 'index']);
+
+    Route::get('/aktivitas-belajar', [AktivitasBelajarController::class, 'index'])->name('aktivitas.belajar');
+    Route::get('/aktivitas-belajar/{title}/{id}', [AktivitasBelajarController::class, 'materi'])->name('aktivitas.belajar');
 });
 
 Route::get('admin/login', [AuthAdminController::class, 'index'])->name('admin.login');

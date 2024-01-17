@@ -29,7 +29,7 @@
                             </div>
                         </div>
                     </a>
-                    <a href="" class="text-decoration-none col-6 content-center gx-3 gy-3">
+                    <a href="{{ route('aktivitas.belajar') }}" class="text-decoration-none col-6 content-center gx-3 gy-3">
                         <div class="card card-border">
                             <div class="card-body text-center">
                                 <img src="{{ asset('./guest-assets/aktivitas-belajar.svg') }}" alt="">
