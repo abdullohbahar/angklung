@@ -44,7 +44,7 @@ Route::prefix('siswa')->group(function () {
     Route::get('/capaian-pembelajaran', [CapaianPembelajaranController::class, 'index'])->name('capaian.pembelajaran');
 
     Route::get('/aktivitas-belajar', [AktivitasBelajarController::class, 'index'])->name('aktivitas.belajar');
-    Route::get('/aktivitas-belajar/{title}/{id}', [AktivitasBelajarController::class, 'materi'])->name('aktivitas.belajar');
+    Route::get('/aktivitas-belajar/{title}/{no}', [AktivitasBelajarController::class, 'materi'])->name('materi');
 });
 
 Route::get('admin/login', [AuthAdminController::class, 'index'])->name('admin.login');

@@ -30,15 +30,21 @@ class MateriController extends Controller
         $request->validate([
             'video' => 'required',
             'deskripsi' => 'required',
-            'no' => 'required'
         ], [
             'video.required' =>  'Embed Youtube Harus Diisi',
             'deskripsi.required' => 'Deskripsi Harus Diisi',
-            'no.required' => 'Nomor Harus Diisi'
         ]);
 
+        $no = Materi::where('aktivitas_belajar_id', $request->idAktivitasBelajar)->orderBy('no', 'desc')->first();
+
+        if ($no) {
+            $no = $no->no += 1;
+        } else {
+            $no = 1;
+        }
+
         Materi::create([
-            'no' => $request->no,
+            'no' => $no,
             'video' => $request->video,
             'deskripsi' => $request->deskripsi,
             'aktivitas_belajar_id' => $request->idAktivitasBelajar
@@ -86,6 +92,11 @@ class MateriController extends Controller
     {
         try {
             $materi = Materi::findOrFail($id); // Temukan Capaian Pembelajaran yang akan dihapus
+
+            // urutkan nomor ulang
+            Materi::where('aktivitas_belajar_id', $materi->aktivitas_belajar_id)
+                ->where('no', '>', $materi->no)
+                ->decrement('no');
 
             // Hapus Capaian Pembelajaran dari tabel Capaian Pembelajaran
             $materi->delete();

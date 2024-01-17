@@ -66,7 +66,6 @@ class AktivitasBelajarController extends Controller
     {
         $aktivitasBelajar = AktivitasBelajar::findorfail($id);
 
-
         $data = [
             'active' => 'aktivitas-belajar',
             'aktivitasBelajar' => $aktivitasBelajar

@@ -41,7 +41,7 @@
                             @csrf
                             @method('PUT')
                             <div class="row">
-                                <div class="col-12">
+                                {{-- <div class="col-12">
                                     <label for="">Nomor</label>
                                     <input type="text" name="no"
                                         class="form-control @error('no') is-invalid @enderror" id=""
@@ -51,7 +51,7 @@
                                             {{ $message }}
                                         </div>
                                     @enderror
-                                </div>
+                                </div> --}}
                                 <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 mt-3">
                                     <label for="">Embed Youtube</label>
                                     <textarea name="video" class="form-control @error('video') is-invalid @enderror" id="" rows="10">{{ $materi->video }}</textarea>

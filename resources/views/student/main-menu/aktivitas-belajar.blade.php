@@ -75,14 +75,18 @@
                                                     <div class="col-12">
                                                         <div class="row mt-4">
                                                             <div class="col-6">
-                                                                <button class="btn btn-lg btn-custom-yellow font-aktivitas"
+                                                                <a href="{{ route('materi', [
+                                                                    'title' => $activity->title,
+                                                                    'no' => 1,
+                                                                ]) }}"
+                                                                    class="btn btn-lg btn-custom-yellow font-aktivitas"
                                                                     style="width: 100%;">
                                                                     <b>
                                                                         <h5 class="mt-2">
                                                                             <b>Materi</b>
                                                                         </h5>
                                                                     </b>
-                                                                </button>
+                                                                </a>
                                                             </div>
                                                             <div class="col-6">
                                                                 <button class="btn btn-lg btn-custom-red font-aktivitas"

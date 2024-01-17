@@ -21,8 +21,16 @@ class AktivitasBelajarController extends Controller
         return view('student.main-menu.aktivitas-belajar', $data);
     }
 
-    // public function materi($title, $no)
-    // {
-    //     $materi = Aktivitas
-    // }
+    public function materi($title, $no)
+    {
+        $materi = AktivitasBelajar::with([
+            'materi' => function ($query) use ($no) {
+                $query->where('no', $no);
+            }
+        ])
+            ->where('title', $title)
+            ->first();
+
+        dd($materi);
+    }
 }
