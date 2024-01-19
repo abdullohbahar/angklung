@@ -70,11 +70,9 @@ class MateriController extends Controller
         $request->validate([
             'video' => 'required',
             'deskripsi' => 'required',
-            'no' => 'required'
         ], [
             'video.required' =>  'Embed Youtube Harus Diisi',
             'deskripsi.required' => 'Deskripsi Harus Diisi',
-            'no.required' => 'Nomor Harus Diisi'
         ]);
 
         $materi = Materi::with('aktivitasBelajar')->findorfail($id);
@@ -82,7 +80,6 @@ class MateriController extends Controller
         Materi::where('id', $id)->update([
             'video' => $request->video,
             'deskripsi' => $request->deskripsi,
-            'no' => $request->no,
         ]);
 
         return to_route('guru.materi', $materi->aktivitasBelajar->id)->with('success', 'Berhasil Mengubah Materi');
