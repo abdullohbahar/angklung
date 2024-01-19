@@ -44,7 +44,7 @@ class AktivitasBelajarController extends Controller
         RiwayatPengerjaanAktivitas::create([
             'jawaban' => $request->jawaban,
             'materi_id' => $materiID,
-            'users_id' => '9b00828f-3ab1-49a9-9d00-d52bef6b6b30'
+            'users_id' => auth()->user()->id
         ]);
 
         $materi = Materi::with('aktivitasBelajar')->where('aktivitas_belajar_id', $aktivitasBelajarID)

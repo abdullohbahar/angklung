@@ -38,9 +38,11 @@ use function Termwind\ask;
 */
 
 Route::get('/', [LoginStudentController::class, 'index'])->name('login.student');
+Route::post('siswa/auth', [LoginStudentController::class, 'auth'])->name('siswa.auth');
 
 Route::prefix('siswa')->group(function () {
-    Route::get('/', [MainMenuStudentController::class, 'index']);
+
+    Route::get('/', [MainMenuStudentController::class, 'index'])->name('main.menu');
     Route::get('/capaian-pembelajaran', [CapaianPembelajaranController::class, 'index'])->name('capaian.pembelajaran');
 
     Route::get('/aktivitas-belajar', [AktivitasBelajarController::class, 'index'])->name('aktivitas.belajar');

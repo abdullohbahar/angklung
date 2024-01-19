@@ -231,37 +231,42 @@
         <div class="col-sm-12 col-md-12 col-lg-12">
             <img src="{{ asset('./guest-assets/wave.svg') }}">
             <div class="background-white text-center p-5" style="margin-top: -10px;">
-                <div class="row justify-content-center">
-                    <div class="col-sm-12 col-md-12 col-lg-8">
-                        <h1 class="login-text"><b>Login</b></h1>
-                    </div>
-                    <div class="col-sm-12 col-md-12 col-lg-8 mx-5 mb-3">
-                        <div class="input-group">
-                            <span class="input-group-text addon-rounded-right" for="nis">
-                                <i class="fa-regular fa-circle-user fa-xl" style="color: #985b00;"></i>
-                            </span>
-                            <input type="text" name="nis"
-                                class="form-control form-control-lg input-rounded-right" id="nis"
-                                placeholder="NIS">
+                <form action="{{ route('siswa.auth') }}" method="POST">
+                    @csrf
+                    <div class="row justify-content-center">
+                        <div class="col-sm-12 col-md-12 col-lg-8">
+                            <h1 class="login-text"><b>Login</b></h1>
+                        </div>
+                        <div class="col-sm-12 col-md-12 col-lg-8 mx-5 mb-3">
+                            <div class="input-group">
+                                <span class="input-group-text addon-rounded-right" for="nis">
+                                    <i class="fa-regular fa-circle-user fa-xl" style="color: #985b00;"></i>
+                                </span>
+                                <input type="text" name="username"
+                                    class="form-control form-control-lg input-rounded-right" id="nis"
+                                    placeholder="NIS" required>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-md-12 col-lg-8 mx-5">
+                            <div class="input-group">
+                                <span class="input-group-text addon-rounded-right" for="password">
+                                    <i class="fa-solid fa-circle-user fa-xl" style="color: #985b00;"></i>
+                                </span>
+                                <input type="password" name="password"
+                                    class="form-control form-control-lg border-left-none border-right-none"
+                                    id="password" placeholder="Password" required>
+                                <span class="input-group-text addon-rounded-left" id="view-password">
+                                    <i id="icon-password" class="fa-regular fa-eye-slash fa-xl"
+                                        style="color: #985b00;"></i>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-md-12 col-lg-8 mx-5 mt-5">
+                            <button type="submit"
+                                class="btn button-masuk btn-lg rounded-pill text-white">Masuk</button>
                         </div>
                     </div>
-                    <div class="col-sm-12 col-md-12 col-lg-8 mx-5">
-                        <div class="input-group">
-                            <span class="input-group-text addon-rounded-right" for="password">
-                                <i class="fa-solid fa-circle-user fa-xl" style="color: #985b00;"></i>
-                            </span>
-                            <input type="text" name="password"
-                                class="form-control form-control-lg border-left-none border-right-none" id="password"
-                                placeholder="Password">
-                            <span class="input-group-text addon-rounded-left">
-                                <i class="fa-regular fa-eye-slash fa-xl" style="color: #985b00;"></i>
-                            </span>
-                        </div>
-                    </div>
-                    <div class="col-sm-12 col-md-12 col-lg-8 mx-5 mt-5">
-                        <button type="submit" class="btn button-masuk btn-lg rounded-pill text-white">Masuk</button>
-                    </div>
-                </div>
+                </form>
                 <div class="row mt-5">
                     <div class="col-6">
                         <a href="" class="text-decoration-none text-brown">Lupa Password</a>
@@ -279,6 +284,17 @@
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
         integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous">
+    </script>
+
+    <script src="{{ asset('./dashboard-assets/plugins/jquery/jquery.min.js') }}"></script>
+
+    <script>
+        $('#view-password').on('click', function() {
+            let input = $(this).parent().find("#password");
+            input.attr('type', input.attr('type') === 'password' ? 'text' : 'password');
+            $("#icon-password").attr('class', input.attr('type') === 'password' ? 'fa-regular fa-eye fa-xl' :
+                "fa-regular fa-eye-slash fa-xl")
+        });
     </script>
 </body>
 
