@@ -18,6 +18,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProfilPengembangController;
 use App\Http\Controllers\Student\AktivitasBelajarController;
 use App\Http\Controllers\Student\CapaianPembelajaranController;
+use App\Http\Controllers\Student\ExplorasiStudentController;
 use App\Http\Controllers\Student\LoginStudentController;
 use App\Http\Controllers\Student\MainMenuStudentController;
 use App\Models\CapaianPembelajaran;
@@ -48,6 +49,8 @@ Route::prefix('siswa')->group(function () {
     Route::get('/aktivitas-belajar', [AktivitasBelajarController::class, 'index'])->name('aktivitas.belajar');
     Route::get('/aktivitas-belajar/{title}/{no}', [AktivitasBelajarController::class, 'materi'])->name('materi');
     Route::post('/simpan-aktivitas-belajar/{materiID}/{no}/{aktivitasBelajarID}', [AktivitasBelajarController::class, 'storeMateri'])->name('store.materi');
+
+    Route::get('/eksplorasi', [ExplorasiStudentController::class, 'index'])->name('student.eksplorasi');
 });
 
 Route::get('admin/login', [AuthAdminController::class, 'index'])->name('admin.login');
