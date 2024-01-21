@@ -21,6 +21,7 @@ use App\Http\Controllers\Student\CapaianPembelajaranController;
 use App\Http\Controllers\Student\ExplorasiStudentController;
 use App\Http\Controllers\Student\LoginStudentController;
 use App\Http\Controllers\Student\MainMenuStudentController;
+use App\Http\Controllers\Student\PenilaianStudentController;
 use App\Models\CapaianPembelajaran;
 use Illuminate\Support\Facades\Route;
 use Bugsnag\BugsnagLaravel\Facades\Bugsnag;
@@ -51,6 +52,9 @@ Route::prefix('siswa')->group(function () {
     Route::post('/simpan-aktivitas-belajar/{materiID}/{no}/{aktivitasBelajarID}', [AktivitasBelajarController::class, 'storeMateri'])->name('store.materi');
 
     Route::get('/eksplorasi', [ExplorasiStudentController::class, 'index'])->name('student.eksplorasi');
+
+    Route::get('/penilaian/{no}', [PenilaianStudentController::class, 'index'])->name('student.penilaian');
+    Route::post('/simpan-penilaian/{id}', [PenilaianStudentController::class, 'store'])->name('student.store.penilaian');
 });
 
 Route::get('admin/login', [AuthAdminController::class, 'index'])->name('admin.login');
