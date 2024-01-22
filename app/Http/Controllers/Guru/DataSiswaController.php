@@ -42,7 +42,7 @@ class DataSiswaController extends Controller
             'username.required' => 'NIS Harus Diisi',
             'username.unique' => 'NIS Sudah Dipakai',
             'password.required' => 'Password Harus Diiisi',
-            'jenis_kelamin.required' => 'Password Harus Diiisi',
+            'jenis_kelamin.required' => 'Jenis Kelamin Harus Diiisi',
             'password.min' => 'Password Minimal 6 Karakter'
         ]);
 
@@ -69,6 +69,7 @@ class DataSiswaController extends Controller
             'password' => Hash::make($request->password),
             'role' => 'student',
             'foto' => $foto,
+            'jenis_kelamin' => $request->jenis_kelamin
         ]);
 
         return to_route('guru.data.siswa')->with('success', 'Berhasil Menambah Data Siswa');
@@ -91,9 +92,11 @@ class DataSiswaController extends Controller
         $request->validate([
             'fullname' => 'required',
             'username' => 'required',
+            'jenis_kelamin' => 'required'
         ], [
             'fullname.required' => 'Nama Lengkap Harus Diisi',
             'username.required' => 'NIS Harus Diisi',
+            'jenis_kelamin.required' => 'Jenis Kelamin Harus Diiisi',
         ]);
 
         $student = User::findOrFail($id);
@@ -125,6 +128,7 @@ class DataSiswaController extends Controller
             'username' => $request->username,
             'foto' => $foto,
             'fullname' => $request->fullname,
+            'jenis_kelamin' => $request->jenis_kelamin
         ];
 
         if ($request->password) {

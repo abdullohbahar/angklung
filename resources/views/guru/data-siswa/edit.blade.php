@@ -73,6 +73,25 @@
                                     @enderror
                                 </div>
                                 <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 mt-3">
+                                    <label for="">Jenis Kelamin</label>
+                                    <select name="jenis_kelamin"
+                                        class="form-control @error('jenis_kelamin') is-invalid @enderror" required
+                                        id="">
+                                        <option value="">-- Pilih Jenis Kelamin --</option>
+                                        <option
+                                            {{ old('jenis_kelamin', $student->jenis_kelamin) == 'Laki-Laki' ? 'selected' : '' }}
+                                            value="Laki-Laki">Laki-Laki</option>
+                                        <option
+                                            {{ old('jenis_kelamin', $student->jenis_kelamin) == 'Perempuan' ? 'selected' : '' }}
+                                            value="Perempuan">Perempuan</option>
+                                    </select>
+                                    @error('jenis_kelamin')
+                                        <div class="invalid-feedback">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
+                                </div>
+                                <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 mt-3">
                                     <label for="">Password <small>Kosongkan jika tidak ingin mengubah
                                             password</small></label>
                                     <div class="input-group">
