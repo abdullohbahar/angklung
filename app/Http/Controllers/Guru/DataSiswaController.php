@@ -35,12 +35,14 @@ class DataSiswaController extends Controller
         $request->validate([
             'fullname' => 'required',
             'username' => 'required|unique:users,username',
-            'password' => 'required|min:6'
+            'password' => 'required|min:6',
+            'jenis_kelamin' => 'required'
         ], [
             'fullname.required' => 'Nama Lengkap Harus Diisi',
             'username.required' => 'NIS Harus Diisi',
             'username.unique' => 'NIS Sudah Dipakai',
             'password.required' => 'Password Harus Diiisi',
+            'jenis_kelamin.required' => 'Password Harus Diiisi',
             'password.min' => 'Password Minimal 6 Karakter'
         ]);
 
@@ -52,7 +54,13 @@ class DataSiswaController extends Controller
             $file->move($location, $filename);
             $foto = $filepath;
         } else {
-            $foto = './dashboard-assets/dummy-profile.jpg';
+            if ($request->jenis_kelamin == 'Laki-Laki') {
+                $foto = './guest-assets/angklung-man.svg';
+            } else if ($request->jenis_kelamin == 'Perempuan') {
+                $foto = './guest-assets/angklung-girl.svg';
+            } else {
+                $foto = './dashboard-assets/dummy-profile.jpg';
+            }
         }
 
         User::create([

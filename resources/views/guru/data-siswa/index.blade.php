@@ -48,6 +48,7 @@
                                             <th style="width: 10%">Foto</th>
                                             <th>Nomor Induk Siswa</th>
                                             <th>Nama Lengkap</th>
+                                            <th>Jenis Kelamin</th>
                                             <th>Aksi</th>
                                         </tr>
                                     </thead>
@@ -62,6 +63,7 @@
                                                         class="w-100 img-fluid img-thumbnail" srcset=""></td>
                                                 <td>{{ $student->username }}</td>
                                                 <td>{{ $student->fullname }}</td>
+                                                <td>{{ $student->jenis_kelamin }}</td>
                                                 <td>
                                                     <div class="btn-group" role="group" aria-label="Basic example">
                                                         <a href="{{ route('guru.edit.data.siswa', $student->id) }}"

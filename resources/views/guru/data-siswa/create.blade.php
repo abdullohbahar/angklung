@@ -1,4 +1,4 @@
-@extends('admin.layout.app')
+@extends('guru.layout.app')
 
 @section('title')
     Data Siswa
@@ -64,6 +64,23 @@
                                     <input type="text" name="username" value="{{ old('username') }}"
                                         class="form-control @error('username') is-invalid @enderror" id="username">
                                     @error('username')
+                                        <div class="invalid-feedback">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
+                                </div>
+                                <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 mt-3">
+                                    <label for="">Jenis Kelamin</label>
+                                    <select name="jenis_kelamin"
+                                        class="form-control @error('jenis_kelamin') is-invalid @enderror" required
+                                        id="">
+                                        <option value="">-- Pilih Jenis Kelamin --</option>
+                                        <option {{ old('jenis_kelamin') == 'Laki-Laki' ? 'selected' : '' }}
+                                            value="Laki-Laki">Laki-Laki</option>
+                                        <option {{ old('jenis_kelamin') == 'Perempuan' ? 'selected' : '' }}
+                                            value="Perempuan">Perempuan</option>
+                                    </select>
+                                    @error('jenis_kelamin')
                                         <div class="invalid-feedback">
                                             {{ $message }}
                                         </div>
