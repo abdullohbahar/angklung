@@ -22,8 +22,24 @@ class AktivitasBelajarController extends Controller
         return view('student.main-menu.aktivitas-belajar', $data);
     }
 
-    public function materi($title, $no)
+    public function cekCode(Request $request)
     {
+        $aktivitasBelajar = AktivitasBelajar::where('title', $request->title)
+            ->first();
+
+        if ($request->code != $aktivitasBelajar->join_code) {
+            return redirect()->back()->with('error', 'Kode Salah!');
+        } else {
+            return to_route('materi', [
+                'title' => $request->title,
+                'no' => $request->no
+            ]);
+        }
+    }
+
+    public function materi(Request $request, $title, $no)
+    {
+
         $aktivitasBelajar = AktivitasBelajar::with([
             'materiHasOne' => function ($query) use ($no) {
                 $query->where('no', $no);

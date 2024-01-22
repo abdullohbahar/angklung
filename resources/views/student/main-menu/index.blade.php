@@ -9,10 +9,10 @@
 @section('content')
     <!-- As a link -->
     <nav class="navs">
-        <h2><b>Halo Siswa 1</b></h2>
+        <h2><b>Halo {{ auth()->user()->fullname }}</b></h2>
     </nav>
 
-    <div class="container-fluid">
+    <div class="container-fluid mb-5">
         <div class="row justify-content-center">
             <div class="col-sm-12 col-md-12 col-lg-7">
                 <div class="row text-center">
@@ -59,7 +59,8 @@
                             </div>
                         </div>
                     </a>
-                    <a href="{{ route('student.penilaian') }}" class="text-decoration-none col-6 content-center gx-3 gy-3">
+                    <a href="{{ route('student.penilaian', 1) }}"
+                        class="text-decoration-none col-6 content-center gx-3 gy-3">
                         <div class="card card-border">
                             <div class="card-body text-center">
                                 <img src="{{ asset('./guest-assets/penilaian.svg') }}" alt="">

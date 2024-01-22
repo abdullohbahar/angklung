@@ -75,18 +75,20 @@
                                                     <div class="col-12">
                                                         <div class="row mt-4">
                                                             <div class="col-6">
-                                                                <a href="{{ route('materi', [
-                                                                    'title' => $activity->title,
-                                                                    'no' => 1,
-                                                                ]) }}"
+                                                                <button {{-- href="{{ route('materi', [
+                                                                        'title' => $activity->title,
+                                                                        'no' => 1,
+                                                                    ]) }}" --}} data-bs-toggle="modal"
+                                                                    data-bs-target="#codeModal{{ $activity->id }}"
                                                                     class="btn btn-lg btn-custom-yellow font-aktivitas"
-                                                                    style="width: 100%;">
+                                                                    data-title="{{ $activity->title }}" data-no="1"
+                                                                    id="materi" style="width: 100%;">
                                                                     <b>
                                                                         <h5 class="mt-2">
                                                                             <b>Materi</b>
                                                                         </h5>
                                                                     </b>
-                                                                </a>
+                                                                </button>
                                                             </div>
                                                             <div class="col-6">
                                                                 <button class="btn btn-lg btn-custom-red font-aktivitas"
@@ -112,6 +114,34 @@
             </div>
         </div>
     </div>
+
+    @foreach ($activities as $activity)
+        <!-- Modal -->
+        <div class="modal fade" id="codeModal{{ $activity->id }}" tabindex="-1" aria-labelledby="codeModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="codeModalLabel">Masukkan Kode</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="{{ route('aktivitas.belajar.cek.kode') }}" method="POST">
+                            @csrf
+                            <input type="text" name="code" placeholder="Masukkan Kode" class="form-control"
+                                id="">
+                            <input type="hidden" name="title" value="{{ $activity->title }}" id="">
+                            <input type="hidden" name="no" value="1" id="">
+                            <button class="mt-3 btn btn-primary" style="width: 100%" type="submit">Masuk</button>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    @endforeach
 @endsection
 
 @push('addons-js')
