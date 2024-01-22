@@ -227,7 +227,7 @@
     </div>
 
     {{-- wave --}}
-    <div class="login row g-0 justify-content-center">
+    <div class="login row g-0 justify-content-center mb-5">
         <div class="col-sm-12 col-md-12 col-lg-12">
             <img src="{{ asset('./guest-assets/wave.svg') }}">
             <div class="background-white text-center p-5" style="margin-top: -10px;">
@@ -278,6 +278,14 @@
             </div>
         </div>
     </div>
+
+    <nav class="navbar fixed-bottom bg-body-tertiary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                &copy; {{ date('Y') }} Anggi - Universitas Negeri Yogyakarta
+            </a>
+        </div>
+    </nav>
 
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
         integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous">
