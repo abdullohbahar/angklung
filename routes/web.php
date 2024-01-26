@@ -65,6 +65,7 @@ Route::prefix('siswa')->group(function () {
 
     Route::get('/penilaian/{no}', [PenilaianStudentController::class, 'index'])->name('student.penilaian');
     Route::post('/simpan-penilaian/{id}', [PenilaianStudentController::class, 'store'])->name('student.store.penilaian');
+    Route::get('/penilaian-selesai', [PenilaianStudentController::class, 'selesai'])->name('student.penilaian.selesai');
 });
 
 Route::get('admin/login', [AuthAdminController::class, 'index'])->name('admin.login');

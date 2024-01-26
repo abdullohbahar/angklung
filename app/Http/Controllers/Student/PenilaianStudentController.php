@@ -60,9 +60,15 @@ class PenilaianStudentController extends Controller
             ]);
         }
         if ($lastNumber->nomor == $request->no) {
-            echo "hore";
+            // dd("x");
+            return to_route('student.penilaian.selesai');
         } else {
             return to_route('student.penilaian', $request->no + 1)->with('success', 'Berhasil menjawab');
         }
+    }
+
+    public function selesai()
+    {
+        return view('student.penilaian.congratulation');
     }
 }
