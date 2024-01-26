@@ -227,13 +227,13 @@
     @yield('content')
 
 
-    <nav class="navbar fixed-bottom bg-body-tertiary">
+    {{-- <nav class="navbar fixed-bottom bg-body-tertiary">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">
                 &copy; {{ date('Y') }} Anggi - Universitas Negeri Yogyakarta
             </a>
         </div>
-    </nav>
+    </nav> --}}
 
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
         integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous">

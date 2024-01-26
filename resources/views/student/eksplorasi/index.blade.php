@@ -34,7 +34,6 @@
 
         iframe {
             width: 100% !important;
-            height: 1000px !important;
         }
     </style>
 @endpush
@@ -45,7 +44,7 @@
     <div class="container-fluid mt-3">
         <div class="row justify-content-between">
             <div class="col-4">
-                <a href="">
+                <a href="{{ route('main.menu') }}">
                     <i class="fa-solid fa-arrow-left fa-2x text-black"></i>
                 </a>
             </div>
@@ -56,7 +55,7 @@
 
     </div>
 
-    <div class="container-fluid">
+    <div class="container-fluid mb-5">
         <div class="row justify-content-center">
             <div class="col-sm-12 col-md-12 col-lg-8">
                 <div class="row">

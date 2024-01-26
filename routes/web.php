@@ -159,31 +159,6 @@ Route::put('profile/{id}', [ProfileController::class, 'update'])->name('update.p
 Route::get('profil-pengembang', [ProfilPengembangController::class, 'index'])->name('profil.pengembang');
 Route::post('simpan-profil-pengembang', [ProfilPengembangController::class, 'store'])->name('store.profil.pengembang');
 
-// Route::post('/save-image', function () {
-//     // dd("x");
-//     $data = array();
-//     if (isset($_FILES['upload']['name'])) {
-//         $filename = $_FILES['upload']['name'];
-//         $filepath = public_path('upload/' . $filename);
-//         $fileextension = strtolower(pathinfo($filepath, PATHINFO_EXTENSION));
-
-//         if ($fileextension == 'jpg' || $fileextension == 'jpeg' || $fileextension == 'png') {
-//             if (move_uploaded_file($_FILES['upload']['tmp_name'], $filepath)) {
-//                 $data['file'] = $filename;
-//                 $data['url'] = $filepath;
-//                 $data['uploaded'] = 1;
-//             } else {
-//                 $data['uploaded'] = 0;
-//                 $data['error']['message'] = 'Error! file not uploaded';
-//             }
-//         } else {
-//             $data['uploaded'] = 0;
-//             $data['error']['message'] = 'invalid extension';
-//         }
-//     }
-//     echo json_encode($data);
-// });
-
 Route::post('/save-image', SaveImageController::class);
 
 Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']], function () {
