@@ -69,7 +69,7 @@
 
     </div>
 
-    <div class="container-fluid">
+    <div class="container-fluid mb-5">
         <div class="row justify-content-center">
             <div class="col-sm-12 col-md-12 col-lg-8">
                 <div class="row">
@@ -81,33 +81,44 @@
                         <div class="col-12">
                             <div class="card card-border" style="width: 100%">
                                 <div class="card-body">
-                                    <div class="row">
-                                        <div class="col-12">
-                                            {!! $aktivitasBelajar->materiHasOne->video !!}
-                                        </div>
-                                        <div class="col-12 mt-3">
-                                            {!! $aktivitasBelajar->materiHasOne->deskripsi !!}
-                                        </div>
-                                        <form
-                                            action="{{ route('store.materi', [
-                                                'materiID' => $aktivitasBelajar->materiHasOne->id,
-                                                'no' => $aktivitasBelajar->materiHasOne->no,
-                                                'aktivitasBelajarID' => $aktivitasBelajar->id,
-                                            ]) }}"
-                                            method="POST">
-                                            @csrf
+                                    <form
+                                        action="{{ route('store.materi', [
+                                            'materiID' => $aktivitasBelajar->materiHasOne->id,
+                                            'no' => $aktivitasBelajar->materiHasOne->no,
+                                            'aktivitasBelajarID' => $aktivitasBelajar->id,
+                                        ]) }}"
+                                        method="POST">
+                                        @csrf
+                                        <div class="row">
+                                            <div class="col-12">
+                                                {!! $aktivitasBelajar->materiHasOne->video !!}
+                                            </div>
+                                            <div class="col-12 mt-3">
+                                                {!! $aktivitasBelajar->materiHasOne->deskripsi !!}
+                                            </div>
                                             <div class="col-12">
                                                 <textarea name="jawaban" required placeholder="Tulis Jawaban Anda Disini" class="form-control"
-                                                    style="width: 100%; height; 200px;"></textarea>
+                                                    style="width: 100%; height; 200px;">{{ $answer }}</textarea>
                                             </div>
-                                            <div class="col-12 mt-3 text-center">
+                                            <div class="col-sm-12 col-md-6 col-lg-6 mt-3 text-center">
+                                                @if ($no != 1)
+                                                    <a href="{{ route('materi', [
+                                                        'title' => $title,
+                                                        'no' => $no - 1,
+                                                    ]) }}"
+                                                        class="btn btn-custom-orange rounded-pill" style="width: 100%">
+                                                        <i class="fa-solid fa-arrow-left"></i> Sebelumnya
+                                                    </a>
+                                                @endif
+                                            </div>
+                                            <div class="col-sm-12 col-md-6 col-lg-6 mt-3 text-center">
                                                 <button type="submit" class="btn btn-custom-orange rounded-pill"
-                                                    style="width: 50%">
+                                                    style="width: 100%">
                                                     Selanjutnya <i class="fa-solid fa-arrow-right"></i>
                                                 </button>
                                             </div>
-                                        </form>
-                                    </div>
+                                        </div>
+                                    </form>
                                 </div>
                             </div>
                         </div>

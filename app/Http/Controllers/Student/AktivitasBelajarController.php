@@ -48,8 +48,23 @@ class AktivitasBelajarController extends Controller
             ->where('title', $title)
             ->first();
 
+        $materiID = $aktivitasBelajar->materiHasOne->id;
+        $userID = auth()->user()->id;
+
+        $riwayatPengerjaanAktivitas = RiwayatPengerjaanAktivitas::where('materi_id', $materiID)
+            ->where('users_id', $userID)->first();
+
+        if ($riwayatPengerjaanAktivitas) {
+            $answer = $riwayatPengerjaanAktivitas->jawaban;
+        } else {
+            $answer = '';
+        }
+
         $data = [
-            'aktivitasBelajar' => $aktivitasBelajar
+            'aktivitasBelajar' => $aktivitasBelajar,
+            'answer' => $answer,
+            'no' => $no,
+            'title' => $title
         ];
 
         return view('student.materi.index', $data);
@@ -57,11 +72,21 @@ class AktivitasBelajarController extends Controller
 
     public function storeMateri(Request $request, $materiID, $no, $aktivitasBelajarID)
     {
-        RiwayatPengerjaanAktivitas::create([
-            'jawaban' => $request->jawaban,
-            'materi_id' => $materiID,
-            'users_id' => auth()->user()->id
-        ]);
+        $userID = auth()->user()->id;
+
+        $riwayatPengerjaanAktivitas = RiwayatPengerjaanAktivitas::where('materi_id', $materiID)
+            ->where('users_id', $userID)->first();
+
+        if ($riwayatPengerjaanAktivitas) {
+            $riwayatPengerjaanAktivitas->jawaban = $request->jawaban;
+            $riwayatPengerjaanAktivitas->save();
+        } else {
+            RiwayatPengerjaanAktivitas::create([
+                'jawaban' => $request->jawaban,
+                'materi_id' => $materiID,
+                'users_id' => auth()->user()->id
+            ]);
+        }
 
         $materi = Materi::with('aktivitasBelajar')->where('aktivitas_belajar_id', $aktivitasBelajarID)
             ->where('no', $no + 1)
@@ -73,7 +98,7 @@ class AktivitasBelajarController extends Controller
                 'no' => $no + 1
             ]);
         } else {
-            echo "Hore";
+            return view('student.materi.congratulation');
         }
     }
 }
