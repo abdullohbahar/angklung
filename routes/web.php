@@ -1,32 +1,34 @@
 <?php
 
-use App\Http\Controllers\Admin\AuthAdminController;
-use App\Http\Controllers\Admin\DashboardAdminController;
-use App\Http\Controllers\Admin\DataGuruController;
-use App\Http\Controllers\Admin\DataSiswaController;
-use App\Http\Controllers\Guru\AktivitasBelajarController as GuruAktivitasBelajarController;
-use App\Http\Controllers\Guru\AktivitasController;
-use App\Http\Controllers\Guru\AuthGuruController;
-use App\Http\Controllers\Guru\CapaianPembelajaranController as GuruCapaianPembelajaranController;
-use App\Http\Controllers\Guru\DashboardGuruController;
-use App\Http\Controllers\Guru\DataSiswaController as GuruDataSiswaController;
-use App\Http\Controllers\Guru\FileCapaianPembelajaranController;
-use App\Http\Controllers\Guru\MateriController;
-use App\Http\Controllers\Guru\PenilaianController;
-use App\Http\Controllers\Guru\ProjectController;
+use function Termwind\ask;
+use App\Models\CapaianPembelajaran;
+use Illuminate\Support\Facades\URL;
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
+use Bugsnag\BugsnagLaravel\Facades\Bugsnag;
+use App\Http\Controllers\Guru\MateriController;
+use App\Http\Controllers\Guru\ProjectController;
+use App\Http\Controllers\Guru\AuthGuruController;
+use App\Http\Controllers\Admin\DataGuruController;
+use App\Http\Controllers\Guru\AktivitasController;
+use App\Http\Controllers\Guru\PenilaianController;
+use App\Http\Controllers\Admin\AuthAdminController;
+use App\Http\Controllers\Admin\DataSiswaController;
 use App\Http\Controllers\ProfilPengembangController;
-use App\Http\Controllers\Student\AktivitasBelajarController;
-use App\Http\Controllers\Student\CapaianPembelajaranController;
-use App\Http\Controllers\Student\ExplorasiStudentController;
+use App\Http\Controllers\Guru\DashboardGuruController;
+use App\Http\Controllers\Admin\DashboardAdminController;
 use App\Http\Controllers\Student\LoginStudentController;
 use App\Http\Controllers\Student\MainMenuStudentController;
+use App\Http\Controllers\Student\AktivitasBelajarController;
+use App\Http\Controllers\Student\ExplorasiStudentController;
 use App\Http\Controllers\Student\PenilaianStudentController;
-use App\Models\CapaianPembelajaran;
-use Illuminate\Support\Facades\Route;
-use Bugsnag\BugsnagLaravel\Facades\Bugsnag;
+use App\Http\Controllers\Student\CapaianPembelajaranController;
+use App\Http\Controllers\Guru\FileCapaianPembelajaranController;
+use App\Http\Controllers\Guru\DataSiswaController as GuruDataSiswaController;
 
-use function Termwind\ask;
+use App\Http\Controllers\Guru\AktivitasBelajarController as GuruAktivitasBelajarController;
+use App\Http\Controllers\Guru\CapaianPembelajaranController as GuruCapaianPembelajaranController;
+use App\Http\Controllers\SaveImageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,7 +41,11 @@ use function Termwind\ask;
 |
 */
 
-Route::get('/', [LoginStudentController::class, 'index'])->name('login.student');
+// if (env('APP_ENV') != "local") {
+// URL::forceScheme('https');
+// }
+
+Route::get('/', [LoginStudentController::class, 'index'])->name('login');
 Route::post('siswa/auth', [LoginStudentController::class, 'auth'])->name('siswa.auth');
 
 Route::prefix('siswa')->group(function () {
@@ -152,3 +158,34 @@ Route::put('profile/{id}', [ProfileController::class, 'update'])->name('update.p
 
 Route::get('profil-pengembang', [ProfilPengembangController::class, 'index'])->name('profil.pengembang');
 Route::post('simpan-profil-pengembang', [ProfilPengembangController::class, 'store'])->name('store.profil.pengembang');
+
+// Route::post('/save-image', function () {
+//     // dd("x");
+//     $data = array();
+//     if (isset($_FILES['upload']['name'])) {
+//         $filename = $_FILES['upload']['name'];
+//         $filepath = public_path('upload/' . $filename);
+//         $fileextension = strtolower(pathinfo($filepath, PATHINFO_EXTENSION));
+
+//         if ($fileextension == 'jpg' || $fileextension == 'jpeg' || $fileextension == 'png') {
+//             if (move_uploaded_file($_FILES['upload']['tmp_name'], $filepath)) {
+//                 $data['file'] = $filename;
+//                 $data['url'] = $filepath;
+//                 $data['uploaded'] = 1;
+//             } else {
+//                 $data['uploaded'] = 0;
+//                 $data['error']['message'] = 'Error! file not uploaded';
+//             }
+//         } else {
+//             $data['uploaded'] = 0;
+//             $data['error']['message'] = 'invalid extension';
+//         }
+//     }
+//     echo json_encode($data);
+// });
+
+Route::post('/save-image', SaveImageController::class);
+
+Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']], function () {
+    \UniSharp\LaravelFilemanager\Lfm::routes();
+});

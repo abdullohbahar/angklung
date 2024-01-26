@@ -11,6 +11,10 @@
         .custom-radio {
             margin-left: 2% !important;
         }
+
+        .ck-content {
+            height: 300px !important;
+        }
     </style>
 @endpush
 
@@ -42,7 +46,8 @@
                         <h4><b>Edit Soal Nomor {{ $penilaian->nomor }}</b></h4>
                     </div>
                     <div class="card-body">
-                        <form action="{{ route('guru.update.penilaian',$penilaian->id) }}" method="POST" enctype="multipart/form-data">
+                        <form action="{{ route('guru.update.penilaian', $penilaian->id) }}" method="POST"
+                            enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
                             <div class="row">
@@ -419,66 +424,5 @@
                 }
             }
         };
-    </script>
-
-    <script src="{{ asset('ckeditor5/build/ckeditor.js') }}"></script>
-
-    <script>
-        const watchdog = new CKSource.EditorWatchdog();
-
-        window.watchdog = watchdog;
-
-        watchdog.setCreator((element, config) => {
-            return CKSource.Editor
-                .create(element, config)
-                .then(editor => {
-                    return editor;
-                });
-        });
-
-        watchdog.setDestructor(editor => {
-            return editor.destroy();
-        });
-
-        watchdog.on('error', handleSampleError);
-
-        watchdog
-            .create(document.querySelector('.editor'), {
-                // Editor configuration.
-                height: '1000px'
-            })
-            .catch(handleSampleError);
-
-        function handleSampleError(error) {
-            const issueUrl = 'https://github.com/ckeditor/ckeditor5/issues';
-
-            const message = [
-                'Oops, something went wrong!',
-                `Please, report the following error on ${ issueUrl } with the build id "r26qun9n2brm-3je2fuyiqsvl" and the error stack trace:`
-            ].join('\n');
-
-            console.error(message);
-            console.error(error);
-        }
-    </script>
-
-    <script>
-        function validateEditorContent() {
-            const editor = window.watchdog.instances[0]; // Ambil instance editor pertama
-            const content = editor.getData().trim(); // Dapatkan konten dan hilangkan spasi ekstra
-
-            if (content.length === 0) {
-                alert('Editor tidak boleh kosong!'); // Tampilkan pesan kesalahan jika editor kosong
-                return false; // Hentikan pengiriman formulir atau aksi selanjutnya
-            }
-
-            return true; // Lanjutkan dengan pengiriman formulir atau aksi selanjutnya
-        }
-
-        document.getElementById('btnSave').addEventListener('click', function(event) {
-            if (!validateEditorContent()) {
-                event.preventDefault(); // Hentikan tindakan default (mis., pengiriman formulir)
-            }
-        });
     </script>
 @endpush

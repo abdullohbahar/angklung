@@ -5,6 +5,7 @@
 
 import { ClassicEditor } from '@ckeditor/ckeditor5-editor-classic';
 
+import { CKFinderUploadAdapter } from '@ckeditor/ckeditor5-adapter-ckfinder';
 import { Alignment } from '@ckeditor/ckeditor5-alignment';
 import { Autoformat } from '@ckeditor/ckeditor5-autoformat';
 import {
@@ -16,7 +17,6 @@ import {
 	Underline
 } from '@ckeditor/ckeditor5-basic-styles';
 import { BlockQuote } from '@ckeditor/ckeditor5-block-quote';
-import { CloudServices } from '@ckeditor/ckeditor5-cloud-services';
 import type { EditorConfig } from '@ckeditor/ckeditor5-core';
 import { Essentials } from '@ckeditor/ckeditor5-essentials';
 import { FindAndReplace } from '@ckeditor/ckeditor5-find-and-replace';
@@ -25,15 +25,24 @@ import { Heading } from '@ckeditor/ckeditor5-heading';
 import { Highlight } from '@ckeditor/ckeditor5-highlight';
 import { HorizontalLine } from '@ckeditor/ckeditor5-horizontal-line';
 import { GeneralHtmlSupport } from '@ckeditor/ckeditor5-html-support';
+import {
+	Image,
+	ImageCaption,
+	ImageInsert,
+	ImageResize,
+	ImageStyle,
+	ImageToolbar,
+	ImageUpload
+} from '@ckeditor/ckeditor5-image';
 import { Indent, IndentBlock } from '@ckeditor/ckeditor5-indent';
 import { TextPartLanguage } from '@ckeditor/ckeditor5-language';
-import { Link } from '@ckeditor/ckeditor5-link';
-import { List } from '@ckeditor/ckeditor5-list';
-import { MediaEmbed } from '@ckeditor/ckeditor5-media-embed';
+import { AutoLink, Link } from '@ckeditor/ckeditor5-link';
+import { LegacyList, LegacyListProperties } from '@ckeditor/ckeditor5-list';
+import { MediaEmbed, MediaEmbedToolbar } from '@ckeditor/ckeditor5-media-embed';
 import { Paragraph } from '@ckeditor/ckeditor5-paragraph';
 import { PasteFromOffice } from '@ckeditor/ckeditor5-paste-from-office';
-import { StandardEditingMode } from '@ckeditor/ckeditor5-restricted-editing';
 import { SelectAll } from '@ckeditor/ckeditor5-select-all';
+import { SourceEditing } from '@ckeditor/ckeditor5-source-editing';
 import {
 	SpecialCharacters,
 	SpecialCharactersArrows,
@@ -54,7 +63,6 @@ import {
 } from '@ckeditor/ckeditor5-table';
 import { TextTransformation } from '@ckeditor/ckeditor5-typing';
 import { Undo } from '@ckeditor/ckeditor5-undo';
-import { EditorWatchdog } from '@ckeditor/ckeditor5-watchdog';
 import { WordCount } from '@ckeditor/ckeditor5-word-count';
 
 // You can read more about extending the build with additional plugins in the "Installing plugins" guide.
@@ -63,10 +71,11 @@ import { WordCount } from '@ckeditor/ckeditor5-word-count';
 class Editor extends ClassicEditor {
 	public static override builtinPlugins = [
 		Alignment,
+		AutoLink,
 		Autoformat,
 		BlockQuote,
 		Bold,
-		CloudServices,
+		CKFinderUploadAdapter,
 		Essentials,
 		FindAndReplace,
 		FontBackgroundColor,
@@ -77,15 +86,25 @@ class Editor extends ClassicEditor {
 		Heading,
 		Highlight,
 		HorizontalLine,
+		Image,
+		ImageCaption,
+		ImageInsert,
+		ImageResize,
+		ImageStyle,
+		ImageToolbar,
+		ImageUpload,
 		Indent,
 		IndentBlock,
 		Italic,
+		LegacyList,
+		LegacyListProperties,
 		Link,
-		List,
 		MediaEmbed,
+		MediaEmbedToolbar,
 		Paragraph,
 		PasteFromOffice,
 		SelectAll,
+		SourceEditing,
 		SpecialCharacters,
 		SpecialCharactersArrows,
 		SpecialCharactersCurrency,
@@ -93,7 +112,6 @@ class Editor extends ClassicEditor {
 		SpecialCharactersLatin,
 		SpecialCharactersMathematical,
 		SpecialCharactersText,
-		StandardEditingMode,
 		Strikethrough,
 		Style,
 		Subscript,
@@ -121,37 +139,47 @@ class Editor extends ClassicEditor {
 				'link',
 				'bulletedList',
 				'numberedList',
+				'strikethrough',
+				'underline',
+				'fontColor',
+				'fontBackgroundColor',
+				'fontFamily',
+				'fontSize',
+				'alignment',
+				'style',
 				'|',
 				'outdent',
 				'indent',
-				'|',
-				'blockQuote',
+				'-',
+				'textPartLanguage',
+				'imageUpload',
+				'imageInsert',
 				'insertTable',
 				'mediaEmbed',
-				'undo',
-				'redo',
-				'alignment',
-				'findAndReplace',
-				'-',
-				'fontBackgroundColor',
-				'fontColor',
-				'fontFamily',
-				'fontSize',
-				'horizontalLine',
-				'highlight',
-				'selectAll',
-				'restrictedEditingException',
-				'strikethrough',
-				'style',
 				'subscript',
 				'superscript',
 				'specialCharacters',
-				'textPartLanguage',
-				'underline'
+				'findAndReplace',
+				'horizontalLine',
+				'highlight',
+				'selectAll',
+				'sourceEditing',
+				'blockQuote',
+				'undo',
+				'redo'
 			],
 			shouldNotGroupWhenFull: true
 		},
 		language: 'en',
+		image: {
+			toolbar: [
+				'imageTextAlternative',
+				'toggleImageCaption',
+				'imageStyle:inline',
+				'imageStyle:block',
+				'imageStyle:side'
+			]
+		},
 		table: {
 			contentToolbar: [
 				'tableColumn',
@@ -164,4 +192,4 @@ class Editor extends ClassicEditor {
 	};
 }
 
-export default { Editor, EditorWatchdog };
+export default Editor;

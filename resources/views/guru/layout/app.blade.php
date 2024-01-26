@@ -309,6 +309,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <script src="{{ asset('dashboard-assets/plugins/datatables-buttons/js/buttons.html5.min.js') }}"></script>
     <script src="{{ asset('dashboard-assets/plugins/datatables-buttons/js/buttons.print.min.js') }}"></script>
     <script src="{{ asset('dashboard-assets/plugins/datatables-buttons/js/buttons.colVis.min.js') }}"></script>
+    <script src="{{ asset('ckeditor5/build/ckeditor.js') }}"></script>
+    <script src="{{ asset('ckeditor5/initiate-ckeditor.js') }}"></script>
 
     <script>
         $("#table1").DataTable({
