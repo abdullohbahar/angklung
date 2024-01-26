@@ -9,6 +9,10 @@
         .ck-restricted-editing_mode_standard {
             height: 300px !important;
         }
+
+        .ck-content {
+            height: 300px !important;
+        }
     </style>
 @endpush
 
