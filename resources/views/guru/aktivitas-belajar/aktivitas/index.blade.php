@@ -10,6 +10,10 @@
         .ck-content {
             height: 300px !important;
         }
+
+        iframe {
+            width: 100% !important;
+        }
     </style>
 @endpush
 
@@ -48,7 +52,7 @@
                                     id="">
                                 <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 mt-3">
                                     <label for="">Isi</label>
-                                    <textarea name="body" class="editor" style="width: 100%;">{{ old('body', $aktivitasBelajar->aktivitas?->body) }}</textarea>
+                                    <textarea name="body" class="f" style="width: 100%; height: 200px">{{ old('body', $aktivitasBelajar->aktivitas?->body) }}</textarea>
                                     @error('body')
                                         <small style="color: red;">
                                             {{ $message }}
@@ -70,7 +74,7 @@
                                 Preview</b></h4>
                     </div>
                     <div class="card-body">
-                        {!! $aktivitasBelajar->aktivitas?->body !!}
+                        {!! $aktivitasBelajar->aktivitas->body !!}
                     </div>
                 </div>
             </div>

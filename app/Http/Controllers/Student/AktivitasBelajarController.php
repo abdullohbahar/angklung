@@ -37,6 +37,17 @@ class AktivitasBelajarController extends Controller
         }
     }
 
+    public function aktivitas($id)
+    {
+        $aktivitas = Aktivitas::where('aktivitas_belajar_id', $id)->first();
+
+        $data = [
+            'aktivitas' => $aktivitas
+        ];
+
+        return view('student.aktivitas.index', $data);
+    }
+
     public function materi(Request $request, $title, $no)
     {
 

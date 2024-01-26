@@ -91,14 +91,15 @@
                                                                 </button>
                                                             </div>
                                                             <div class="col-6">
-                                                                <button class="btn btn-lg btn-custom-red font-aktivitas"
+                                                                <a href="{{ route('aktivitas', $activity->id) }}"
+                                                                    class="btn btn-lg btn-custom-red font-aktivitas"
                                                                     style="width: 100%;">
                                                                     <h5 class="mt-2">
                                                                         <b>
                                                                             <b>Aktivitas {{ $key += 1 }}</b>
                                                                         </b>
                                                                     </h5>
-                                                                </button>
+                                                                </a>
                                                             </div>
                                                         </div>
                                                     </div>

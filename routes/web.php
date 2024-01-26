@@ -55,6 +55,9 @@ Route::prefix('siswa')->group(function () {
 
     Route::get('/aktivitas-belajar', [AktivitasBelajarController::class, 'index'])->name('aktivitas.belajar');
     Route::post('/cek-kode-aktivitas', [AktivitasBelajarController::class, 'cekCode'])->name('aktivitas.belajar.cek.kode');
+
+    Route::get('/aktivitas/{id}', [AktivitasBelajarController::class, 'aktivitas'])->name('aktivitas');
+
     Route::get('/aktivitas-belajar/{title}/{no}', [AktivitasBelajarController::class, 'materi'])->name('materi');
     Route::post('/simpan-aktivitas-belajar/{materiID}/{no}/{aktivitasBelajarID}', [AktivitasBelajarController::class, 'storeMateri'])->name('store.materi');
 
