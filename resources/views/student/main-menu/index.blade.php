@@ -75,7 +75,7 @@
                             <div class="card-body">
                                 <img src="{{ asset('./guest-assets/informasi-pengembang.svg') }}" alt="">
                                 <div class="mt-3">
-                                    <p><b>Informasi Pengembang</b></p>
+                                    <p><b>Presensi</b></p>
                                 </div>
                             </div>
                         </div>

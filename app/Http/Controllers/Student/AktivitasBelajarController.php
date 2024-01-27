@@ -13,7 +13,7 @@ class AktivitasBelajarController extends Controller
 {
     public function index()
     {
-        $activities = AktivitasBelajar::orderBy('created_at', 'desc')->get();
+        $activities = AktivitasBelajar::orderBy('created_at', 'asc')->get();
 
         $data = [
             'activities' => $activities
@@ -41,6 +41,10 @@ class AktivitasBelajarController extends Controller
     {
         $aktivitas = Aktivitas::where('aktivitas_belajar_id', $id)->first();
 
+        if (!$aktivitas) {
+            return redirect()->back()->with('error', 'Belum ada aktivitas belajar');
+        }
+
         $data = [
             'aktivitas' => $aktivitas
         ];
@@ -50,7 +54,6 @@ class AktivitasBelajarController extends Controller
 
     public function materi(Request $request, $title, $no)
     {
-
         $aktivitasBelajar = AktivitasBelajar::with([
             'materiHasOne' => function ($query) use ($no) {
                 $query->where('no', $no);
@@ -58,6 +61,21 @@ class AktivitasBelajarController extends Controller
         ])
             ->where('title', $title)
             ->first();
+
+        if (!$aktivitasBelajar->materiHasOne) {
+            return redirect()->back()->with('error', 'Belum ada materi');
+        }
+
+        if ($aktivitasBelajar->no != 1) {
+            $getMateris = AktivitasBelajar::with('materi.riwayatPengerjaanAktivitas')
+                ->where('no', $aktivitasBelajar->no - 1)
+                ->first();
+            foreach ($getMateris->materi as $getMateri) {
+                if ($getMateri->riwayatPengerjaanAktivitas == null) {
+                    return redirect()->back()->with('error', 'Harap selesaikan aktifitas sebelumnya terlebih dahulu');
+                }
+            }
+        }
 
         $materiID = $aktivitasBelajar->materiHasOne->id;
         $userID = auth()->user()->id;

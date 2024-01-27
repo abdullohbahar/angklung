@@ -16,4 +16,9 @@ class Materi extends Model
     {
         return $this->hasOne(AktivitasBelajar::class, 'id', 'aktivitas_belajar_id');
     }
+
+    public function riwayatPengerjaanAktivitas(): HasOne
+    {
+        return $this->hasOne(RiwayatPengerjaanAktivitas::class);
+    }
 }
