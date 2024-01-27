@@ -37,9 +37,29 @@ class PenilaianStudentController extends Controller
 
     public function store(Request $request, $id)
     {
-        $lastNumber = Penilaian::orderBy('nomor', 'desc')->first();
-
         $userID = auth()->user()->id;
+
+        // perhitungan penilaian
+        // mengambil kunci jawaban dan kunci alasan
+        $penilaian = Penilaian::where('nomor', $request->no)->first();
+
+        // jawaban
+        $jawaban = $request->jawaban;
+        $alasan = $request->alasan;
+
+        // kunci
+        $kunciJawaban = $penilaian->kunci_jawaban;
+        $kunciAlasan = $penilaian->kunci_alasan;
+
+        if ($jawaban == $kunciJawaban && $alasan == $kunciAlasan) {
+            $score = 4;
+        } else if ($jawaban == $kunciJawaban && $alasan != $kunciAlasan) {
+            $score = 3;
+        } else if ($jawaban != $kunciJawaban && $alasan == $kunciAlasan) {
+            $score = 2;
+        } else if ($jawaban != $kunciJawaban && $alasan != $kunciAlasan) {
+            $score = 1;
+        }
 
         // cek riwayat apakah sudah ada atau belum
         // jika sudah ada maka update
@@ -50,15 +70,20 @@ class PenilaianStudentController extends Controller
             RiwayatPenilaian::where('penilaian_id', $id)->where('users_id', $userID)->update([
                 'jawaban_soal' => $request->jawaban,
                 'jawaban_alasan' => $request->alasan,
+                'score' => $score
             ]);
         } else {
             RiwayatPenilaian::create([
                 'users_id' => $userID,
                 'penilaian_id' => $id,
                 'jawaban_soal' => $request->jawaban,
-                'jawaban_alasan' => $request->alasan
+                'jawaban_alasan' => $request->alasan,
+                'score' => $score
             ]);
         }
+
+        $lastNumber = Penilaian::orderBy('nomor', 'desc')->first();
+
         if ($lastNumber->nomor == $request->no) {
             // dd("x");
             return to_route('student.penilaian.selesai');
