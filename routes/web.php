@@ -28,6 +28,7 @@ use App\Http\Controllers\Guru\DataSiswaController as GuruDataSiswaController;
 
 use App\Http\Controllers\Guru\AktivitasBelajarController as GuruAktivitasBelajarController;
 use App\Http\Controllers\Guru\CapaianPembelajaranController as GuruCapaianPembelajaranController;
+use App\Http\Controllers\Guru\PresensiController;
 use App\Http\Controllers\SaveImageController;
 
 /*
@@ -154,6 +155,12 @@ Route::prefix('guru')->group(function () {
         Route::get('/ubah/{id}', [PenilaianController::class, 'edit'])->name('guru.edit.penilaian');
         Route::put('/update/{id}', [PenilaianController::class, 'update'])->name('guru.update.penilaian');
         Route::delete('/destroy/{id}', [PenilaianController::class, 'destroy'])->name('guru.destroy.penilaian');
+    });
+
+    Route::prefix('presensi')->group(function () {
+        Route::get('/', [PresensiController::class, 'index'])->name('guru.presensi');
+        Route::post('/store', [PresensiController::class, 'store'])->name('guru.store.presensi');
+        Route::delete('/destroy/{id}', [PresensiController::class, 'destroy'])->name('guru.destroy.presensi');
     });
 });
 
