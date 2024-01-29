@@ -1,7 +1,7 @@
 @extends('guru.layout.app')
 
 @section('title')
-    Presensi
+    Riwayat Presensi {{ Carbon\Carbon::parse($presensi->tanggal)->format('d-m-Y') }}
 @endsection
 
 @push('addons-css')
@@ -15,12 +15,14 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0">Presensi</h1>
+                        <h1 class="m-0">Riwayat Presensi {{ Carbon\Carbon::parse($presensi->tanggal)->format('d-m-Y') }}
+                        </h1>
                     </div><!-- /.col -->
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item active">Presensi</li>
+                            <li class="breadcrumb-item active">Riwayat Presensi
+                                {{ Carbon\Carbon::parse($presensi->tanggal)->format('d-m-Y') }}</li>
                         </ol>
                     </div><!-- /.col -->
                 </div><!-- /.row -->
@@ -33,10 +35,7 @@
             <div class="container-fluid">
                 <div class="card">
                     <div class="card-header">
-                        <div class="card-tools">
-                            <button id="createBtn" class="btn btn-brown rounded-pill">Buat
-                                Presensi</button>
-                        </div>
+                        <h3>Riwayat Presensi {{ Carbon\Carbon::parse($presensi->tanggal)->format('d-m-Y') }}</h3>
                     </div>
                     <div class="card-body">
                         <div class="row">
@@ -45,28 +44,19 @@
                                     <thead>
                                         <tr>
                                             <th>No</th>
-                                            <th>Tanggal</th>
-                                            <th>Kode Presensi</th>
-                                            <th>Aksi</th>
+                                            <th>Nama</th>
+                                            <th>Keterangan</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         @php
                                             $no = 1;
                                         @endphp
-                                        @foreach ($presensis as $presensi)
+                                        @foreach ($presensi->riwayatPresensi as $riwayat)
                                             <tr>
                                                 <td>{{ $no++ }}</td>
-                                                <td>{{ Carbon\Carbon::parse($presensi->tanggal)->format('d-m-Y') }}</td>
-                                                <td>{{ $presensi->kode }}</td>
-                                                <td>
-                                                    <div class="btn-group" role="group" aria-label="Basic example">
-                                                        <a href="{{ route('guru.riwayat.presensi', $presensi->id) }}"
-                                                            class="btn btn-warning">Riwayat Presensi</a>
-                                                        <button type="button" class="btn btn-danger" id="removeBtn"
-                                                            data-id="{{ $presensi->id }}">Hapus</button>
-                                                    </div>
-                                                </td>
+                                                <td>{{ $riwayat->user->fullname }}</td>
+                                                <td>{{ $riwayat->status }}</td>
                                             </tr>
                                         @endforeach
                                     </tbody>

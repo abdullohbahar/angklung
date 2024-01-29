@@ -10,4 +10,9 @@ class RiwayatPresensi extends Model
     use HasFactory;
 
     protected $guarded = [];
+
+    public function user()
+    {
+        return $this->hasOne(User::class, 'id', 'users_id');
+    }
 }

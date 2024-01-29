@@ -74,4 +74,16 @@ class PresensiController extends Controller
             ]);
         }
     }
+
+    public function riwayatPresensi($id)
+    {
+        $presensi = Presensi::with('riwayatPresensi.user')->where('id', $id)->first();
+
+        $data = [
+            'active' => 'presensi',
+            'presensi' => $presensi
+        ];
+
+        return view('guru.presensi.riwayat', $data);
+    }
 }

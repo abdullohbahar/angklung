@@ -163,6 +163,8 @@ Route::prefix('guru')->group(function () {
         Route::get('/', [PresensiController::class, 'index'])->name('guru.presensi');
         Route::post('/store', [PresensiController::class, 'store'])->name('guru.store.presensi');
         Route::delete('/destroy/{id}', [PresensiController::class, 'destroy'])->name('guru.destroy.presensi');
+
+        Route::get('/riwayat-presensi/{id}', [PresensiController::class, 'riwayatPresensi'])->name('guru.riwayat.presensi');
     });
 });
 
