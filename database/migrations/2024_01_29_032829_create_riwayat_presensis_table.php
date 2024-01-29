@@ -17,7 +17,7 @@ return new class extends Migration
             $table->foreign('presensi_id')->references('id')->on('presensis')->onDelete('cascade');
             $table->foreignUuid('users_id')->references('id')->on('users')->onDelete('cascade');
             $table->enum('status', ['masuk', 'tidak masuk']);
-            $table->dateTime('tanggal');
+            $table->date('tanggal');
             $table->timestamps();
         });
     }

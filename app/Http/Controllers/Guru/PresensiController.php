@@ -61,14 +61,14 @@ class PresensiController extends Controller
 
             // Mengembalikan respons JSON sukses dengan status 200
             return response()->json([
-                'message' => 'Berhasil Menghapus Soal',
+                'message' => 'Berhasil Menghapus Presensi',
                 'code' => 200,
                 'error' => false
             ]);
         } catch (\Exception $e) {
             // Menangkap exception jika terjadi kesalahan
             return response()->json([
-                'message' => 'Gagal Menghapus Soal',
+                'message' => 'Gagal Menghapus Presensi',
                 'code' => 500,
                 'error' => $e->getMessage()
             ]);

@@ -52,6 +52,8 @@ Route::post('siswa/auth', [LoginStudentController::class, 'auth'])->name('siswa.
 Route::prefix('siswa')->group(function () {
 
     Route::get('/', [MainMenuStudentController::class, 'index'])->name('main.menu');
+    Route::post('presensi', [MainMenuStudentController::class, 'storePresensi'])->name('student.presensi');
+
     Route::get('/capaian-pembelajaran', [CapaianPembelajaranController::class, 'index'])->name('capaian.pembelajaran');
 
     Route::get('/aktivitas-belajar', [AktivitasBelajarController::class, 'index'])->name('aktivitas.belajar');
