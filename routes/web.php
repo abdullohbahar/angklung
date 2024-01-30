@@ -28,8 +28,10 @@ use App\Http\Controllers\Guru\DataSiswaController as GuruDataSiswaController;
 
 use App\Http\Controllers\Guru\AktivitasBelajarController as GuruAktivitasBelajarController;
 use App\Http\Controllers\Guru\CapaianPembelajaranController as GuruCapaianPembelajaranController;
+use App\Http\Controllers\Guru\ForumController;
 use App\Http\Controllers\Guru\PresensiController;
 use App\Http\Controllers\SaveImageController;
+use App\Http\Controllers\StoreFourmMessage;
 
 /*
 |--------------------------------------------------------------------------
@@ -166,6 +168,17 @@ Route::prefix('guru')->group(function () {
 
         Route::get('/riwayat-presensi/{id}', [PresensiController::class, 'riwayatPresensi'])->name('guru.riwayat.presensi');
     });
+
+    Route::prefix('forum')->group(function () {
+        Route::get('/', [ForumController::class, 'index'])->name('guru.forum');
+        Route::get('/create', [ForumController::class, 'create'])->name('guru.create.forum');
+        Route::post('/store', [ForumController::class, 'store'])->name('guru.store.forum');
+        Route::get('/detail/{id}', [ForumController::class, 'detail'])->name('guru.detail.forum');
+        Route::get('/edit/{id}', [ForumController::class, 'edit'])->name('guru.edit.forum');
+        Route::put('/update/{id}', [ForumController::class, 'update'])->name('guru.update.forum');
+        Route::delete('/destroy/{id}', [ForumController::class, 'destroy'])->name('guru.destroy.forum');
+        Route::delete('/clear/{id}', [ForumController::class, 'clear'])->name('guru.clear.forum');
+    });
 });
 
 Route::get('profile', [ProfileController::class, 'index'])->name('profile');
@@ -175,6 +188,8 @@ Route::get('profil-pengembang', [ProfilPengembangController::class, 'index'])->n
 Route::post('simpan-profil-pengembang', [ProfilPengembangController::class, 'store'])->name('store.profil.pengembang');
 
 Route::post('/save-image', SaveImageController::class);
+
+Route::post('/store-message/{idForum}', StoreFourmMessage::class)->name('store.message.forum');
 
 Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']], function () {
     \UniSharp\LaravelFilemanager\Lfm::routes();

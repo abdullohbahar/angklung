@@ -15,7 +15,6 @@
         .ck-content {
             height: 300px !important;
         }
-        
     </style>
 @endpush
 

@@ -20,4 +20,9 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $guarded = [];
+
+    public function forum()
+    {
+        return $this->hasMany(ForumContent::class);
+    }
 }
