@@ -32,6 +32,7 @@ use App\Http\Controllers\Guru\ForumController;
 use App\Http\Controllers\Guru\PresensiController;
 use App\Http\Controllers\SaveImageController;
 use App\Http\Controllers\StoreFourmMessage;
+use App\Http\Controllers\Student\ForumController as StudentForumController;
 
 /*
 |--------------------------------------------------------------------------
@@ -71,6 +72,9 @@ Route::prefix('siswa')->group(function () {
     Route::get('/penilaian/{no}', [PenilaianStudentController::class, 'index'])->name('student.penilaian');
     Route::post('/simpan-penilaian/{id}', [PenilaianStudentController::class, 'store'])->name('student.store.penilaian');
     Route::get('/penilaian-selesai', [PenilaianStudentController::class, 'selesai'])->name('student.penilaian.selesai');
+
+    Route::get('/forum', [StudentForumController::class, 'index'])->name('student.forum');
+    Route::get('/detail-forum/{id}', [StudentForumController::class, 'detail'])->name('student.detail.forum');
 });
 
 Route::get('admin/login', [AuthAdminController::class, 'index'])->name('admin.login');

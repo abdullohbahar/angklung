@@ -81,6 +81,16 @@
                             </div>
                         </div>
                     </a>
+                    <a href="{{ route('student.forum') }}" class="text-decoration-none col-6 content-center gx-3 gy-3">
+                        <div class="card card-border">
+                            <div class="card-body">
+                                <img src="{{ asset('./guest-assets/project.svg') }}" alt="">
+                                <div class="mt-3">
+                                    <p><b>Forum</b></p>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
                 </div>
             </div>
         </div>
