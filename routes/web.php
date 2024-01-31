@@ -49,10 +49,10 @@ use App\Http\Controllers\Student\ForumController as StudentForumController;
 // URL::forceScheme('https');
 // }
 
-Route::get('/', [LoginStudentController::class, 'index'])->name('login');
-Route::post('siswa/auth', [LoginStudentController::class, 'auth'])->name('siswa.auth');
+Route::get('/', [LoginStudentController::class, 'index'])->name('login')->middleware('guest');
+Route::post('siswa/auth', [LoginStudentController::class, 'auth'])->name('siswa.auth')->middleware('guest');
 
-Route::prefix('siswa')->group(function () {
+Route::prefix('siswa')->middleware('student')->group(function () {
 
     Route::get('/', [MainMenuStudentController::class, 'index'])->name('main.menu');
     Route::post('presensi', [MainMenuStudentController::class, 'storePresensi'])->name('student.presensi');
@@ -77,15 +77,15 @@ Route::prefix('siswa')->group(function () {
     Route::get('/detail-forum/{id}', [StudentForumController::class, 'detail'])->name('student.detail.forum');
 });
 
-Route::get('admin/login', [AuthAdminController::class, 'index'])->name('admin.login');
-Route::post('admin/auth', [AuthAdminController::class, 'authenticate'])->name('admin.auth');
-Route::get('admin/logout', [AuthAdminController::class, 'logout'])->name('admin.logout');
+Route::get('admin/login', [AuthAdminController::class, 'index'])->name('admin.login')->middleware('guest');
+Route::post('admin/auth', [AuthAdminController::class, 'authenticate'])->name('admin.auth')->middleware('guest');
+Route::get('admin/logout', [AuthAdminController::class, 'logout'])->name('admin.logout')->middleware('admin');
 
-Route::get('guru/login', [AuthGuruController::class, 'index'])->name('guru.login');
-Route::post('guru/auth', [AuthGuruController::class, 'authenticate'])->name('guru.auth');
-Route::get('guru/logout', [AuthGuruController::class, 'logout'])->name('guru.logout');
+Route::get('guru/login', [AuthGuruController::class, 'index'])->name('guru.login')->middleware('guest');
+Route::post('guru/auth', [AuthGuruController::class, 'authenticate'])->name('guru.auth')->middleware('guest');
+Route::get('guru/logout', [AuthGuruController::class, 'logout'])->name('guru.logout')->middleware('guru');
 
-Route::prefix('admin')->group(function () {
+Route::prefix('admin')->middleware('admin')->group(function () {
     Route::get('dashboard', [DashboardAdminController::class, 'index'])->name('admin.dashboard');
 
     Route::prefix('data-guru')->group(function () {
@@ -102,7 +102,7 @@ Route::prefix('admin')->group(function () {
     });
 });
 
-Route::prefix('guru')->group(function () {
+Route::prefix('guru')->middleware('teacher')->group(function () {
     Route::get('dashboard', [DashboardGuruController::class, 'index'])->name('guru.dashboard');
 
     Route::prefix('data-siswa')->group(function () {
