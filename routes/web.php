@@ -33,6 +33,7 @@ use App\Http\Controllers\Guru\PresensiController;
 use App\Http\Controllers\SaveImageController;
 use App\Http\Controllers\StoreFourmMessage;
 use App\Http\Controllers\Student\ForumController as StudentForumController;
+use App\Http\Controllers\Student\ProgressController;
 
 /*
 |--------------------------------------------------------------------------
@@ -75,6 +76,10 @@ Route::prefix('siswa')->middleware('student')->group(function () {
 
     Route::get('/forum', [StudentForumController::class, 'index'])->name('student.forum');
     Route::get('/detail-forum/{id}', [StudentForumController::class, 'detail'])->name('student.detail.forum');
+
+    Route::prefix('progress')->group(function () {
+        Route::get('/', [ProgressController::class, 'index'])->name('student.progress');
+    });
 });
 
 Route::get('admin/login', [AuthAdminController::class, 'index'])->name('admin.login')->middleware('guest');

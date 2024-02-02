@@ -22,7 +22,7 @@ class StudentMiddleware
 
         if (Auth::check() && Auth::user()->role == 'student') {
             return $next($request);
-        } else if (Auth::check() && Auth::user()->role == 'guru') {
+        } else if (Auth::check() && Auth::user()->role == 'teacher') {
             return redirect()->route('guru.dashboard');
         } else if (Auth::check() && Auth::user()->role == 'admin') {
             return redirect()->route('admin.dashboard');

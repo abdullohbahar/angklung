@@ -22,7 +22,7 @@ class TeacherMiddleware
 
         if (Auth::check() && Auth::user()->role == 'student') {
             return redirect()->route('main.menu');
-        } else if (Auth::check() && Auth::user()->role == 'guru') {
+        } else if (Auth::check() && Auth::user()->role == 'teacher') {
             return $next($request);
         } else if (Auth::check() && Auth::user()->role == 'admin') {
             return redirect()->route('admin.dashboard');

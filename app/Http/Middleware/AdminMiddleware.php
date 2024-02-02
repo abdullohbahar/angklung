@@ -22,7 +22,7 @@ class AdminMiddleware
 
         if (Auth::check() && Auth::user()->role == 'student') {
             return redirect()->route('main.menu');
-        } else if (Auth::check() && Auth::user()->role == 'guru') {
+        } else if (Auth::check() && Auth::user()->role == 'teacher') {
             return redirect()->route('guru.dashboard');
         } else if (Auth::check() && Auth::user()->role == 'admin') {
             return $next($request);
