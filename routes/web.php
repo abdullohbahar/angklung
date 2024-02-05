@@ -89,7 +89,7 @@ Route::get('admin/logout', [AuthAdminController::class, 'logout'])->name('admin.
 
 Route::get('guru/login', [AuthGuruController::class, 'index'])->name('guru.login')->middleware('guest');
 Route::post('guru/auth', [AuthGuruController::class, 'authenticate'])->name('guru.auth')->middleware('guest');
-Route::get('guru/logout', [AuthGuruController::class, 'logout'])->name('guru.logout')->middleware('guru');
+Route::get('guru/logout', [AuthGuruController::class, 'logout'])->name('guru.logout')->middleware('teacher');
 
 Route::prefix('admin')->middleware('admin')->group(function () {
     Route::get('dashboard', [DashboardAdminController::class, 'index'])->name('admin.dashboard');
