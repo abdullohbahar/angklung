@@ -30,6 +30,7 @@ use App\Http\Controllers\Guru\AktivitasBelajarController as GuruAktivitasBelajar
 use App\Http\Controllers\Guru\CapaianPembelajaranController as GuruCapaianPembelajaranController;
 use App\Http\Controllers\Guru\ForumController;
 use App\Http\Controllers\Guru\PresensiController;
+use App\Http\Controllers\Guru\ProgressSiswaController;
 use App\Http\Controllers\SaveImageController;
 use App\Http\Controllers\StoreFourmMessage;
 use App\Http\Controllers\Student\ForumController as StudentForumController;
@@ -117,6 +118,10 @@ Route::prefix('guru')->middleware('teacher')->group(function () {
         Route::get('/edit/{id}', [GuruDataSiswaController::class, 'edit'])->name('guru.edit.data.siswa');
         Route::put('/update/{id}', [GuruDataSiswaController::class, 'update'])->name('guru.update.data.siswa');
         Route::delete('/destroy/{id}', [GuruDataSiswaController::class, 'destroy'])->name('guru.destroy.data.siswa');
+    });
+
+    Route::prefix('progress-siswa')->group(function () {
+        Route::get('/{siswaID}', [ProgressSiswaController::class, 'index'])->name('guru.progress.siswa');
     });
 
     Route::prefix('capaian-pembelajaran')->group(function () {

@@ -1,7 +1,7 @@
 @extends('guru.layout.app')
 
 @section('title')
-    Data Siswa
+    Progress Siswa
 @endsection
 
 @push('addons-css')
@@ -15,12 +15,12 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0">Data Siswa</h1>
+                        <h1 class="m-0">Progress Siswa</h1>
                     </div><!-- /.col -->
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item active">Data Siswa</li>
+                            <li class="breadcrumb-item active">Progress Siswa</li>
                         </ol>
                     </div><!-- /.col -->
                 </div><!-- /.row -->
@@ -32,50 +32,71 @@
         <div class="content">
             <div class="container-fluid">
                 <div class="card">
-                    <div class="card-header">
-                        <div class="card-tools">
-                            <a href="{{ route('guru.create.data.siswa') }}" class="btn btn-brown rounded-pill">Tambah
-                                Siswa</a>
-                        </div>
-                    </div>
                     <div class="card-body">
                         <div class="row">
                             <div class="col-12">
-                                <table class="table table-bordered table-striped" id="table1">
+                                @foreach ($summary as $aktivitas)
+                                    @foreach ($aktivitas as $summary)
+                                        @php
+                                            if ($summary['presentase'] <= 25) {
+                                                $color = 'bg-danger';
+                                            } elseif ($summary['presentase'] <= 50) {
+                                                $color = 'bg-warning';
+                                            } elseif ($summary['presentase'] <= 75) {
+                                                $color = 'bg-info';
+                                            } elseif ($summary['presentase'] <= 100) {
+                                                $color = 'bg-success';
+                                            }
+                                        @endphp
+                                        <h5 for="" class="mt-3"><b>{{ $summary['title'] }}</b></h5>
+                                        <div class="progress">
+                                            <div class="progress-bar progress-bar-striped {{ $color }}"
+                                                role="progressbar" style="width: {{ $summary['presentase'] }}%;"
+                                                aria-valuenow="{{ $summary['presentase'] }}" aria-valuemin="0"
+                                                aria-valuemax="100"><b>{{ $summary['presentase'] }}%</b></div>
+                                        </div>
+                                    @endforeach
+                                @endforeach
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container-fluid">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-12">
+                                <table class="table table-bordered">
                                     <thead>
-                                        <tr>
-                                            <th>No</th>
-                                            <th style="width: 10%">Foto</th>
-                                            <th>Nomor Induk Siswa</th>
-                                            <th>Nama Lengkap</th>
-                                            <th>Jenis Kelamin</th>
-                                            <th>Aksi</th>
+                                        <tr class="text-bolder">
+                                            <td><b>No</b></td>
+                                            <td><b>Tanggal</b></td>
+                                            <td><b>Keterangan</b></td>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         @php
                                             $no = 1;
                                         @endphp
-                                        @foreach ($students as $student)
+                                        @forelse ($presensis as $presensi)
                                             <tr>
-                                                <td>{{ $no++ }}</td>
-                                                <td><img src="{{ asset($student->foto) }}"
-                                                        class="w-100 img-fluid img-thumbnail" srcset=""></td>
-                                                <td>{{ $student->username }}</td>
-                                                <td>{{ $student->fullname }}</td>
-                                                <td>{{ $student->jenis_kelamin }}</td>
                                                 <td>
-                                                    <div class="btn-group" role="group" aria-label="Basic example">
-                                                        <a href="{{ route('guru.progress.siswa', $student->id) }}"
-                                                            class="btn btn-info">Progress Siswa</a>
-                                                        <a href="{{ route('guru.edit.data.siswa', $student->id) }}"
-                                                            class="btn btn-warning">Ubah</a>
-                                                        <button type="button" class="btn btn-danger" id="removeBtn"
-                                                            data-id="{{ $student->id }}">Hapus</button>
-                                                    </div>
+                                                    {{ $no++ }}
+                                                </td>
+                                                <td>
+                                                    {{ \Carbon\Carbon::parse($presensi->tanggal)->format('d-m-Y') }}
+                                                </td>
+                                                <td class="text-capitalize">
+                                                    {{ $presensi->status }}
                                                 </td>
                                             </tr>
-                                        @endforeach
+                                        @empty
+                                            <tr>
+                                                <td colspan="3">Belum ada riwayat presensi</td>
+                                            </tr>
+                                        @endforelse
                                     </tbody>
                                 </table>
                             </div>
@@ -104,7 +125,7 @@
 
             Swal.fire({
                 title: 'Apakah anda yakin?',
-                text: "Data akan dihapus permanen!",
+                text: "Data materi dan aktivitas yang berhubungan akan dihapus secara permanen!",
                 icon: 'warning',
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
@@ -114,7 +135,7 @@
             }).then((result) => {
                 if (result.isConfirmed) {
                     $.ajax({
-                        url: '/guru/data-siswa/destroy/' + id,
+                        url: '/guru/forum/destroy/' + id,
                         type: 'DELETE',
                         success: function(response) {
                             if (response.code == 200) {
