@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Guru;
 use App\Http\Controllers\Controller;
 use App\Models\AktivitasBelajar;
 use App\Models\Materi;
+use App\Models\PertanyaanMateri;
 use Illuminate\Http\Request;
 
 class MateriController extends Controller
@@ -43,19 +44,31 @@ class MateriController extends Controller
             $no = 1;
         }
 
-        Materi::create([
+        $materi = Materi::create([
             'no' => $no,
             'video' => $request->video,
             'deskripsi' => $request->deskripsi,
             'aktivitas_belajar_id' => $request->idAktivitasBelajar
         ]);
 
+        foreach ($request->pertanyaan as $index => $pertanyaan) {
+            PertanyaanMateri::create([
+                'materi_id' => $materi->id,
+                'pertanyaan' => $pertanyaan,
+                'nomor' => $index + 1
+            ]);
+        }
+
         return redirect()->back()->with('success', 'Berhasil Menambah Materi');
     }
 
     public function edit($id)
     {
-        $materi = Materi::findorfail($id);
+        $materi = Materi::with([
+            'manyPertanyaanRiwayat' => function ($query) {
+                $query->orderBy('nomor', 'asc');
+            }
+        ])->findorfail($id);
 
         $data = [
             'active' => 'aktivitas-belajar',
@@ -81,6 +94,20 @@ class MateriController extends Controller
             'video' => $request->video,
             'deskripsi' => $request->deskripsi,
         ]);
+
+        $pertanyaanMateri = PertanyaanMateri::where('materi_id', $id)->get();
+
+        foreach ($pertanyaanMateri as $pertanyaanMateri) {
+            $pertanyaanMateri->delete();
+        }
+
+        foreach ($request->pertanyaan as $index => $pertanyaan) {
+            PertanyaanMateri::create([
+                'materi_id' => $materi->id,
+                'pertanyaan' => $pertanyaan,
+                'nomor' => $index + 1
+            ]);
+        }
 
         return to_route('guru.materi', $materi->aktivitasBelajar->id)->with('success', 'Berhasil Mengubah Materi');
     }

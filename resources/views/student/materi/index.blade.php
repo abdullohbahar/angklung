@@ -96,10 +96,18 @@
                                             <div class="col-12 mt-3">
                                                 {!! $aktivitasBelajar->materiHasOne->deskripsi !!}
                                             </div>
-                                            <div class="col-12">
+                                            {{-- <div class="col-12">
                                                 <textarea name="jawaban" required placeholder="Tulis Jawaban Anda Disini" class="form-control"
                                                     style="width: 100%; height; 200px;">{{ $answer }}</textarea>
-                                            </div>
+                                            </div> --}}
+                                            @foreach ($aktivitasBelajar->materiHasOne->manyPertanyaanRiwayat as $pertanyaan)
+                                                <div class="col-12 mt-3">
+                                                    <b>{{ $pertanyaan->pertanyaan }}</b>
+                                                    <input type="hidden" name="pertanyaan_materi_id[]"
+                                                        value="{{ $pertanyaan->id }}" id="">
+                                                    <textarea name="jawaban_pertanyaan_materi[]" class="form-control" style="width: 100%; height; 200px;">{{ $pertanyaan?->jawaban?->jawaban }}</textarea>
+                                                </div>
+                                            @endforeach
                                             <div class="col-sm-12 col-md-6 col-lg-6 mt-3 text-center">
                                                 @if ($no != 1)
                                                     <a href="{{ route('materi', [

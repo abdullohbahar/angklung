@@ -21,4 +21,9 @@ class Materi extends Model
     {
         return $this->hasOne(RiwayatPengerjaanAktivitas::class);
     }
+
+    public function manyPertanyaanRiwayat()
+    {
+        return $this->hasMany(PertanyaanMateri::class);
+    }
 }

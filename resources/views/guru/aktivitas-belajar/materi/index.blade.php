@@ -11,6 +11,10 @@
         .ck-content {
             height: 300px !important;
         }
+
+        .remove {
+            float: right;
+        }
     </style>
 @endpush
 
@@ -74,6 +78,23 @@
                                     @enderror
                                 </div>
                                 <input type="hidden" name="idAktivitasBelajar" value="{{ $aktivitasBelajar->id }}">
+                                <div class="col-12">
+                                    <hr>
+                                </div>
+                                <div class="col-12">
+                                    <div class="questions-container">
+                                        <!-- Pertanyaan 1 -->
+                                        <div class="question" data-question-number="1">
+                                            <label for="">Pertanyaan 1</label>
+                                            <textarea name="pertanyaan[]" class="form-control" style="width: 100%;"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-12">
+                                    <button type="button" class="btn btn-success add mt-3">Tambah
+                                        Pertanyaan</button>
+                                </div>
                                 <div class="col-12 mt-3">
                                     <button type="submit" class="btn btn-brown" style="width: 100%">Simpan</button>
                                 </div>
@@ -200,5 +221,35 @@
                 }
             }
         };
+    </script>
+
+    <script>
+        $(document).ready(function() {
+            // Menambah pertanyaan baru
+            $(".add").click(function() {
+                var lastQuestionNumber = $(".questions-container .question").last().data(
+                    "question-number") || 0;
+                var newQuestionNumber = lastQuestionNumber + 1;
+
+                var newQuestion = '<div class="question" data-question-number="' + newQuestionNumber +
+                    '">' +
+                    '<label for="">Pertanyaan ' + newQuestionNumber + '</label>' +
+                    '<textarea name="pertanyaan[]" class="form-control" style="width: 100%;"></textarea>' +
+                    '<button type="button" class="btn btn-sm mt-1 btn-danger remove">Hapus Pertanyaan</button>' +
+                    '</div>';
+
+                $(".questions-container").append(newQuestion);
+            });
+
+            // Menghapus pertanyaan
+            $(".questions-container").on("click", ".remove", function() {
+                $(this).closest(".question").remove();
+                // Update question numbers
+                $(".questions-container .question").each(function(index) {
+                    $(this).attr("data-question-number", index + 1);
+                    $(this).find("label").text("Pertanyaan " + (index + 1));
+                });
+            });
+        });
     </script>
 @endpush

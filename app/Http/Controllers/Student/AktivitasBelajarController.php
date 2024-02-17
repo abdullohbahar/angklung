@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Student;
 use App\Http\Controllers\Controller;
 use App\Models\Aktivitas;
 use App\Models\AktivitasBelajar;
+use App\Models\JawabanPertanyaanMateri;
 use App\Models\Materi;
 use App\Models\RiwayatPengerjaanAktivitas;
 use Illuminate\Http\Request;
@@ -54,9 +55,18 @@ class AktivitasBelajarController extends Controller
 
     public function materi(Request $request, $title, $no)
     {
+        $userID = auth()->user()->id;
+
         $aktivitasBelajar = AktivitasBelajar::with([
-            'materiHasOne' => function ($query) use ($no) {
-                $query->where('no', $no);
+            'materiHasOne' => function ($query) use ($no, $userID) {
+                $query->with([
+                    'manyPertanyaanRiwayat' => function ($query) use ($userID) {
+                        $query->with('jawaban', function ($query) use ($userID) {
+                            $query->where('users_id', $userID);
+                        })
+                            ->orderBy('nomor', 'asc');
+                    }
+                ])->where('no', $no);
             }
         ])
             ->where('title', $title)
@@ -103,23 +113,34 @@ class AktivitasBelajarController extends Controller
     {
         $userID = auth()->user()->id;
 
-        $riwayatPengerjaanAktivitas = RiwayatPengerjaanAktivitas::where('materi_id', $materiID)
-            ->where('users_id', $userID)->first();
+        // $riwayatPengerjaanAktivitas = RiwayatPengerjaanAktivitas::where('materi_id', $materiID)
+        //     ->where('users_id', $userID)->first();
 
-        if ($riwayatPengerjaanAktivitas) {
-            $riwayatPengerjaanAktivitas->jawaban = $request->jawaban;
-            $riwayatPengerjaanAktivitas->save();
-        } else {
-            RiwayatPengerjaanAktivitas::create([
-                'jawaban' => $request->jawaban,
-                'materi_id' => $materiID,
-                'users_id' => auth()->user()->id
-            ]);
-        }
+        // if ($riwayatPengerjaanAktivitas) {
+        //     $riwayatPengerjaanAktivitas->jawaban = $request->jawaban ?? '-';
+        //     $riwayatPengerjaanAktivitas->save();
+        // } else {
+        //     RiwayatPengerjaanAktivitas::create([
+        //         'jawaban' => $request->jawaban,
+        //         'materi_id' => $materiID,
+        //         'users_id' => auth()->user()->id
+        //     ]);
+        // }
 
         $materi = Materi::with('aktivitasBelajar')->where('aktivitas_belajar_id', $aktivitasBelajarID)
             ->where('no', $no + 1)
             ->first();
+
+        if ($request->has('jawaban_pertanyaan_materi')) {
+            foreach ($request->jawaban_pertanyaan_materi as $index => $jawaban) {
+                JawabanPertanyaanMateri::create([
+                    'users_id' => $userID,
+                    'pertanyaan_materi_id' => $request->pertanyaan_materi_id[$index],
+                    'jawaban' => $jawaban
+                ]);
+            }
+        }
+
 
         if ($materi) {
             return to_route('materi', [

@@ -10,6 +10,10 @@
         .ck-content {
             height: 300px !important;
         }
+
+        .remove {
+            float: right;
+        }
     </style>
 @endpush
 
@@ -74,6 +78,23 @@
                                             {{ $message }}
                                         </small>
                                     @enderror
+                                </div>
+                                <div class="col-12">
+                                    <div class="questions-container">
+                                        @foreach ($materi->manyPertanyaanRiwayat as $pertanyaan)
+                                            <!-- Pertanyaan 1 -->
+                                            <div class="question mt-3" data-question-number="{{ $pertanyaan->nomor }}">
+                                                <label for="">Pertanyaan {{ $pertanyaan->nomor }}</label>
+                                                <textarea name="pertanyaan[]" class="form-control" style="width: 100%;">{{ $pertanyaan->pertanyaan }}</textarea>
+                                                <button type="button" class="btn btn-sm mt-1 btn-danger remove">Hapus
+                                                    Pertanyaan</button>
+                                            </div>
+                                        @endforeach
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <button type="button" class="btn btn-success add mt-3">Tambah
+                                        Pertanyaan</button>
                                 </div>
                                 <div class="col-12 mt-3">
                                     <button type="submit" class="btn btn-brown" style="width: 100%">Ubah</button>
@@ -163,5 +184,35 @@
                 }
             }
         };
+    </script>
+
+    <script>
+        $(document).ready(function() {
+            // Menambah pertanyaan baru
+            $(".add").click(function() {
+                var lastQuestionNumber = $(".questions-container .question").last().data(
+                    "question-number") || 0;
+                var newQuestionNumber = lastQuestionNumber + 1;
+
+                var newQuestion = '<div class="question mt-3" data-question-number="' + newQuestionNumber +
+                    '">' +
+                    '<label for="">Pertanyaan ' + newQuestionNumber + '</label>' +
+                    '<textarea name="pertanyaan[]" class="form-control" style="width: 100%;"></textarea>' +
+                    '<button type="button" class="btn btn-sm mt-1 btn-danger remove">Hapus Pertanyaan</button>' +
+                    '</div>';
+
+                $(".questions-container").append(newQuestion);
+            });
+
+            // Menghapus pertanyaan
+            $(".questions-container").on("click", ".remove", function() {
+                $(this).closest(".question").remove();
+                // Update question numbers
+                $(".questions-container .question").each(function(index) {
+                    $(this).attr("data-question-number", index + 1);
+                    $(this).find("label").text("Pertanyaan " + (index + 1));
+                });
+            });
+        });
     </script>
 @endpush
