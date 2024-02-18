@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Guru;
 
 use App\Http\Controllers\Controller;
 use App\Models\AktivitasBelajar;
+use App\Models\KeteranganSesudahMateri;
 use App\Models\Materi;
 use App\Models\PertanyaanMateri;
 use Illuminate\Http\Request;
@@ -30,10 +31,10 @@ class MateriController extends Controller
     {
         $request->validate([
             'video' => 'required',
-            'deskripsi' => 'required',
+
         ], [
             'video.required' =>  'Embed Youtube Harus Diisi',
-            'deskripsi.required' => 'Deskripsi Harus Diisi',
+
         ]);
 
         $no = Materi::where('aktivitas_belajar_id', $request->idAktivitasBelajar)->orderBy('no', 'desc')->first();
@@ -47,7 +48,7 @@ class MateriController extends Controller
         $materi = Materi::create([
             'no' => $no,
             'video' => $request->video,
-            'deskripsi' => $request->deskripsi,
+            'deskripsi' => $request->deskripsi ?? '-',
             'aktivitas_belajar_id' => $request->idAktivitasBelajar
         ]);
 
@@ -59,6 +60,13 @@ class MateriController extends Controller
             ]);
         }
 
+        if ($request->keterangan_materi) {
+            KeteranganSesudahMateri::create([
+                'materi_id' => $materi->id,
+                'keterangan' => $request->keterangan_materi
+            ]);
+        }
+
         return redirect()->back()->with('success', 'Berhasil Menambah Materi');
     }
 
@@ -67,7 +75,8 @@ class MateriController extends Controller
         $materi = Materi::with([
             'manyPertanyaanRiwayat' => function ($query) {
                 $query->orderBy('nomor', 'asc');
-            }
+            },
+            'oneKeteranganSesudahMateri'
         ])->findorfail($id);
 
         $data = [
@@ -106,6 +115,12 @@ class MateriController extends Controller
                 'materi_id' => $materi->id,
                 'pertanyaan' => $pertanyaan,
                 'nomor' => $index + 1
+            ]);
+        }
+
+        if ($request->keterangan_materi) {
+            KeteranganSesudahMateri::where('materi_id', $materi->id)->update([
+                'keterangan' => $request->keterangan_materi
             ]);
         }
 

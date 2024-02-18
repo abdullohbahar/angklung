@@ -96,6 +96,17 @@
                                         Pertanyaan</button>
                                 </div>
                                 <div class="col-12 mt-3">
+                                    <hr>
+                                </div>
+                                <div class="col-12">
+                                    <label for="">Keterangan tentang materi yang ditampilkan - <small
+                                            style="color: red">
+                                            Biarkan kosong jika tidak ada
+                                        </small></label>
+
+                                    <textarea name="keterangan_materi" class="form-control" style="width:100%; height: 200px"></textarea>
+                                </div>
+                                <div class="col-12 mt-3">
                                     <button type="submit" class="btn btn-brown" style="width: 100%">Simpan</button>
                                 </div>
                             </div>

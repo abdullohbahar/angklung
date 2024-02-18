@@ -127,9 +127,18 @@ class AktivitasBelajarController extends Controller
         //     ]);
         // }
 
-        $materi = Materi::with('aktivitasBelajar')->where('aktivitas_belajar_id', $aktivitasBelajarID)
-            ->where('no', $no + 1)
-            ->first();
+        $materi = Materi::with('aktivitasBelajar', 'oneKeteranganSesudahMateri')
+            ->where('no', $no)
+            ->where('aktivitas_belajar_id', $aktivitasBelajarID)
+            ->first()
+            ->oneKeteranganSesudahMateri ?? null;
+
+        if ($materi != null) {
+            return to_route('keterangan.setelah.materi', [
+                'no' => $no,
+                'aktivitasBelajarID' => $aktivitasBelajarID
+            ]);
+        }
 
         if ($request->has('jawaban_pertanyaan_materi')) {
             foreach ($request->jawaban_pertanyaan_materi as $index => $jawaban) {
@@ -141,6 +150,9 @@ class AktivitasBelajarController extends Controller
             }
         }
 
+        $materi = Materi::with('aktivitasBelajar', 'oneKeteranganSesudahMateri')
+            ->where('aktivitas_belajar_id', $aktivitasBelajarID)->where('no', $no + 1)
+            ->first();
 
         if ($materi) {
             return to_route('materi', [
@@ -150,5 +162,35 @@ class AktivitasBelajarController extends Controller
         } else {
             return view('student.materi.congratulation');
         }
+    }
+
+    public function keteranganSetelahMateri($no, $aktivitasBelajarID)
+    {
+        $title = Materi::with('aktivitasBelajar', 'oneKeteranganSesudahMateri')
+            ->where('aktivitas_belajar_id', $aktivitasBelajarID)
+            ->first()
+            ->aktivitasBelajar
+            ->title ?? 0;
+
+        $aktivitasBelajarID = Materi::with('aktivitasBelajar', 'oneKeteranganSesudahMateri')
+            ->where('aktivitas_belajar_id', $aktivitasBelajarID)
+            ->first()
+            ->aktivitasBelajar
+            ->id ?? 0;
+
+        $keterangan = Materi::with('aktivitasBelajar', 'oneKeteranganSesudahMateri')
+            ->where('aktivitas_belajar_id', $aktivitasBelajarID)
+            ->first()
+            ->oneKeteranganSesudahMateri
+            ->keterangan ?? 0;
+
+        $data = [
+            'no' => $no,
+            'title' => $title,
+            'aktivitasBelajarID' => $aktivitasBelajarID,
+            'keterangan' => $keterangan
+        ];
+
+        return view('student.materi.keterangan', $data);
     }
 }

@@ -26,4 +26,9 @@ class Materi extends Model
     {
         return $this->hasMany(PertanyaanMateri::class);
     }
+
+    public function oneKeteranganSesudahMateri()
+    {
+        return $this->hasOne(KeteranganSesudahMateri::class);
+    }
 }

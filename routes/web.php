@@ -69,6 +69,7 @@ Route::prefix('siswa')->middleware('student')->group(function () {
 
     Route::get('/aktivitas-belajar/{title}/{no}', [AktivitasBelajarController::class, 'materi'])->name('materi');
     Route::post('/simpan-aktivitas-belajar/{materiID}/{no}/{aktivitasBelajarID}', [AktivitasBelajarController::class, 'storeMateri'])->name('store.materi');
+    Route::get('/keterangan/{no}/{aktivitasBelajarID}', [AktivitasBelajarController::class, 'keteranganSetelahMateri'])->name('keterangan.setelah.materi');
 
     Route::get('/eksplorasi', [ExplorasiStudentController::class, 'index'])->name('student.eksplorasi');
 
