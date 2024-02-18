@@ -1,7 +1,7 @@
 @extends('student.main-menu.layout.app')
 
 @section('title')
-    Keterangan
+    Eksplorasi
 @endsection
 
 @push('addons-css')
@@ -44,11 +44,6 @@
         .outline {
             -webkit-text-stroke: 1px white;
         }
-
-        iframe {
-            width: 100% !important;
-            height: 500px !important;
-        }
     </style>
 @endpush
 
@@ -76,6 +71,9 @@
                     <div class="row ms-0">
                         <div class="col-12">
                             <div class="card card-border" style="width: 100%">
+                                <div class="card-header">
+                                    Eksplorasi
+                                </div>
                                 <div class="card-body text-center">
                                     <form
                                         action="{{ route('materi', [
@@ -87,7 +85,7 @@
                                         <input type="hidden" name="jenis" id="">
                                         <div class="row">
                                             <div class="col-12">
-                                                <h4> {!! $keterangan !!}
+                                                <h4> {!! $eksplorasi->oneEksplorasiDiMateri->embed !!}
                                                 </h4>
                                             </div>
                                             <div class="col-sm-12 col-md-6 col-lg-6 mt-3 text-center">

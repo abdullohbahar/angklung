@@ -135,7 +135,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                 </p>
                             </a>
                         </li>
-                        <li class="nav-item">
+                        {{-- <li class="nav-item">
                             <a href="{{ route('guru.project') }}"
                                 class="nav-link white-nav {{ $active == 'project' ? 'active' : '' }}">
                                 <i class="nav-icon fas fa-file-alt"></i>
@@ -143,7 +143,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                     <b>Eksplorasi</b>
                                 </p>
                             </a>
-                        </li>
+                        </li> --}}
                         <li class="nav-item">
                             <a href="{{ route('guru.penilaian') }}"
                                 class="nav-link white-nav {{ $active == 'penilaian' ? 'active' : '' }}">

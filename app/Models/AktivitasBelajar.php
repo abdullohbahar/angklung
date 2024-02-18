@@ -28,4 +28,9 @@ class AktivitasBelajar extends Model
     {
         return $this->hasOne(Materi::class);
     }
+
+    public function eksplorasiHasOne(): HasOne
+    {
+        return $this->hasOne(EksplorasiAktivitasBelajar::class);
+    }
 }

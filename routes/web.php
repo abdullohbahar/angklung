@@ -70,6 +70,7 @@ Route::prefix('siswa')->middleware('student')->group(function () {
     Route::get('/aktivitas-belajar/{title}/{no}', [AktivitasBelajarController::class, 'materi'])->name('materi');
     Route::post('/simpan-aktivitas-belajar/{materiID}/{no}/{aktivitasBelajarID}', [AktivitasBelajarController::class, 'storeMateri'])->name('store.materi');
     Route::get('/keterangan/{no}/{aktivitasBelajarID}', [AktivitasBelajarController::class, 'keteranganSetelahMateri'])->name('keterangan.setelah.materi');
+    Route::get('/aktivitas-belajar/eksplorasi/{title}/{no}/{aktivitasBelajarID}', [AktivitasBelajarController::class, 'eksplorasi'])->name('student.aktivitas.belajar.eksplorasi');
 
     Route::get('/eksplorasi', [ExplorasiStudentController::class, 'index'])->name('student.eksplorasi');
 
@@ -160,6 +161,11 @@ Route::prefix('guru')->middleware('teacher')->group(function () {
         Route::prefix('aktivitas')->group(function () {
             Route::get('/{id}', [AktivitasController::class, 'index'])->name('guru.aktivitas');
             Route::post('/update', [AktivitasController::class, 'update'])->name('guru.update.aktivitas');
+        });
+
+        Route::prefix('eksplorasi')->group(function () {
+            Route::get('/{aktivitasBelajarID}', [GuruAktivitasBelajarController::class, 'eksplorasi'])->name('aktivitas.belajar.eksplorasi');
+            Route::post('/store', [GuruAktivitasBelajarController::class, 'updateEksplorasi'])->name('guru.update.aktivitas.belajar.eksplorasi');
         });
     });
 

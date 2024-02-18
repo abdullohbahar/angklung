@@ -107,6 +107,25 @@
                                     <textarea name="keterangan_materi" class="form-control" style="width:100%; height: 200px"></textarea>
                                 </div>
                                 <div class="col-12 mt-3">
+                                    <hr>
+                                </div>
+                                <div class="col-12">
+                                    <label for="">Eksplorasi - <small style="color: red">
+                                            Biarkan kosong jika tidak ada
+                                        </small></label>
+
+                                    <textarea name="eksplorasi" class="form-control" style="width:100%; height: 200px"></textarea>
+                                </div>
+                                <div class="col-12 mt-3">
+                                    <hr>
+                                </div>
+                                {{-- <div class="col-12">
+                                    <input type="checkbox" name="is_discussion" class="form-control" id="">
+                                    <label for="">Tambahkan diskusi di materi ini - <small style="color: red">
+                                            Biarkan kosong jika tidak ada
+                                        </small></label>
+                                </div> --}}
+                                <div class="col-12 mt-3">
                                     <button type="submit" class="btn btn-brown" style="width: 100%">Simpan</button>
                                 </div>
                             </div>

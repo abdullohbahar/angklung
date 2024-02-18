@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Guru;
 
 use App\Http\Controllers\Controller;
 use App\Models\AktivitasBelajar;
+use App\Models\EksplorasiDiMateri;
 use App\Models\KeteranganSesudahMateri;
 use App\Models\Materi;
 use App\Models\PertanyaanMateri;
@@ -60,6 +61,13 @@ class MateriController extends Controller
             ]);
         }
 
+        if ($request->eksplorasi) {
+            EksplorasiDiMateri::create([
+                'materi_id' => $materi->id,
+                'embed' => $request->eksplorasi
+            ]);
+        }
+
         if ($request->keterangan_materi) {
             KeteranganSesudahMateri::create([
                 'materi_id' => $materi->id,
@@ -76,7 +84,8 @@ class MateriController extends Controller
             'manyPertanyaanRiwayat' => function ($query) {
                 $query->orderBy('nomor', 'asc');
             },
-            'oneKeteranganSesudahMateri'
+            'oneKeteranganSesudahMateri',
+            'oneEksplorasiDiMateri'
         ])->findorfail($id);
 
         $data = [
@@ -119,8 +128,18 @@ class MateriController extends Controller
         }
 
         if ($request->keterangan_materi) {
-            KeteranganSesudahMateri::where('materi_id', $materi->id)->update([
+            KeteranganSesudahMateri::updateorcreate([
+                'materi_id' => $materi->id,
+            ], [
                 'keterangan' => $request->keterangan_materi
+            ]);
+        }
+
+        if ($request->eksplorasi) {
+            EksplorasiDiMateri::updateorcreate([
+                'materi_id' => $materi->id,
+            ], [
+                'embed' => $request->eksplorasi
             ]);
         }
 

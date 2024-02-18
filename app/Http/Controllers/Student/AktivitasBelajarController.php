@@ -5,8 +5,10 @@ namespace App\Http\Controllers\Student;
 use App\Http\Controllers\Controller;
 use App\Models\Aktivitas;
 use App\Models\AktivitasBelajar;
+use App\Models\EksplorasiAktivitasBelajar;
 use App\Models\JawabanPertanyaanMateri;
 use App\Models\Materi;
+use App\Models\MateriEksplorasi;
 use App\Models\RiwayatPengerjaanAktivitas;
 use Illuminate\Http\Request;
 
@@ -65,14 +67,33 @@ class AktivitasBelajarController extends Controller
                             $query->where('users_id', $userID);
                         })
                             ->orderBy('nomor', 'asc');
-                    }
+                    },
+                    'oneEksplorasiDiMateri'
                 ])->where('no', $no);
             }
         ])
             ->where('title', $title)
             ->first();
 
-        if (!$aktivitasBelajar->materiHasOne) {
+        $eksplorasi = AktivitasBelajar::with([
+            'materiHasOne' => function ($query) use ($no, $userID) {
+                $query->with([
+                    'oneEksplorasiDiMateri'
+                ])->where('no', $no - 1);
+            }
+        ])
+            ->where('title', $title)
+            ->first();
+
+        if ($eksplorasi->materiHasOne?->oneEksplorasiDiMateri != null) {
+            return to_route('student.aktivitas.belajar.eksplorasi', [
+                'no' => $no,
+                'title' => $title,
+                'aktivitasBelajarID' => $aktivitasBelajar->id
+            ]);
+        }
+
+        if (!$aktivitasBelajar->materiHasOne && $no == 1) {
             return redirect()->back()->with('error', 'Belum ada materi');
         }
 
@@ -87,7 +108,12 @@ class AktivitasBelajarController extends Controller
             }
         }
 
-        $materiID = $aktivitasBelajar->materiHasOne->id;
+        $materiID = $aktivitasBelajar->materiHasOne?->id;
+
+        if ($materiID == null) {
+            return view('student.materi.congratulation');
+        }
+
         $userID = auth()->user()->id;
 
         $riwayatPengerjaanAktivitas = RiwayatPengerjaanAktivitas::where('materi_id', $materiID)
@@ -150,7 +176,7 @@ class AktivitasBelajarController extends Controller
             }
         }
 
-        $materi = Materi::with('aktivitasBelajar', 'oneKeteranganSesudahMateri')
+        $materi = Materi::with('aktivitasBelajar', 'oneKeteranganSesudahMateri', 'oneEksplorasiDiMateri')
             ->where('aktivitas_belajar_id', $aktivitasBelajarID)->where('no', $no + 1)
             ->first();
 
@@ -179,6 +205,7 @@ class AktivitasBelajarController extends Controller
             ->id ?? 0;
 
         $keterangan = Materi::with('aktivitasBelajar', 'oneKeteranganSesudahMateri')
+            ->where('no', $no)
             ->where('aktivitas_belajar_id', $aktivitasBelajarID)
             ->first()
             ->oneKeteranganSesudahMateri
@@ -192,5 +219,23 @@ class AktivitasBelajarController extends Controller
         ];
 
         return view('student.materi.keterangan', $data);
+    }
+
+    public function eksplorasi($title, $no, $aktivitasBelajarID)
+    {
+        $eksplorasi = Materi::with([
+            'oneEksplorasiDiMateri'
+        ])
+            ->where('aktivitas_belajar_id', $aktivitasBelajarID)
+            ->where('no', $no - 1)
+            ->first();
+
+        $data = [
+            'title' => $title,
+            'no' => $no,
+            'eksplorasi' => $eksplorasi
+        ];
+
+        return view('student.materi.eksplorasi', $data);
     }
 }

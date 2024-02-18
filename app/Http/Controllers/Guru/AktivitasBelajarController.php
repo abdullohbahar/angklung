@@ -6,6 +6,7 @@ use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Models\AktivitasBelajar;
 use App\Http\Controllers\Controller;
+use App\Models\EksplorasiAktivitasBelajar;
 
 class AktivitasBelajarController extends Controller
 {
@@ -150,5 +151,41 @@ class AktivitasBelajarController extends Controller
                 'error' => $e->getMessage()
             ]);
         }
+    }
+
+    public function eksplorasi($aktivitasBelajarID)
+    {
+        $eksplorasi = EksplorasiAktivitasBelajar::where('aktivitas_belajar_id', $aktivitasBelajarID)
+            ->first();
+
+        $data = [
+            'active' => 'aktivitas-belajar',
+            'eksplorasi' => $eksplorasi,
+            'aktivitasBelajarID' => $aktivitasBelajarID,
+        ];
+
+        return view('guru.aktivitas-belajar.eksplorasi', $data);
+    }
+
+    public function updateEksplorasi(Request $request)
+    {
+        $request->validate([
+            'embed' => 'required'
+        ], [
+            'embed.required' => 'Isi harus diisi'
+        ]);
+
+        if (!$request->id) {
+            EksplorasiAktivitasBelajar::create([
+                'aktivitas_belajar_id' => $request->aktivitas_belajar_id,
+                'embed' => $request->embed,
+            ]);
+        } else {
+            EksplorasiAktivitasBelajar::where('aktivitas_belajar_id', $request->aktivitas_belajar_id)->update([
+                'embed' => $request->embed
+            ]);
+        }
+
+        return redirect()->back()->with('success', 'Berhasil disimpan');
     }
 }

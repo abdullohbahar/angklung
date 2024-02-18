@@ -31,4 +31,9 @@ class Materi extends Model
     {
         return $this->hasOne(KeteranganSesudahMateri::class);
     }
+
+    public function oneEksplorasiDiMateri()
+    {
+        return $this->hasOne(EksplorasiDiMateri::class);
+    }
 }

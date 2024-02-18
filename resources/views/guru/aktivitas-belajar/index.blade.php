@@ -71,6 +71,8 @@
                                                         class="btn btn-info rounded-pill">Materi</a>
                                                     <a href="{{ route('guru.aktivitas', $aktivitas->id) }}"
                                                         class="btn btn-warning rounded-pill">Aktivitas</a>
+                                                    {{-- <a href="{{ route('aktivitas.belajar.eksplorasi', $aktivitas->id) }}"
+                                                        class="btn btn-primary rounded-pill">Eksplorasi</a> --}}
                                                 </td>
                                                 <td>
                                                     <div class="btn-group" role="group" aria-label="Basic example">
