@@ -153,6 +153,19 @@ class AktivitasBelajarController extends Controller
         //     ]);
         // }
 
+        if ($request->has('jawaban_pertanyaan_materi')) {
+            foreach ($request->jawaban_pertanyaan_materi as $index => $jawaban) {
+                JawabanPertanyaanMateri::where('pertanyaan_materi_id', $request->pertanyaan_materi_id[$index])
+                    ->delete();
+
+                JawabanPertanyaanMateri::create([
+                    'users_id' => $userID,
+                    'pertanyaan_materi_id' => $request->pertanyaan_materi_id[$index],
+                    'jawaban' => $jawaban
+                ]);
+            }
+        }
+
         $materi = Materi::with('aktivitasBelajar', 'oneKeteranganSesudahMateri')
             ->where('no', $no)
             ->where('aktivitas_belajar_id', $aktivitasBelajarID)
@@ -164,16 +177,6 @@ class AktivitasBelajarController extends Controller
                 'no' => $no,
                 'aktivitasBelajarID' => $aktivitasBelajarID
             ]);
-        }
-
-        if ($request->has('jawaban_pertanyaan_materi')) {
-            foreach ($request->jawaban_pertanyaan_materi as $index => $jawaban) {
-                JawabanPertanyaanMateri::create([
-                    'users_id' => $userID,
-                    'pertanyaan_materi_id' => $request->pertanyaan_materi_id[$index],
-                    'jawaban' => $jawaban
-                ]);
-            }
         }
 
         $materi = Materi::with('aktivitasBelajar', 'oneKeteranganSesudahMateri', 'oneEksplorasiDiMateri')
