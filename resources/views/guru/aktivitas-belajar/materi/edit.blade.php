@@ -117,6 +117,19 @@
                                     <textarea name="eksplorasi" class="form-control" style="width:100%; height: 200px">{{ $materi->oneEksplorasiDiMateri?->embed }}</textarea>
                                 </div>
                                 <div class="col-12 mt-3">
+                                    <hr>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-group form-check">
+                                        <input type="checkbox" name="is_discussion"
+                                            {{ $materi->is_discussion == true ? 'checked' : '' }} class="form-check-input"
+                                            id="exampleCheck1">
+                                        <label class="form-check-label" for="exampleCheck1">Tambahkan diskusi di materi ini
+                                            - <small style="color: red">
+                                                Biarkan kosong jika tidak ada</small></label>
+                                    </div>
+                                </div>
+                                <div class="col-12 mt-3">
                                     <button type="submit" class="btn btn-brown" style="width: 100%">Ubah</button>
                                 </div>
                             </div>

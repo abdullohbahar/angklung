@@ -2,13 +2,15 @@
 
 namespace App\Http\Controllers\Guru;
 
-use App\Http\Controllers\Controller;
-use App\Models\AktivitasBelajar;
-use App\Models\EksplorasiDiMateri;
-use App\Models\KeteranganSesudahMateri;
 use App\Models\Materi;
-use App\Models\PertanyaanMateri;
+use App\Models\ForumMateri;
 use Illuminate\Http\Request;
+use App\Models\AktivitasBelajar;
+use App\Models\PertanyaanMateri;
+use App\Models\EksplorasiDiMateri;
+use App\Models\ForumContentMateri;
+use App\Http\Controllers\Controller;
+use App\Models\KeteranganSesudahMateri;
 
 class MateriController extends Controller
 {
@@ -50,7 +52,8 @@ class MateriController extends Controller
             'no' => $no,
             'video' => $request->video,
             'deskripsi' => $request->deskripsi ?? '-',
-            'aktivitas_belajar_id' => $request->idAktivitasBelajar
+            'aktivitas_belajar_id' => $request->idAktivitasBelajar,
+            'is_discussion' => $request->is_discussion == 'on' ? true : false
         ]);
 
         foreach ($request->pertanyaan as $index => $pertanyaan) {
@@ -72,6 +75,12 @@ class MateriController extends Controller
             KeteranganSesudahMateri::create([
                 'materi_id' => $materi->id,
                 'keterangan' => $request->keterangan_materi
+            ]);
+        }
+
+        if ($request->is_discussion == 'on') {
+            ForumMateri::create([
+                'materi_id' => $materi->id,
             ]);
         }
 
@@ -111,7 +120,17 @@ class MateriController extends Controller
         Materi::where('id', $id)->update([
             'video' => $request->video,
             'deskripsi' => $request->deskripsi,
+            'is_discussion' => $request->is_discussion == 'on' ? true : false
         ]);
+
+        if ($request->is_discussion == 'on') {
+            $forum = ForumMateri::where("materi_id", $id)->first();
+            if (!$forum) {
+                ForumMateri::create([
+                    'materi_id' => $id
+                ]);
+            }
+        }
 
         $pertanyaanMateri = PertanyaanMateri::where('materi_id', $id)->get();
 
@@ -173,5 +192,29 @@ class MateriController extends Controller
                 'error' => $e->getMessage()
             ]);
         }
+    }
+
+    public function forum($forumID)
+    {
+        $forum = ForumMateri::where('materi_id', $forumID)->with('forumContentMateri')->first();
+
+        $data = [
+            'forum' => $forum,
+            'userID' => auth()->user()->id,
+            'active' => 'aktivitas-belajar',
+        ];
+
+        return view('guru.aktivitas-belajar.materi.forum', $data);
+    }
+
+    public function storeForum(Request $request, $forumID)
+    {
+        ForumContentMateri::create([
+            'users_id' => auth()->user()->id,
+            'forum_materis_id' => $forumID,
+            'body' => $request->body
+        ]);
+
+        return redirect()->back()->with('success', 'berhasil menambah');
     }
 }

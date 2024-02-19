@@ -15,6 +15,11 @@
         .remove {
             float: right;
         }
+
+        iframe {
+            width: 100%;
+            height: 100%;
+        }
     </style>
 @endpush
 
@@ -119,12 +124,15 @@
                                 <div class="col-12 mt-3">
                                     <hr>
                                 </div>
-                                {{-- <div class="col-12">
-                                    <input type="checkbox" name="is_discussion" class="form-control" id="">
-                                    <label for="">Tambahkan diskusi di materi ini - <small style="color: red">
-                                            Biarkan kosong jika tidak ada
-                                        </small></label>
-                                </div> --}}
+                                <div class="col-12">
+                                    <div class="form-group form-check">
+                                        <input type="checkbox" name="is_discussion" class="form-check-input"
+                                            id="exampleCheck1">
+                                        <label class="form-check-label" for="exampleCheck1">Tambahkan diskusi di materi ini
+                                            - <small style="color: red">
+                                                Biarkan kosong jika tidak ada</small></label>
+                                    </div>
+                                </div>
                                 <div class="col-12 mt-3">
                                     <button type="submit" class="btn btn-brown" style="width: 100%">Simpan</button>
                                 </div>
@@ -158,6 +166,9 @@
                                         <td>{!! $materi->deskripsi !!}</td>
                                         <td>
                                             <div class="btn-group" role="group" aria-label="Basic example">
+                                                <a href="{{ route('guru.materi.forum', $materi->id) }}" type="button"
+                                                    class="btn btn-info"
+                                                    {{ $materi->is_discussion == true ? '' : 'hidden' }}>Forum</a>
                                                 <a href="{{ route('guru.edit.materi', $materi->id) }}" type="button"
                                                     class="btn btn-warning">Ubah</a>
                                                 <button type="button" class="btn btn-danger" id="removeBtn"

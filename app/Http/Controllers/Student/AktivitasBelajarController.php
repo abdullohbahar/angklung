@@ -6,6 +6,9 @@ use App\Http\Controllers\Controller;
 use App\Models\Aktivitas;
 use App\Models\AktivitasBelajar;
 use App\Models\EksplorasiAktivitasBelajar;
+use App\Models\ForumContent;
+use App\Models\ForumContentMateri;
+use App\Models\ForumMateri;
 use App\Models\JawabanPertanyaanMateri;
 use App\Models\Materi;
 use App\Models\MateriEksplorasi;
@@ -78,18 +81,39 @@ class AktivitasBelajarController extends Controller
         $eksplorasi = AktivitasBelajar::with([
             'materiHasOne' => function ($query) use ($no, $userID) {
                 $query->with([
-                    'oneEksplorasiDiMateri'
+                    'oneEksplorasiDiMateri',
+                    'hasOneForumMateri'
                 ])->where('no', $no - 1);
             }
         ])
             ->where('title', $title)
             ->first();
 
+
         if ($eksplorasi->materiHasOne?->oneEksplorasiDiMateri != null) {
             return to_route('student.aktivitas.belajar.eksplorasi', [
                 'no' => $no,
                 'title' => $title,
                 'aktivitasBelajarID' => $aktivitasBelajar->id
+            ]);
+        }
+
+        $forum = AktivitasBelajar::with([
+            'materiHasOne' => function ($query) use ($no, $userID) {
+                $query->with([
+                    'hasOneForumMateri'
+                ])->where('no', $no - 2);
+            }
+        ])
+            ->where('title', $title)
+            ->first();
+
+        if ($forum->materiHasOne?->hasOneForumMateri != null) {
+            return to_route('student.aktivitas.belajar.forum', [
+                'no' => $no,
+                'title' => $title,
+                'aktivitasBelajarID' => $aktivitasBelajar->id,
+                'forumID' => $forum->materiHasOne?->hasOneForumMateri->id
             ]);
         }
 
@@ -240,5 +264,38 @@ class AktivitasBelajarController extends Controller
         ];
 
         return view('student.materi.eksplorasi', $data);
+    }
+
+    public function forum($title, $no, $aktivitasBelajarID, $forumID)
+    {
+        $eksplorasi = Materi::with([
+            'oneEksplorasiDiMateri'
+        ])
+            ->where('aktivitas_belajar_id', $aktivitasBelajarID)
+            ->where('no', $no - 1)
+            ->first();
+
+        $forum = ForumMateri::where('id', $forumID)->with('forumContentMateri')->first();
+
+        $data = [
+            'title' => $title,
+            'no' => $no,
+            'eksplorasi' => $eksplorasi,
+            'forum' => $forum,
+            'userID' => auth()->user()->id
+        ];
+
+        return view('student.materi.forum', $data);
+    }
+
+    public function storeForum(Request $request, $forumID)
+    {
+        ForumContentMateri::create([
+            'users_id' => auth()->user()->id,
+            'forum_materis_id' => $forumID,
+            'body' => $request->body
+        ]);
+
+        return redirect()->back()->with('success', 'berhasil menambah');
     }
 }

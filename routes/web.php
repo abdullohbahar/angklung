@@ -71,6 +71,8 @@ Route::prefix('siswa')->middleware('student')->group(function () {
     Route::post('/simpan-aktivitas-belajar/{materiID}/{no}/{aktivitasBelajarID}', [AktivitasBelajarController::class, 'storeMateri'])->name('store.materi');
     Route::get('/keterangan/{no}/{aktivitasBelajarID}', [AktivitasBelajarController::class, 'keteranganSetelahMateri'])->name('keterangan.setelah.materi');
     Route::get('/aktivitas-belajar/eksplorasi/{title}/{no}/{aktivitasBelajarID}', [AktivitasBelajarController::class, 'eksplorasi'])->name('student.aktivitas.belajar.eksplorasi');
+    Route::get('/aktivitas-belajar/forum/{title}/{no}/{aktivitasBelajarID}/{forumID}', [AktivitasBelajarController::class, 'forum'])->name('student.aktivitas.belajar.forum');
+    Route::post('/aktivitas-belajar/store-forum/{forumID}', [AktivitasBelajarController::class, 'storeForum'])->name('student.aktivitas.belajar.store.forum');
 
     Route::get('/eksplorasi', [ExplorasiStudentController::class, 'index'])->name('student.eksplorasi');
 
@@ -166,6 +168,11 @@ Route::prefix('guru')->middleware('teacher')->group(function () {
         Route::prefix('eksplorasi')->group(function () {
             Route::get('/{aktivitasBelajarID}', [GuruAktivitasBelajarController::class, 'eksplorasi'])->name('aktivitas.belajar.eksplorasi');
             Route::post('/store', [GuruAktivitasBelajarController::class, 'updateEksplorasi'])->name('guru.update.aktivitas.belajar.eksplorasi');
+        });
+
+        Route::prefix('forum')->group(function () {
+            Route::get('/{forumID}', [MateriController::class, 'forum'])->name('guru.materi.forum');
+            Route::post('/store/{forumID}', [MateriController::class, 'storeForum'])->name('guru.store.materi.forum');
         });
     });
 
