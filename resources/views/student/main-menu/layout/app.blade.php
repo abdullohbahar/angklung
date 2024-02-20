@@ -307,6 +307,15 @@
         </script>
     @endif
 
+    @if (session()->has('notification'))
+        <script>
+            Swal.fire({
+                text: "{{ session('notification') }}",
+                icon: "success"
+            });
+        </script>
+    @endif
+
     @stack('addons-js')
 </body>
 

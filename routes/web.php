@@ -34,6 +34,7 @@ use App\Http\Controllers\Guru\ProgressSiswaController;
 use App\Http\Controllers\SaveImageController;
 use App\Http\Controllers\StoreFourmMessage;
 use App\Http\Controllers\Student\ForumController as StudentForumController;
+use App\Http\Controllers\Student\MateriGetaranStudentController;
 use App\Http\Controllers\Student\ProgressController;
 
 /*
@@ -86,6 +87,27 @@ Route::prefix('siswa')->middleware('student')->group(function () {
 
     Route::prefix('progress')->group(function () {
         Route::get('/', [ProgressController::class, 'index'])->name('student.progress');
+    });
+
+    Route::prefix('materi')->group(function () {
+        Route::get('getaran', [MateriGetaranStudentController::class, 'index'])->name('materi.getaran');
+        Route::get('getaran/orientasi', [MateriGetaranStudentController::class, 'orientasi'])->name('materi.getaran.orientasi');
+        Route::post('getaran/orientasi/store', [MateriGetaranStudentController::class, 'storeOrientasi'])->name('materi.getaran.store.orientasi');
+        Route::get('getaran/orientasi/pernyataan-1', [MateriGetaranStudentController::class, 'pernyataan1'])->name('materi.getaran.pernyataan1');
+        Route::get('getaran/orientasi2/', [MateriGetaranStudentController::class, 'orientasi2'])->name('materi.getaran.orientasi2');
+        Route::post('getaran/orientasi2/store', [MateriGetaranStudentController::class, 'storeOrientasi2'])->name('materi.getaran.store.orientasi2');
+
+        Route::get('getaran/eksperimen', [MateriGetaranStudentController::class, 'eksperimen'])->name('materi.getaran.eksperimen');
+        Route::post('getaran/eksperimen/store', [MateriGetaranStudentController::class, 'storeEksperimen'])->name('materi.getaran.eksperimen.store');
+
+        Route::get('getaran/forum', [MateriGetaranStudentController::class, 'forum'])->name('materi.getaran.forum');
+        Route::post('getaran/forum/post', [MateriGetaranStudentController::class, 'storeForum'])->name('materi.getaran.post.forum');
+
+        Route::get('getaran/resume-presentasi', [MateriGetaranStudentController::class, 'resume'])->name('materi.getaran.resume');
+        Route::post('getaran/resume-presentasi/store', [MateriGetaranStudentController::class, 'storeResume'])->name('materi.getaran.store.resume');
+
+        Route::get('getaran/refleksi', [MateriGetaranStudentController::class, 'refleksi'])->name('materi.getaran.refleksi');
+        Route::post('getaran/refleksi/store', [MateriGetaranStudentController::class, 'storeRefleksi'])->name('materi.getaran.refleksi.store');
     });
 });
 
