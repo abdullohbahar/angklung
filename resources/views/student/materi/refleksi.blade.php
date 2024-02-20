@@ -1,7 +1,7 @@
 @extends('student.main-menu.layout.app')
 
 @section('title')
-    Eksplorasi
+    Refleksi
 @endsection
 
 @push('addons-css')
@@ -71,6 +71,12 @@
                     <div class="row ms-0">
                         <div class="col-12">
                             <div class="card card-border" style="width: 100%">
+                                <div class="card-header text-center">
+                                    <h3>
+                                        Kalian hebat sudah menyelesaikan materi gelombang, sebelum lanjut isi refleksi dulu
+                                        ya !
+                                    </h3>
+                                </div>
                                 <div class="card-body text-center">
                                     <form
                                         action="{{ route('materi', [
@@ -82,7 +88,7 @@
                                         <input type="hidden" name="jenis" id="">
                                         <div class="row">
                                             <div class="col-12">
-                                                <h4> {!! $eksplorasi->oneEksplorasiDiMateri->embed !!}
+                                                <h4> {!! $refleksi->embed !!}
                                                 </h4>
                                             </div>
                                             <div class="col-sm-12 col-md-6 col-lg-6 mt-3 text-center">

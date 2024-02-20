@@ -12,6 +12,7 @@ use App\Models\ForumMateri;
 use App\Models\JawabanPertanyaanMateri;
 use App\Models\Materi;
 use App\Models\MateriEksplorasi;
+use App\Models\RefleksiMateri;
 use App\Models\RiwayatPengerjaanAktivitas;
 use Illuminate\Http\Request;
 
@@ -114,6 +115,24 @@ class AktivitasBelajarController extends Controller
                 'title' => $title,
                 'aktivitasBelajarID' => $aktivitasBelajar->id,
                 'forumID' => $forum->materiHasOne?->hasOneForumMateri->id
+            ]);
+        }
+
+        $refleksi = AktivitasBelajar::with([
+            'materiHasOne' => function ($query) use ($no, $userID) {
+                $query->with([
+                    'hasOneForumMateri'
+                ])->where('no', $no - 3);
+            }
+        ])
+            ->where('title', $title)
+            ->first();
+
+        if ($refleksi->materiHasOne?->hasOneRefleksi != null) {
+            return to_route('student.aktivitas.belajar.refleksi', [
+                'no' => $no,
+                'title' => $title,
+                'refleksiID' => $refleksi->materiHasOne?->hasOneRefleksi->id,
             ]);
         }
 
@@ -297,5 +316,18 @@ class AktivitasBelajarController extends Controller
         ]);
 
         return redirect()->back()->with('success', 'berhasil menambah');
+    }
+
+    public function refleksi($title, $no, $refleksiID)
+    {
+        $refleksi = RefleksiMateri::findorfail($refleksiID);
+
+        $data = [
+            'title' => $title,
+            'no' => $no,
+            'refleksi' => $refleksi
+        ];
+
+        return view('student.materi.refleksi', $data);
     }
 }

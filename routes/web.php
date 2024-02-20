@@ -73,6 +73,7 @@ Route::prefix('siswa')->middleware('student')->group(function () {
     Route::get('/aktivitas-belajar/eksplorasi/{title}/{no}/{aktivitasBelajarID}', [AktivitasBelajarController::class, 'eksplorasi'])->name('student.aktivitas.belajar.eksplorasi');
     Route::get('/aktivitas-belajar/forum/{title}/{no}/{aktivitasBelajarID}/{forumID}', [AktivitasBelajarController::class, 'forum'])->name('student.aktivitas.belajar.forum');
     Route::post('/aktivitas-belajar/store-forum/{forumID}', [AktivitasBelajarController::class, 'storeForum'])->name('student.aktivitas.belajar.store.forum');
+    Route::get('/aktivitas-belajar/refleksi/{title}/{no}/{refleksiID}', [AktivitasBelajarController::class, 'refleksi'])->name('student.aktivitas.belajar.refleksi');
 
     Route::get('/eksplorasi', [ExplorasiStudentController::class, 'index'])->name('student.eksplorasi');
 
@@ -96,7 +97,7 @@ Route::get('guru/login', [AuthGuruController::class, 'index'])->name('guru.login
 Route::post('guru/auth', [AuthGuruController::class, 'authenticate'])->name('guru.auth')->middleware('guest');
 Route::get('guru/logout', [AuthGuruController::class, 'logout'])->name('guru.logout')->middleware('teacher');
 
-Route::prefix('admin')->middleware('admin')->group(function () {
+Route::prefix('admin')->group(function () {
     Route::get('dashboard', [DashboardAdminController::class, 'index'])->name('admin.dashboard');
 
     Route::prefix('data-guru')->group(function () {

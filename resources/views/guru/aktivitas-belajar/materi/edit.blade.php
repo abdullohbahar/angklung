@@ -120,6 +120,16 @@
                                     <hr>
                                 </div>
                                 <div class="col-12">
+                                    <label for="">Refleksi - <small style="color: red">
+                                            Biarkan kosong jika tidak ada
+                                        </small></label>
+
+                                    <textarea name="refleksi" class="form-control" style="width:100%; height: 200px">{{ $materi->hasOneRefleksi?->embed }}</textarea>
+                                </div>
+                                <div class="col-12 mt-3">
+                                    <hr>
+                                </div>
+                                <div class="col-12">
                                     <div class="form-group form-check">
                                         <input type="checkbox" name="is_discussion"
                                             {{ $materi->is_discussion == true ? 'checked' : '' }} class="form-check-input"

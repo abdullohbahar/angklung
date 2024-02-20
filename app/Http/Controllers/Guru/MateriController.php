@@ -11,6 +11,7 @@ use App\Models\EksplorasiDiMateri;
 use App\Models\ForumContentMateri;
 use App\Http\Controllers\Controller;
 use App\Models\KeteranganSesudahMateri;
+use App\Models\RefleksiMateri;
 
 class MateriController extends Controller
 {
@@ -68,6 +69,13 @@ class MateriController extends Controller
             EksplorasiDiMateri::create([
                 'materi_id' => $materi->id,
                 'embed' => $request->eksplorasi
+            ]);
+        }
+
+        if ($request->refleksi) {
+            RefleksiMateri::create([
+                'materi_id' => $materi->id,
+                'embed' => $request->refleksi
             ]);
         }
 
@@ -159,6 +167,14 @@ class MateriController extends Controller
                 'materi_id' => $materi->id,
             ], [
                 'embed' => $request->eksplorasi
+            ]);
+        }
+
+        if ($request->refleksi) {
+            RefleksiMateri::updateorcreate([
+                'materi_id' => $materi->id,
+            ], [
+                'embed' => $request->refleksi
             ]);
         }
 

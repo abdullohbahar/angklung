@@ -41,4 +41,9 @@ class Materi extends Model
     {
         return $this->hasOne(ForumMateri::class);
     }
+
+    public function hasOneRefleksi(): HasOne
+    {
+        return $this->hasOne(RefleksiMateri::class);
+    }
 }
