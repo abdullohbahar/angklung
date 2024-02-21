@@ -1,7 +1,7 @@
 @extends('student.main-menu.layout.app')
 
 @section('title')
-    Materi Getaran
+    Materi Gelombang
 @endsection
 
 @push('addons-css')
@@ -75,7 +75,7 @@
                 <div class="row">
                     <div class="col-12 my-3 text-center">
                         <h1 class="outline"><b>Materi</b></h1>
-                        <h1 class="outline"><b>Getaran</b></h1>
+                        <h1 class="outline"><b>Gelombang</b></h1>
                     </div>
                     <div class="row ms-0">
                         <div class="col-12">
@@ -84,11 +84,11 @@
                                     <div class="row">
                                         <div class="col-12 text-center">
                                             <h4>
-                                                <b>Mari Kita Masuk Ke Materi Getaran</b>
+                                                <b>Mari Kita Masuk Ke Materi Gelombang</b>
                                             </h4>
                                         </div>
                                         <div class="col-12 mt-3">
-                                            <a href="{{ route('materi.getaran.orientasi') }}" class="btn btn-warning"
+                                            <a href="{{ route('materi.gelombang.orientasi') }}" class="btn btn-warning"
                                                 style="width: 100%;">
                                                 <h5 class="mt-2">
                                                     <b>
@@ -98,7 +98,17 @@
                                             </a>
                                         </div>
                                         <div class="col-12 mt-3">
-                                            <a href="{{ route('materi.getaran.eksperimen') }}" class="btn btn-danger"
+                                            <a href="{{ route('materi.gelombang.eksplorasi') }}" class="btn btn-danger"
+                                                style="width: 100%">
+                                                <h5 class="mt-2">
+                                                    <b>
+                                                        Eksplorasi
+                                                    </b>
+                                                </h5>
+                                            </a>
+                                        </div>
+                                        <div class="col-12 mt-3">
+                                            <a href="{{ route('materi.gelombang.eksperimen') }}" class="btn btn-primary"
                                                 style="width: 100%">
                                                 <h5 class="mt-2">
                                                     <b>
@@ -108,7 +118,7 @@
                                             </a>
                                         </div>
                                         <div class="col-12 mt-3">
-                                            <a href="{{ route('materi.getaran.forum') }}" class="btn btn-info"
+                                            <a href="{{ route('materi.gelombang.forum') }}" class="btn btn-info"
                                                 style="width: 100%">
                                                 <h5 class="mt-2">
                                                     <b>
@@ -128,11 +138,21 @@
                                             </a>
                                         </div> --}}
                                         <div class="col-12 mt-3">
-                                            <a href="{{ route('materi.getaran.refleksi') }}" class="btn btn-success"
+                                            <a href="{{ route('materi.gelombang.refleksi') }}" class="btn btn-success"
                                                 style="width: 100%">
                                                 <h5 class="mt-2">
                                                     <b>
                                                         Refleksi
+                                                    </b>
+                                                </h5>
+                                            </a>
+                                        </div>
+                                        <div class="col-12 mt-3">
+                                            <a href="{{ route('materi.gelombang.quiz') }}" class="btn btn-danger"
+                                                style="width: 100%">
+                                                <h5 class="mt-2">
+                                                    <b>
+                                                        Quiz
                                                     </b>
                                                 </h5>
                                             </a>
