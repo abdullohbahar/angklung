@@ -89,7 +89,7 @@
                                         <div class="row">
                                             <div class="col-12">
                                                 <textarea name="resume" required class="form-control" placeholder="Tuliskan resume hasil presentasi disini"
-                                                    style="height: 150px" id=""></textarea>
+                                                    style="height: 150px" id="">{{ $resume }}</textarea>
                                             </div>
                                         </div>
                                         <div class="row">

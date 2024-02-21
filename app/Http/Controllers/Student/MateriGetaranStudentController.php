@@ -19,20 +19,32 @@ class MateriGetaranStudentController extends Controller
 
     public function orientasi()
     {
-        return view('student.materi-getaran.orientasi');
+        $userID = auth()->user()->id;
+
+        $jawaban1 = JawabanMateriGetaran::where('user_id', $userID)->where('nomor_soal', 1)->first()?->jawaban;
+        $jawaban2 = JawabanMateriGetaran::where('user_id', $userID)->where('nomor_soal', 2)->first()?->jawaban;
+
+        $data = [
+            'jawaban1' => $jawaban1 ?? '',
+            'jawaban2' => $jawaban2 ?? ''
+        ];
+
+        return view('student.materi-getaran.orientasi', $data);
     }
 
     public function storeOrientasi(Request $request)
     {
-        JawabanMateriGetaran::create([
+        JawabanMateriGetaran::updateorcreate([
             'user_id' => auth()->user()->id,
             'nomor_soal' => 1,
+        ], [
             'jawaban' => $request->jawaban1,
         ]);
 
-        JawabanMateriGetaran::create([
+        JawabanMateriGetaran::updateorcreate([
             'user_id' => auth()->user()->id,
             'nomor_soal' => 2,
+        ], [
             'jawaban' => $request->jawaban2,
         ]);
 
@@ -46,20 +58,32 @@ class MateriGetaranStudentController extends Controller
 
     public function orientasi2()
     {
-        return view('student.materi-getaran.orientasi2');
+        $userID = auth()->user()->id;
+
+        $jawaban3 = JawabanMateriGetaran::where('user_id', $userID)->where('nomor_soal', 3)->first()?->jawaban;
+        $jawaban4 = JawabanMateriGetaran::where('user_id', $userID)->where('nomor_soal', 4)->first()?->jawaban;
+
+        $data = [
+            'jawaban3' => $jawaban3 ?? '',
+            'jawaban4' => $jawaban4 ?? ''
+        ];
+
+        return view('student.materi-getaran.orientasi2', $data);
     }
 
     public function storeOrientasi2(Request $request)
     {
-        JawabanMateriGetaran::create([
+        JawabanMateriGetaran::updateorcreate([
             'user_id' => auth()->user()->id,
             'nomor_soal' => 3,
+        ], [
             'jawaban' => $request->jawaban3,
         ]);
 
-        JawabanMateriGetaran::create([
+        JawabanMateriGetaran::updateorcreate([
             'user_id' => auth()->user()->id,
             'nomor_soal' => 4,
+        ], [
             'jawaban' => $request->jawaban4,
         ]);
 
@@ -73,8 +97,9 @@ class MateriGetaranStudentController extends Controller
 
     public function storeEksperimen(Request $request)
     {
-        EksperimenMateriGetaran::create([
+        EksperimenMateriGetaran::updateorcreate([
             'user_id' => auth()->user()->id,
+        ], [
             'is_answered' => true
         ]);
 
@@ -108,15 +133,24 @@ class MateriGetaranStudentController extends Controller
 
     public function resume()
     {
-        return view('student.materi-getaran.resume');
+        $userID = auth()->user()->id;
+
+        $resume = ResumeDiskusiMateriGerakan::where('user_id', $userID)->first()?->resume ?? '';
+
+        $data = [
+            'resume' => $resume
+        ];
+
+        return view('student.materi-getaran.resume', $data);
     }
 
     public function storeResume(Request $request)
     {
         $userID = auth()->user()->id;
 
-        ResumeDiskusiMateriGerakan::create([
+        ResumeDiskusiMateriGerakan::updateorcreate([
             'user_id' => $userID,
+        ], [
             'resume' => $request->resume
         ]);
 
@@ -130,8 +164,9 @@ class MateriGetaranStudentController extends Controller
 
     public function storeRefleksi(Request $request)
     {
-        RefleksiMateriGetaran::create([
+        RefleksiMateriGetaran::updateorcreate([
             'user_id' => auth()->user()->id,
+        ], [
             'is_answered' => true
         ]);
 

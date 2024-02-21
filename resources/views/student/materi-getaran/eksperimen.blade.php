@@ -46,9 +46,9 @@
         }
 
         /* iframe {
-                                                                                        width: 100% !important;
-                                                                                        height: 500px !important;
-                                                                                    } */
+                                                                                                width: 100% !important;
+                                                                                                height: 500px !important;
+                                                                                            } */
     </style>
 @endpush
 
@@ -95,7 +95,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <form action="{{ route('materi.getaran.resume.store') }}" method="POST">
+                                    <form action="{{ route('materi.getaran.eksperimen.store') }}" method="POST">
                                         @csrf
                                         <div class="row">
                                             <div class="col-sm-12 col-md-6 col-lg-6 mt-3 text-center">

@@ -109,7 +109,7 @@
                                             </div>
                                             <div class="col-12 mt-3">
                                                 <textarea name="jawaban3" required class="form-control" placeholder="Tuliskan Jawaban Anda Disini" style="height: 150px"
-                                                    id=""></textarea>
+                                                    id="">{{ $jawaban3 }}</textarea>
                                             </div>
                                         </div>
                                         <div class="row">
@@ -118,7 +118,7 @@
                                             </div>
                                             <div class="col-12 mt-3">
                                                 <textarea name="jawaban4" required class="form-control" placeholder="Tuliskan Jawaban Anda Disini" style="height: 150px"
-                                                    id=""></textarea>
+                                                    id="">{{ $jawaban4 }}</textarea>
                                             </div>
                                         </div>
                                         <div class="row">
