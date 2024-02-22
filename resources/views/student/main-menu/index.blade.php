@@ -39,7 +39,7 @@
                             </div>
                         </div>
                     </a>
-                    <a href="{{ route('student.eksplorasi') }}" class="text-decoration-none col-6 content-center gx-3 gy-3">
+                    {{-- <a href="{{ route('student.eksplorasi') }}" class="text-decoration-none col-6 content-center gx-3 gy-3">
                         <div class="card card-border">
                             <div class="card-body text-center">
                                 <img src="{{ asset('./guest-assets/project.svg') }}" alt="">
@@ -48,7 +48,7 @@
                                 </div>
                             </div>
                         </div>
-                    </a>
+                    </a> --}}
                     <a href="{{ route('student.progress') }}" class="text-decoration-none col-6 content-center gx-3 gy-3">
                         <div class="card card-border">
                             <div class="card-body text-center">
@@ -81,7 +81,7 @@
                             </div>
                         </div>
                     </a>
-                    <a href="{{ route('student.forum') }}" class="text-decoration-none col-6 content-center gx-3 gy-3">
+                    {{-- <a href="{{ route('student.forum') }}" class="text-decoration-none col-6 content-center gx-3 gy-3">
                         <div class="card card-border">
                             <div class="card-body">
                                 <img src="{{ asset('./guest-assets/project.svg') }}" alt="">
@@ -90,7 +90,7 @@
                                 </div>
                             </div>
                         </div>
-                    </a>
+                    </a> --}}
                 </div>
             </div>
         </div>

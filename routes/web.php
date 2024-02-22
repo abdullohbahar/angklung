@@ -34,6 +34,7 @@ use App\Http\Controllers\Guru\ProgressSiswaController;
 use App\Http\Controllers\SaveImageController;
 use App\Http\Controllers\StoreFourmMessage;
 use App\Http\Controllers\Student\ForumController as StudentForumController;
+use App\Http\Controllers\Student\MateriGelombangBunyiController;
 use App\Http\Controllers\Student\MateriGelombangController;
 use App\Http\Controllers\Student\MateriGetaranStudentController;
 use App\Http\Controllers\Student\ProgressController;
@@ -139,6 +140,18 @@ Route::prefix('siswa')->middleware('student')->group(function () {
 
             Route::get('quiz/', [MateriGelombangController::class, 'quiz'])->name('materi.gelombang.quiz');
             Route::post('store-quiz', [MateriGelombangController::class, 'storeQuiz'])->name('materi.gelombang.store.quiz');
+        });
+
+        Route::prefix('gelombang-bunyi')->group(function () {
+            Route::get('/', [MateriGelombangBunyiController::class, 'index'])->name('materi.gelombang.bunyi');
+
+            Route::get('/orientasi', [MateriGelombangBunyiController::class, 'orientasi'])->name('materi.gelombang.bunyi.orientasi');
+            Route::post('/store-orientasi', [MateriGelombangBunyiController::class, 'storeOrientasi'])->name('materi.gelombang.bunyi.store.orientasi');
+            Route::get('orientasi/pernyataan-1', [MateriGelombangBunyiController::class, 'pernyataan1'])->name('materi.gelombang.bunyi.pernyataan1');
+            Route::post('redirect-pernyataan1', [MateriGelombangBunyiController::class, 'redirectPernyataan1'])->name('materi.gelombang.bunyi.redirect.pernyataan1');
+
+            Route::get('eksplorasi', [MateriGelombangBunyiController::class, 'eksplorasi'])->name('materi.gelombang.bunyi.eksplorasi');
+            Route::post('eksplorasi', [MateriGelombangBunyiController::class, 'storeEksplorasi'])->name('materi.gelombang.bunyi.store.eksplorasi');
         });
     });
 });

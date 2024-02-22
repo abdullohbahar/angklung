@@ -71,7 +71,7 @@
                                                     <h2><b>Getaran</b></h2>
                                                 </div>
                                                 <div class="col-12">
-                                                    <div class="row mt-4">
+                                                    <div class="row mt-2">
                                                         <div class="col-12">
                                                             <a href="{{ route('materi.getaran') }}"
                                                                 class="btn btn-lg btn-custom-yellow font-aktivitas"
@@ -99,7 +99,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="row mt-3">
+                                    <div class="row mt-5">
                                         <div class="col-3 text-center">
                                             <img src="asdf" class="w-75 mt-2 img-circle" alt="">
                                         </div>
@@ -109,9 +109,47 @@
                                                     <h2><b>Gelombang</b></h2>
                                                 </div>
                                                 <div class="col-12">
-                                                    <div class="row mt-4">
+                                                    <div class="row mt-2">
                                                         <div class="col-12">
                                                             <a href="{{ route('materi.gelombang') }}"
+                                                                class="btn btn-lg btn-custom-yellow font-aktivitas"
+                                                                id="materi" style="width: 100%;">
+                                                                <b>
+                                                                    <h5 class="mt-2">
+                                                                        <b>Materi</b>
+                                                                    </h5>
+                                                                </b>
+                                                            </a>
+                                                        </div>
+                                                        {{-- <div class="col-6">
+                                                            <a href="{{ route('aktivitas', $activity->id) }}"
+                                                                class="btn btn-lg btn-custom-red font-aktivitas"
+                                                                style="width: 100%;">
+                                                                <h5 class="mt-2">
+                                                                    <b>
+                                                                        <b>Aktivitas {{ $key += 1 }}</b>
+                                                                    </b>
+                                                                </h5>
+                                                            </a>
+                                                        </div> --}}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row mt-5">
+                                        <div class="col-3 text-center">
+                                            <img src="asdf" class="w-75 mt-2 img-circle" alt="">
+                                        </div>
+                                        <div class="col-9">
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    <h2><b>Gelombang Bunyi</b></h2>
+                                                </div>
+                                                <div class="col-12">
+                                                    <div class="row mt-2">
+                                                        <div class="col-12">
+                                                            <a href="{{ route('materi.gelombang.bunyi') }}"
                                                                 class="btn btn-lg btn-custom-yellow font-aktivitas"
                                                                 id="materi" style="width: 100%;">
                                                                 <b>
