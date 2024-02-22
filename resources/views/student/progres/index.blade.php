@@ -38,7 +38,7 @@
             <div class="col-sm-12 col-md-12 col-lg-10">
                 <div class="row">
                     <div class="col-12 my-3 text-center">
-                        <h1><b class="outline-font">Capaian Pembelajaran</b></h1>
+                        <h1><b class="outline-font">Progres</b></h1>
                     </div>
                     <div class="row ms-0 mt-3">
                         <div class="col-12">
@@ -54,28 +54,60 @@
                                     <div id="flush-aktivitas" class="accordion-collapse collapse"
                                         data-bs-parent="#aktivitas">
                                         <div class="accordion-body">
-                                            @foreach ($summary as $aktivitas)
-                                                @foreach ($aktivitas as $summary)
-                                                    @php
-                                                        if ($summary['presentase'] <= 25) {
-                                                            $color = 'bg-danger';
-                                                        } elseif ($summary['presentase'] <= 50) {
-                                                            $color = 'bg-warning';
-                                                        } elseif ($summary['presentase'] <= 75) {
-                                                            $color = 'bg-info';
-                                                        } elseif ($summary['presentase'] <= 100) {
-                                                            $color = 'bg-success';
-                                                        }
-                                                    @endphp
-                                                    <h5 for="" class="mt-3"><b>{{ $summary['title'] }}</b></h5>
-                                                    <div class="progress">
-                                                        <div class="progress-bar progress-bar-striped {{ $color }}"
-                                                            role="progressbar" style="width: {{ $summary['presentase'] }}%;"
-                                                            aria-valuenow="{{ $summary['presentase'] }}" aria-valuemin="0"
-                                                            aria-valuemax="100"><b>{{ $summary['presentase'] }}%</b></div>
-                                                    </div>
-                                                @endforeach
-                                            @endforeach
+                                            @php
+                                                if ($progressGetaran <= 25) {
+                                                    $color = 'bg-danger';
+                                                } elseif ($progressGetaran <= 50) {
+                                                    $color = 'bg-warning';
+                                                } elseif ($progressGetaran <= 75) {
+                                                    $color = 'bg-info';
+                                                } elseif ($progressGetaran <= 100) {
+                                                    $color = 'bg-success';
+                                                }
+                                            @endphp
+                                            <h5 for="" class="mt-3"><b>Getaran</b></h5>
+                                            <div class="progress">
+                                                <div class="progress-bar progress-bar-striped {{ $color }}"
+                                                    role="progressbar" style="width: {{ $progressGetaran }}%;"
+                                                    aria-valuenow="{{ $progressGetaran }}" aria-valuemin="0"
+                                                    aria-valuemax="100"><b>{{ $progressGetaran }}%</b></div>
+                                            </div>
+                                            @php
+                                                if ($progressGelombang <= 25) {
+                                                    $color = 'bg-danger';
+                                                } elseif ($progressGelombang <= 50) {
+                                                    $color = 'bg-warning';
+                                                } elseif ($progressGelombang <= 75) {
+                                                    $color = 'bg-info';
+                                                } elseif ($progressGelombang <= 100) {
+                                                    $color = 'bg-success';
+                                                }
+                                            @endphp
+                                            <h5 for="" class="mt-3"><b>Gelombang</b></h5>
+                                            <div class="progress">
+                                                <div class="progress-bar progress-bar-striped {{ $color }}"
+                                                    role="progressbar" style="width: {{ $progressGelombang }}%;"
+                                                    aria-valuenow="{{ $progressGelombang }}" aria-valuemin="0"
+                                                    aria-valuemax="100"><b>{{ $progressGelombang }}%</b></div>
+                                            </div>
+                                            @php
+                                                if ($progressGelombangBunyi <= 25) {
+                                                    $color = 'bg-danger';
+                                                } elseif ($progressGelombangBunyi <= 50) {
+                                                    $color = 'bg-warning';
+                                                } elseif ($progressGelombangBunyi <= 75) {
+                                                    $color = 'bg-info';
+                                                } elseif ($progressGelombangBunyi <= 100) {
+                                                    $color = 'bg-success';
+                                                }
+                                            @endphp
+                                            <h5 for="" class="mt-3"><b>Gelombang Bunyi</b></h5>
+                                            <div class="progress">
+                                                <div class="progress-bar progress-bar-striped {{ $color }}"
+                                                    role="progressbar" style="width: {{ $progressGelombangBunyi }}%;"
+                                                    aria-valuenow="{{ $progressGelombangBunyi }}" aria-valuemin="0"
+                                                    aria-valuemax="100"><b>{{ $progressGelombangBunyi }}%</b></div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
