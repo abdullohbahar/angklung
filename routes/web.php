@@ -29,6 +29,7 @@ use App\Http\Controllers\Guru\DataSiswaController as GuruDataSiswaController;
 use App\Http\Controllers\Guru\AktivitasBelajarController as GuruAktivitasBelajarController;
 use App\Http\Controllers\Guru\CapaianPembelajaranController as GuruCapaianPembelajaranController;
 use App\Http\Controllers\Guru\ForumController;
+use App\Http\Controllers\Guru\PenilaianEssayController;
 use App\Http\Controllers\Guru\PresensiController;
 use App\Http\Controllers\Guru\ProgressSiswaController;
 use App\Http\Controllers\SaveImageController;
@@ -259,6 +260,15 @@ Route::prefix('guru')->middleware('teacher')->group(function () {
         Route::get('/ubah/{id}', [PenilaianController::class, 'edit'])->name('guru.edit.penilaian');
         Route::put('/update/{id}', [PenilaianController::class, 'update'])->name('guru.update.penilaian');
         Route::delete('/destroy/{id}', [PenilaianController::class, 'destroy'])->name('guru.destroy.penilaian');
+    });
+
+    Route::prefix('penilaian-essay')->group(function () {
+        Route::get('/', [PenilaianEssayController::class, 'index'])->name('guru.penilaian.essay');
+        Route::get('/tambah', [PenilaianEssayController::class, 'create'])->name('guru.create.penilaian.essay');
+        Route::post('/simpan', [PenilaianEssayController::class, 'store'])->name('guru.store.penilaian.essay');
+        Route::get('/ubah/{id}', [PenilaianEssayController::class, 'edit'])->name('guru.edit.penilaian.essay');
+        Route::put('/update/{id}', [PenilaianEssayController::class, 'update'])->name('guru.update.penilaian.essay');
+        Route::delete('/destroy/{id}', [PenilaianEssayController::class, 'destroy'])->name('guru.destroy.penilaian.essay');
     });
 
     Route::prefix('presensi')->group(function () {

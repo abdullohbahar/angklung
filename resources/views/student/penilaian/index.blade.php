@@ -46,6 +46,10 @@
             width: 100% !important;
             height: 1000px !important;
         }
+
+        .ck-table-resized {
+            width: 100% !important;
+        }
     </style>
 @endpush
 
@@ -68,7 +72,7 @@
 
     <div class="container-fluid">
         <div class="row justify-content-center">
-            <div class="col-sm-12 col-md-12 col-lg-11">
+            <div class="col-sm-12 col-md-12 col-lg-9">
                 <div class="row">
                     <div class="col-12 my-3 text-center">
                         <h1><b>Penilaian</b></h1>

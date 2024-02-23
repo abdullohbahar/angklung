@@ -1,7 +1,7 @@
 @extends('guru.layout.app')
 
 @section('title')
-    Penilaian
+    Penilaian Essay
 @endsection
 
 @push('addons-css')
@@ -15,12 +15,12 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0">Penilaian</h1>
+                        <h1 class="m-0">Penilaian Essay</h1>
                     </div><!-- /.col -->
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item active">Penilaian</li>
+                            <li class="breadcrumb-item active">Penilaian Essay</li>
                         </ol>
                     </div><!-- /.col -->
                 </div><!-- /.row -->
@@ -34,7 +34,8 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="card-tools">
-                            <a href="{{ route('guru.create.penilaian') }}" class="btn btn-brown rounded-pill">Tambah Soal
+                            <a href="{{ route('guru.create.penilaian.essay') }}" class="btn btn-brown rounded-pill">Tambah
+                                Soal
                             </a>
                         </div>
                     </div>
@@ -45,9 +46,7 @@
                                     <thead>
                                         <tr>
                                             <th style="width: 5%">No</th>
-                                            {{-- <th>Soal</th> --}}
-                                            <th>Kunci Jawaban Soal</th>
-                                            <th>Kunci Jawaban Alasan</th>
+                                            <th>Soal</th>
                                             <th>Aksi</th>
                                         </tr>
                                     </thead>
@@ -57,13 +56,11 @@
                                         @endphp
                                         @foreach ($penilaian as $penilaian)
                                             <tr>
-                                                <td>{{ $penilaian->nomor }}</td>
-                                                {{-- <td>{!! substr($penilaian->soal, 0, 100) !!}</td> --}}
-                                                <td>{{ $penilaian->kunci_jawaban }}</td>
-                                                <td>{{ $penilaian->kunci_alasan }}</td>
+                                                <td>{{ $penilaian->nomor_soal }}</td>
+                                                <td>{!! substr($penilaian->soal, 0, 100) !!}</td>
                                                 <td>
                                                     <div class="btn-group" role="group" aria-label="Basic example">
-                                                        <a href="{{ route('guru.edit.penilaian', $penilaian->id) }}"
+                                                        <a href="{{ route('guru.edit.penilaian.essay', $penilaian->id) }}"
                                                             class="btn btn-warning">Ubah</a>
                                                         <button type="button" class="btn btn-danger" id="removeBtn"
                                                             data-id="{{ $penilaian->id }}">Hapus</button>
@@ -109,7 +106,7 @@
             }).then((result) => {
                 if (result.isConfirmed) {
                     $.ajax({
-                        url: '/guru/penilaian/destroy/' + id,
+                        url: '/guru/penilaian-essay/destroy/' + id,
                         type: 'DELETE',
                         success: function(response) {
                             if (response.code == 200) {

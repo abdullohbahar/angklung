@@ -149,7 +149,16 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                 class="nav-link white-nav {{ $active == 'penilaian' ? 'active' : '' }}">
                                 <i class="nav-icon fas fa-file-alt"></i>
                                 <p>
-                                    <b>Penilaian</b>
+                                    <b>Penilaian Pilihan Ganda</b>
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('guru.penilaian.essay') }}"
+                                class="nav-link white-nav {{ $active == 'penilaian-essay' ? 'active' : '' }}">
+                                <i class="nav-icon fas fa-file-alt"></i>
+                                <p>
+                                    <b>Penilaian Essay</b>
                                 </p>
                             </a>
                         </li>
