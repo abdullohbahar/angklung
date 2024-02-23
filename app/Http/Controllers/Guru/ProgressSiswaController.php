@@ -15,11 +15,15 @@ class ProgressSiswaController extends Controller
 
         $progress = new ProgressController();
 
-        $summary = $progress->progressAktivitasBelajar($siswaID);
+        $progressGetaran = $progress->progressGetaran($siswaID);
+        $progressGelombang = $progress->progressGelombang($siswaID);
+        $progressGelombangBunyi = $progress->progressGelombangBunyi($siswaID);
 
         $data = [
             'presensis' => $presensis,
-            'summary' => $summary,
+            'progressGetaran' => $progressGetaran,
+            'progressGelombang' => $progressGelombang,
+            'progressGelombangBunyi' => $progressGelombangBunyi,
             'active' => 'data-siswa'
         ];
 
