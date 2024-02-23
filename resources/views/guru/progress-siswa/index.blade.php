@@ -144,6 +144,362 @@
                     </div>
                 </div>
             </div>
+
+            <div class="container-fluid mb-5">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h2>
+                                    <b>Jawaban Aktivitas Belajar</b>
+                                </h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <div class="accordion" id="accordionGetaran">
+                            <div class="card">
+                                <div class="card-header" id="headingGetaran">
+                                    <h2 class="mb-0">
+                                        <button class="btn btn-link btn-block text-left" type="button"
+                                            data-toggle="collapse" data-target="#collapseGetaran" aria-expanded="true"
+                                            aria-controls="collapseGetaran">
+                                            <h4>
+                                                <b>
+                                                    Getaran
+                                                </b>
+                                            </h4>
+                                        </button>
+                                    </h2>
+                                </div>
+
+                                <div id="collapseGetaran" class="collapse" aria-labelledby="headingGetaran"
+                                    data-parent="#accordionGetaran">
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <iframe width="560" height="315"
+                                                    src="https://www.youtube.com/embed/ttgLyWFINJI?si=d6D2SdrQK7RLEwGJ"
+                                                    title="YouTube video player" frameborder="0"
+                                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                                    allowfullscreen></iframe>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="row">
+                                                    <div class="col-12 mt-3">
+                                                        <b>
+                                                            Pernahkah kalian melihat atau merasakan secara langsung
+                                                            peristiwa
+                                                            tersebut?
+                                                        </b>
+                                                    </div>
+                                                    <div class="col-12 mt-3">
+                                                        <textarea name="jawaban1" readonly class="form-control" style="height: 100px" id="">{{ $jawabanGetaran1 ?? '' }}</textarea>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-12 mt-3">
+                                                        <b>
+                                                            Apa yang menyebabkan senar berbunyi?
+                                                        </b>
+                                                    </div>
+                                                    <div class="col-12 mt-3">
+                                                        <textarea name="jawaban2" readonly class="form-control" style="height: 100px" id="">{{ $jawabanGetaran2 ?? '' }}</textarea>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-12">
+                                                        <hr>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-12">
+                                                        <iframe width="560" height="315"
+                                                            src="https://www.youtube.com/embed/kx1LVu8MobQ?si=oWOIybaa3oZlK4KJ"
+                                                            title="YouTube video player" frameborder="0"
+                                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                                            allowfullscreen></iframe>
+                                                    </div>
+                                                    <div class="col-12 mt-3">
+                                                        <b>
+                                                            Apa yang dimaksud getaran?
+                                                        </b>
+                                                    </div>
+                                                    <div class="col-12 mt-3">
+                                                        <textarea name="jawaban3" readonly class="form-control" placeholder="Tuliskan Jawaban Anda Disini"
+                                                            style="height: 100px" id="">{{ $jawabanGetaran3 }}</textarea>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-12 mt-3">
+                                                        <b>
+                                                            Apa saja bentuk-bentuk getaran dalam kehidupan sehari-hari?
+                                                        </b>
+                                                    </div>
+                                                    <div class="col-12 mt-3">
+                                                        <textarea name="jawaban4" readonly class="form-control" placeholder="Tuliskan Jawaban Anda Disini"
+                                                            style="height: 100px" id="">{{ $jawabanGetaran4 }}</textarea>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mt-2">
+                    <div class="col-12">
+                        <div class="accordion" id="accordionGelombang">
+                            <div class="card">
+                                <div class="card-header" id="headingGelombang">
+                                    <h2 class="mb-0">
+                                        <button class="btn btn-link btn-block text-left" type="button"
+                                            data-toggle="collapse" data-target="#collapseGelombang" aria-expanded="true"
+                                            aria-controls="collapseGelombang">
+                                            <h4>
+                                                <b>
+                                                    Gelombang
+                                                </b>
+                                            </h4>
+                                        </button>
+                                    </h2>
+                                </div>
+
+                                <div id="collapseGelombang" class="collapse" aria-labelledby="headingGelombang"
+                                    data-parent="#accordionGelombang">
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <div class="col-12">
+                                                    <iframe width="560" height="315"
+                                                        src="https://www.youtube.com/embed/thbfMutWkEU?si=FT2jS1-gF5QBHmQW"
+                                                        title="YouTube video player" frameborder="0"
+                                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                                        allowfullscreen></iframe>
+                                                </div>
+                                                <div class="col-12 mt-3">
+                                                    <b>Fenomena apa yang terjadi ?</b>
+                                                </div>
+                                                <div class="col-12 mt-3">
+                                                    <textarea name="jawaban1" readonly class="form-control" placeholder="Tuliskan Jawaban Anda Disini"
+                                                        style="height: 100px" id="">{{ $jawabanGelombang1 }}</textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <hr> <br>
+                                                <h6>
+                                                    <b>Eksplorasi</b>
+                                                </h6>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <iframe
+                                                    src="https://phet.colorado.edu/sims/html/waves-intro/latest/waves-intro_en.html"
+                                                    width="600" height="400" allowfullscreen>
+                                                </iframe>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <div class="col-12 mt-3">
+                                                    <b>Pertanyaan setelah melakukan eksplorasi, apa yang kalian ketahui
+                                                        tentang
+                                                        gelombang ?</b>
+                                                </div>
+                                                <div class="col-12 mt-3">
+                                                    <textarea name="jawaban1" readonly class="form-control" placeholder="Tuliskan Jawaban Anda Disini"
+                                                        style="height: 100px" id="">{{ $jawabanEksplorasiGelombang }}</textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <hr>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <h5>
+                                                    <b>Untuk menambah wawasan, silakan tonton video berikut ini !</b>
+                                                </h5>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <iframe width="560" height="315"
+                                                    src="https://www.youtube.com/embed/lVdQ8JMcmYY?si=jauCEcy6RXgG_wA8"
+                                                    title="YouTube video player" frameborder="0"
+                                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                                    allowfullscreen></iframe>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-12 mt-3">
+                                                1. Bagaimana perbedaan gelombang transversal dan gelombang longitudinal !
+                                            </div>
+                                            <div class="col-12 mt-3">
+                                                <textarea name="jawaban2" readonly class="form-control" placeholder="Tuliskan Jawaban Anda Disini"
+                                                    style="height: 100px" id="">{{ $jawabanGelombang2 ?? '' }}</textarea>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-12 mt-3">
+                                                2. Sebutkan contoh gelombang transversal dan gelombang longitudinal
+                                                (masing-masing 2)
+                                            </div>
+                                            <div class="col-12 mt-3">
+                                                <textarea name="jawaban3" readonly class="form-control" placeholder="Tuliskan Jawaban Anda Disini"
+                                                    style="height: 100px" id="">{{ $jawabanGelombang3 ?? '' }}</textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <div class="accordion" id="accordionGelombangBunyi">
+                            <div class="card">
+                                <div class="card-header" id="headingGelombangBunyi">
+                                    <h2 class="mb-0">
+                                        <button class="btn btn-link btn-block text-left" type="button"
+                                            data-toggle="collapse" data-target="#collapseGelombangBunyi"
+                                            aria-expanded="true" aria-controls="collapseGelombangBunyi">
+                                            <h4>
+                                                <b>
+                                                    Gelombang Bunyi
+                                                </b>
+                                            </h4>
+                                        </button>
+                                    </h2>
+                                </div>
+
+                                <div id="collapseGelombangBunyi" class="collapse" aria-labelledby="headingGelombangBunyi"
+                                    data-parent="#accordionGelombangBunyi">
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-12 mt-3">
+                                                <h5>
+                                                    <p style="text-align: justify;">
+                                                        Setiap alat music memiliki keunikan tersendiri dari bunyi yang
+                                                        dihasilkannya. Angklung merupakan alat musik tradisional yang
+                                                        terbuat
+                                                        dari
+                                                        bambu. Cara memainkan Angklung terbilang unik yaitu dengan cara
+                                                        digoyangkan
+                                                        sehingga menimbulkan getaran.
+                                                    </p>
+                                                </h5>
+                                            </div>
+                                            <div class="col-12 mt-4">
+                                                <iframe width="560" height="315"
+                                                    src="https://www.youtube.com/embed/WcIghfnVzyM?si=99afym3cjj2ZxVfe"
+                                                    title="YouTube video player" frameborder="0"
+                                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                                    allowfullscreen></iframe>
+                                            </div>
+                                            <div class="col-12 mt-3">
+                                                <h6>
+                                                    <p style="text-align: justify;">
+                                                        Angklung seringkali dimainkan sebagai pengiring lagu ataupun
+                                                        tarian-tarian
+                                                        pada acara tertentu oleh masyarakat Jawa Barat. Sebagian besar
+                                                        masyarakat
+                                                        menganggap music sebagai seni, padahal konsep mengandung banyak
+                                                        konsep
+                                                        dasar
+                                                        fisika khususnya konsep gelombang bunyi. Parameter dasar yang biasa
+                                                        digunakan pada music yaitu Pitch, Timbre, Loudness (kenyaringan) dan
+                                                        Timbre
+                                                        (Warna Bunyi).
+                                                    </p>
+                                                </h6>
+                                                <img src="{{ asset('./img/timbre.png') }}" style="width: 100%"
+                                                    alt="" srcset="">
+                                            </div>
+                                            <div class="col-12 mt-3">
+                                                <h5>
+                                                    <b>Carilah keterkaitan masing-masing parameter music dengan konsep
+                                                        sains!</b>
+                                                </h5>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-12 mt-3">
+                                                <b>
+                                                    1. Pitch
+                                                </b>
+                                            </div>
+                                            <div class="col-12 mt-3">
+                                                <textarea name="jawaban1" readonly class="form-control" placeholder="Tuliskan Jawaban Anda Disini"
+                                                    style="height: 150px" id="">{{ $jawabanGelombangBunyi1 ?? '' }}</textarea>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-12 mt-3">
+                                                <b>
+                                                    2. Timbre
+                                                </b>
+                                            </div>
+                                            <div class="col-12 mt-3">
+                                                <textarea name="jawaban2" readonly class="form-control" placeholder="Tuliskan Jawaban Anda Disini"
+                                                    style="height: 150px" id="">{{ $jawabanGelombangBunyi2 ?? '' }}</textarea>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-12 mt-3">
+                                                <b>
+                                                    3. Rhythm
+                                                </b>
+                                            </div>
+                                            <div class="col-12 mt-3">
+                                                <textarea name="jawaban3" readonly class="form-control" placeholder="Tuliskan Jawaban Anda Disini"
+                                                    style="height: 150px" id="">{{ $jawabanGelombangBunyi3 ?? '' }}</textarea>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-12 mt-3">
+                                                <b>
+                                                    4. Loudness
+                                                </b>
+                                            </div>
+                                            <div class="col-12 mt-3">
+                                                <textarea name="jawaban4" readonly class="form-control" placeholder="Tuliskan Jawaban Anda Disini"
+                                                    style="height: 150px" id="">{{ $jawabanGelombangBunyi4 ?? '' }}</textarea>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <hr>
+                                            </div>
+                                            <div class="col-12 mt-3">
+                                                <b>
+                                                    Berdasarkan studi literatur terkait parameter musik dan konsep sains
+                                                    yang telah dilakukan, cobalah buatkan gambar/skema yang menjelaskan
+                                                    variabel fisis dengan parameter musik.
+                                                </b>
+                                            </div>
+                                            <div class="col-12 mt-3">
+                                                <textarea name="jawaban5" readonly class="form-control" placeholder="Tuliskan Jawaban Anda Disini"
+                                                    style="height: 150px" id="">{{ $jawabanGelombangBunyi5 ?? '' }}</textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <!-- /.content -->
         </div>
     </div>
