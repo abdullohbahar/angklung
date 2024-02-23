@@ -15,6 +15,10 @@
         .ck-content {
             height: 300px !important;
         }
+
+        .ck.ck-editor {
+            margin-top: 30px !important;
+        }
     </style>
 @endpush
 
@@ -83,14 +87,7 @@
                                                         <b>A</b>
                                                     </td>
                                                     <td>
-                                                        <input type="text"
-                                                            class="form-control @error('jawabanA') is-invalid @enderror"
-                                                            name="jawabanA" value="{{ old('jawabanA') }}" id="">
-                                                        @error('jawabanA')
-                                                            <div class="invalid-feedback">
-                                                                {{ $message }}
-                                                            </div>
-                                                        @enderror
+                                                        <textarea name="jawabanA" class="jawabanA">{{ old('jawabanA') }}</textarea>
                                                     </td>
                                                     <td>
                                                         <div class="custom-control custom-radio">
@@ -108,14 +105,7 @@
                                                         <b>B</b>
                                                     </td>
                                                     <td>
-                                                        <input type="text"
-                                                            class="form-control @error('jawabanB') is-invalid @enderror"
-                                                            name="jawabanB" value="{{ old('jawabanB') }}" id="">
-                                                        @error('jawabanB')
-                                                            <div class="invalid-feedmonback">
-                                                                {{ $message }}
-                                                            </div>
-                                                        @enderror
+                                                        <textarea name="jawabanB" class="jawabanB mt-3">{{ old('jawabanB') }}</textarea>
                                                     </td>
                                                     <td>
                                                         <div class="custom-control custom-radio">
@@ -133,14 +123,7 @@
                                                         <b>C</b>
                                                     </td>
                                                     <td>
-                                                        <input type="text"
-                                                            class="form-control @error('jawabanC') is-invalid @enderror"
-                                                            name="jawabanC" value="{{ old('jawabanC') }}" id="">
-                                                        @error('jawabanC')
-                                                            <div class="invalid-feedback">
-                                                                {{ $message }}
-                                                            </div>
-                                                        @enderror
+                                                        <textarea name="jawabanC" class="jawabanC mt-3">{{ old('jawabanC') }}</textarea>
                                                     </td>
                                                     <td>
                                                         <div class="custom-control custom-radio">
@@ -158,14 +141,7 @@
                                                         <b>D</b>
                                                     </td>
                                                     <td>
-                                                        <input type="text"
-                                                            class="form-control @error('jawabanD') is-invalid @enderror"
-                                                            value="{{ old('jawabanD') }}" name="jawabanD" id="">
-                                                        @error('jawabanD')
-                                                            <div class="invalid-feedback">
-                                                                {{ $message }}
-                                                            </div>
-                                                        @enderror
+                                                        <textarea name="jawabanD" class="jawabanD mt-3">{{ old('jawabanD') }}</textarea>
                                                     </td>
                                                     <td>
                                                         <div class="custom-control custom-radio">
@@ -211,21 +187,14 @@
                                                         <b>A</b>
                                                     </td>
                                                     <td>
-                                                        <input type="text"
-                                                            class="form-control @error('alasanA') is-invalid @enderror"
-                                                            name="alasanA" id="" value="{{ old('alasanA') }}">
-                                                        @error('alasanA')
-                                                            <div class="invalid-feedback">
-                                                                {{ $message }}
-                                                            </div>
-                                                        @enderror
+                                                        <textarea name="alasanA" class="alasanA mt-3">{{ old('alasanA') }}</textarea>
                                                     </td>
                                                     <td>
                                                         <div class="custom-control custom-radio">
                                                             <input
                                                                 class="custom-control-input @error('jawabanAlasan') is-invalid @enderror"
-                                                                type="radio" id="customRadioAlasanA"
-                                                                name="jawabanAlasan" value="A"
+                                                                type="radio" id="customRadioAlasanA" name="jawabanAlasan"
+                                                                value="A"
                                                                 {{ old('jawabanAlasan') == 'A' ? 'checked' : '' }}>
                                                             <label for="customRadioAlasanA"
                                                                 class="custom-control-label"></label>
@@ -237,14 +206,8 @@
                                                         <b>B</b>
                                                     </td>
                                                     <td>
-                                                        <input type="text"
-                                                            class="form-control @error('alasanB') is-invalid @enderror"
-                                                            name="alasanB" value="{{ old('alasanB') }}" id="">
-                                                        @error('alasanB')
-                                                            <div class="invalid-feedback">
-                                                                {{ $message }}
-                                                            </div>
-                                                        @enderror
+                                                        <textarea name="alasanB" class="alasanB mt-3">{{ old('alasanB') }}</textarea>
+
                                                     </td>
                                                     <td>
                                                         <div class="custom-control custom-radio">
@@ -263,14 +226,8 @@
                                                         <b>C</b>
                                                     </td>
                                                     <td>
-                                                        <input type="text"
-                                                            class="form-control @error('alasanC') is-invalid @enderror"
-                                                            name="alasanC" value="{{ old('alasanC') }}" id="">
-                                                        @error('alasanC')
-                                                            <div class="invalid-feedback">
-                                                                {{ $message }}
-                                                            </div>
-                                                        @enderror
+                                                        <textarea name="alasanC" class="alasanC mt-3">{{ old('alasanC') }}</textarea>
+
                                                     </td>
                                                     <td>
                                                         <div class="custom-control custom-radio">
@@ -289,14 +246,7 @@
                                                         <b>D</b>
                                                     </td>
                                                     <td>
-                                                        <input type="text"
-                                                            class="form-control @error('alasanD') is-invalid @enderror"
-                                                            name="alasanD" value="{{ old('alasanD') }}" id="">
-                                                        @error('alasanD')
-                                                            <div class="invalid-feedback">
-                                                                {{ $message }}
-                                                            </div>
-                                                        @enderror
+                                                        <textarea name="alasanD" class="alasanD mt-3">{{ old('alasanD') }}</textarea>
                                                     </td>
                                                     <td>
                                                         <div class="custom-control custom-radio">

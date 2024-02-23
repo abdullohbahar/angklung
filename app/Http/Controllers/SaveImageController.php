@@ -42,8 +42,12 @@ class SaveImageController extends Controller
         $data = array();
         if (isset($_FILES['upload']['name'])) {
             $filename = $_FILES['upload']['name'];
-            $filepath = 'upload/' . $filename;
-            $fileextension = strtolower(pathinfo($filepath, PATHINFO_EXTENSION));
+            $fileextension = strtolower(pathinfo($filename, PATHINFO_EXTENSION));
+
+            // Generate a new unique filename
+            $newFilename = uniqid() . '.' . $fileextension;
+
+            $filepath = 'upload/' . $newFilename;
 
             if ($fileextension == 'jpg' || $fileextension == 'jpeg' || $fileextension == 'png') {
                 if (move_uploaded_file($_FILES['upload']['tmp_name'], $filepath)) {

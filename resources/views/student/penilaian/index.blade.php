@@ -68,7 +68,7 @@
 
     <div class="container-fluid">
         <div class="row justify-content-center">
-            <div class="col-sm-12 col-md-12 col-lg-7">
+            <div class="col-sm-12 col-md-12 col-lg-11">
                 <div class="row">
                     <div class="col-12 my-3 text-center">
                         <h1><b>Penilaian</b></h1>
