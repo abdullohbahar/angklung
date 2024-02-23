@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Models\AktivitasBelajar;
 use App\Http\Controllers\Controller;
 use App\Models\EksplorasiAktivitasBelajar;
+use App\Models\ForumMateriGelombang;
+use App\Models\ForumMateriGetaran;
 
 class AktivitasBelajarController extends Controller
 {
@@ -187,5 +189,44 @@ class AktivitasBelajarController extends Controller
         }
 
         return redirect()->back()->with('success', 'Berhasil disimpan');
+    }
+
+    public function forum($materi)
+    {
+        if ($materi == 'getaran') {
+            $forum = ForumMateriGetaran::with('user')->get();
+        } else if ($materi == 'gelombang') {
+            $forum = ForumMateriGelombang::with('user')->get();
+        }
+
+        $userID = auth()->user()->id;
+
+        $data = [
+            'forum' => $forum,
+            'active' => 'aktivitas-belajar',
+            'userID' => $userID,
+            'materi' => $materi
+        ];
+
+        return view('guru.aktivitas-belajar.forum', $data);
+    }
+
+    public function storeForum(Request $request, $materi)
+    {
+        $userID = auth()->user()->id;
+
+        if ($materi == 'getaran') {
+            ForumMateriGetaran::create([
+                'user_id' => $userID,
+                'body' => $request->body
+            ]);
+        } else if ($materi == 'gelombang') {
+            ForumMateriGelombang::create([
+                'user_id' => $userID,
+                'body' => $request->body
+            ]);
+        }
+
+        return redirect()->back()->with('success', 'berhasil menambah');
     }
 }

@@ -220,6 +220,9 @@ Route::prefix('guru')->middleware('teacher')->group(function () {
         Route::put('/update/{id}', [GuruAktivitasBelajarController::class, 'update'])->name('guru.update.aktivitas.belajar.siswa');
         Route::delete('/destroy/{id}', [GuruAktivitasBelajarController::class, 'destroy'])->name('guru.destroy.aktivitas.belajar.siswa');
 
+        Route::get('forum/{materi}', [GuruAktivitasBelajarController::class, 'forum'])->name('guru.aktivitas.belajar.forum');
+        Route::post('forum/{materi}', [GuruAktivitasBelajarController::class, 'storeForum'])->name('guru.aktivitas.belajar.store.forum');
+
         Route::prefix('materi')->group(function () {
             Route::get('/{id}', [MateriController::class, 'index'])->name('guru.materi');
             Route::post('/simpan', [MateriController::class, 'store'])->name('guru.store.materi');

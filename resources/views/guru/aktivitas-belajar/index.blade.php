@@ -46,18 +46,42 @@
                                     <thead>
                                         <tr>
                                             <th style="width: 5%">No</th>
-                                            <th style="width: 10%">Thumbnail</th>
                                             <th>Judul</th>
-                                            <th>Kode Masuk</th>
-                                            <th>Materi & Aktivitas</th>
-                                            <th>Aksi</th>
+                                            <th>
+                                                Forum
+                                            </th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @php
-                                            $no = 1;
-                                        @endphp
-                                        @foreach ($aktivitasBelajar as $aktivitas)
+                                        <tr>
+                                            <td>
+                                                1
+                                            </td>
+                                            <td>
+                                                Getaran
+                                            </td>
+                                            <td>
+                                                <a href="{{ route('guru.aktivitas.belajar.forum', 'getaran') }}"
+                                                    class="btn btn-info">
+                                                    Forum
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                2
+                                            </td>
+                                            <td>
+                                                Gelombang
+                                            </td>
+                                            <td>
+                                                <a href="{{ route('guru.aktivitas.belajar.forum', 'gelombang') }}"
+                                                    class="btn btn-info">
+                                                    Forum
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        {{-- @foreach ($aktivitasBelajar as $aktivitas)
                                             <tr>
                                                 <td>{{ $no++ }}</td>
                                                 <td>
@@ -71,8 +95,6 @@
                                                         class="btn btn-info rounded-pill">Materi</a>
                                                     <a href="{{ route('guru.aktivitas', $aktivitas->id) }}"
                                                         class="btn btn-warning rounded-pill">Aktivitas</a>
-                                                    {{-- <a href="{{ route('aktivitas.belajar.eksplorasi', $aktivitas->id) }}"
-                                                        class="btn btn-primary rounded-pill">Eksplorasi</a> --}}
                                                 </td>
                                                 <td>
                                                     <div class="btn-group" role="group" aria-label="Basic example">
@@ -83,7 +105,7 @@
                                                     </div>
                                                 </td>
                                             </tr>
-                                        @endforeach
+                                        @endforeach --}}
                                     </tbody>
                                 </table>
                             </div>

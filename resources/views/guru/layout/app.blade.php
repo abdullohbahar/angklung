@@ -131,7 +131,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                 class="nav-link white-nav {{ $active == 'aktivitas-belajar' ? 'active' : '' }}">
                                 <i class="nav-icon fas fa-file-alt"></i>
                                 <p>
-                                    <b>Aktivitas Belajar</b>
+                                    <b>Forum</b>
                                 </p>
                             </a>
                         </li>
@@ -162,7 +162,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                 </p>
                             </a>
                         </li>
-                        <li class="nav-item">
+                        {{-- <li class="nav-item">
                             <a href="{{ route('guru.forum') }}"
                                 class="nav-link white-nav {{ $active == 'forum' ? 'active' : '' }}">
                                 <i class="nav-icon fas fa-file-alt"></i>
@@ -170,7 +170,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                     <b>Forum</b>
                                 </p>
                             </a>
-                        </li>
+                        </li> --}}
                         {{-- <li class="nav-item">
                             <a href="{{ route('admin.member') }}"
                                 class="nav-link {{ $active == 'member' ? 'active' : '' }}">
