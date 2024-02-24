@@ -77,7 +77,7 @@
                         <div class="col-12">
                             <div class="card card-border" style="width: 100%">
                                 <div class="card-body text-center">
-                                    <h1>Selamat Anda Telah Menjawab Semua Pertanyaan Pilihan Ganda</h1>
+                                    <h1>Selamat Anda Telah Menjawab Semua Pertanyaan Essay</h1>
                                     <a class="btn btn-warning mt-3" href="{{ route('main.menu') }}">Kembali Ke Halaman
                                         Utama</a>
                                 </div>

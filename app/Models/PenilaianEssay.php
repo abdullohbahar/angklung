@@ -10,4 +10,9 @@ class PenilaianEssay extends Model
     use HasFactory;
 
     protected $guarded = [];
+
+    public function jawabanPenilaianEssay()
+    {
+        return $this->hasOne(JawabanPenilaianEssay::class);
+    }
 }

@@ -17,7 +17,7 @@ return new class extends Migration
             $table->unsignedBigInteger('penilaian_essay_id')->nullable();
             $table->foreign('penilaian_essay_id')->references('id')->on('penilaian_essays')->nullOnDelete();
             $table->text('jawaban');
-            $table->text('file');
+            $table->text('file')->nullable();
             $table->timestamps();
         });
     }

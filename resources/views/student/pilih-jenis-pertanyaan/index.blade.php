@@ -17,7 +17,7 @@
             <div class="col-sm-12 col-md-12 col-lg-7">
                 <div class="row text-center">
                     <div class="col-12 my-3 text-center">
-                        <h2><b>Menu Utama</b></h2>
+                        <h2><b>Pilih Jenis Penilaian</b></h2>
                     </div>
                     <a href="{{ route('student.penilaian', 1) }}" class="text-decoration-none col-6 content-center gx-3 gy-3">
                         <div class="card card-border" style="">
@@ -28,7 +28,8 @@
                             </div>
                         </div>
                     </a>
-                    <a href="{{ route('aktivitas.belajar') }}" class="text-decoration-none col-6 content-center gx-3 gy-3">
+                    <a href="{{ route('student.penilaian.essay', 1) }}"
+                        class="text-decoration-none col-6 content-center gx-3 gy-3">
                         <div class="card card-border">
                             <div class="card-body text-center">
                                 <div class="mt-5">

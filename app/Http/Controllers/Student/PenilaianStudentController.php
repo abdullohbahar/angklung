@@ -20,7 +20,7 @@ class PenilaianStudentController extends Controller
 
         if ($cekRiwayat) {
             $jawabanSoal = $cekRiwayat->jawaban_soal;
-            $jawabanAlasan = $cekRiwayat->jawaban_soal;
+            $jawabanAlasan = $cekRiwayat->jawaban_alasan;
         } else {
             $jawabanSoal = '';
             $jawabanAlasan = '';

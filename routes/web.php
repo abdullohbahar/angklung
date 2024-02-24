@@ -38,6 +38,7 @@ use App\Http\Controllers\Student\ForumController as StudentForumController;
 use App\Http\Controllers\Student\MateriGelombangBunyiController;
 use App\Http\Controllers\Student\MateriGelombangController;
 use App\Http\Controllers\Student\MateriGetaranStudentController;
+use App\Http\Controllers\Student\PenilianEssayController;
 use App\Http\Controllers\Student\PilihJenisPertanyaan;
 use App\Http\Controllers\Student\ProgressController;
 
@@ -157,6 +158,12 @@ Route::prefix('siswa')->middleware('student')->group(function () {
             Route::get('eksplorasi', [MateriGelombangBunyiController::class, 'eksplorasi'])->name('materi.gelombang.bunyi.eksplorasi');
             Route::post('eksplorasi', [MateriGelombangBunyiController::class, 'storeEksplorasi'])->name('materi.gelombang.bunyi.store.eksplorasi');
         });
+    });
+
+    Route::prefix('penilaian-essay')->group(function () {
+        Route::get('/nomor/{no}', [PenilianEssayController::class, 'index'])->name('student.penilaian.essay');
+        Route::post('/simpan-penilaian-essay/{id}', [PenilianEssayController::class, 'store'])->name('student.store.penilaian.essay');
+        Route::get('/penilaian-essay-selesai', [PenilianEssayController::class, 'selesai'])->name('student.penilaian.essay.selesai');
     });
 });
 
