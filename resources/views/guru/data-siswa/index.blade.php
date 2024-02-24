@@ -66,6 +66,8 @@
                                                 <td>{{ $student->jenis_kelamin }}</td>
                                                 <td>
                                                     <div class="btn-group" role="group" aria-label="Basic example">
+                                                        <a href="{{ route('guru.riwayat.pengerjaan', $student->id) }}"
+                                                            class="btn btn-primary">Penilaian</a>
                                                         <a href="{{ route('guru.progress.siswa', $student->id) }}"
                                                             class="btn btn-info">Progress Siswa</a>
                                                         <a href="{{ route('guru.edit.data.siswa', $student->id) }}"

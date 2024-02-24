@@ -32,6 +32,7 @@ use App\Http\Controllers\Guru\ForumController;
 use App\Http\Controllers\Guru\PenilaianEssayController;
 use App\Http\Controllers\Guru\PresensiController;
 use App\Http\Controllers\Guru\ProgressSiswaController;
+use App\Http\Controllers\Guru\RiwayatPengerjaanEssayController;
 use App\Http\Controllers\SaveImageController;
 use App\Http\Controllers\StoreFourmMessage;
 use App\Http\Controllers\Student\ForumController as StudentForumController;
@@ -298,6 +299,10 @@ Route::prefix('guru')->middleware('teacher')->group(function () {
         Route::put('/update/{id}', [ForumController::class, 'update'])->name('guru.update.forum');
         Route::delete('/destroy/{id}', [ForumController::class, 'destroy'])->name('guru.destroy.forum');
         Route::delete('/clear/{id}', [ForumController::class, 'clear'])->name('guru.clear.forum');
+    });
+
+    Route::prefix('penilaian')->group(function () {
+        Route::get('/{id}', [RiwayatPengerjaanEssayController::class, 'index'])->name('guru.riwayat.pengerjaan');
     });
 });
 

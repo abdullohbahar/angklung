@@ -10,4 +10,9 @@ class JawabanPenilaianEssay extends Model
     use HasFactory;
 
     protected $guarded = [];
+
+    public function hasOneSoal()
+    {
+        return $this->hasOne(PenilaianEssay::class, 'id', 'penilaian_essay_id');
+    }
 }
