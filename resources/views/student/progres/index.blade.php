@@ -19,7 +19,7 @@
 
 @section('content')
     <!-- As a link -->
-    <div class="container-fluid mt-3">
+    <div class="container-fluid mt-4">
         <div class="row justify-content-between">
             <div class="col-4">
                 <a href="{{ route('main.menu') }}">
@@ -40,7 +40,7 @@
                     <div class="col-12 my-3 text-center">
                         <h1><b class="outline-font">Progres</b></h1>
                     </div>
-                    <div class="row ms-0 mt-3">
+                    <div class="row ms-0 mt-4">
                         <div class="col-12">
                             <div class="accordion accordion-flush" id="aktivitas">
                                 <div class="accordion-item">
@@ -65,7 +65,7 @@
                                                     $color = 'bg-success';
                                                 }
                                             @endphp
-                                            <h5 for="" class="mt-3"><b>Getaran</b></h5>
+                                            <h5 for="" class="mt-4"><b>Getaran</b></h5>
                                             <div class="progress">
                                                 <div class="progress-bar progress-bar-striped {{ $color }}"
                                                     role="progressbar" style="width: {{ $progressGetaran }}%;"
@@ -83,7 +83,7 @@
                                                     $color = 'bg-success';
                                                 }
                                             @endphp
-                                            <h5 for="" class="mt-3"><b>Gelombang</b></h5>
+                                            <h5 for="" class="mt-4"><b>Gelombang</b></h5>
                                             <div class="progress">
                                                 <div class="progress-bar progress-bar-striped {{ $color }}"
                                                     role="progressbar" style="width: {{ $progressGelombang }}%;"
@@ -101,7 +101,7 @@
                                                     $color = 'bg-success';
                                                 }
                                             @endphp
-                                            <h5 for="" class="mt-3"><b>Gelombang Bunyi</b></h5>
+                                            <h5 for="" class="mt-4"><b>Gelombang Bunyi</b></h5>
                                             <div class="progress">
                                                 <div class="progress-bar progress-bar-striped {{ $color }}"
                                                     role="progressbar" style="width: {{ $progressGelombangBunyi }}%;"
@@ -114,7 +114,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row ms-0 mt-5 mb-5">
+                    <div class="row ms-0 mt-4">
                         <div class="col-12">
                             <div class="accordion accordion-flush" id="presensi">
                                 <div class="accordion-item">
@@ -158,6 +158,113 @@
                                                     @endforelse
                                                 </tbody>
                                             </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row ms-0 mt-4">
+                        <div class="col-12">
+                            <div class="accordion accordion-flush" id="pilgan">
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header">
+                                        <button class="accordion-button collapsed text-capitalize" type="button"
+                                            data-bs-toggle="collapse" data-bs-target="#flush-pilgan" aria-expanded="false"
+                                            aria-controls="flush-pilgan">
+                                            <h3><b>Penilaian Pilihan Ganda</b></h3>
+                                        </button>
+                                    </h2>
+                                    <div id="flush-pilgan" class="accordion-collapse collapse" data-bs-parent="#pilgan">
+                                        <div class="accordion-body">
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    <table class="table table-bordered table-striped">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>No</th>
+                                                                <th>Jawaban Soal</th>
+                                                                <th>Jawaban Alasan</th>
+                                                                <th>Score</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            @php
+                                                                $no = 1;
+                                                                $totalScore = 0;
+                                                            @endphp
+                                                            @foreach ($pilgans as $pilgan)
+                                                                <tr>
+                                                                    <td>{{ $no++ }}</td>
+                                                                    <td>{{ $pilgan->jawaban_soal }}</td>
+                                                                    <td>{{ $pilgan->jawaban_alasan }}</td>
+                                                                    <td>{{ $pilgan->score }}</td>
+                                                                </tr>
+                                                                @php
+                                                                    $totalScore += $pilgan->score;
+                                                                @endphp
+                                                            @endforeach
+                                                            <tr>
+                                                                <td style="text-align: right" colspan="3">
+                                                                    <b>Total Score</b>
+                                                                </td>
+                                                                <td>
+                                                                    {{ $totalScore }}
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row ms-0 mt-4 mb-5">
+                        <div class="col-12">
+                            <div class="accordion accordion-flush" id="essay">
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header">
+                                        <button class="accordion-button collapsed text-capitalize" type="button"
+                                            data-bs-toggle="collapse" data-bs-target="#flush-essay" aria-expanded="false"
+                                            aria-controls="flush-essay">
+                                            <h3><b>Essay</b></h3>
+                                        </button>
+                                    </h2>
+                                    <div id="flush-essay" class="accordion-collapse collapse" data-bs-parent="#essay">
+                                        <div class="accordion-body">
+                                            @foreach ($essays as $essay)
+                                                <div class="row">
+                                                    <div class="col-12">
+                                                        <h5>
+                                                            <b> Nomor {{ $essay->hasOneSoal->nomor_soal }}
+                                                            </b>
+                                                        </h5>
+                                                    </div>
+                                                    <div class="col-12">
+                                                        {!! $essay->hasOneSoal->soal !!}
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-12">
+                                                        <h6>
+                                                            <b>Jawaban</b>
+                                                        </h6>
+                                                        <textarea class="form-control" disabled rows="2">{{ $essay->jawaban }}</textarea>
+                                                        @if ($essay->file)
+                                                            <a href="{{ asset($essay->file) }}" class="btn btn-info mt-2"
+                                                                target="_blank">Lihat file yang diunggah</a>
+                                                        @endif
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-12">
+                                                        <hr>
+                                                    </div>
+                                                </div>
+                                            @endforeach
                                         </div>
                                     </div>
                                 </div>

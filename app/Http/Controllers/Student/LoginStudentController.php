@@ -45,4 +45,15 @@ class LoginStudentController extends Controller
             'email' => $request->email
         ]);
     }
+
+    public function logout(Request $request)
+    {
+        Auth::logout();
+
+        $request->session()->invalidate();
+
+        $request->session()->regenerateToken();
+
+        return to_route('login')->with('success', 'Logout Successfully');
+    }
 }

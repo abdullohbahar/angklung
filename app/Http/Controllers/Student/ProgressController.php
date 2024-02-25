@@ -4,21 +4,24 @@ namespace App\Http\Controllers\Student;
 
 use App\Models\Presensi;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
-use App\Models\AktivitasBelajar;
-use App\Models\EksperimenMateriGelombang;
-use App\Models\EksperimenMateriGetaran;
-use App\Models\EksplorasiMateriGelombangBunyi;
-use App\Models\ForumMateriGelombang;
-use App\Models\ForumMateriGetaran;
-use App\Models\JawabanEksplorasiMateriGelombang;
-use App\Models\JawabanMateriGelombang;
-use App\Models\JawabanMateriGelombangBunyi;
-use App\Models\JawabanMateriGetaran;
-use App\Models\QuizMateriGelombang;
-use App\Models\RefleksiMateriGelombang;
-use App\Models\RefleksiMateriGetaran;
+use App\Models\PenilaianEssay;
 use App\Models\RiwayatPresensi;
+use App\Models\AktivitasBelajar;
+use App\Models\RiwayatPenilaian;
+use App\Models\ForumMateriGetaran;
+use App\Models\QuizMateriGelombang;
+use App\Http\Controllers\Controller;
+use App\Models\ForumMateriGelombang;
+use App\Models\JawabanMateriGetaran;
+use App\Models\JawabanPenilaianEssay;
+use App\Models\RefleksiMateriGetaran;
+use App\Models\JawabanMateriGelombang;
+use App\Models\EksperimenMateriGetaran;
+use App\Models\RefleksiMateriGelombang;
+use App\Models\EksperimenMateriGelombang;
+use App\Models\JawabanMateriGelombangBunyi;
+use App\Models\EksplorasiMateriGelombangBunyi;
+use App\Models\JawabanEksplorasiMateriGelombang;
 
 class ProgressController extends Controller
 {
@@ -31,12 +34,17 @@ class ProgressController extends Controller
         $progressGetaran = $this->progressGetaran($userID);
         $progressGelombang = $this->progressGelombang($userID);
         $progressGelombangBunyi = $this->progressGelombangBunyi($userID);
+        $pilgans = RiwayatPenilaian::where('users_id', $userID)->orderBy('created_at', 'asc')->get();
+        $essays = JawabanPenilaianEssay::with('hasOneSoal')->where('user_id', $userID)->orderBy('created_at', 'asc')->get();
 
         $data = [
             'presensis' => $presensis,
             'progressGetaran' => $progressGetaran,
             'progressGelombang' => $progressGelombang,
-            'progressGelombangBunyi' => $progressGelombangBunyi
+            'progressGelombangBunyi' => $progressGelombangBunyi,
+            'pilgans' => $pilgans,
+            'essays' => $essays,
+
         ];
         return view('student.progres.index', $data);
     }

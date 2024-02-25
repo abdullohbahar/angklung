@@ -60,7 +60,7 @@ use App\Http\Controllers\Student\ProgressController;
 
 Route::get('/', [LoginStudentController::class, 'index'])->name('login')->middleware('guest');
 Route::post('siswa/auth', [LoginStudentController::class, 'auth'])->name('siswa.auth')->middleware('guest');
-Route::get('siswa/logout', [AuthGuruController::class, 'logout'])->name('guru.logout')->middleware('student');
+Route::get('siswa/logout', [LoginStudentController::class, 'logout'])->name('siswa.logout')->middleware('student');
 
 Route::prefix('siswa')->middleware('student')->group(function () {
 
