@@ -316,6 +316,12 @@
         </script>
     @endif
 
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+
     @stack('addons-js')
 </body>
 

@@ -4,6 +4,12 @@
 @endsection
 
 @push('addons-css')
+    <style>
+        .fa-5xl {
+            font-size: 5em;
+            line-height: .03125em;
+        }
+    </style>
 @endpush
 
 @section('content')
@@ -77,6 +83,16 @@
                                 <img src="{{ asset('./guest-assets/informasi-pengembang.svg') }}" alt="">
                                 <div class="mt-3">
                                     <p><b>Presensi</b></p>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="{{ route('siswa.logout') }}" class="text-decoration-none col-6 content-center gx-3 gy-3">
+                        <div class="card card-border">
+                            <div class="card-body">
+                                <i class="fa-solid fa-arrow-right-from-bracket fa-5xl mt-5"></i>
+                                <div class="mt-3">
+                                    <p><b>Log Out</b></p>
                                 </div>
                             </div>
                         </div>

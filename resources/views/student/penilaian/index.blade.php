@@ -59,7 +59,7 @@
     <div class="container-fluid mt-3">
         <div class="row justify-content-between">
             <div class="col-4">
-                <a href="{{ route('main.menu') }}">
+                <a href="javascript:void(0);" onclick="goBack()">
                     <i class="fa-solid fa-arrow-left fa-2x text-black"></i>
                 </a>
             </div>
