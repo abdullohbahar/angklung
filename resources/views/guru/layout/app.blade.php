@@ -100,7 +100,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                         data-accordion="false">
                         <li class="nav-item">
-                            <a href="{{ route('admin.dashboard') }}"
+                            <a href="{{ route('guru.dashboard') }}"
                                 class="nav-link white-nav {{ $active == 'dashboard' ? 'active' : '' }}">
                                 <i class="nav-icon fas fa-home"></i>
                                 <p>
@@ -237,7 +237,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('admin.logout') }}" class="nav-link white-nav">
+                            <a href="{{ route('guru.logout') }}" class="nav-link white-nav">
                                 <i class="nav-icon fas fa-sign-out-alt"></i>
                                 <p>
                                     <b>Logout</b>

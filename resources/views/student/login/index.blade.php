@@ -282,7 +282,7 @@
     <nav class="navbar fixed-bottom bg-body-tertiary">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">
-                &copy; {{ date('Y') }} Anggi - Universitas Negeri Yogyakarta
+                &copy; {{ date('Y') }} Anggi Datiatur Rahmat - Universitas Negeri Yogyakarta
             </a>
         </div>
     </nav>
