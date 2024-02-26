@@ -46,9 +46,9 @@
         }
 
         /* iframe {
-                                                                                                width: 100% !important;
-                                                                                                height: 500px !important;
-                                                                                            } */
+                                                                                                                                                                            width: 100% !important;
+                                                                                                                                                                            height: 500px !important;
+                                                                                                                                                                        } */
     </style>
 @endpush
 
@@ -79,12 +79,20 @@
                         <h1 class="outline"><b>Getaran</b></h1>
                     </div>
                     <div class="row ms-0">
+                        <div class="col-12 my-3">
+                            <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#instruksiModal"
+                                style="width: 100%; font-size: 17pt;">
+                                <b>
+                                    INSTRUKSI PENGERJAAN LEMBAR KERJA !!!
+                                </b>
+                            </button>
+                        </div>
                         <div class="col-12">
                             <div class="card card-border" style="width: 100%">
                                 <div class="card-body">
                                     <div class="row">
                                         <div class="col-12">
-                                            <div id="liveworksheet7536954" style="width:100%;">
+                                            <div id="liveworksheet7536954" style="width:100%; z-index:-9999 !important;">
                                                 <span id="lwslink7536954"><a
                                                         href="https://www.liveworksheets.com/w/id/ilmu-pengetahuan-alam-ipa/7536954">Getaran
                                                     </a>, an interactive worksheet by <a
@@ -116,6 +124,8 @@
             </div>
         </div>
     </div>
+
+    @include('student.materi-getaran.instruksi')
 @endsection
 
 @push('addons-js')

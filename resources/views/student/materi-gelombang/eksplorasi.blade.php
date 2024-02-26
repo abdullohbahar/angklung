@@ -46,9 +46,9 @@
         }
 
         /* iframe {
-                                                                                                                                            width: 100% !important;
-                                                                                                                                            height: 500px !important;
-                                                                                                                                        } */
+                                                                                                                                                                width: 100% !important;
+                                                                                                                                                                height: 500px !important;
+                                                                                                                                                            } */
     </style>
 @endpush
 
@@ -79,6 +79,7 @@
                         <h1 class="outline"><b>Gelombang</b></h1>
                     </div>
                     <div class="row ms-0">
+
                         <div class="col-12">
                             <div class="card card-border" style="width: 100%">
                                 <div class="card-body">
