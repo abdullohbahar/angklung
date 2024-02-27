@@ -1,5 +1,5 @@
 <div class="form-check">
-    <input class="form-check-input" type="radio" name="jawaban" value="A" id="jawabanA"
+    <input class="form-check-input" type="radio" required name="jawaban" value="A" id="jawabanA"
         {{ $jawabanSoal == 'A' ? 'checked' : '' }}>
     <label class="form-check-label" for="jawabanA">
         {!! $penilaian->pilihanJawaban->a !!}

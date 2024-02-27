@@ -319,3 +319,8 @@ Route::post('/store-message/{idForum}', StoreFourmMessage::class)->name('store.m
 Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']], function () {
     \UniSharp\LaravelFilemanager\Lfm::routes();
 });
+
+
+// tambah pilihan ganda beralasan
+// inggris menggunakan button jika pilih inggris maka dia bahasa inggris
+// ganti font dan ganti background di halaman siswa
