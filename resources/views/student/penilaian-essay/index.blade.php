@@ -91,7 +91,7 @@
                                         </h3>
                                         {!! $penilaian->soal !!}
                                         <h4 class="my-3"><b>Jawaban</b></h4>
-                                        <textarea name="jawaban" placeholder="Tuliskan Jawaban Anda Disini" class="form-control" rows="10">{{ $jawabanSoal }}</textarea>
+                                        <textarea name="jawaban" placeholder="Tuliskan Jawaban Anda Disini" class="form-control" required rows="10">{{ $jawabanSoal }}</textarea>
                                         <input type="hidden" name="no" value="{{ $penilaian->nomor_soal }}"
                                             id="">
 
