@@ -319,7 +319,7 @@
                 </div>
             </div>
         </div>
-        <div class="row justify-content-center mt-3">
+        <div class="row justify-content-center">
             <div class="col-sm-12 col-md-12 col-lg-10">
                 <div class="tile tile-alt" id="messages-main">
                     <div class="ms-body">

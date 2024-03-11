@@ -41,6 +41,7 @@ use App\Http\Controllers\Student\MateriGelombangController;
 use App\Http\Controllers\Student\MateriGetaranStudentController;
 use App\Http\Controllers\Student\PenilianEssayController;
 use App\Http\Controllers\Student\PilihJenisPertanyaan;
+use App\Http\Controllers\Student\ProfileController as StudentProfileController;
 use App\Http\Controllers\Student\ProgressController;
 
 /*
@@ -94,6 +95,8 @@ Route::prefix('siswa')->middleware('student')->group(function () {
     Route::prefix('progress')->group(function () {
         Route::get('/', [ProgressController::class, 'index'])->name('student.progress');
     });
+
+    Route::get('profile', [StudentProfileController::class, 'index'])->name('student.profile');
 
     Route::get('pilih-jenis-pertanyaan', PilihJenisPertanyaan::class)->name('student.pilih.jenis.pertanyaan');
 

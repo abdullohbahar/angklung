@@ -1,4 +1,4 @@
-<div class="card-header">
+<div class="card-header" style="font-size: 12pt !important">
     <ul class="nav nav-pills nav-fill">
         <li class="nav-item {{ Route::is('main.menu') ? 'active' : '' }}">
             <b>
@@ -16,9 +16,9 @@
                 </a>
             </b>
         </li>
-        <li class="nav-item">
+        <li class="nav-item {{ Route::is('student.profile') ? 'active' : '' }}">
             <b>
-                <a class="nav-link text-capitalize" href="#">
+                <a class="nav-link text-capitalize" href="{{ route('student.profile') }}">
                     <i class="fa-regular fa-user"></i>
                     {{ auth()->user()->fullname }}
                 </a>
