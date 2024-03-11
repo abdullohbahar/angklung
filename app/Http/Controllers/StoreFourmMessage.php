@@ -10,13 +10,12 @@ class StoreFourmMessage extends Controller
     /**
      * Handle the incoming request.
      */
-    public function __invoke(Request $request, $idForum)
+    public function __invoke(Request $request)
     {
         $userID = auth()->user()->id;
 
         ForumContent::create([
             'users_id' => $userID,
-            'forums_id' => $idForum,
             'body' => $request->body
         ]);
 

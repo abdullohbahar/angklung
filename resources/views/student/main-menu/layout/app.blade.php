@@ -16,6 +16,11 @@
     <link rel="stylesheet" href="{{ asset('./guest-assets/css/student.css') }}">
 
     <style>
+        .active {
+            background-color: #F0BD63 !important;
+            color: black !important;
+        }
+
         body {
             font-family: 'Open Sans', sans-serif;
             background-repeat: no-repeat;

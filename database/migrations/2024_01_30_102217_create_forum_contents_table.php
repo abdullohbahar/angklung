@@ -14,8 +14,6 @@ return new class extends Migration
         Schema::create('forum_contents', function (Blueprint $table) {
             $table->id();
             $table->foreignUuid('users_id')->references('id')->on('users')->onDelete('cascade');
-            $table->unsignedBigInteger('forums_id');
-            $table->foreign('forums_id')->references('id')->on('forums')->onDelete('cascade');
             $table->text('body');
             $table->timestamps();
         });

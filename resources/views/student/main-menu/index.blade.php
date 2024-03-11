@@ -29,34 +29,7 @@
             </div>
             <div class="col-sm-12 col-md-12 col-lg-10">
                 <div class="card">
-                    <div class="card-header">
-                        <ul class="nav nav-pills nav-fill">
-                            <li class="nav-item">
-                                <b>
-                                    <a class="nav-link active" aria-current="page" href="#">
-                                        <i class="fa-solid fa-house"></i>
-                                        Beranda
-                                    </a>
-                                </b>
-                            </li>
-                            <li class="nav-item">
-                                <b>
-                                    <a class="nav-link" href="#">
-                                        <i class="fa-regular fa-comments"></i>
-                                        Obrolan
-                                    </a>
-                                </b>
-                            </li>
-                            <li class="nav-item">
-                                <b>
-                                    <a class="nav-link text-capitalize" href="#">
-                                        <i class="fa-regular fa-user"></i>
-                                        {{ auth()->user()->fullname }}
-                                    </a>
-                                </b>
-                            </li>
-                        </ul>
-                    </div>
+                    @include('student.main-menu.tabs')
                     <div class="card-body">
                         <div class="row">
                             <a href="{{ route('capaian.pembelajaran') }}"

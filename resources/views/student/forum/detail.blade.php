@@ -1,7 +1,7 @@
 @extends('student.main-menu.layout.app')
 
 @section('title')
-    Forum - {{ $forum->judul }}
+    Forum
 @endsection
 
 @push('addons-css')
@@ -309,48 +309,53 @@
     <div class="container-fluid mb-5" style="margin-bottom: 120px !important;">
         <div class="row">
             <div class="col-12 my-3 text-center">
-                <h1><b class="outline-font">{{ $forum->judul }}</b></h1>
+                <h1><b class="outline" style="color:black">Forum</b></h1>
             </div>
         </div>
         <div class="row justify-content-center">
-            <div class="col-sm-12 col-md-12 col-lg-12">
-                <div class="container bootstrap snippets bootdey">
-                    <div class="tile tile-alt" id="messages-main">
-                        <div class="ms-body">
-                            @foreach ($forum->forumContent as $content)
-                                @if ($content->user->id == $userID)
-                                    <div class="message-feed right">
-                                        <div class="pull-right">
-                                            <img src="{{ asset($content->user->foto) }}" alt="" class="img-avatar">
-                                        </div>
-                                        <div class="media-body">
-                                            <div class="mf-content">
-                                                {!! $content->body !!}
-                                            </div>
+            <div class="col-sm-12 col-md-12 col-lg-10">
+                <div class="card">
+                    @include('student.main-menu.tabs')
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-center mt-3">
+            <div class="col-sm-12 col-md-12 col-lg-10">
+                <div class="tile tile-alt" id="messages-main">
+                    <div class="ms-body">
+                        @foreach ($forum as $content)
+                            @if ($content->user->id == $userID)
+                                <div class="message-feed right">
+                                    <div class="pull-right">
+                                        <img src="{{ asset($content->user->foto) }}" alt="" class="img-avatar">
+                                    </div>
+                                    <div class="media-body">
+                                        <div class="mf-content">
+                                            {!! $content->body !!}
                                         </div>
                                     </div>
-                                @else
-                                    <div class="message-feed media">
-                                        <div class="pull-left">
-                                            <img src="{{ asset($content->user->foto) }}" alt="" class="img-avatar">
-                                        </div>
-                                        <div class="media-body">
-                                            <div class="mf-content" style="margin-left: 10px;">
-                                                {!! $content->body !!}
-                                            </div>
-                                        </div>
-                                    </div>
-                                @endif
-                            @endforeach
-
-                            <form action="{{ route('store.message.forum', $forum->id) }}" method="POST">
-                                @csrf
-                                <div class="msb-reply">
-                                    <textarea name="body" placeholder="Ketikan pendapat anda disini"></textarea>
-                                    <button type="submit"><i class="fa fa-paper-plane-o"></i></button>
                                 </div>
-                            </form>
-                        </div>
+                            @else
+                                <div class="message-feed media">
+                                    <div class="pull-left">
+                                        <img src="{{ asset($content->user->foto) }}" alt="" class="img-avatar">
+                                    </div>
+                                    <div class="media-body">
+                                        <div class="mf-content" style="margin-left: 10px;">
+                                            {!! $content->body !!}
+                                        </div>
+                                    </div>
+                                </div>
+                            @endif
+                        @endforeach
+
+                        <form action="{{ route('store.message.forum') }}" method="POST">
+                            @csrf
+                            <div class="msb-reply">
+                                <textarea name="body" placeholder="Ketikan pendapat anda disini"></textarea>
+                                <button type="submit"><i class="fa fa-paper-plane-o"></i></button>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>

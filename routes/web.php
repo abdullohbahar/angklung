@@ -314,7 +314,7 @@ Route::post('simpan-profil-pengembang', [ProfilPengembangController::class, 'sto
 
 Route::post('/save-image', SaveImageController::class);
 
-Route::post('/store-message/{idForum}', StoreFourmMessage::class)->name('store.message.forum');
+Route::post('/store-message', StoreFourmMessage::class)->name('store.message.forum');
 
 Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']], function () {
     \UniSharp\LaravelFilemanager\Lfm::routes();
