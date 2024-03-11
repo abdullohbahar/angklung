@@ -57,11 +57,7 @@
                     <i class="fa-solid fa-arrow-left fa-2x text-black"></i>
                 </a>
             </div>
-            <div class="col-4 text-end">
-                <i class="fa-regular fa-circle-question fa-2x text-black"></i>
-            </div>
         </div>
-
     </div>
 
     <div class="container-fluid mb-5">
@@ -74,17 +70,17 @@
                         <h1 class="outline"><b>Getaran</b></h1>
                     </div>
                     <div class="row ms-0">
-                        <div class="col-12 my-3">
-                            <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#instruksiModal"
-                                style="width: 100%; font-size: 17pt;">
-                                <b>
-                                    INSTRUKSI PENGERJAAN LEMBAR KERJA !!!
-                                </b>
-                            </button>
-                        </div>
                         <div class="col-12">
                             <div class="card card-border" style="width: 100%">
                                 <div class="card-body">
+                                    <div class="row mb-4">
+                                        <div class="col-12 text-end">
+                                            <button class="btn rounded-circle" data-bs-toggle="modal"
+                                                data-bs-target="#instruksiModal">
+                                                <i class="fa-regular fa-circle-question fa-2x text-black"></i>
+                                            </button>
+                                        </div>
+                                    </div>
                                     <div class="row">
                                         <div class="col-12">
                                             <div id="liveworksheet7536964" style="width:100%">
