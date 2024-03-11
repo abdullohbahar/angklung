@@ -46,9 +46,9 @@
         }
 
         /* iframe {
-                                                                                                                                                                width: 100% !important;
-                                                                                                                                                                height: 500px !important;
-                                                                                                                                                            } */
+                                                                                                                                                                    width: 100% !important;
+                                                                                                                                                                    height: 500px !important;
+                                                                                                                                                                } */
     </style>
 @endpush
 
@@ -75,7 +75,6 @@
                 <div class="row">
                     <div class="col-12 my-3 text-center">
                         <h1 class="outline"><b>Eksplorasi</b></h1>
-                        <h1 class="outline"><b>Materi</b></h1>
                         <h1 class="outline"><b>Gelombang</b></h1>
                     </div>
                     <div class="row ms-0">

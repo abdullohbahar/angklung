@@ -78,6 +78,12 @@
                             <div class="card card-border" style="width: 100%">
                                 <div class="card-body">
                                     <div class="row">
+                                        <div class="col-12 text-center">
+                                            <h4>
+                                                <i class="fa-regular fa-circle-question text-black"></i>
+                                                <b>Penjelasan</b>
+                                            </h4>
+                                        </div>
                                         <div class="col-12 mt-2">
                                             <h6>
                                                 <b style="text-align: justify;">

@@ -74,7 +74,6 @@
             <div class="col-sm-12 col-md-12 col-lg-8">
                 <div class="row">
                     <div class="col-12 my-3 text-center">
-                        <h1 class="outline"><b>Materi</b></h1>
                         <h1 class="outline"><b>Gelombang Bunyi</b></h1>
                     </div>
                     <div class="row ms-0">
@@ -84,7 +83,7 @@
                                     <div class="row">
                                         <div class="col-12 text-center">
                                             <h4>
-                                                <b>Mari Kita Masuk Ke Materi Gelombang Bunyi</b>
+                                                <b>Mari Kita Belajar Gelombang Bunyi</b>
                                             </h4>
                                         </div>
                                         <div class="col-12 mt-3">
@@ -92,17 +91,7 @@
                                                 class="btn btn-warning" style="width: 100%;">
                                                 <h5 class="mt-2">
                                                     <b>
-                                                        Orientasi
-                                                    </b>
-                                                </h5>
-                                            </a>
-                                        </div>
-                                        <div class="col-12 mt-3">
-                                            <a href="{{ route('materi.gelombang.bunyi.eksplorasi') }}"
-                                                class="btn btn-success" style="width: 100%">
-                                                <h5 class="mt-2">
-                                                    <b>
-                                                        Eksplorasi
+                                                        Mulai
                                                     </b>
                                                 </h5>
                                             </a>
@@ -119,4 +108,39 @@
 @endsection
 
 @push('addons-js')
+    @if (session()->has('eksplorasi_notification'))
+        <script>
+            Swal.fire({
+                text: "{{ session('eksplorasi_notification') }}",
+                icon: "success",
+                showCancelButton: false,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Eksplorasi",
+                allowOutsideClick: false
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = "/siswa/materi/gelombang-bunyi/eksplorasi"
+                }
+            });
+        </script>
+    @endif
+
+    @if (session()->has('notif'))
+        <script>
+            Swal.fire({
+                text: "{{ session('notif') }}",
+                icon: "success",
+                showCancelButton: false,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Selesai",
+                allowOutsideClick: false
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = "/siswa"
+                }
+            });
+        </script>
+    @endif
 @endpush

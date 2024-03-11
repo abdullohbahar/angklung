@@ -83,7 +83,7 @@ class MateriGelombangBunyiController extends Controller
 
     public function redirectPernyataan1()
     {
-        return to_route('materi.gelombang.bunyi')->with('notification', 'Untuk mengenal Angklung lebih jauh, Mari lakukan eksplorasi di Saung Angklung Udjo !');
+        return to_route('materi.gelombang.bunyi')->with('eksplorasi_notification', 'Untuk mengenal Angklung lebih jauh, Mari lakukan eksplorasi di Saung Angklung Udjo !');
     }
 
     public function eksplorasi()
@@ -99,6 +99,6 @@ class MateriGelombangBunyiController extends Controller
             'is_answered' => true
         ]);
 
-        return to_route('materi.gelombang.bunyi')->with('notification', 'Yeay anda telah mengisi eksplorasi !');
+        return to_route('materi.gelombang.bunyi')->with('notif', 'Yeay anda telah mengisi eksplorasi !');
     }
 }
