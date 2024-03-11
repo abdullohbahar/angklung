@@ -130,7 +130,7 @@
             }
 
             .login {
-                margin-top: -25% !important;
+                margin-top: -30% !important;
                 width: 100%;
 
             }
@@ -151,7 +151,7 @@
             }
 
             .login {
-                margin-top: -20% !important;
+                margin-top: -28.5% !important;
                 width: 100%;
 
             }
@@ -172,7 +172,7 @@
             }
 
             .login {
-                margin-top: -15% !important;
+                margin-top: -27% !important;
                 width: 100%;
 
             }
@@ -210,10 +210,30 @@
             background-color: white !important;
             border-left: none;
         }
+
+        .logo-uny {
+            width: 5%;
+        }
+
+        .logo-kemdikbud {
+            width: 5.8%;
+        }
+
+        .logo-pmdsu {
+            width: 8%;
+        }
     </style>
 </head>
 
 <body>
+    <div class="row" style="width: 100%">
+        <div class="col-12 text-end mt-3">
+            <img src="{{ asset('./guest-assets/logo-uny.png') }}" class="logo-uny">
+            <img src="{{ asset('./guest-assets/logo-kemdikbud.png') }}" class="logo-kemdikbud">
+            <img src="{{ asset('./guest-assets/logo-pmdsu.jpg') }}" class="logo-pmdsu">
+        </div>
+    </div>
+
     <div class="container">
         <div class="row justify-content-center text-center margin-top">
             <div class="col-sm-12 col-md-12 col-lg-7">
@@ -227,7 +247,7 @@
     </div>
 
     {{-- wave --}}
-    <div class="login row g-0 justify-content-center mb-5">
+    <div class="login row g-0 justify-content-center">
         <div class="col-sm-12 col-md-12 col-lg-12">
             <img src="{{ asset('./guest-assets/wave.svg') }}">
             <div class="background-white text-center p-5" style="margin-top: -10px;">
@@ -261,29 +281,28 @@
                                 </span>
                             </div>
                         </div>
-                        <div class="col-sm-12 col-md-12 col-lg-8 mx-5 mt-5">
+                        <div class="col-sm-12 col-md-12 col-lg-8 mx-5 mt-5 mb-5">
                             <button type="submit"
                                 class="btn button-masuk btn-lg rounded-pill text-white">Masuk</button>
                         </div>
                     </div>
                 </form>
-                <div class="row mt-5">
+                {{-- <div class="row mt-5">
                     <div class="col-6">
                         <a href="" class="text-decoration-none text-brown">Lupa Password</a>
                     </div>
                     <div class="col-6">
                         <a href="" class="text-decoration-none text-brown">Reset</a>
                     </div>
-                </div>
+                </div> --}}
             </div>
         </div>
     </div>
 
     <nav class="navbar fixed-bottom bg-body-tertiary">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">
-                &copy; {{ date('Y') }} Anggi Datiatur Rahmat - Universitas Negeri Yogyakarta
-            </a>
+            <a class="navbar-brand" href="#" style="font-size: 12pt">
+                Copyrighy Rahmat. A. D &copy; {{ date('Y') }} </a>
         </div>
     </nav>
 

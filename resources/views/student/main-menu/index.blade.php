@@ -9,23 +9,123 @@
             font-size: 5em;
             line-height: .03125em;
         }
+
+        .card-bg-coklat {
+            background-color: #f3b87c;
+        }
+
+        .active {
+            background-color: #F0BD63 !important;
+            color: black !important;
+        }
     </style>
 @endpush
 
 @section('content')
-    <!-- As a link -->
-    <nav class="navs">
-        <h2><b>Halo {{ auth()->user()->fullname }}</b></h2>
-    </nav>
-
     <div class="container-fluid mb-5">
         <div class="row justify-content-center">
-            <div class="col-sm-12 col-md-12 col-lg-7">
-                <div class="row text-center">
-                    <div class="col-12 my-3 text-center">
-                        <h2><b>Menu Utama</b></h2>
+            <div class="col-12 my-4 text-center outline">
+                <h1><b>Menu Utama</b></h2>
+            </div>
+            <div class="col-sm-12 col-md-12 col-lg-10">
+                <div class="card">
+                    <div class="card-header">
+                        <ul class="nav nav-pills nav-fill">
+                            <li class="nav-item">
+                                <b>
+                                    <a class="nav-link active" aria-current="page" href="#">
+                                        <i class="fa-solid fa-house"></i>
+                                        Beranda
+                                    </a>
+                                </b>
+                            </li>
+                            <li class="nav-item">
+                                <b>
+                                    <a class="nav-link" href="#">
+                                        <i class="fa-regular fa-comments"></i>
+                                        Obrolan
+                                    </a>
+                                </b>
+                            </li>
+                            <li class="nav-item">
+                                <b>
+                                    <a class="nav-link text-capitalize" href="#">
+                                        <i class="fa-regular fa-user"></i>
+                                        {{ auth()->user()->fullname }}
+                                    </a>
+                                </b>
+                            </li>
+                        </ul>
                     </div>
-                    <a href="{{ route('capaian.pembelajaran') }}" class="text-decoration-none col-6 content-center gx-3 gy-3">
+                    <div class="card-body">
+                        <div class="row">
+                            <a href="{{ route('capaian.pembelajaran') }}"
+                                class="text-decoration-none col-6 content-center gx-3 gy-3">
+                                <div class="card card-border" style="">
+                                    <div class="card-body text-center">
+                                        <img src="{{ asset('./guest-assets/capaian-pembelajaran.svg') }}" alt="">
+                                        <div class="mt-3">
+                                            <p><b>Capaian Pembelajaran</b></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                            <a href="{{ route('aktivitas.belajar') }}"
+                                class="text-decoration-none col-6 content-center gx-3 gy-3">
+                                <div class="card card-border">
+                                    <div class="card-body text-center">
+                                        <img src="{{ asset('./guest-assets/aktivitas-belajar.svg') }}" alt="">
+                                        <div class="mt-3">
+                                            <p><b>Aktivitas Belajar</b></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                            <a href="{{ route('student.progress') }}"
+                                class="text-decoration-none col-6 content-center gx-3 gy-3">
+                                <div class="card card-border">
+                                    <div class="card-body text-center">
+                                        <img src="{{ asset('./guest-assets/progress.svg') }}" alt="">
+                                        <div class="mt-3">
+                                            <p><b>Progress</b></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                            <a href="{{ route('student.pilih.jenis.pertanyaan') }}"
+                                class="text-decoration-none col-6 content-center gx-3 gy-3">
+                                <div class="card card-border">
+                                    <div class="card-body text-center">
+                                        <img src="{{ asset('./guest-assets/penilaian.svg') }}" alt="">
+                                        <div class="mt-3">
+                                            <p><b>Penilaian</b></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                            <a href="{{ route('student.pilih.jenis.pertanyaan') }}"
+                                class="text-decoration-none col-6 content-center gx-3 gy-3">
+                                <div class="card card-border">
+                                    <div class="card-body text-center">
+                                        <img src="{{ asset('./guest-assets/penilaian.svg') }}" alt="">
+                                        <div class="mt-3">
+                                            <p><b>Quiz</b></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {{-- <div class="col-sm-12 col-md-12 col-lg-7">
+                <div class="row text-center">
+                    <div class="col-12 my-3 text-center outline">
+                        <h1><b>Menu Utama</b></h2>
+                    </div>
+                    <a href="{{ route('capaian.pembelajaran') }}"
+                        class="text-decoration-none col-6 content-center gx-3 gy-3">
                         <div class="card card-border" style="">
                             <div class="card-body text-center">
                                 <img src="{{ asset('./guest-assets/capaian-pembelajaran.svg') }}" alt="">
@@ -45,16 +145,6 @@
                             </div>
                         </div>
                     </a>
-                    {{-- <a href="{{ route('student.eksplorasi') }}" class="text-decoration-none col-6 content-center gx-3 gy-3">
-                        <div class="card card-border">
-                            <div class="card-body text-center">
-                                <img src="{{ asset('./guest-assets/project.svg') }}" alt="">
-                                <div class="mt-3">
-                                    <p><b>Eksplorasi</b></p>
-                                </div>
-                            </div>
-                        </div>
-                    </a> --}}
                     <a href="{{ route('student.progress') }}" class="text-decoration-none col-6 content-center gx-3 gy-3">
                         <div class="card card-border">
                             <div class="card-body text-center">
@@ -97,18 +187,8 @@
                             </div>
                         </div>
                     </a>
-                    {{-- <a href="{{ route('student.forum') }}" class="text-decoration-none col-6 content-center gx-3 gy-3">
-                        <div class="card card-border">
-                            <div class="card-body">
-                                <img src="{{ asset('./guest-assets/project.svg') }}" alt="">
-                                <div class="mt-3">
-                                    <p><b>Forum</b></p>
-                                </div>
-                            </div>
-                        </div>
-                    </a> --}}
                 </div>
-            </div>
+            </div> --}}
         </div>
     </div>
 

@@ -215,6 +215,10 @@
         .outline-font {
             text-shadow: -1px -1px 0 white, 1px -1px 0 white, -1px 1px 0 white, 1px 1px 0 white;
         }
+
+        .outline {
+            -webkit-text-stroke: 1.5px white;
+        }
     </style>
 
     @stack('addons-css')
