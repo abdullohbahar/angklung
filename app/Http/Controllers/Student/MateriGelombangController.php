@@ -193,6 +193,6 @@ class MateriGelombangController extends Controller
             'is_answered' => true
         ]);
 
-        return to_route('materi.gelombang')->with('notification', 'Yeay, selamat anda telah menyelesaikan materi Gelombang !');
+        return to_route('main.menu')->with('notification', 'Yeay, selamat anda telah mengerjakan quiz !');
     }
 }
