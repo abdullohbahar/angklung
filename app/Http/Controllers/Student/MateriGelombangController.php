@@ -51,7 +51,7 @@ class MateriGelombangController extends Controller
 
     public function storePernyataan1()
     {
-        return to_route('materi.gelombang')->with('notification', 'Untuk lebih memahami fenomena gelombang tersebut, Ayo lakukan eskplorasi !');
+        return to_route('materi.gelombang')->with('eksplorasi_notification', 'Untuk lebih memahami fenomena gelombang tersebut, Ayo lakukan eskplorasi !');
     }
 
     public function eksplorasi()
@@ -86,7 +86,7 @@ class MateriGelombangController extends Controller
 
     public function storePernyataan2()
     {
-        return to_route('materi.gelombang')->with('notification', 'Untuk lebih memahami konsep gelombang tali, Ayo lakukan eksperimen !');
+        return to_route('materi.gelombang')->with('eksperimen_notification', 'Untuk lebih memahami konsep gelombang tali, Ayo lakukan eksperimen !');
     }
 
     public function eksperimen()
@@ -102,7 +102,7 @@ class MateriGelombangController extends Controller
             'is_answered' => true
         ]);
 
-        return to_route('materi.gelombang')->with('notification', 'Yeay anda telah mengisi eksperimen !');
+        return to_route('materi.gelombang')->with('notif', 'Yeay anda telah mengisi eksperimen !');
     }
 
     public function forum()
