@@ -73,9 +73,6 @@
         <div class="row justify-content-center">
             <div class="col-sm-12 col-md-12 col-lg-8">
                 <div class="row">
-                    <div class="col-12 my-3 text-center">
-                        <h1 class="outline"><b>Orientasi</b></h1>
-                    </div>
                     <div class="row ms-0">
                         <div class="col-12">
                             <div class="card card-border" style="width: 100%">

@@ -80,6 +80,7 @@
                                     <div class="row">
                                         <div class="col-12 text-center">
                                             <h4>
+                                                <i class="fa-regular fa-circle-question text-black"></i>
                                                 <b>Penjelasan</b>
                                             </h4>
                                         </div>
@@ -94,13 +95,67 @@
                                                 </b>
                                             </h6>
                                         </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row ms-0 mt-3">
+                        <div class="col-12">
+                            <div class="card card-border" style="width: 100%">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-12 mt-2">
+                                            <h5>
+                                                <b> Perhatikan video berikut
+                                                </b>
+                                            </h5>
+                                        </div>
                                         <div class="col-12">
-                                            <a href="{{ route('materi.getaran.orientasi2') }}" style="width: 100%"
-                                                class="btn btn-custom-orange rounded-pill mt-3">
-                                                Selanjutnya
-                                            </a>
+                                            <iframe width="560" height="315"
+                                                src="https://www.youtube.com/embed/kx1LVu8MobQ?si=oWOIybaa3oZlK4KJ"
+                                                title="YouTube video player" frameborder="0"
+                                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                                allowfullscreen></iframe>
+                                        </div>
+                                        <div class="col-12 mt-3">
+                                            <h5>
+                                                <b>Pertanyaan:</b>
+                                            </h5>
                                         </div>
                                     </div>
+                                    <form action="{{ route('materi.getaran.store.orientasi2') }}" method="POST">
+                                        @csrf
+                                        <input type="hidden" name="materi" value="getaran" id="">
+                                        <div class="row">
+                                            <div class="col-12 mt-3">
+                                                1. Apa yang dimaksud getaran?
+                                            </div>
+                                            <div class="col-12 mt-3">
+                                                <textarea name="jawaban3" required class="form-control" placeholder="Tuliskan Jawaban Anda Disini" style="height: 150px"
+                                                    id="">{{ $jawaban3 }}</textarea>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-12 mt-3">
+                                                2. Apa saja bentuk-bentuk getaran dalam kehidupan sehari-hari?
+                                            </div>
+                                            <div class="col-12 mt-3">
+                                                <textarea name="jawaban4" required class="form-control" placeholder="Tuliskan Jawaban Anda Disini" style="height: 150px"
+                                                    id="">{{ $jawaban4 }}</textarea>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-sm-12 col-md-6 col-lg-6 mt-3 text-center">
+                                            </div>
+                                            <div class="col-sm-12 col-md-6 col-lg-6 mt-3 text-center">
+                                                <button type="submit" class="btn btn-custom-orange rounded-pill"
+                                                    style="width: 100%">
+                                                    Selanjutnya <i class="fa-solid fa-arrow-right"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </form>
                                 </div>
                             </div>
                         </div>

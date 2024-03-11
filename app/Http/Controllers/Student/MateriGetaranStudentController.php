@@ -53,7 +53,17 @@ class MateriGetaranStudentController extends Controller
 
     public function pernyataan1()
     {
-        return view('student.materi-getaran.pernyataan1');
+        $userID = auth()->user()->id;
+
+        $jawaban3 = JawabanMateriGetaran::where('user_id', $userID)->where('nomor_soal', 3)->first()?->jawaban;
+        $jawaban4 = JawabanMateriGetaran::where('user_id', $userID)->where('nomor_soal', 4)->first()?->jawaban;
+
+        $data = [
+            'jawaban3' => $jawaban3 ?? '',
+            'jawaban4' => $jawaban4 ?? ''
+        ];
+
+        return view('student.materi-getaran.pernyataan1', $data);
     }
 
     public function orientasi2()
@@ -87,7 +97,7 @@ class MateriGetaranStudentController extends Controller
             'jawaban' => $request->jawaban4,
         ]);
 
-        return to_route('materi.getaran')->with('notification', 'Untuk lebih memahami konsep getaran, Ayo lakukan eksperimen !');
+        return to_route('materi.getaran')->with('experiment_notification', 'Untuk lebih memahami konsep getaran, Ayo lakukan eksperimen !');
     }
 
     public function eksperimen()
@@ -103,7 +113,7 @@ class MateriGetaranStudentController extends Controller
             'is_answered' => true
         ]);
 
-        return to_route('materi.getaran')->with('notification', 'Anda telah menyelesaikan eksperimen !');
+        return to_route('materi.getaran')->with('notif', 'Anda telah menyelesaikan eksperimen !');
     }
 
     public function forum()

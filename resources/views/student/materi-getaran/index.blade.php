@@ -74,7 +74,6 @@
             <div class="col-sm-12 col-md-12 col-lg-8">
                 <div class="row">
                     <div class="col-12 my-3 text-center">
-                        <h1 class="outline"><b>Materi</b></h1>
                         <h1 class="outline"><b>Getaran</b></h1>
                     </div>
                     <div class="row ms-0">
@@ -84,7 +83,7 @@
                                     <div class="row">
                                         <div class="col-12 text-center">
                                             <h4>
-                                                <b>Mari Kita Masuk Ke Materi Getaran</b>
+                                                <b>Mari Kita Belajar Getaran</b>
                                             </h4>
                                         </div>
                                         <div class="col-12 mt-3">
@@ -92,12 +91,12 @@
                                                 style="width: 100%;">
                                                 <h5 class="mt-2">
                                                     <b>
-                                                        Orientasi
+                                                        Mulai
                                                     </b>
                                                 </h5>
                                             </a>
                                         </div>
-                                        <div class="col-12 mt-3">
+                                        {{-- <div class="col-12 mt-3">
                                             <a href="{{ route('materi.getaran.eksperimen') }}" class="btn btn-danger"
                                                 style="width: 100%">
                                                 <h5 class="mt-2">
@@ -106,37 +105,7 @@
                                                     </b>
                                                 </h5>
                                             </a>
-                                        </div>
-                                        <div class="col-12 mt-3">
-                                            <a href="{{ route('materi.getaran.forum') }}" class="btn btn-info"
-                                                style="width: 100%">
-                                                <h5 class="mt-2">
-                                                    <b>
-                                                        Forum
-                                                    </b>
-                                                </h5>
-                                            </a>
-                                        </div>
-                                        {{-- <div class="col-12 mt-3">
-                                            <a href="{{ route('materi.getaran.resume') }}" class="btn btn-primary"
-                                                style="width: 100%">
-                                                <h5 class="mt-2">
-                                                    <b>
-                                                        Resume Presentasi
-                                                    </b>
-                                                </h5>
-                                            </a>
                                         </div> --}}
-                                        <div class="col-12 mt-3">
-                                            <a href="{{ route('materi.getaran.refleksi') }}" class="btn btn-success"
-                                                style="width: 100%">
-                                                <h5 class="mt-2">
-                                                    <b>
-                                                        Refleksi
-                                                    </b>
-                                                </h5>
-                                            </a>
-                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -149,4 +118,41 @@
 @endsection
 
 @push('addons-js')
+    @if (session()->has('experiment_notification'))
+        <script>
+            Swal.fire({
+                title: "Selamat!",
+                text: "{{ session('experiment_notification') }}",
+                icon: "success",
+                showCancelButton: false,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Experimen!",
+                allowOutsideClick: false
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = "/siswa/materi/getaran/eksperimen"
+                }
+            });
+        </script>
+    @endif
+
+    @if (session()->has('notif'))
+        <script>
+            Swal.fire({
+                title: "Selamat!",
+                text: "{{ session('notif') }}",
+                icon: "success",
+                showCancelButton: false,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "OK",
+                allowOutsideClick: false
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = "/siswa"
+                }
+            });
+        </script>
+    @endif
 @endpush
