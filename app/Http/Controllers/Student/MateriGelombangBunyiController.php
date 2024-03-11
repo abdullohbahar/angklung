@@ -99,6 +99,6 @@ class MateriGelombangBunyiController extends Controller
             'is_answered' => true
         ]);
 
-        return to_route('materi.gelombang.bunyi')->with('notif', 'Yeay anda telah mengisi eksplorasi !');
+        return to_route('materi.gelombang.bunyi')->with('notif', 'Selamat anda telah mengisi eksplorasi !');
     }
 }

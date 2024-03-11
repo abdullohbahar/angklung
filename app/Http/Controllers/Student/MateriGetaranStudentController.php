@@ -180,6 +180,6 @@ class MateriGetaranStudentController extends Controller
             'is_answered' => true
         ]);
 
-        return to_route('materi.getaran')->with('notification', 'Yeay, selamat anda telah menyelesaikan materi getaran !');
+        return to_route('aktivitas.belajar')->with('notification', 'Selamat anda telah mengisi refleksi Getaran!');
     }
 }

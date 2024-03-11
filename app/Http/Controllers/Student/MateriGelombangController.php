@@ -102,7 +102,7 @@ class MateriGelombangController extends Controller
             'is_answered' => true
         ]);
 
-        return to_route('materi.gelombang')->with('notif', 'Yeay anda telah mengisi eksperimen !');
+        return to_route('materi.gelombang')->with('notif', 'Selamat anda telah mengisi eksperimen !');
     }
 
     public function forum()
@@ -177,7 +177,7 @@ class MateriGelombangController extends Controller
             'is_answered' => true
         ]);
 
-        return to_route('materi.gelombang')->with('notification', 'Yeay, selamat anda telah mengisi refleksi !');
+        return to_route('aktivitas.belajar')->with('notification', 'Selamat anda telah mengisi refleksi Gelombang!');
     }
 
     public function quiz()
@@ -193,6 +193,6 @@ class MateriGelombangController extends Controller
             'is_answered' => true
         ]);
 
-        return to_route('main.menu')->with('notification', 'Yeay, selamat anda telah mengerjakan quiz !');
+        return to_route('main.menu')->with('notification', 'Selamat anda telah mengerjakan quiz !');
     }
 }

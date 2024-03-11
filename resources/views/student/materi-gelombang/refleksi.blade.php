@@ -67,7 +67,6 @@
                 <div class="row">
                     <div class="col-12 my-3 text-center">
                         <h1 class="outline"><b>Refleksi</b></h1>
-                        <h1 class="outline"><b>Materi</b></h1>
                         <h1 class="outline"><b>Gelombang</b></h1>
                     </div>
                     <div class="row ms-0">
