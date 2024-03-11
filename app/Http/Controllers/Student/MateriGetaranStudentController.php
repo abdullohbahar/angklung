@@ -14,6 +14,28 @@ class MateriGetaranStudentController extends Controller
 {
     public function index()
     {
+        $userID = auth()->user()->id;
+
+        $jawaban1 = JawabanMateriGetaran::where('user_id', $userID)->where('nomor_soal', 1)->first()?->jawaban ?? null;
+        $jawaban2 = JawabanMateriGetaran::where('user_id', $userID)->where('nomor_soal', 2)->first()?->jawaban ?? null;
+        $jawaban3 = JawabanMateriGetaran::where('user_id', $userID)->where('nomor_soal', 3)->first()?->jawaban ?? null;
+        $jawaban4 = JawabanMateriGetaran::where('user_id', $userID)->where('nomor_soal', 4)->first()?->jawaban ?? null;
+        $eksperimen = EksperimenMateriGetaran::where('user_id', $userID)->first()?->is_answered ?? null;
+
+        $validate = [
+            'jawaban1' => $jawaban1,
+            'jawaban2' => $jawaban2,
+            'jawaban3' => $jawaban3,
+            'jawaban4' => $jawaban4,
+            'eksperimen' => $eksperimen,
+        ];
+
+        // Check if all values are not null
+        if (empty(array_filter($validate, 'is_null'))) {
+            // All values are not null, redirect back
+            return redirect()->back()->with('warning', 'Anda telah mengerjakan materi getaran');
+        }
+
         return view('student.materi-getaran.index');
     }
 
@@ -169,6 +191,14 @@ class MateriGetaranStudentController extends Controller
 
     public function refleksi()
     {
+        $userID = auth()->user()->id;
+
+        $refleksiMateriGetaran = RefleksiMateriGetaran::where('user_id', $userID)->first();
+
+        if ($refleksiMateriGetaran) {
+            return redirect()->back()->with('warning', 'Anda Telah Mengerjakan Refleksi Getaran');
+        }
+
         return view('student.materi-getaran.refleksi');
     }
 

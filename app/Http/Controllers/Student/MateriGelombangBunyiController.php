@@ -12,6 +12,30 @@ class MateriGelombangBunyiController extends Controller
 {
     public function index()
     {
+        $userID = auth()->user()->id;
+
+        $jawaban1 = JawabanMateriGelombangBunyi::where('user_id', $userID)->where('nomor_soal', 1)->first()?->jawaban;
+        $jawaban2 = JawabanMateriGelombangBunyi::where('user_id', $userID)->where('nomor_soal', 2)->first()?->jawaban;
+        $jawaban3 = JawabanMateriGelombangBunyi::where('user_id', $userID)->where('nomor_soal', 3)->first()?->jawaban;
+        $jawaban4 = JawabanMateriGelombangBunyi::where('user_id', $userID)->where('nomor_soal', 4)->first()?->jawaban;
+        $jawaban5 = JawabanMateriGelombangBunyi::where('user_id', $userID)->where('nomor_soal', 5)->first()?->jawaban;
+        $eksplorasi = EksplorasiMateriGelombangBunyi::where('user_id', $userID)->first()?->is_answered ?? null;
+
+        $validate = [
+            'jawaban1' => $jawaban1 ?? null,
+            'jawaban2' => $jawaban2 ?? null,
+            'jawaban3' => $jawaban3 ?? null,
+            'jawaban4' => $jawaban4 ?? null,
+            'jawaban5' => $jawaban5 ?? null,
+            'eksplorasi' => $eksplorasi
+        ];
+
+        // Check if all values are not null
+        if (empty(array_filter($validate, 'is_null'))) {
+            // All values are not null, redirect back
+            return redirect()->back()->with('warning', 'Anda telah mengerjakan materi gelombang bunyi');
+        }
+
         return view('student.materi-gelombang-bunyi.index');
     }
 

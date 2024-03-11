@@ -16,6 +16,23 @@ class MateriGelombangController extends Controller
 {
     public function index()
     {
+        $userID = auth()->user()->id;
+        $jawaban1 = JawabanMateriGelombang::where('user_id', $userID)->where('nomor_soal', 1)->first()?->jawaban ?? null;
+        $jawabanEksplorasi = JawabanEksplorasiMateriGelombang::where('user_id', $userID)->where('nomor_soal', 1)->first()?->jawaban ?? null;
+        $eksperimen = EksperimenMateriGelombang::where('user_id', $userID)->first()?->is_answered ?? null;
+
+        $validate = [
+            'jawaban1' => $jawaban1,
+            'jawabanEksplorasi' => $jawabanEksplorasi,
+            'eksperimen' => $eksperimen,
+        ];
+
+        // Check if all values are not null
+        if (empty(array_filter($validate, 'is_null'))) {
+            // All values are not null, redirect back
+            return redirect()->back()->with('warning', 'Anda telah mengerjakan materi gelombang');
+        }
+
         return view('student.materi-gelombang.index');
     }
 
@@ -166,6 +183,14 @@ class MateriGelombangController extends Controller
 
     public function refleksi()
     {
+        $userID = auth()->user()->id;
+
+        $refleksiMateriGelombang = RefleksiMateriGelombang::where('user_id', $userID)->first();
+
+        if ($refleksiMateriGelombang) {
+            return redirect()->back()->with('warning', 'Anda Telah Mengerjakan Refleksi Gelombang');
+        }
+
         return view('student.materi-gelombang.refleksi');
     }
 

@@ -13,6 +13,7 @@ use App\Models\JawabanPertanyaanMateri;
 use App\Models\Materi;
 use App\Models\MateriEksplorasi;
 use App\Models\RefleksiMateri;
+use App\Models\RefleksiMateriGetaran;
 use App\Models\RiwayatPengerjaanAktivitas;
 use Illuminate\Http\Request;
 
@@ -23,7 +24,7 @@ class AktivitasBelajarController extends Controller
         $activities = AktivitasBelajar::orderBy('created_at', 'asc')->get();
 
         $data = [
-            'activities' => $activities
+            'activities' => $activities,
         ];
 
         return view('student.main-menu.aktivitas-belajar', $data);
