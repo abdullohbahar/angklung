@@ -55,11 +55,9 @@ class DataSiswaController extends Controller
             $foto = $filepath;
         } else {
             if ($request->jenis_kelamin == 'Laki-Laki') {
-                $foto = './guest-assets/angklung-man.svg';
+                $foto = './foto-profil/angklung-man.png';
             } else if ($request->jenis_kelamin == 'Perempuan') {
-                $foto = './guest-assets/angklung-girl.svg';
-            } else {
-                $foto = './dashboard-assets/dummy-profile.jpg';
+                $foto = './foto-profil/angklung-girl.png';
             }
         }
 
