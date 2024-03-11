@@ -21,6 +21,11 @@
             color: black !important;
         }
 
+        .accordion-button:not(.collapsed) {
+            background-color: #d49f45 !important;
+            color: white
+        }
+
         body {
             font-family: 'Open Sans', sans-serif;
             background-repeat: no-repeat;
