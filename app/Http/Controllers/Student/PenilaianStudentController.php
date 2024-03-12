@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers\Student;
 
-use App\Http\Controllers\Controller;
 use App\Models\Penilaian;
-use App\Models\RiwayatPenilaian;
 use Illuminate\Http\Request;
+use App\Models\PenilaianEssay;
+use App\Models\RiwayatPenilaian;
+use App\Http\Controllers\Controller;
 
 class PenilaianStudentController extends Controller
 {
@@ -26,10 +27,30 @@ class PenilaianStudentController extends Controller
             $jawabanAlasan = '';
         }
 
+        // mengambil semua soal pilihan ganda
+        $soal = Penilaian::with([
+            'pilihanJawaban',
+            'alasan',
+            'riwayatPenilaian' => function ($query) use ($userID) {
+                $query->where('users_id', $userID);
+            }
+        ])->orderBy('nomor', 'asc')->get();
+
+        $soalEssay = PenilaianEssay::with([
+            'jawabanPenilaianEssay' => function ($query) use ($userID) {
+                $query->where('user_id', $userID);
+            }
+        ])
+            ->get();
+
         $data = [
             'penilaian' => $penilaian,
             'jawabanSoal' => $jawabanSoal,
             'jawabanAlasan' => $jawabanAlasan,
+            'soal' => $soal,
+            'soalEssay' => $soalEssay,
+            'no' => $no,
+            'tipe' => 'pilgan'
         ];
 
         return view('student.penilaian.index', $data);
@@ -86,7 +107,7 @@ class PenilaianStudentController extends Controller
 
         if ($lastNumber->nomor == $request->no) {
             // dd("x");
-            return to_route('student.penilaian.selesai');
+            return to_route('student.penilaian.essay', 1);
         } else {
             return to_route('student.penilaian', $request->no + 1)->with('success', 'Berhasil menjawab');
         }

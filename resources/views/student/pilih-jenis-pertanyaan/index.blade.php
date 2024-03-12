@@ -7,19 +7,24 @@
 @endpush
 
 @section('content')
-    <!-- As a link -->
-    <nav class="navs">
-        <h2><b>Halo {{ auth()->user()->fullname }}</b></h2>
-    </nav>
+    <div class="container-fluid mt-3">
+        <div class="row justify-content-between">
+            <div class="col-4">
+                <a href="{{ route('main.menu') }}">
+                    <i class="fa-solid fa-arrow-left fa-2x text-black"></i>
+                </a>
+            </div>
+        </div>
+
+    </div>
 
     <div class="container-fluid mb-5">
         <div class="row justify-content-center">
             <div class="col-sm-12 col-md-12 col-lg-7">
                 <div class="row text-center">
                     <div class="col-12 my-3 text-center">
-                        <h2><b>Pilih Jenis Penilaian</b></h2>
                     </div>
-                    <a href="{{ route('student.penilaian', 1) }}" class="text-decoration-none col-6 content-center gx-3 gy-3">
+                    {{-- <a href="{{ route('student.penilaian', 1) }}" class="text-decoration-none col-6 content-center gx-3 gy-3">
                         <div class="card card-border" style="">
                             <div class="card-body text-center">
                                 <div class="mt-5">
@@ -37,7 +42,21 @@
                                 </div>
                             </div>
                         </div>
-                    </a>
+                    </a> --}}
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header text-center">
+                                <h2><b>Mari Kita Mengerjakan Penilaian</b></h2>
+                            </div>
+                            <div class="card-body">
+                                <a href="{{ route('student.penilaian', 1) }}" style="width: 100%" class="btn btn-warning">
+                                    <b>Mulai</b>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

@@ -50,6 +50,28 @@
         .ck-table-resized {
             width: 100% !important;
         }
+
+        .nomor {
+            margin-right: 5px;
+            margin-top: 5px;
+            display: block;
+            width: 45px;
+            height: 45px;
+            font-size: 18pt;
+            line-height: 40px;
+            text-align: center;
+            color: black;
+        }
+
+        .answered {
+            background-color: rgb(76, 192, 255);
+            color: black
+        }
+
+        .current {
+            background-color: #F0BD63;
+            color: white
+        }
     </style>
 @endpush
 
@@ -70,13 +92,13 @@
 
     </div>
 
-    <div class="container-fluid">
-        <div class="row justify-content-center">
-            <div class="col-sm-12 col-md-12 col-lg-9">
+    <div class="container-fluid mb-5">
+        <div class="row">
+            <div class="col-12 my-3 text-center">
+                <h1 class="outline-font"><b>Penilaian</b></h1>
+            </div>
+            <div class="col-sm-12 col-md-12 col-lg-8">
                 <div class="row">
-                    <div class="col-12 my-3 text-center">
-                        <h1><b>Penilaian</b></h1>
-                    </div>
                     <form action="{{ route('student.store.penilaian', $penilaian->id) }}" method="POST">
                         @csrf
                         <div class="row ms-0">
@@ -122,6 +144,7 @@
                     </form>
                 </div>
             </div>
+            @include('student.penilaian.components.monitor')
         </div>
     </div>
 @endsection

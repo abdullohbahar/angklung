@@ -22,4 +22,9 @@ class Penilaian extends Model
     {
         return $this->HasOne(Alasan::class);
     }
+
+    public function riwayatPenilaian()
+    {
+        return $this->hasOne(RiwayatPenilaian::class);
+    }
 }

@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers\Student;
 
+use App\Models\Penilaian;
+use Illuminate\Http\Request;
+use App\Models\PenilaianEssay;
 use App\Http\Controllers\Controller;
 use App\Models\JawabanPenilaianEssay;
-use App\Models\PenilaianEssay;
-use Illuminate\Http\Request;
 
 class PenilianEssayController extends Controller
 {
@@ -13,7 +14,11 @@ class PenilianEssayController extends Controller
     {
         $userID = auth()->user()->id;
 
-        $penilaian = PenilaianEssay::with('jawabanPenilaianEssay')->where('nomor_soal', $no)
+        $penilaian = PenilaianEssay::with([
+            'jawabanPenilaianEssay' => function ($query) use ($userID) {
+                $query->where('user_id', $userID);
+            }
+        ])->where('nomor_soal', $no)
             ->first();
 
         $cekRiwayat = JawabanPenilaianEssay::where('penilaian_essay_id', $penilaian->id)->where('user_id', $userID)->first();
@@ -26,10 +31,30 @@ class PenilianEssayController extends Controller
             $file = '';
         }
 
+        // mengambil semua soal pilihan ganda
+        $soal = Penilaian::with([
+            'pilihanJawaban',
+            'alasan',
+            'riwayatPenilaian' => function ($query) use ($userID) {
+                $query->where('users_id', $userID);
+            }
+        ])->orderBy('nomor', 'asc')->get();
+
+        $soalEssay = PenilaianEssay::with([
+            'jawabanPenilaianEssay' => function ($query) use ($userID) {
+                $query->where('user_id', $userID);
+            }
+        ])
+            ->get();
+
         $data = [
             'penilaian' => $penilaian,
             'jawabanSoal' => $jawabanSoal,
             'file' => $file,
+            'soal' => $soal,
+            'soalEssay' => $soalEssay,
+            'no' => $no,
+            'tipe' => 'essay'
         ];
 
         return view('student.penilaian-essay.index', $data);
