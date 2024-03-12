@@ -35,6 +35,7 @@ use App\Http\Controllers\Guru\ProgressSiswaController;
 use App\Http\Controllers\Guru\RiwayatPengerjaanEssayController;
 use App\Http\Controllers\SaveImageController;
 use App\Http\Controllers\StoreFourmMessage;
+use App\Http\Controllers\Student\CekSkorController;
 use App\Http\Controllers\Student\ForumController as StudentForumController;
 use App\Http\Controllers\Student\MateriGelombangBunyiController;
 use App\Http\Controllers\Student\MateriGelombangController;
@@ -169,6 +170,8 @@ Route::prefix('siswa')->middleware('student')->group(function () {
         Route::post('/simpan-penilaian-essay/{id}', [PenilianEssayController::class, 'store'])->name('student.store.penilaian.essay');
         Route::get('/penilaian-essay-selesai', [PenilianEssayController::class, 'selesai'])->name('student.penilaian.essay.selesai');
     });
+
+    Route::get('cek-skor', CekSkorController::class)->name('cek.skor');
 });
 
 Route::get('admin/login', [AuthAdminController::class, 'index'])->name('admin.login')->middleware('guest');

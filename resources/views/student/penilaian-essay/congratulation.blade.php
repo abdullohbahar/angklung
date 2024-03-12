@@ -1,7 +1,7 @@
 @extends('student.main-menu.layout.app')
 
 @section('title')
-    Selamat - Materi
+    Selamat
 @endsection
 
 @push('addons-css')
@@ -77,9 +77,8 @@
                         <div class="col-12">
                             <div class="card card-border" style="width: 100%">
                                 <div class="card-body text-center">
-                                    <h1>Selamat Anda Telah Menjawab Semua Pertanyaan Essay</h1>
-                                    <a class="btn btn-warning mt-3" href="{{ route('main.menu') }}">Kembali Ke Halaman
-                                        Utama</a>
+                                    <h1>Selamat Anda Telah Menyelesaikan Tes Ini</h1>
+                                    <a class="btn btn-warning mt-3" href="{{ route('cek.skor') }}">Cek Skor</a>
                                 </div>
                             </div>
                         </div>
