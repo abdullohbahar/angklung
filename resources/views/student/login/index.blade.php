@@ -122,7 +122,7 @@
 
         @media screen and (min-width: 992px) {
             .angklung-man {
-                width: 20%;
+                width: 22%;
             }
 
             .angklung-girl {
@@ -143,7 +143,7 @@
 
         @media screen and (min-width: 1200px) {
             .angklung-man {
-                width: 23%;
+                width: 22%;
             }
 
             .angklung-girl {
@@ -164,7 +164,7 @@
 
         @media screen and (min-width: 1400px) {
             .angklung-man {
-                width: 20%;
+                width: 22%;
             }
 
             .angklung-girl {

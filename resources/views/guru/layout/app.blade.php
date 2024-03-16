@@ -171,6 +171,15 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                 </p>
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a href="{{ route('guru.kuesioner') }}"
+                                class="nav-link white-nav {{ $active == 'kuesioner' ? 'active' : '' }}">
+                                <i class="nav-icon fas fa-file-alt"></i>
+                                <p>
+                                    <b>Kuesioner</b>
+                                </p>
+                            </a>
+                        </li>
                         {{-- <li class="nav-item">
                             <a href="{{ route('guru.forum') }}"
                                 class="nav-link white-nav {{ $active == 'forum' ? 'active' : '' }}">

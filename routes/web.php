@@ -29,6 +29,7 @@ use App\Http\Controllers\Guru\DataSiswaController as GuruDataSiswaController;
 use App\Http\Controllers\Guru\AktivitasBelajarController as GuruAktivitasBelajarController;
 use App\Http\Controllers\Guru\CapaianPembelajaranController as GuruCapaianPembelajaranController;
 use App\Http\Controllers\Guru\ForumController;
+use App\Http\Controllers\Guru\KuesionerController;
 use App\Http\Controllers\Guru\PenilaianEssayController;
 use App\Http\Controllers\Guru\PresensiController;
 use App\Http\Controllers\Guru\ProgressSiswaController;
@@ -309,6 +310,15 @@ Route::prefix('guru')->middleware('teacher')->group(function () {
 
     Route::prefix('penilaian')->group(function () {
         Route::get('/{id}', [RiwayatPengerjaanEssayController::class, 'index'])->name('guru.riwayat.pengerjaan');
+    });
+
+    Route::prefix('kuesioner')->group(function () {
+        Route::get('/', [KuesionerController::class, 'index'])->name('guru.kuesioner');
+        Route::get('/create', [KuesionerController::class, 'create'])->name('guru.kuesioner.create');
+        Route::post('/store', [KuesionerController::class, 'store'])->name('guru.kuesioner.store');
+        Route::get('edit/{id}', [KuesionerController::class, 'edit'])->name('guru.kuesioner.edit');
+        Route::put('update/{id}', [KuesionerController::class, 'update'])->name('guru.kuesioner.update');
+        Route::delete('destroy/{id}', [KuesionerController::class, 'destroy'])->name('guru.kuesioner.destroy');
     });
 });
 
