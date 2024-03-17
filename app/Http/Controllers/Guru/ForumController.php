@@ -21,13 +21,13 @@ class ForumController extends Controller
         return view('guru.forum.index', $data);
     }
 
-    public function detail($id)
+    public function detail()
     {
-        $forum = Forum::with([
-            'forumContent.user' => function ($query) {
-                $query->orderBy('created_at', 'desc');
-            }
-        ])->findOrFail($id);
+        $forum = ForumContent::with([
+            'user'
+        ])
+            ->orderBy('created_at', 'asc')
+            ->get();
 
         $userID = auth()->user()->id;
 

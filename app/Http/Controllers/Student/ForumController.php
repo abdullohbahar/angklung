@@ -14,7 +14,7 @@ class ForumController extends Controller
         $forum = ForumContent::with([
             'user'
         ])
-            ->orderBy('created_at', 'desc')
+            ->orderBy('created_at', 'asc')
             ->get();
 
         $userID = auth()->user()->id;

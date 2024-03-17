@@ -127,7 +127,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('guru.aktivitas.belajar.siswa') }}"
+                            <a href="{{ route('guru.forum') }}"
                                 class="nav-link white-nav {{ $active == 'aktivitas-belajar' ? 'active' : '' }}">
                                 <i class="nav-icon fas fa-file-alt"></i>
                                 <p>

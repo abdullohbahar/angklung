@@ -239,40 +239,40 @@ Route::prefix('guru')->middleware('teacher')->group(function () {
         });
     });
 
-    Route::prefix('aktivitas-belajar')->group(function () {
-        Route::get('/', [GuruAktivitasBelajarController::class, 'index'])->name('guru.aktivitas.belajar.siswa');
-        Route::get('/tambah', [GuruAktivitasBelajarController::class, 'create'])->name('guru.create.aktivitas.belajar.siswa');
-        Route::post('/simpan', [GuruAktivitasBelajarController::class, 'store'])->name('guru.store.aktivitas.belajar.siswa');
-        Route::get('/edit/{id}', [GuruAktivitasBelajarController::class, 'edit'])->name('guru.edit.aktivitas.belajar.siswa');
-        Route::put('/update/{id}', [GuruAktivitasBelajarController::class, 'update'])->name('guru.update.aktivitas.belajar.siswa');
-        Route::delete('/destroy/{id}', [GuruAktivitasBelajarController::class, 'destroy'])->name('guru.destroy.aktivitas.belajar.siswa');
+    // Route::prefix('aktivitas-belajar')->group(function () {
+    //     Route::get('/', [GuruAktivitasBelajarController::class, 'index'])->name('guru.aktivitas.belajar.siswa');
+    //     Route::get('/tambah', [GuruAktivitasBelajarController::class, 'create'])->name('guru.create.aktivitas.belajar.siswa');
+    //     Route::post('/simpan', [GuruAktivitasBelajarController::class, 'store'])->name('guru.store.aktivitas.belajar.siswa');
+    //     Route::get('/edit/{id}', [GuruAktivitasBelajarController::class, 'edit'])->name('guru.edit.aktivitas.belajar.siswa');
+    //     Route::put('/update/{id}', [GuruAktivitasBelajarController::class, 'update'])->name('guru.update.aktivitas.belajar.siswa');
+    //     Route::delete('/destroy/{id}', [GuruAktivitasBelajarController::class, 'destroy'])->name('guru.destroy.aktivitas.belajar.siswa');
 
-        Route::get('forum/{materi}', [GuruAktivitasBelajarController::class, 'forum'])->name('guru.aktivitas.belajar.forum');
-        Route::post('forum/{materi}', [GuruAktivitasBelajarController::class, 'storeForum'])->name('guru.aktivitas.belajar.store.forum');
+    //     Route::get('forum/{materi}', [GuruAktivitasBelajarController::class, 'forum'])->name('guru.aktivitas.belajar.forum');
+    //     Route::post('forum/{materi}', [GuruAktivitasBelajarController::class, 'storeForum'])->name('guru.aktivitas.belajar.store.forum');
 
-        Route::prefix('materi')->group(function () {
-            Route::get('/{id}', [MateriController::class, 'index'])->name('guru.materi');
-            Route::post('/simpan', [MateriController::class, 'store'])->name('guru.store.materi');
-            Route::get('/edit/{id}', [MateriController::class, 'edit'])->name('guru.edit.materi');
-            Route::put('/update/{id}', [MateriController::class, 'update'])->name('guru.update.materi');
-            Route::delete('/destroy/{id}', [MateriController::class, 'destroy'])->name('guru.destroy.materi');
-        });
+    //     Route::prefix('materi')->group(function () {
+    //         Route::get('/{id}', [MateriController::class, 'index'])->name('guru.materi');
+    //         Route::post('/simpan', [MateriController::class, 'store'])->name('guru.store.materi');
+    //         Route::get('/edit/{id}', [MateriController::class, 'edit'])->name('guru.edit.materi');
+    //         Route::put('/update/{id}', [MateriController::class, 'update'])->name('guru.update.materi');
+    //         Route::delete('/destroy/{id}', [MateriController::class, 'destroy'])->name('guru.destroy.materi');
+    //     });
 
-        Route::prefix('aktivitas')->group(function () {
-            Route::get('/{id}', [AktivitasController::class, 'index'])->name('guru.aktivitas');
-            Route::post('/update', [AktivitasController::class, 'update'])->name('guru.update.aktivitas');
-        });
+    //     Route::prefix('aktivitas')->group(function () {
+    //         Route::get('/{id}', [AktivitasController::class, 'index'])->name('guru.aktivitas');
+    //         Route::post('/update', [AktivitasController::class, 'update'])->name('guru.update.aktivitas');
+    //     });
 
-        Route::prefix('eksplorasi')->group(function () {
-            Route::get('/{aktivitasBelajarID}', [GuruAktivitasBelajarController::class, 'eksplorasi'])->name('aktivitas.belajar.eksplorasi');
-            Route::post('/store', [GuruAktivitasBelajarController::class, 'updateEksplorasi'])->name('guru.update.aktivitas.belajar.eksplorasi');
-        });
+    //     Route::prefix('eksplorasi')->group(function () {
+    //         Route::get('/{aktivitasBelajarID}', [GuruAktivitasBelajarController::class, 'eksplorasi'])->name('aktivitas.belajar.eksplorasi');
+    //         Route::post('/store', [GuruAktivitasBelajarController::class, 'updateEksplorasi'])->name('guru.update.aktivitas.belajar.eksplorasi');
+    //     });
 
-        Route::prefix('forum')->group(function () {
-            Route::get('/{forumID}', [MateriController::class, 'forum'])->name('guru.materi.forum');
-            Route::post('/store/{forumID}', [MateriController::class, 'storeForum'])->name('guru.store.materi.forum');
-        });
-    });
+    //     Route::prefix('forum')->group(function () {
+    //         Route::get('/{forumID}', [MateriController::class, 'forum'])->name('guru.materi.forum');
+    //         Route::post('/store/{forumID}', [MateriController::class, 'storeForum'])->name('guru.store.materi.forum');
+    //     });
+    // });
 
     Route::prefix('project')->group(function () {
         Route::get('/', [ProjectController::class, 'index'])->name('guru.project');
@@ -328,6 +328,8 @@ Route::prefix('guru')->middleware('teacher')->group(function () {
         Route::put('update/{id}', [KuesionerController::class, 'update'])->name('guru.kuesioner.update');
         Route::delete('destroy/{id}', [KuesionerController::class, 'destroy'])->name('guru.kuesioner.destroy');
     });
+
+    Route::get('forum', [ForumController::class, 'detail'])->name('guru.forum');
 });
 
 Route::get('profile', [ProfileController::class, 'index'])->name('profile');

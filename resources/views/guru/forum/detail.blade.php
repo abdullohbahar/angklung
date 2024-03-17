@@ -1,7 +1,7 @@
 @extends('guru.layout.app')
 
 @section('title')
-    Forum - {{ $forum->judul }}
+    Forum
 @endsection
 
 @push('addons-css')
@@ -22,12 +22,12 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0">Forum - {{ $forum->judul }}</h1>
+                        <h1 class="m-0">Forum</h1>
                     </div><!-- /.col -->
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item active">Forum - {{ $forum->judul }}</li>
+                            <li class="breadcrumb-item active">Forum</li>
                         </ol>
                     </div><!-- /.col -->
                 </div><!-- /.row -->
@@ -41,18 +41,18 @@
                 <div class="card direct-chat direct-chat-primary"
                     style="position: relative; left: 0px; top: 0px; height: 500px">
 
-                    <div class="card-header">
+                    {{-- <div class="card-header">
                         <div class="card-tools">
                             <button class="btn btn-danger" id="removeForum" data-id="{{ $forum->id }}">Bersihkan
                                 Forum</button>
                         </div>
-                    </div>
+                    </div> --}}
 
                     <div class="card-body" style="display: block;">
 
                         <div class="direct-chat-messages" style="height: 100%">
 
-                            @foreach ($forum->forumContent as $content)
+                            @foreach ($forum as $content)
                                 @if ($content->user->id == $userID)
                                     <div class="direct-chat-msg right">
                                         <div class="direct-chat-infos clearfix">
@@ -90,7 +90,7 @@
                 </div>
                 <div class="row">
                     <div class="col-12">
-                        <form action="{{ route('store.message.forum', $forum->id) }}" method="post">
+                        <form action="{{ route('store.message.forum') }}" method="post">
                             @csrf
                             <textarea name="body" id="summernote"></textarea>
                             <button type="submit" class="btn btn-primary mt-3">Kirim</button>
