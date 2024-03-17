@@ -87,6 +87,17 @@
                                     </div>
                                 </div>
                             </a>
+                            <a href="{{ route('pilih.kuesioner') }}"
+                                class="text-decoration-none col-6 content-center gx-3 gy-3">
+                                <div class="card card-border">
+                                    <div class="card-body text-center">
+                                        <img src="{{ asset('./guest-assets/penilaian.svg') }}" alt="">
+                                        <div class="mt-3">
+                                            <p><b>Kuesioner</b></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
                         </div>
                     </div>
                 </div>

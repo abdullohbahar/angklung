@@ -34,6 +34,7 @@ use App\Http\Controllers\Guru\PenilaianEssayController;
 use App\Http\Controllers\Guru\PresensiController;
 use App\Http\Controllers\Guru\ProgressSiswaController;
 use App\Http\Controllers\Guru\RiwayatPengerjaanEssayController;
+use App\Http\Controllers\PilihKuesioner;
 use App\Http\Controllers\SaveImageController;
 use App\Http\Controllers\StoreFourmMessage;
 use App\Http\Controllers\Student\CekSkorController;
@@ -41,6 +42,7 @@ use App\Http\Controllers\Student\ForumController as StudentForumController;
 use App\Http\Controllers\Student\MateriGelombangBunyiController;
 use App\Http\Controllers\Student\MateriGelombangController;
 use App\Http\Controllers\Student\MateriGetaranStudentController;
+use App\Http\Controllers\Student\PenilaianDiriController;
 use App\Http\Controllers\Student\PenilianEssayController;
 use App\Http\Controllers\Student\PilihJenisPertanyaan;
 use App\Http\Controllers\Student\ProfileController as StudentProfileController;
@@ -66,6 +68,12 @@ Route::post('siswa/auth', [LoginStudentController::class, 'auth'])->name('siswa.
 Route::get('siswa/logout', [LoginStudentController::class, 'logout'])->name('siswa.logout')->middleware('student');
 
 Route::prefix('siswa')->middleware('student')->group(function () {
+    Route::get('pilih-kuesioner', PilihKuesioner::class)->name('pilih.kuesioner');
+
+    Route::prefix('kuesioner')->group(function () {
+        Route::get('penilaian-diri', [PenilaianDiriController::class, 'index'])->name('student.penilaian.diri');
+        Route::post('store-penilaian-diri', [PenilaianDiriController::class, 'store'])->name('student.store.penilaian.diri');
+    });
 
     Route::get('/', [MainMenuStudentController::class, 'index'])->name('main.menu');
     Route::post('presensi', [MainMenuStudentController::class, 'storePresensi'])->name('student.presensi');
@@ -332,7 +340,7 @@ Route::post('/save-image', SaveImageController::class);
 
 Route::post('/store-message', StoreFourmMessage::class)->name('store.message.forum');
 
-Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']], function () {
+Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['auth']], function () {
     \UniSharp\LaravelFilemanager\Lfm::routes();
 });
 

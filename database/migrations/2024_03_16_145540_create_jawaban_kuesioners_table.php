@@ -16,10 +16,7 @@ return new class extends Migration
             $table->foreignUuid('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->unsignedBigInteger('kuesioner_id')->nullable();
             $table->foreign('kuesioner_id')->references('id')->on('kuesioners')->nullOnDelete();
-            $table->boolean('sangat_tidak_setuju');
-            $table->boolean('tidak_setuju');
-            $table->boolean('setuju');
-            $table->boolean('sangat_setuju');
+            $table->string('jawaban');
             $table->timestamps();
         });
     }
