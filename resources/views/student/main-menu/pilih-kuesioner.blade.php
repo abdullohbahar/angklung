@@ -36,7 +36,7 @@
                                 <div class="card card-border" style="">
                                     <div class="card-body text-center">
                                         <div class="mt-3">
-                                            <h1><b>Penilaian <br> Diri</b></h1>
+                                            <h1><b>Self <br> Assesment</b></h1>
                                         </div>
                                     </div>
                                 </div>
@@ -45,7 +45,7 @@
                                 <div class="card card-border">
                                     <div class="card-body text-center">
                                         <div class="mt-3">
-                                            <h1><b>Penilaian <br> Rekan</b></h1>
+                                            <h1><b>Peer <br> Assesment</b></h1>
                                         </div>
                                     </div>
                                 </div>

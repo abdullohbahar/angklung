@@ -49,7 +49,12 @@
                                 </center>
                             </div>
                             <div class="col-12 mt-3">
-                                <button href="javascript:void(0)" id="{{ $button }}" class="btn btn-info"
+                                <a href="{{ route('student.progress') }}" class="btn btn-warning" style="width: 100%">
+                                    <b>
+                                        Progress
+                                    </b>
+                                </a>
+                                <button href="javascript:void(0)" id="{{ $button }}" class="btn btn-info mt-3"
                                     data-id="{{ $userID }}" class="btn btn-success" style="width: 100%">
                                     <b>
                                         Presensi
