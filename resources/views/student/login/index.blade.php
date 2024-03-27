@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Bootstrap demo</title>
+    <title>Login</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
@@ -40,7 +40,7 @@
         .people-angklung {
             display: block;
             justify-content: center;
-            margin-top: 10%;
+            margin-top: 1%;
             z-index: 9999;
             position: relative;
         }
@@ -60,15 +60,15 @@
 
         @media screen and (min-width: 0px) {
             .angklung-man {
-                width: 35%;
+                width: 15%;
             }
 
             .angklung-girl {
-                width: 35%;
+                width: 15%;
             }
 
             .login {
-                margin-top: -35% !important;
+                margin-top: -43% !important;
                 width: 100%;
             }
 
@@ -80,11 +80,11 @@
 
         @media screen and (min-width: 576px) {
             .angklung-man {
-                width: 35%;
+                width: 30%;
             }
 
             .angklung-girl {
-                width: 35%;
+                width: 30%;
             }
 
             .login {
@@ -101,11 +101,11 @@
 
         @media screen and (min-width: 768px) {
             .angklung-man {
-                width: 25%;
+                width: 18%;
             }
 
             .angklung-girl {
-                width: 25%;
+                width: 18%;
             }
 
             .login {
@@ -122,11 +122,11 @@
 
         @media screen and (min-width: 992px) {
             .angklung-man {
-                width: 22%;
+                width: 15%;
             }
 
             .angklung-girl {
-                width: 20%;
+                width: 15%;
             }
 
             .login {
@@ -143,11 +143,11 @@
 
         @media screen and (min-width: 1200px) {
             .angklung-man {
-                width: 22%;
+                width: 15%;
             }
 
             .angklung-girl {
-                width: 23%;
+                width: 15%;
             }
 
             .login {
@@ -164,11 +164,11 @@
 
         @media screen and (min-width: 1400px) {
             .angklung-man {
-                width: 22%;
+                width: 15%;
             }
 
             .angklung-girl {
-                width: 20%;
+                width: 15%;
             }
 
             .login {
@@ -234,14 +234,14 @@
         </div>
     </div>
 
-    <div class="container">
+    <div class="container" style="margin-top: -8%">
         <div class="row justify-content-center text-center margin-top">
             <div class="col-sm-12 col-md-12 col-lg-7">
-                <h1><b>Selamat Datang</b></h1>
-                <div class="people-angklung">
-                    <img src="{{ asset('./guest-assets/angklung-man.svg') }}" class="angklung-man">
-                    <img src="{{ asset('./guest-assets/angklung-girl.svg') }}" class="angklung-girl">
-                </div>
+                <h2><b>Selamat Datang</b></h1>
+                    <div class="people-angklung">
+                        <img src="{{ asset('./guest-assets/angklung-man.svg') }}" class="angklung-man">
+                        <img src="{{ asset('./guest-assets/angklung-girl.svg') }}" class="angklung-girl">
+                    </div>
             </div>
         </div>
     </div>
@@ -255,7 +255,7 @@
                     @csrf
                     <div class="row justify-content-center">
                         <div class="col-sm-12 col-md-12 col-lg-8">
-                            <h1 class="login-text"><b>Login</b></h1>
+                            <h2 class="login-text"><b>Login</b></h2>
                         </div>
                         <div class="col-sm-12 col-md-12 col-lg-8 mx-5 mb-3">
                             <div class="input-group">
