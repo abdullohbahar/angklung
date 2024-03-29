@@ -1,7 +1,7 @@
 @extends('guru.layout.app')
 
 @section('title')
-    Self Assesment
+    Edit Kuesioner Penilaian Diri
 @endsection
 
 @push('addons-css')
@@ -15,12 +15,12 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0">Self Assesment</h1>
+                        <h1 class="m-0">Edit Kuesioner Penilaian Diri</h1>
                     </div><!-- /.col -->
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item active">Self Assesment</li>
+                            <li class="breadcrumb-item active">Edit Kuesioner Penilaian Diri</li>
                         </ol>
                     </div><!-- /.col -->
                 </div><!-- /.row -->
@@ -32,45 +32,22 @@
         <div class="content">
             <div class="container-fluid">
                 <div class="card">
-                    <div class="card-header">
-                        <div class="card-tools">
-                            <a href="{{ route('guru.kuesioner.create') }}" class="btn btn-brown rounded-pill">Buat Kuesioner
-                            </a>
-                        </div>
-                    </div>
                     <div class="card-body">
-                        <div class="row">
-                            <div class="col-12">
-                                <table class="table table-bordered table-striped" id="table1">
-                                    <thead>
-                                        <tr>
-                                            <th style="width: 5%">No</th>
-                                            <th>Pernyataan</th>
-                                            <th>Aksi</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <?php $no = 1; ?>
-                                        @foreach ($kuesioners as $kuesioner)
-                                            <tr>
-                                                <td>
-                                                    {{ $no++ }}
-                                                </td>
-                                                <td>{{ $kuesioner->pernyataan }}</td>
-                                                <td>
-                                                    <div class="btn-group" role="group" aria-label="Basic example">
-                                                        <a href="{{ route('guru.kuesioner.edit', $kuesioner->id) }}"
-                                                            class="btn btn-warning">Ubah</a>
-                                                        <button type="button" class="btn btn-danger" id="removeBtn"
-                                                            data-id="{{ $kuesioner->id }}">Hapus</button>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                        @endforeach
-                                    </tbody>
-                                </table>
+                        <form action="{{ route('guru.peer.assesment.update', $kuesioner->id) }}" method="POST">
+                            @method('PUT')
+                            @csrf
+                            <div class="row">
+                                <div class="col-12">
+                                    <label for="">Pernyataan</label>
+                                    <textarea name="pernyataan" class="form-control" id="" style="width: 100%" rows="2" required>{{ $kuesioner->pernyataan }}</textarea>
+                                </div>
                             </div>
-                        </div>
+                            <div class="row mt-3">
+                                <div class="col-12">
+                                    <button type="submit" class="btn btn-success">Ubah</button>
+                                </div>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -105,7 +82,7 @@
             }).then((result) => {
                 if (result.isConfirmed) {
                     $.ajax({
-                        url: '/guru/kuesioner/destroy/' + id,
+                        url: '/guru/forum/destroy/' + id,
                         type: 'DELETE',
                         success: function(response) {
                             if (response.code == 200) {

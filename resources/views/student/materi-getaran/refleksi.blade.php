@@ -105,7 +105,7 @@
                                             <div class="col-sm-12 col-md-6 col-lg-6 mt-3 text-center">
                                                 <button type="submit" class="btn btn-custom-orange rounded-pill"
                                                     style="width: 100%">
-                                                    Selanjutnya <i class="fa-solid fa-arrow-right"></i>
+                                                    Kumpulkan <i class="fa-solid fa-arrow-right"></i>
                                                 </button>
                                             </div>
                                         </div>

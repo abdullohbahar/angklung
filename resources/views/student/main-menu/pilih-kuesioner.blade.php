@@ -41,7 +41,8 @@
                                     </div>
                                 </div>
                             </a>
-                            <a href="" class="text-decoration-none col-6 content-center gx-3 gy-3">
+                            <a href="{{ route('student.peer.assesment') }}"
+                                class="text-decoration-none col-6 content-center gx-3 gy-3">
                                 <div class="card card-border">
                                     <div class="card-body text-center">
                                         <div class="mt-3">

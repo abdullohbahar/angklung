@@ -1,7 +1,7 @@
 @extends('student.main-menu.layout.app')
 
 @section('title')
-    Penilaian Diri
+    Peer Assesment
 @endsection
 
 @push('addons-css')
@@ -30,8 +30,15 @@
             <div class="col-sm-12 col-md-12 col-lg-12">
                 <div class="card">
                     <div class="card-body">
-                        <form action="{{ route('student.store.penilaian.diri') }}" method="POST">
+                        <form action="{{ route('student.store.peer.assesment') }}" method="POST">
                             @csrf
+                            <div class="row">
+                                <div class="col-12">
+                                    <label for="">Tambahkan Nama Teman Kamu</label>
+                                    <input type="text" name="friend_name" class="form-control mb-3 col-12"
+                                        placeholder="Nama Teman Kamu" required id="">
+                                </div>
+                            </div>
                             <div class="row">
                                 <div class="col-12">
                                     <table class="table table-bordered table-striped">

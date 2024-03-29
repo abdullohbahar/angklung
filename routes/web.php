@@ -30,6 +30,7 @@ use App\Http\Controllers\Guru\AktivitasBelajarController as GuruAktivitasBelajar
 use App\Http\Controllers\Guru\CapaianPembelajaranController as GuruCapaianPembelajaranController;
 use App\Http\Controllers\Guru\ForumController;
 use App\Http\Controllers\Guru\KuesionerController;
+use App\Http\Controllers\Guru\PeerAssesment;
 use App\Http\Controllers\Guru\PenilaianEssayController;
 use App\Http\Controllers\Guru\PresensiController;
 use App\Http\Controllers\Guru\ProgressSiswaController;
@@ -42,6 +43,7 @@ use App\Http\Controllers\Student\ForumController as StudentForumController;
 use App\Http\Controllers\Student\MateriGelombangBunyiController;
 use App\Http\Controllers\Student\MateriGelombangController;
 use App\Http\Controllers\Student\MateriGetaranStudentController;
+use App\Http\Controllers\Student\PeerAssesmentController;
 use App\Http\Controllers\Student\PenilaianDiriController;
 use App\Http\Controllers\Student\PenilianEssayController;
 use App\Http\Controllers\Student\PilihJenisPertanyaan;
@@ -73,6 +75,11 @@ Route::prefix('siswa')->middleware('student')->group(function () {
     Route::prefix('kuesioner')->group(function () {
         Route::get('penilaian-diri', [PenilaianDiriController::class, 'index'])->name('student.penilaian.diri');
         Route::post('store-penilaian-diri', [PenilaianDiriController::class, 'store'])->name('student.store.penilaian.diri');
+    });
+
+    Route::prefix('peer-assesment')->group(function () {
+        Route::get('/', [PeerAssesmentController::class, 'index'])->name('student.peer.assesment');
+        Route::post('store', [PeerAssesmentController::class, 'store'])->name('student.store.peer.assesment');
     });
 
     Route::get('/', [MainMenuStudentController::class, 'index'])->name('main.menu');
@@ -327,6 +334,15 @@ Route::prefix('guru')->middleware('teacher')->group(function () {
         Route::get('edit/{id}', [KuesionerController::class, 'edit'])->name('guru.kuesioner.edit');
         Route::put('update/{id}', [KuesionerController::class, 'update'])->name('guru.kuesioner.update');
         Route::delete('destroy/{id}', [KuesionerController::class, 'destroy'])->name('guru.kuesioner.destroy');
+    });
+
+    Route::prefix('peer-assesment')->group(function () {
+        Route::get('/', [PeerAssesment::class, 'index'])->name('guru.peer.assesment');
+        Route::get('/create', [PeerAssesment::class, 'create'])->name('guru.peer.assesment.create');
+        Route::post('/store', [PeerAssesment::class, 'store'])->name('guru.peer.assesment.store');
+        Route::get('edit/{id}', [PeerAssesment::class, 'edit'])->name('guru.peer.assesment.edit');
+        Route::put('update/{id}', [PeerAssesment::class, 'update'])->name('guru.peer.assesment.update');
+        Route::delete('destroy/{id}', [PeerAssesment::class, 'destroy'])->name('guru.peer.assesment.destroy');
     });
 
     Route::get('forum', [ForumController::class, 'detail'])->name('guru.forum');
