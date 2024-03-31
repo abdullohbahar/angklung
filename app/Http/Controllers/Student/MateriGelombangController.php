@@ -207,6 +207,14 @@ class MateriGelombangController extends Controller
 
     public function quiz()
     {
+        $userID = auth()->user()->id;
+
+        $quiz = QuizMateriGelombang::where('user_id', $userID)->first();
+
+        if ($quiz) {
+            return to_route('student.pilih.quiz')->with('warning', 'Anda Sudah Mengerjakan Quiz Gelombang!');
+        }
+
         return view('student.materi-gelombang.quiz');
     }
 
@@ -218,6 +226,6 @@ class MateriGelombangController extends Controller
             'is_answered' => true
         ]);
 
-        return to_route('main.menu')->with('notification', 'Selamat anda telah mengerjakan quiz !');
+        return to_route('student.pilih.quiz')->with('notification', 'Selamat anda telah mengerjakan quiz !');
     }
 }

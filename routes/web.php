@@ -47,8 +47,12 @@ use App\Http\Controllers\Student\PeerAssesmentController;
 use App\Http\Controllers\Student\PenilaianDiriController;
 use App\Http\Controllers\Student\PenilianEssayController;
 use App\Http\Controllers\Student\PilihJenisPertanyaan;
+use App\Http\Controllers\Student\PilihQuizController;
 use App\Http\Controllers\Student\ProfileController as StudentProfileController;
 use App\Http\Controllers\Student\ProgressController;
+use App\Http\Controllers\Student\QuizGetaranController;
+use App\Http\Controllers\Student\QuizMekanismePendengaranController;
+use App\Http\Controllers\Student\QuizSistemPendengaran;
 
 /*
 |--------------------------------------------------------------------------
@@ -80,6 +84,25 @@ Route::prefix('siswa')->middleware('student')->group(function () {
     Route::prefix('peer-assesment')->group(function () {
         Route::get('/', [PeerAssesmentController::class, 'index'])->name('student.peer.assesment');
         Route::post('store', [PeerAssesmentController::class, 'store'])->name('student.store.peer.assesment');
+    });
+
+    Route::prefix('quiz')->group(function () {
+        Route::get('/pilih', PilihQuizController::class)->name('student.pilih.quiz');
+
+        Route::prefix('getaran')->group(function () {
+            Route::get('/', [QuizGetaranController::class, 'index'])->name('student.quiz.getaran');
+            Route::post('/store', [QuizGetaranController::class, 'store'])->name('student.store.quiz.getaran');
+        });
+
+        Route::prefix('sistem-pendengaran')->group(function () {
+            Route::get('/', [QuizSistemPendengaran::class, 'index'])->name('student.quiz.sistem.pendengaran');
+            Route::post('/store', [QuizSistemPendengaran::class, 'store'])->name('student.store.quiz.sistem.pendengaran');
+        });
+
+        Route::prefix('mekanisme-pendengaran')->group(function () {
+            Route::get('/', [QuizMekanismePendengaranController::class, 'index'])->name('student.quiz.mekanisme.pendengaran');
+            Route::post('/store', [QuizMekanismePendengaranController::class, 'store'])->name('student.store.quiz.mekanisme.pendengaran');
+        });
     });
 
     Route::get('/', [MainMenuStudentController::class, 'index'])->name('main.menu');

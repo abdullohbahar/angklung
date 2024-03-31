@@ -76,7 +76,7 @@
                                     </div>
                                 </div>
                             </a>
-                            <a href="{{ route('materi.gelombang.quiz') }}"
+                            <a href="{{ route('student.pilih.quiz') }}"
                                 class="text-decoration-none col-6 content-center gx-3 gy-3">
                                 <div class="card card-border">
                                     <div class="card-body text-center">

@@ -1,7 +1,7 @@
 @extends('student.main-menu.layout.app')
 
 @section('title')
-    Quiz Gelombang
+    Quiz Getaran
 @endsection
 
 @push('addons-css')
@@ -73,7 +73,7 @@
             <div class="col-sm-12 col-md-12 col-lg-8">
                 <div class="row">
                     <div class="col-12 my-3 text-center">
-                        <h1 class="outline"><b>Quiz</b></h1>
+                        <h1 class="outline"><b>Getaran</b></h1>
                     </div>
                     <div class="row ms-0">
                         <div class="col-12">
@@ -81,12 +81,12 @@
                                 <div class="card-body">
                                     <div class="row">
                                         <div class="col-12">
-                                            <iframe
-                                                src="https://wordwall.net/id/embed/f5a1b2662ff3402587c2164f24154433?themeId=1&templateId=3&fontStackId=0"
+                                            <iframe style="max-width:100%"
+                                                src="https://wordwall.net/id/embed/627fbd02d1da48559b73d861c0576e89?themeId=41&templateId=46&fontStackId=0"
                                                 width="500" height="380" frameborder="0" allowfullscreen></iframe>
                                         </div>
                                     </div>
-                                    <form action="{{ route('materi.gelombang.store.quiz') }}" method="POST" id="approve">
+                                    <form action="{{ route('student.store.quiz.getaran') }}" method="POST" id="approve">
                                         @csrf
                                         <div class="row">
                                             <div class="col-sm-12 col-md-6 col-lg-6 mt-3 text-center">
