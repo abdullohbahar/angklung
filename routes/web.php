@@ -53,6 +53,7 @@ use App\Http\Controllers\Student\ProgressController;
 use App\Http\Controllers\Student\QuizGetaranController;
 use App\Http\Controllers\Student\QuizMekanismePendengaranController;
 use App\Http\Controllers\Student\QuizSistemPendengaran;
+use App\Http\Controllers\UbahBahasa;
 
 /*
 |--------------------------------------------------------------------------
@@ -128,6 +129,7 @@ Route::prefix('siswa')->middleware('student')->group(function () {
     Route::get('/penilaian/{no}', [PenilaianStudentController::class, 'index'])->name('student.penilaian');
     Route::post('/simpan-penilaian/{id}', [PenilaianStudentController::class, 'store'])->name('student.store.penilaian');
     Route::get('/penilaian-selesai', [PenilaianStudentController::class, 'selesai'])->name('student.penilaian.selesai');
+    Route::get('ubah-bahasa/{bahasa}', UbahBahasa::class)->name('student.ubah.bahasa');
 
     Route::get('/forum', [StudentForumController::class, 'index'])->name('student.forum');
     Route::get('/detail-forum/{id}', [StudentForumController::class, 'detail'])->name('student.detail.forum');

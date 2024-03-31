@@ -106,12 +106,26 @@
                             <div class="col-12">
                                 <div class="card card-border mb-5" style="width: 100%; background-color: antiquewhite">
                                     <div class="card-body">
+                                        <div style="float: right">
+                                            <select name="language" id="switch">
+                                                <option value="id"
+                                                    {{ session()->get('bahasa') == 'id' ? 'selected' : '' }}>Indonesia
+                                                </option>
+                                                <option value="en"
+                                                    {{ session()->get('bahasa') == 'en' ? 'selected' : '' }}>English
+                                                </option>
+                                            </select>
+                                        </div>
                                         <h3 class="text-center mb-3">
                                             <b>
                                                 Soal No. {{ $penilaian->nomor_soal }}
                                             </b>
                                         </h3>
-                                        {!! $penilaian->soal !!}
+                                        @if (session('bahasa') == 'en')
+                                            {!! $penilaian->soal_english !!}
+                                        @else
+                                            {!! $penilaian->soal !!}
+                                        @endif
                                         <h4 class="my-3"><b>Jawaban</b></h4>
                                         <textarea name="jawaban" placeholder="Tuliskan Jawaban Anda Disini" class="form-control" required rows="10">{{ $jawabanSoal }}</textarea>
                                         <input type="hidden" name="no" value="{{ $penilaian->nomor_soal }}"

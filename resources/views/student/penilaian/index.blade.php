@@ -5,6 +5,8 @@
 @endsection
 
 @push('addons-css')
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
     <style>
         .font-weight-600 {
             font-weight: 600;
@@ -111,19 +113,43 @@
                             <div class="col-12">
                                 <div class="card card-border mb-5" style="width: 100%; background-color: antiquewhite">
                                     <div class="card-body">
+                                        <div style="float: right">
+                                            <select name="language" id="switch">
+                                                <option value="id"
+                                                    {{ session()->get('bahasa') == 'id' ? 'selected' : '' }}>Indonesia
+                                                </option>
+                                                <option value="en"
+                                                    {{ session()->get('bahasa') == 'en' ? 'selected' : '' }}>English
+                                                </option>
+                                            </select>
+                                        </div>
                                         <h3 class="text-center mb-3">
                                             <b>
                                                 Soal No. {{ $penilaian->nomor }}
                                             </b>
                                         </h3>
-                                        {!! $penilaian->soal !!}
+                                        @if (session('bahasa') == 'en')
+                                            {!! $penilaian->englsih_soal !!}
+                                        @else
+                                            {!! $penilaian->soal !!}
+                                        @endif
+
                                         <h3 class="text-center my-3"><b>Jawaban</b></h3>
 
-                                        @include('student.penilaian.components.jawaban')
+                                        @if (session('bahasa') == 'en')
+                                            @include('student.penilaian.components.jawaban-english')
+                                        @else
+                                            @include('student.penilaian.components.jawaban')
+                                        @endif
 
                                         <h3 class="text-center my-3"><b>Alasan</b></h3>
 
-                                        @include('student.penilaian.components.alasan')
+                                        @if (session('bahasa') == 'en')
+                                            @include('student.penilaian.components.alasan-english')
+                                        @else
+                                            @include('student.penilaian.components.alasan')
+                                        @endif
+
 
                                         <input type="hidden" name="no" value="{{ $penilaian->nomor }}" id="">
                                     </div>
@@ -156,4 +182,21 @@
 @endsection
 
 @push('addons-js')
+    <script>
+        var token = $('meta[name="csrf-token"]').attr('content');
+
+
+        // destroy anak asuh
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': token
+            }
+        });
+
+        $("#switch").on("change", function() {
+            var bahasa = $(this).val()
+
+            window.location = '/siswa/ubah-bahasa/' + bahasa
+        })
+    </script>
 @endpush

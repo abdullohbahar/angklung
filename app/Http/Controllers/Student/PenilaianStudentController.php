@@ -30,7 +30,9 @@ class PenilaianStudentController extends Controller
         // mengambil semua soal pilihan ganda
         $soal = Penilaian::with([
             'pilihanJawaban',
+            'pilihanJawabanEnglish',
             'alasan',
+            'alasanEnglish',
             'riwayatPenilaian' => function ($query) use ($userID) {
                 $query->where('users_id', $userID);
             }
