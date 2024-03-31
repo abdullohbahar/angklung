@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers\Student;
 
+use App\Models\Timer;
 use App\Models\Penilaian;
 use Illuminate\Http\Request;
 use App\Models\PenilaianEssay;
 use App\Http\Controllers\Controller;
+use App\Models\DoneAssesment;
 use App\Models\JawabanPenilaianEssay;
 
 class PenilianEssayController extends Controller
@@ -47,6 +49,17 @@ class PenilianEssayController extends Controller
         ])
             ->get();
 
+        $timer = Timer::where('user_id', $userID)->first();
+
+        if (!$timer) {
+            Timer::create([
+                'user_id' => $userID,
+                'timer' => 3600
+            ]);
+        }
+
+        $jumlahEssay = PenilaianEssay::count();
+
         $data = [
             'penilaian' => $penilaian,
             'jawabanSoal' => $jawabanSoal,
@@ -54,7 +67,9 @@ class PenilianEssayController extends Controller
             'soal' => $soal,
             'soalEssay' => $soalEssay,
             'no' => $no,
-            'tipe' => 'essay'
+            'jumlahEssay' => $jumlahEssay,
+            'tipe' => 'essay',
+            'timer' => $timer->timer ?? 3600
         ];
 
         return view('student.penilaian-essay.index', $data);
@@ -88,6 +103,12 @@ class PenilianEssayController extends Controller
         $lastNumber = PenilaianEssay::count();
 
         if ($lastNumber == $request->no) {
+            DoneAssesment::updateorcreate([
+                'user_id' => $userID,
+            ], [
+                'is_done' => true
+            ]);
+
             return to_route('student.penilaian.essay.selesai');
         } else {
             return to_route('student.penilaian.essay', $request->no + 1)->with('success', 'Berhasil menjawab');

@@ -73,6 +73,8 @@
             color: white
         }
     </style>
+
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 @endpush
 
 
@@ -100,7 +102,7 @@
             <div class="col-sm-12 col-md-12 col-lg-8">
                 <div class="row">
                     <form action="{{ route('student.store.penilaian.essay', $penilaian->id) }}" method="POST"
-                        enctype="multipart/form-data">
+                        enctype="multipart/form-data" id="{{ $no == $jumlahEssay ? 'approve' : '' }}">
                         @csrf
                         <div class="row ms-0">
                             <div class="col-12">
@@ -153,8 +155,14 @@
                                             </div>
                                             <div class="col-6">
                                                 <button type="submit" class="btn btn-custom-orange rounded-pill"
-                                                    style="width: 100%">Selanjutnya
-                                                    <i class="fa-solid fa-arrow-right"></i></button>
+                                                    style="width: 100%">
+                                                    @if ($no == $jumlahEssay)
+                                                        Selesai
+                                                    @else
+                                                        Selanjutnya
+                                                    @endif
+                                                    <i class="fa-solid fa-arrow-right"></i>
+                                                </button>
                                             </div>
                                         </div>
                                     </div>
@@ -171,4 +179,88 @@
 @endsection
 
 @push('addons-js')
+    <script>
+        var token = $('meta[name="csrf-token"]').attr('content');
+
+
+        // destroy anak asuh
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': token
+            }
+        });
+
+        $("#switch").on("change", function() {
+            var bahasa = $(this).val()
+
+            window.location = '/siswa/ubah-bahasa/' + bahasa
+        })
+    </script>
+
+    <script>
+        function startCountdown(duration, display) {
+            var timer = duration,
+                minutes, seconds;
+            setInterval(function() {
+                minutes = parseInt(timer / 60, 10);
+                seconds = parseInt(timer % 60, 10);
+
+                minutes = minutes < 10 ? "0" + minutes : minutes;
+                seconds = seconds < 10 ? "0" + seconds : seconds;
+
+                display.text(minutes + ":" + seconds);
+
+                if (--timer < 0) {
+                    timer = duration;
+                }
+
+                // Panggil endpoint API untuk mengupdate timer di database
+                $.ajax({
+                    type: "PUT",
+                    url: "/timer",
+                    success: function(response) {
+                        // Jika sukses, lakukan sesuatu jika diperlukan
+                    },
+                    error: function(xhr, status, error) {
+                        console.error(error);
+                    }
+                });
+            }, 1000);
+        }
+
+        $(document).ready(function() {
+            var countdownDisplay = $('#countdown');
+            var countdownDuration = {{ $timer }}; // 60 minutes
+
+            startCountdown(countdownDuration, countdownDisplay);
+        });
+    </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Menangkap formulir saat di-submit
+            var form = document.getElementById(
+                'approve'); // Ganti 'tinjauanLapangan' dengan ID formulir Anda
+
+            form.addEventListener('submit', function(event) {
+                event.preventDefault(); // Mencegah formulir untuk langsung di-submit
+
+                // Menampilkan konfirmasi SweetAlert
+                Swal.fire({
+                    title: 'Apakah anda yakin? Anda tidak bisa kembali ke halaman penilaian',
+                    text: 'Klik "Ya" untuk konfirmasi.',
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Ya'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        // Jika pengguna mengklik "Ya", formulir akan di-submit
+                        form.submit();
+                    }
+                });
+            });
+        });
+    </script>
 @endpush

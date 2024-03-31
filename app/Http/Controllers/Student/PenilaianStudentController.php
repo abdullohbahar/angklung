@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\PenilaianEssay;
 use App\Models\RiwayatPenilaian;
 use App\Http\Controllers\Controller;
+use App\Models\Timer;
 
 class PenilaianStudentController extends Controller
 {
@@ -25,6 +26,19 @@ class PenilaianStudentController extends Controller
         } else {
             $jawabanSoal = '';
             $jawabanAlasan = '';
+        }
+
+        $timer = Timer::where('user_id', $userID)->first();
+
+        if (!$timer) {
+            Timer::create([
+                'user_id' => $userID,
+                'timer' => 3600
+            ]);
+        }
+
+        if ($timer->timer <= 0) {
+            return to_route('student.pilih.jenis.pertanyaan')->with('warning', 'Anda telah kehabisan waktu untuk mengerjakan penilaian');
         }
 
         // mengambil semua soal pilihan ganda
@@ -52,7 +66,8 @@ class PenilaianStudentController extends Controller
             'soal' => $soal,
             'soalEssay' => $soalEssay,
             'no' => $no,
-            'tipe' => 'pilgan'
+            'tipe' => 'pilgan',
+            'timer' => $timer->timer ?? 3600
         ];
 
         return view('student.penilaian.index', $data);

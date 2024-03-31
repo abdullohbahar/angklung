@@ -3,6 +3,9 @@
         <div class="card-body">
             <div class="row">
                 <div class="col-12 text-center">
+                    <div id="countdown"></div>
+                </div>
+                <div class="col-12 text-center">
                     <h2>Pilihan Ganda</h2>
                 </div>
                 @foreach ($soal as $index => $soal)

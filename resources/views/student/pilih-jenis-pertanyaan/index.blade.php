@@ -20,30 +20,7 @@
 
     <div class="container-fluid mb-5">
         <div class="row justify-content-center">
-            <div class="col-sm-12 col-md-12 col-lg-7">
-                <div class="row text-center">
-                    <div class="col-12 my-3 text-center">
-                    </div>
-                    {{-- <a href="{{ route('student.penilaian', 1) }}" class="text-decoration-none col-6 content-center gx-3 gy-3">
-                        <div class="card card-border" style="">
-                            <div class="card-body text-center">
-                                <div class="mt-5">
-                                    <h1><b>Pilihan Ganda</b></h1>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                    <a href="{{ route('student.penilaian.essay', 1) }}"
-                        class="text-decoration-none col-6 content-center gx-3 gy-3">
-                        <div class="card card-border">
-                            <div class="card-body text-center">
-                                <div class="mt-5">
-                                    <h1><b>Essay</b></h1>
-                                </div>
-                            </div>
-                        </div>
-                    </a> --}}
-                </div>
+            <div class="col-sm-12 col-md-12 col-lg-9">
                 <div class="row">
                     <div class="col-12">
                         <div class="card">
@@ -51,6 +28,10 @@
                                 <h2><b>Mari Kita Mengerjakan Penilaian</b></h2>
                             </div>
                             <div class="card-body">
+                                <h6>
+                                    Waktu mengerjakan yaitu 60 Menit. Ketika anda klik tombol mulai maka waktu akan
+                                    berjalan.
+                                </h6>
                                 <a href="{{ route('student.penilaian', 1) }}" style="width: 100%" class="btn btn-warning">
                                     <b>Mulai</b>
                                 </a>
