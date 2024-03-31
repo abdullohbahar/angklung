@@ -47,6 +47,7 @@ class PenilaianEssayController extends Controller
             $penilaian->create([
                 'nomor_soal' => $nomor,
                 'soal' => $request->body,
+                'soal_english' => $request->bodyEnglish,
             ]);
 
             DB::commit();
@@ -78,6 +79,7 @@ class PenilaianEssayController extends Controller
 
             PenilaianEssay::where('id', $id)->update([
                 'soal' => $request->body,
+                'soal_english' => $request->bodyEnglish,
             ]);
 
             DB::commit();

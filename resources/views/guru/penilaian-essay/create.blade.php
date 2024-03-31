@@ -13,7 +13,7 @@
         }
 
         .ck-content {
-            height: 1000px !important;
+            height: 500px !important;
         }
 
         .ck.ck-editor {
@@ -56,10 +56,21 @@
                             <div class="row">
                                 <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 mt-3">
                                     <h3>
-                                        <b>Soal</b>
+                                        <b>Soal Versi Bahasa Indonesia</b>
                                     </h3>
                                     <textarea name="body" class="editor" style="width: 100%;">{{ old('body') }}</textarea>
                                     @error('body')
+                                        <small style="color: red;">
+                                            {{ $message }}
+                                        </small>
+                                    @enderror
+                                </div>
+                                <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 mt-3">
+                                    <h3>
+                                        <b>Soal Versi Bahasa Inggris</b>
+                                    </h3>
+                                    <textarea name="bodyEnglish" class="editorEnglish" style="width: 100%;">{{ old('bodyEnglish') }}</textarea>
+                                    @error('bodyEnglish')
                                         <small style="color: red;">
                                             {{ $message }}
                                         </small>
