@@ -23,6 +23,16 @@ class Penilaian extends Model
         return $this->HasOne(Alasan::class);
     }
 
+    public function pilihanJawabanEnglish(): HasOne
+    {
+        return $this->HasOne(PilihanJawabanEnglish::class);
+    }
+
+    public function alasanEnglish(): HasOne
+    {
+        return $this->HasOne(AlasanEnglish::class);
+    }
+
     public function riwayatPenilaian()
     {
         return $this->hasOne(RiwayatPenilaian::class);

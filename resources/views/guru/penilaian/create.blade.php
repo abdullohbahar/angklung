@@ -43,15 +43,15 @@
         <!-- /.content-header -->
 
         <!-- Main content -->
-        <div class="content">
-            <div class="container-fluid">
-                <div class="card">
-                    <div class="card-header">
-                        <h4><b>Tambah Soal</b></h4>
-                    </div>
-                    <div class="card-body">
-                        <form action="{{ route('guru.store.penilaian') }}" method="POST" enctype="multipart/form-data">
-                            @csrf
+        <form action="{{ route('guru.store.penilaian') }}" method="POST" enctype="multipart/form-data">
+            @csrf
+            <div class="content">
+                <div class="container-fluid">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4><b>Tambah Soal Versi Indonesia</b></h4>
+                        </div>
+                        <div class="card-body">
                             <div class="row">
                                 <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 mt-3">
                                     <h3>
@@ -269,18 +269,147 @@
                                             </tbody>
                                         </table>
                                     </div>
-                                    <div class="col-12 mt-3">
-                                        <button type="submit" class="btn btn-brown" id="btnSave"
-                                            style="width: 100%">Simpan</button>
-                                    </div>
                                 </div>
                             </div>
-                        </form>
+                        </div>
+                    </div>
+
+                    <div class="card mt-5">
+                        <div class="card-header">
+                            <h4><b>Tambah Soal Versi Bahasa Inggris</b></h4>
+                        </div>
+                        <div class="card-body">
+                            <form action="{{ route('guru.store.penilaian') }}" method="POST"
+                                enctype="multipart/form-data">
+                                @csrf
+                                <div class="row">
+                                    <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 mt-3">
+                                        <h3>
+                                            <b>Soal</b>
+                                        </h3>
+                                        <textarea name="bodyEnglish" class="editorEnglish" style="width: 100%;">{{ old('bodyEnglish') }}</textarea>
+                                        @error('bodyEnglish')
+                                            <small style="color: red;">
+                                                {{ $message }}
+                                            </small>
+                                        @enderror
+                                    </div>
+                                    <div class="col-12">
+                                        <hr>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="row">
+                                            <h3>
+                                                <b>Jawaban Soal</b>
+                                            </h3>
+                                            <table style="width:100%">
+                                                <thead>
+                                                    <tr>
+                                                        <th colspan="2">Jawaban Soal</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td style="width: 1%">
+                                                            <b>A</b>
+                                                        </td>
+                                                        <td>
+                                                            <textarea name="jawabanAEnglish" class="jawabanAEnglish">{{ old('jawabanAEnglish') }}</textarea>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style="width: 1%">
+                                                            <b>B</b>
+                                                        </td>
+                                                        <td>
+                                                            <textarea name="jawabanBEnglish" class="jawabanBEnglish mt-3">{{ old('jawabanBEnglish') }}</textarea>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style="width: 1%">
+                                                            <b>C</b>
+                                                        </td>
+                                                        <td>
+                                                            <textarea name="jawabanCEnglish" class="jawabanCEnglish mt-3">{{ old('jawabanCEnglish') }}</textarea>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style="width: 1%">
+                                                            <b>D</b>
+                                                        </td>
+                                                        <td>
+                                                            <textarea name="jawabanDEnglish" class="jawabanDEnglish mt-3">{{ old('jawabanDEnglish') }}</textarea>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <hr>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="row">
+                                            <h3>
+                                                <b>Alasan</b>
+                                            </h3>
+                                            <table style="width:100%">
+                                                <thead>
+                                                    <tr>
+                                                        <th colspan="2">Alasan</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td style="width: 1%">
+                                                            <b>A</b>
+                                                        </td>
+                                                        <td>
+                                                            <textarea name="alasanAEnglish" class="alasanAEnglish mt-3">{{ old('alasanAEnglish') }}</textarea>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style="width: 1%">
+                                                            <b>B</b>
+                                                        </td>
+                                                        <td>
+                                                            <textarea name="alasanBEnglish" class="alasanBEnglish mt-3">{{ old('alasanBEnglish') }}</textarea>
+
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style="width: 1%">
+                                                            <b>C</b>
+                                                        </td>
+                                                        <td>
+                                                            <textarea name="alasanCEnglish" class="alasanCEnglish mt-3">{{ old('alasanCEnglish') }}</textarea>
+
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style="width: 1%">
+                                                            <b>D</b>
+                                                        </td>
+                                                        <td>
+                                                            <textarea name="alasanDEnglish" class="alasanDEnglish mt-3">{{ old('alasanDEnglish') }}</textarea>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <div class="col-12 mt-3">
+                                            <button type="submit" class="btn btn-brown" id="btnSave"
+                                                style="width: 100%">Simpan</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
                     </div>
                 </div>
+                <!-- /.content -->
             </div>
-            <!-- /.content -->
-        </div>
+        </form>
     </div>
 @endsection
 

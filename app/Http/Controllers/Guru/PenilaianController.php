@@ -4,8 +4,10 @@ namespace App\Http\Controllers\Guru;
 
 use App\Http\Controllers\Controller;
 use App\Models\Alasan;
+use App\Models\AlasanEnglish;
 use App\Models\Penilaian;
 use App\Models\PilihanJawaban;
+use App\Models\PilihanJawabanEnglish;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -47,6 +49,15 @@ class PenilaianController extends Controller
             'alasanC' => 'required',
             'alasanD' => 'required',
             'jawabanAlasan' => 'required',
+            'bodyEnglish' => 'required',
+            'jawabanAEnglish' => 'required',
+            'jawabanBEnglish' => 'required',
+            'jawabanCEnglish' => 'required',
+            'jawabanDEnglish' => 'required',
+            'alasanAEnglish' => 'required',
+            'alasanBEnglish' => 'required',
+            'alasanCEnglish' => 'required',
+            'alasanDEnglish' => 'required',
         ], [
             'body.required' => 'Soal harus diisi',
             'jawabanA.required' => 'Jawaban A harus diisi',
@@ -59,6 +70,15 @@ class PenilaianController extends Controller
             'alasanC.required' => 'Alasan C harus diisi',
             'alasanD.required' => 'Alasan D harus diisi',
             'jawabanAlasan.required' => 'Kunci Jawaban Alasan harus diisi',
+            'bodyEnglish.required' => 'Soal harus diisi',
+            'jawabanAEnglish.required' => 'Jawaban A harus diisi',
+            'jawabanBEnglish.required' => 'Jawaban B harus diisi',
+            'jawabanCEnglish.required' => 'Jawaban C harus diisi',
+            'jawabanDEnglish.required' => 'Jawaban D harus diisi',
+            'alasanAEnglish.required' => 'Alasan A harus diisi',
+            'alasanBEnglish.required' => 'Alasan B harus diisi',
+            'alasanCEnglish.required' => 'Alasan C harus diisi',
+            'alasanDEnglish.required' => 'Alasan D harus diisi',
         ]);
 
         try {
@@ -76,6 +96,7 @@ class PenilaianController extends Controller
             $createPenilaian = $penilaian->create([
                 'nomor' => $nomor,
                 'soal' => $request->body,
+                'englsih_soal' => $request->bodyEnglish,
                 'kunci_jawaban' => $request->jawabanSoal,
                 'kunci_alasan' => $request->jawabanAlasan,
             ]);
@@ -88,12 +109,28 @@ class PenilaianController extends Controller
                 'd' => $request->jawabanD,
             ]);
 
+            PilihanJawabanEnglish::create([
+                'penilaian_id' => $createPenilaian->id,
+                'a' => $request->jawabanAEnglish,
+                'b' => $request->jawabanBEnglish,
+                'c' => $request->jawabanCEnglish,
+                'd' => $request->jawabanDEnglish,
+            ]);
+
             Alasan::create([
                 'penilaian_id' => $createPenilaian->id,
                 'a' => $request->alasanA,
                 'b' => $request->alasanB,
                 'c' => $request->alasanC,
                 'd' => $request->alasanD,
+            ]);
+
+            AlasanEnglish::create([
+                'penilaian_id' => $createPenilaian->id,
+                'a' => $request->alasanAEnglish,
+                'b' => $request->alasanBEnglish,
+                'c' => $request->alasanCEnglish,
+                'd' => $request->alasanDEnglish,
             ]);
 
             DB::commit();
@@ -130,6 +167,15 @@ class PenilaianController extends Controller
             'alasanC' => 'required',
             'alasanD' => 'required',
             'jawabanAlasan' => 'required',
+            'bodyEnglish' => 'required',
+            'jawabanAEnglish' => 'required',
+            'jawabanBEnglish' => 'required',
+            'jawabanCEnglish' => 'required',
+            'jawabanDEnglish' => 'required',
+            'alasanAEnglish' => 'required',
+            'alasanBEnglish' => 'required',
+            'alasanCEnglish' => 'required',
+            'alasanDEnglish' => 'required',
         ], [
             'body.required' => 'Soal harus diisi',
             'jawabanA.required' => 'Jawaban A harus diisi',
@@ -142,6 +188,15 @@ class PenilaianController extends Controller
             'alasanC.required' => 'Alasan C harus diisi',
             'alasanD.required' => 'Alasan D harus diisi',
             'jawabanAlasan.required' => 'Kunci Jawaban Alasan harus diisi',
+            'bodyEnglish.required' => 'Soal harus diisi',
+            'jawabanAEnglish.required' => 'Jawaban A harus diisi',
+            'jawabanBEnglish.required' => 'Jawaban B harus diisi',
+            'jawabanCEnglish.required' => 'Jawaban C harus diisi',
+            'jawabanDEnglish.required' => 'Jawaban D harus diisi',
+            'alasanAEnglish.required' => 'Alasan A harus diisi',
+            'alasanBEnglish.required' => 'Alasan B harus diisi',
+            'alasanCEnglish.required' => 'Alasan C harus diisi',
+            'alasanDEnglish.required' => 'Alasan D harus diisi',
         ]);
 
         try {
@@ -149,6 +204,7 @@ class PenilaianController extends Controller
 
             Penilaian::where('id', $id)->update([
                 'soal' => $request->body,
+                'englsih_soal' => $request->bodyEnglish,
                 'kunci_jawaban' => $request->jawabanSoal,
                 'kunci_alasan' => $request->jawabanAlasan,
             ]);
@@ -160,6 +216,13 @@ class PenilaianController extends Controller
                 'd' => $request->jawabanD,
             ]);
 
+            PilihanJawabanEnglish::where('penilaian_id', $id)->update([
+                'a' => $request->jawabanAEnglish,
+                'b' => $request->jawabanBEnglish,
+                'c' => $request->jawabanCEnglish,
+                'd' => $request->jawabanDEnglish,
+            ]);
+
             Alasan::where('penilaian_id', $id)->update([
                 'a' => $request->alasanA,
                 'b' => $request->alasanB,
@@ -167,12 +230,19 @@ class PenilaianController extends Controller
                 'd' => $request->alasanD,
             ]);
 
+            AlasanEnglish::where('penilaian_id', $id)->update([
+                'a' => $request->alasanAEnglish,
+                'b' => $request->alasanBEnglish,
+                'c' => $request->alasanCEnglish,
+                'd' => $request->alasanDEnglish,
+            ]);
+
             DB::commit();
 
             return to_route('guru.penilaian')->with('success', 'Berhasil mengubah soal');
         } catch (\Throwable $th) {
             DB::rollBack();
-            return to_route('guru.edit.penilaian')->with('error', 'Gagal mengubah soal, harap coba lagi')->withInput();
+            return to_route('guru.edit.penilaian', $id)->with('error', 'Gagal mengubah soal, harap coba lagi')->withInput();
         }
     }
 

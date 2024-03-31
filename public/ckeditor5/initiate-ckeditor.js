@@ -96,3 +96,104 @@ ClassicEditor.create(document.querySelector(".alasanD"), {
 }).catch((error) => {
     console.error(error);
 });
+
+// English
+
+ClassicEditor.create(document.querySelector(".editorEnglish"), {
+    ckfinder: {
+        method: "POST",
+        dataType: "JSON",
+        uploadUrl: "/save-image",
+    },
+    height: 1200, // Ganti nilai ini sesuai dengan tinggi yang Anda inginkan
+}).catch((error) => {
+    console.error(error);
+});
+
+ClassicEditor.create(document.querySelector(".jawabanAEnglish"), {
+    ckfinder: {
+        method: "POST",
+        dataType: "JSON",
+        uploadUrl: "/save-image",
+    },
+    height: 800, // Ganti nilai ini sesuai dengan tinggi yang Anda inginkan
+}).catch((error) => {
+    console.error(error);
+});
+
+ClassicEditor.create(document.querySelector(".jawabanBEnglish"), {
+    ckfinder: {
+        method: "POST",
+        dataType: "JSON",
+        uploadUrl: "/save-image",
+    },
+    height: 800, // Ganti nilai ini sesuai dengan tinggi yang Anda inginkan
+}).catch((error) => {
+    console.error(error);
+});
+
+ClassicEditor.create(document.querySelector(".jawabanCEnglish"), {
+    ckfinder: {
+        method: "POST",
+        dataType: "JSON",
+        uploadUrl: "/save-image",
+    },
+    height: 800, // Ganti nilai ini sesuai dengan tinggi yang Anda inginkan
+}).catch((error) => {
+    console.error(error);
+});
+
+ClassicEditor.create(document.querySelector(".jawabanDEnglish"), {
+    ckfinder: {
+        method: "POST",
+        dataType: "JSON",
+        uploadUrl: "/save-image",
+    },
+    height: 800, // Ganti nilai ini sesuai dengan tinggi yang Anda inginkan
+}).catch((error) => {
+    console.error(error);
+});
+
+ClassicEditor.create(document.querySelector(".alasanAEnglish"), {
+    ckfinder: {
+        method: "POST",
+        dataType: "JSON",
+        uploadUrl: "/save-image",
+    },
+    height: 800, // Ganti nilai ini sesuai dengan tinggi yang Anda inginkan
+}).catch((error) => {
+    console.error(error);
+});
+
+ClassicEditor.create(document.querySelector(".alasanBEnglish"), {
+    ckfinder: {
+        method: "POST",
+        dataType: "JSON",
+        uploadUrl: "/save-image",
+    },
+    height: 800, // Ganti nilai ini sesuai dengan tinggi yang Anda inginkan
+}).catch((error) => {
+    console.error(error);
+});
+
+ClassicEditor.create(document.querySelector(".alasanCEnglish"), {
+    ckfinder: {
+        method: "POST",
+        dataType: "JSON",
+        uploadUrl: "/save-image",
+    },
+    height: 800, // Ganti nilai ini sesuai dengan tinggi yang Anda inginkan
+}).catch((error) => {
+    console.error(error);
+});
+
+ClassicEditor.create(document.querySelector(".alasanDEnglish"), {
+    ckfinder: {
+        method: "POST",
+        dataType: "JSON",
+        uploadUrl: "/save-image",
+    },
+    height: 800, // Ganti nilai ini sesuai dengan tinggi yang Anda inginkan
+}).catch((error) => {
+    console.error(error);
+});
