@@ -362,6 +362,7 @@ Route::prefix('guru')->middleware('teacher')->group(function () {
         Route::get('edit/{id}', [KuesionerController::class, 'edit'])->name('guru.kuesioner.edit');
         Route::put('update/{id}', [KuesionerController::class, 'update'])->name('guru.kuesioner.update');
         Route::delete('destroy/{id}', [KuesionerController::class, 'destroy'])->name('guru.kuesioner.destroy');
+        Route::get('export-self-assesment', [KuesionerController::class, 'export'])->name('guru.kuesioner.export');
     });
 
     Route::prefix('peer-assesment')->group(function () {
@@ -371,6 +372,7 @@ Route::prefix('guru')->middleware('teacher')->group(function () {
         Route::get('edit/{id}', [PeerAssesment::class, 'edit'])->name('guru.peer.assesment.edit');
         Route::put('update/{id}', [PeerAssesment::class, 'update'])->name('guru.peer.assesment.update');
         Route::delete('destroy/{id}', [PeerAssesment::class, 'destroy'])->name('guru.peer.assesment.destroy');
+        Route::get('export-peer-assesment', [PeerAssesment::class, 'export'])->name('guru.peer.assesment.export');
     });
 
     Route::get('forum', [ForumController::class, 'detail'])->name('guru.forum');

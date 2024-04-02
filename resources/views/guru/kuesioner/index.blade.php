@@ -33,6 +33,8 @@
             <div class="container-fluid">
                 <div class="card">
                     <div class="card-header">
+                        <a href="{{ route('guru.kuesioner.export') }}" class="btn btn-success rounded-pill">Export Hasil
+                            Pengisian</a>
                         <div class="card-tools">
                             <a href="{{ route('guru.kuesioner.create') }}" class="btn btn-brown rounded-pill">Buat Kuesioner
                             </a>

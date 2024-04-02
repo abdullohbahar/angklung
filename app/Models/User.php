@@ -25,4 +25,14 @@ class User extends Authenticatable
     {
         return $this->hasMany(ForumContent::class);
     }
+
+    public function hasManyJawabanSelfAssesment()
+    {
+        return $this->hasMany(JawabanKuesioner::class, 'user_id', 'id');
+    }
+
+    public function hasManyJawabanPeerAssesment()
+    {
+        return $this->hasMany(JawabanPeerAssesment::class, 'user_id', 'id');
+    }
 }

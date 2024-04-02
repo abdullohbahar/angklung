@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers\Guru;
 
-use App\Http\Controllers\Controller;
-use App\Models\PeerAssesment as ModelsPeerAssesment;
+use App\Exports\PeerAssesmentExport;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Models\PeerAssesment as ModelsPeerAssesment;
 
 class PeerAssesment extends Controller
 {
@@ -81,5 +83,10 @@ class PeerAssesment extends Controller
                 'error' => $e->getMessage()
             ]);
         }
+    }
+
+    public function export()
+    {
+        return Excel::download(new PeerAssesmentExport, 'Peer Assesment.xlsx');
     }
 }

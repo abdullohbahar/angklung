@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers\Guru;
 
+use App\Exports\SelfAssesmentExport;
 use App\Http\Controllers\Controller;
 use App\Models\Kuesioner;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 
 class KuesionerController extends Controller
 {
@@ -81,5 +83,10 @@ class KuesionerController extends Controller
                 'error' => $e->getMessage()
             ]);
         }
+    }
+
+    public function export()
+    {
+        return Excel::download(new SelfAssesmentExport, 'Self Assesment.xlsx');
     }
 }
