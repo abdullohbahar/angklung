@@ -76,3 +76,8 @@
         </div>
     </div>
 @endsection
+
+@push('addons-js')
+    <script src="{{ asset('ckeditor5/build/ckeditor.js') }}"></script>
+    <script src="{{ asset('ckeditor5/initiate-ckeditor.js') }}"></script>
+@endpush
