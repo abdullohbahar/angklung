@@ -33,7 +33,7 @@ class PilihJenisPertanyaan extends Controller
 
         $done = DoneAssesment::where('user_id', $userID)->first();
 
-        if ($done->is_done) {
+        if ($done?->is_done) {
             return to_route('main.menu')->with('warning', 'Anda telah mengerjakan penilaian');
         }
 
