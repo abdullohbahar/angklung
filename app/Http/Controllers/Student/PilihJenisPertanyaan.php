@@ -25,6 +25,8 @@ class PilihJenisPertanyaan extends Controller
             ]);
         }
 
+        $timer = Timer::where('user_id', $userID)->first();
+
         if ($timer->timer <= 0) {
             return to_route('main.menu')->with('warning', 'Anda telah kehabisan waktu untuk mengerjakan penilaian');
         }
