@@ -59,10 +59,11 @@
             display: block;
             width: 45px;
             height: 45px;
-            font-size: 18pt;
+            font-size: 16pt;
             line-height: 40px;
             text-align: center;
             color: black;
+            padding: 0px;
         }
 
         .answered {
