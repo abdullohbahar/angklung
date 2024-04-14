@@ -71,8 +71,8 @@ use App\Http\Controllers\UbahBahasa;
 // URL::forceScheme('https');
 // }
 
-Route::get('/', [LoginStudentController::class, 'index'])->name('login')->middleware('guest');
-Route::post('siswa/auth', [LoginStudentController::class, 'auth'])->name('siswa.auth')->middleware('guest');
+Route::get('/', [LoginStudentController::class, 'index'])->name('login');
+Route::post('siswa/auth', [LoginStudentController::class, 'auth'])->name('siswa.auth');
 Route::get('siswa/logout', [LoginStudentController::class, 'logout'])->name('siswa.logout')->middleware('student');
 
 Route::put('timer', TimerController::class)->name('timer');
@@ -222,8 +222,8 @@ Route::get('admin/login', [AuthAdminController::class, 'index'])->name('admin.lo
 Route::post('admin/auth', [AuthAdminController::class, 'authenticate'])->name('admin.auth')->middleware('guest');
 Route::get('admin/logout', [AuthAdminController::class, 'logout'])->name('admin.logout')->middleware('admin');
 
-Route::get('guru/login', [AuthGuruController::class, 'index'])->name('guru.login')->middleware('guest');
-Route::post('guru/auth', [AuthGuruController::class, 'authenticate'])->name('guru.auth')->middleware('guest');
+Route::get('guru/login', [AuthGuruController::class, 'index'])->name('guru.login');
+Route::post('guru/auth', [AuthGuruController::class, 'authenticate'])->name('guru.auth');
 Route::get('guru/logout', [AuthGuruController::class, 'logout'])->name('guru.logout')->middleware('teacher');
 
 Route::prefix('admin')->group(function () {
