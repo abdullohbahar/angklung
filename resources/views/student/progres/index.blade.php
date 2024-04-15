@@ -48,7 +48,7 @@
                                         <button class="accordion-button collapsed text-capitalize" type="button"
                                             data-bs-toggle="collapse" data-bs-target="#flush-aktivitas"
                                             aria-expanded="false" aria-controls="flush-aktivitas">
-                                            <h3><b>Progress Aktivitas Belajar Anda</b></h3>
+                                            <h3><b>Progress Aktivitas Belajar</b></h3>
                                         </button>
                                     </h2>
                                     <div id="flush-aktivitas" class="accordion-collapse collapse"
@@ -122,7 +122,7 @@
                                         <button class="accordion-button collapsed text-capitalize" type="button"
                                             data-bs-toggle="collapse" data-bs-target="#flush-presensi" aria-expanded="false"
                                             aria-controls="flush-presensi">
-                                            <h3><b>Riwayat Presensi Anda</b></h3>
+                                            <h3><b>Riwayat Presensi</b></h3>
                                         </button>
                                     </h2>
                                     <div id="flush-presensi" class="accordion-collapse collapse" data-bs-parent="#presensi">
