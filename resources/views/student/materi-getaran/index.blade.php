@@ -127,7 +127,7 @@
                 showCancelButton: false,
                 confirmButtonColor: "#3085d6",
                 cancelButtonColor: "#d33",
-                confirmButtonText: "Experimen!",
+                confirmButtonText: "Eksplorasi!",
                 allowOutsideClick: false
             }).then((result) => {
                 if (result.isConfirmed) {

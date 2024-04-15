@@ -34,9 +34,9 @@
                             @csrf
                             <div class="row" style="padding-right: 20px;">
                                 <div class="col-12">
-                                    <label for="">Tambahkan Nama Teman Kamu</label>
+                                    <label for="">Tuliskan Nama Temanmu !</label>
                                     <input type="text" name="friend_name" class="form-control mb-3 col-12"
-                                        placeholder="Nama Teman Kamu" required id="">
+                                        placeholder="Nama Temanmu" required id="">
                                 </div>
                             </div>
                             <div class="row" style="padding-right: 20px;">

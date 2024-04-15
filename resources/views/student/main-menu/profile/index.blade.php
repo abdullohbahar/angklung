@@ -62,7 +62,7 @@
                                 </button>
                                 <button id="logoutBtn" class="mt-3 btn btn-danger" style="width: 100%">
                                     <b>
-                                        Keluar Dari Website
+                                        Logout
                                     </b>
                                 </button>
                             </div>

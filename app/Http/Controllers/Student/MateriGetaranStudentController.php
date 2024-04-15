@@ -119,7 +119,7 @@ class MateriGetaranStudentController extends Controller
             'jawaban' => $request->jawaban4,
         ]);
 
-        return to_route('materi.getaran')->with('experiment_notification', 'Untuk lebih memahami konsep getaran, Ayo lakukan eksperimen !');
+        return to_route('materi.getaran')->with('experiment_notification', 'Untuk lebih memahami konsep getaran, Ayo lakukan eksplorasi !');
     }
 
     public function eksperimen()
