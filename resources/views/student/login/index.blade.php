@@ -302,7 +302,7 @@
     <nav class="navbar fixed-bottom bg-body-tertiary">
         <div class="container-fluid">
             <a class="navbar-brand" href="#" style="font-size: 12pt">
-                Copyrighy Rahmat. A. D &copy; {{ date('Y') }} </a>
+                Copyright Rahmat. A. D &copy; {{ date('Y') }} </a>
         </div>
     </nav>
 

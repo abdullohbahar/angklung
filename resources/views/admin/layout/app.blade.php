@@ -207,7 +207,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <footer class="main-footer">
             <!-- To the right -->
             <div class="float-right d-none d-sm-inline">
-                Copyrighy Rahmat. A. D &copy; {{ date('Y') }}
+                Copyright Rahmat. A. D &copy; {{ date('Y') }}
             </div>
     </div>
     <!-- ./wrapper -->
