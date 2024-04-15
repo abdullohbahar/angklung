@@ -127,6 +127,9 @@ Route::prefix('siswa')->middleware('student')->group(function () {
     Route::post('/aktivitas-belajar/store-forum/{forumID}', [AktivitasBelajarController::class, 'storeForum'])->name('student.aktivitas.belajar.store.forum');
     Route::get('/aktivitas-belajar/refleksi/{title}/{no}/{refleksiID}', [AktivitasBelajarController::class, 'refleksi'])->name('student.aktivitas.belajar.refleksi');
 
+
+    Route::get('/refleksi', [MainMenuStudentController::class, 'refleksi'])->name('student.refleksi');
+
     Route::get('/eksplorasi', [ExplorasiStudentController::class, 'index'])->name('student.eksplorasi');
 
     Route::get('/penilaian/{no}', [PenilaianStudentController::class, 'index'])->name('student.penilaian');

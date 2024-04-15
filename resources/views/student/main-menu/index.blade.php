@@ -54,17 +54,6 @@
                                     </div>
                                 </div>
                             </a>
-                            {{-- <a href="{{ route('student.progress') }}"
-                                class="text-decoration-none col-6 content-center gx-3 gy-3">
-                                <div class="card card-border">
-                                    <div class="card-body text-center">
-                                        <img src="{{ asset('./guest-assets/progress.svg') }}" alt="">
-                                        <div class="mt-3">
-                                            <p><b>Progress</b></p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a> --}}
                             <a href="{{ route('student.pilih.jenis.pertanyaan') }}"
                                 class="text-decoration-none col-6 content-center gx-3 gy-3">
                                 <div class="card card-border">
@@ -94,6 +83,16 @@
                                         <img src="{{ asset('./guest-assets/informasi-pengembang.svg') }}" alt="">
                                         <div class="mt-3">
                                             <p><b>Kuesioner</b></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                            <a href="{{ route('student.refleksi') }}" class="text-decoration-none col-6 content-center gx-3 gy-3">
+                                <div class="card card-border">
+                                    <div class="card-body text-center">
+                                        <img src="{{ asset('./guest-assets/progress.svg') }}" alt="">
+                                        <div class="mt-3">
+                                            <p><b>Refleksi</b></p>
                                         </div>
                                     </div>
                                 </div>

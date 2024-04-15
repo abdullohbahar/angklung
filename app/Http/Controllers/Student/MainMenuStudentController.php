@@ -52,4 +52,9 @@ class MainMenuStudentController extends Controller
 
         return redirect()->back()->with('success', 'Berhasil melakukan presensi');
     }
+
+    public function refleksi()
+    {
+        return view('student.main-menu.refleksi');
+    }
 }
