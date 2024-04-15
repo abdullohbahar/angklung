@@ -32,6 +32,51 @@
                                     Waktu pengerjaan yaitu 60 menit terhitung saat tombol mulai diklik. Selamat mengerjakan
                                     !
                                 </h6>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <h5>
+                                            <b>Instruksi Pengerjaan</b>
+                                        </h5>
+                                        <ol>
+                                            <li>Berdoalah sebelum mulai mengerjakan penilaian.</li>
+                                            <li>Penilaian ini terdiri dari 20 pilihan ganda beralasan dan 4 essay. </li>
+                                            <li>
+                                                Kriteria penilaian untuk PG beralasan
+                                                <br>
+                                                <table class="table table-bordered table-striped">
+                                                    <tr>
+                                                        <td><b>Pertanyaan</b></td>
+                                                        <td><b>Alasan</b></td>
+                                                        <td><b>Skor</b></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Benar</td>
+                                                        <td>Benar</td>
+                                                        <td>4</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Benar</td>
+                                                        <td>Salah</td>
+                                                        <td>3</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Salah</td>
+                                                        <td>Benar</td>
+                                                        <td>2</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Salah</td>
+                                                        <td>Salah</td>
+                                                        <td>1</td>
+                                                    </tr>
+                                                </table>
+                                            </li>
+                                            <li>
+                                                Pilihlah opsi jawaban dan alasan secara tepat
+                                            </li>
+                                        </ol>
+                                    </div>
+                                </div>
                                 <a href="{{ route('student.penilaian', 1) }}" style="width: 100%" class="btn btn-warning">
                                     <b>Mulai</b>
                                 </a>
