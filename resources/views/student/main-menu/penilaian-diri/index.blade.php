@@ -28,7 +28,7 @@
             <div class="col-12 my-4 text-center outline">
             </div>
             <div class="col-sm-12 col-md-12 col-lg-12">
-                <div class="card">
+                <div class="card" style="width: 700px !important;">
                     <div class="card-body">
                         <form action="{{ route('student.store.penilaian.diri') }}" method="POST">
                             @csrf

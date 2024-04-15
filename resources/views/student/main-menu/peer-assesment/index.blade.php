@@ -28,18 +28,18 @@
             <div class="col-12 my-4 text-center outline">
             </div>
             <div class="col-sm-12 col-md-12 col-lg-12">
-                <div class="card">
+                <div class="card" style="width: 700px !important;">
                     <div class="card-body">
                         <form action="{{ route('student.store.peer.assesment') }}" method="POST">
                             @csrf
-                            <div class="row">
+                            <div class="row" style="padding-right: 20px;">
                                 <div class="col-12">
                                     <label for="">Tambahkan Nama Teman Kamu</label>
                                     <input type="text" name="friend_name" class="form-control mb-3 col-12"
                                         placeholder="Nama Teman Kamu" required id="">
                                 </div>
                             </div>
-                            <div class="row">
+                            <div class="row" style="padding-right: 20px;">
                                 <div class="col-12">
                                     <table class="table table-bordered table-striped">
                                         <thead>

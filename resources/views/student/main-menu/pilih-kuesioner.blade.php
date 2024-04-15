@@ -31,26 +31,18 @@
                     @include('student.main-menu.tabs')
                     <div class="card-body">
                         <div class="row">
-                            <a href="{{ route('student.penilaian.diri') }}"
-                                class="text-decoration-none col-6 content-center gx-3 gy-3">
-                                <div class="card card-border" style="">
-                                    <div class="card-body text-center">
-                                        <div class="mt-3">
-                                            <h1><b>Self <br> Assesment</b></h1>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                            <a href="{{ route('student.peer.assesment') }}"
-                                class="text-decoration-none col-6 content-center gx-3 gy-3">
-                                <div class="card card-border">
-                                    <div class="card-body text-center">
-                                        <div class="mt-3">
-                                            <h1><b>Peer <br> Assesment</b></h1>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
+                            <div class="col-sm-12 col-md-6 mt-3">
+                                <a class="btn btn-light text-center" href="{{ route('student.penilaian.diri') }}"
+                                    style="width: 100%">
+                                    <h4 class="mt-2"><b>Self Assesment</b></h6>
+                                </a>
+                            </div>
+                            <div class="col-sm-12 col-md-6 mt-3">
+                                <a href="{{ route('student.peer.assesment') }}" class="btn btn-light text-center"
+                                    style="width: 100%">
+                                    <h4 class="mt-2"><b>Peer Assesment</b></h4>
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
