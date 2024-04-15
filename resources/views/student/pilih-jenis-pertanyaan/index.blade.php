@@ -29,8 +29,8 @@
                             </div>
                             <div class="card-body">
                                 <h6>
-                                    Waktu mengerjakan yaitu 60 Menit. Ketika anda klik tombol mulai maka waktu akan
-                                    berjalan.
+                                    Waktu pengerjaan yaitu 60 menit terhitung saat tombol mulai diklik. Selamat mengerjakan
+                                    !
                                 </h6>
                                 <a href="{{ route('student.penilaian', 1) }}" style="width: 100%" class="btn btn-warning">
                                     <b>Mulai</b>

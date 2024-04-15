@@ -73,6 +73,12 @@
             background-color: #F0BD63;
             color: white
         }
+
+        img {
+            width: 100% !important;
+            height: 100% !important;
+            text-align: center !important;
+        }
     </style>
 
     <meta name="csrf-token" content="{{ csrf_token() }}">
