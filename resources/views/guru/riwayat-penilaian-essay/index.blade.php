@@ -127,9 +127,12 @@
                                     </h2>
                                 </div>
 
-                                <div id="collapseEssay" class="collapse" aria-labelledby="headingEssay"
+                                <div id="collapseEssay" class="collapse show" aria-labelledby="headingEssay"
                                     data-parent="#accordionEssay">
                                     <div class="card-body">
+                                        @php
+                                            $totalScore = 0;
+                                        @endphp
                                         @foreach ($essays as $essay)
                                             <div class="row">
                                                 <div class="col-12">
@@ -148,10 +151,20 @@
                                                         <b>Jawaban</b>
                                                     </h6>
                                                     <textarea class="form-control" disabled rows="2">{{ $essay->jawaban }}</textarea>
+                                                    <h6 class="mt-2">
+                                                        <b>Score : {{ $essay?->score }}</b>
+                                                        @php
+                                                            $totalScore += $essay?->score;
+                                                        @endphp
+                                                    </h6>
                                                     @if ($essay->file)
                                                         <a href="{{ asset($essay->file) }}" class="btn btn-info mt-2"
                                                             target="_blank">Lihat file yang diunggah</a>
                                                     @endif
+                                                    <button class="btn btn-warning mt-2" id="addScore"
+                                                        data-id="{{ $essay->id }}"
+                                                        data-nomor="{{ $essay->hasOneSoal->nomor_soal }}">Beri
+                                                        Score</button>
                                                 </div>
                                             </div>
                                             <div class="row">
@@ -160,6 +173,15 @@
                                                 </div>
                                             </div>
                                         @endforeach
+                                        <div class="row">
+                                            <div class="col-12 d-flex justify-content-end">
+                                                <h4>
+                                                    <b>
+                                                        Total Score : {{ $totalScore }}
+                                                    </b>
+                                                </h4>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -170,4 +192,54 @@
             <!-- /.content -->
         </div>
     </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="addScoreModal" tabindex="-1" aria-labelledby="addScoreModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addScoreModalLabel">Tambahkan Nilai Nomor <span id="nomor"></span>
+                    </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form action="{{ route('guru.add.score.essay') }}" method="POST">
+                        @csrf
+                        <input type="text" name="essay_id" hidden id="essay_id">
+                        <div class="row">
+                            <div class="col-12">
+                                <label for="">Score</label>
+                                <input type="number" required name="score" class="form-control"
+                                    placeholder="Masukkan Score" id="">
+                            </div>
+                        </div>
+                        <div class="row mt-3">
+                            <div class="col-12 d-flex justify-content-end">
+                                <button type="submit" class="btn btn-success">Beri Score</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection
+
+@push('addons-js')
+    <script>
+        $("body").on("click", "#addScore", function() {
+            $("#addScoreModal").modal("show")
+
+            var nomor = $(this).data("nomor")
+            var id = $(this).data("id")
+
+            $("#nomor").text(nomor)
+            $("#essay_id").val(id)
+        })
+    </script>
+@endpush

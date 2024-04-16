@@ -25,4 +25,13 @@ class RiwayatPengerjaanEssayController extends Controller
 
         return view('guru.riwayat-penilaian-essay.index', $data);
     }
+
+    public function addScore(Request $request)
+    {
+        JawabanPenilaianEssay::where('id', $request->essay_id)->update([
+            'score' => $request->score
+        ]);
+
+        return redirect()->back()->with('success', 'Berhasil');
+    }
 }

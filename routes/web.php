@@ -356,6 +356,7 @@ Route::prefix('guru')->middleware('teacher')->group(function () {
 
     Route::prefix('penilaian')->group(function () {
         Route::get('/{id}', [RiwayatPengerjaanEssayController::class, 'index'])->name('guru.riwayat.pengerjaan');
+        Route::post('/store', [RiwayatPengerjaanEssayController::class, 'addScore'])->name('guru.add.score.essay');
     });
 
     Route::prefix('kuesioner')->group(function () {

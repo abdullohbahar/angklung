@@ -35,7 +35,7 @@
 
     <div class="container-fluid">
         <div class="row justify-content-center">
-            <div class="col-sm-12 col-md-12 col-lg-10">
+            <div class="col-sm-12 col-md-12 col-lg-12">
                 <div class="row">
                     <div class="col-12 my-3 text-center">
                         <h1><b class="outline-font">Progres</b></h1>
@@ -235,6 +235,9 @@
                                     </h2>
                                     <div id="flush-essay" class="accordion-collapse collapse" data-bs-parent="#essay">
                                         <div class="accordion-body">
+                                            @php
+                                                $totalScore = 0;
+                                            @endphp
                                             @foreach ($essays as $essay)
                                                 <div class="row">
                                                     <div class="col-12">
@@ -253,6 +256,13 @@
                                                             <b>Jawaban</b>
                                                         </h6>
                                                         <textarea class="form-control" disabled rows="2">{{ $essay->jawaban }}</textarea>
+                                                        <h6 class="mt-2">
+                                                            <b>Score :
+                                                                {{ $essay?->score ?? 'Guru Belum Memberi Score' }}</b>
+                                                            @php
+                                                                $totalScore += $essay?->score;
+                                                            @endphp
+                                                        </h6>
                                                         @if ($essay->file)
                                                             <a href="{{ asset($essay->file) }}" class="btn btn-info mt-2"
                                                                 target="_blank">Lihat file yang diunggah</a>
@@ -265,6 +275,15 @@
                                                     </div>
                                                 </div>
                                             @endforeach
+                                            <div class="row">
+                                                <div class="col-12 d-flex justify-content-end">
+                                                    <h4>
+                                                        <b>
+                                                            Total Score : {{ $totalScore }}
+                                                        </b>
+                                                    </h4>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
